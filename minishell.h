@@ -19,13 +19,16 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-# include "parser/parser.h"
 # include "executer/executer.h"
 
-// struct of communication
-typedef struct s_
+typedef struct s_2_exec
 {
+	char			**cmd; // command and args
+	char			*file;
+	struct s_2_exec	*next;
+}				t_2_exec;
 
-}				t_;
+
+//parsing
 
 #endif

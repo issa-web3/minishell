@@ -14,12 +14,13 @@
 
 int main(int ac, char **av, char **env)
 {
-	char	*line;
+	char		*line;
+	t_2_exec	data;
 
 	while (1)
 	{
-		line = readline("RICH > ");
-		// data = parser(ac, av, env, line);
-		// execute(data);
+		line = readline("minishell_42>$ ");
+		data = parser(ac, av, env, line);
+		execute(data);
 	}
 }
