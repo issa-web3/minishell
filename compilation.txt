@@ -1,1 +1,2 @@
- cc *.c */*.c -lreadline && ./a.out
+cc *.c utils/*.c executer/*.c -lreadline && ./a.out
+cc *.c utils/*.c parser/*.c -lreadline && ./a.out
