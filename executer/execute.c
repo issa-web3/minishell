@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 14:16:15 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:29:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,23 @@ void	execute(t_2_exec *data)
 		{
 			// read from pipe
 			if (i != 0)
-				(dup2(pipes[i - 1][0], STDIN_FILENO), close(pipes[i - 1][0])); // protection
+			{
+				close(pipes[i - 1][1]);
+				dup2(pipes[i - 1][0], STDIN_FILENO); // protection
+				close(pipes[i - 1][0]);
+			}
 			// write to pipe
 			if (i != n - 1)
-				(dup2(pipes[i][1], STDOUT_FILENO), close(pipes[i][1])); // protection
+			{
+				close(pipes[i][0]);
+				dup2(pipes[i][1], STDOUT_FILENO); // protection
+				close(pipes[i][1]);
+			}
 		}
 		i++;
 	}
+	
+	
 	
 	// distribute tasks
 	if (res != 0)
@@ -72,5 +82,8 @@ void	execute(t_2_exec *data)
 	{
 		// children
 		exec_by_idx(data, i - 1);
+		close(pipes[i][0]);
+		close(pipes[i][1]);
+		exit(EXIT_FAILURE);
 	}
 }
