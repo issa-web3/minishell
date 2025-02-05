@@ -16,6 +16,4 @@
 // inc
 # include "../minishell.h"
 
-t_2_exec	*parser(int ac, char **av, char **env, char *line);
-
 #endif
