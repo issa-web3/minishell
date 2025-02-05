@@ -1,0 +1,1 @@
+ cc *.c */*.c -lreadline && ./a.out

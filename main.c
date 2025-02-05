@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-03 12:59:19 by khoukouj         ###   ########.1337.ma  */
+/*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/02/05 10:38:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(int ac, char **av, char **env)
 {
 	char		*line;
-	t_2_exec	data;
+	t_2_exec	*data;
 
 	while (1)
 	{

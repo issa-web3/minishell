@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-03 12:59:53 by khoukouj         ###   ########.1337.ma  */
+/*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/02/04 14:26:58 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,13 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+# include "libft/libft.h"
+# include "structs.h"
 # include "executer/executer.h"
 
-typedef struct s_2_exec
-{
-	char			**cmd; // command and args
-	char			*file;
-	struct s_2_exec	*next;
-}				t_2_exec;
 
 
 //parsing
+t_2_exec	*parser(int ac, char **av, char **env, char *line);
 
 #endif
