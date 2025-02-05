@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:55:55 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 13:09:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:14:42 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_2_exec	*ft_lstnew(t_2_exec data)
 	if (!new_node)
 		return (new_node);
 	new_node->cmd = data.cmd;
-	new_node->file = data.file;
 	new_node->next = NULL;
 	return (new_node);
 }

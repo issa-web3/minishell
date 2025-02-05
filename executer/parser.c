@@ -23,7 +23,6 @@ t_2_exec	*parser(int ac, char **av, char **env, char *line)
 		data.cmd = ft_split(cmds[i++], ' ');
 		if (data.cmd == NULL)
 			perror("split2");
-		data.file = NULL;
 		ft_lstadd_back(&head, ft_lstnew(data));
 	}
 	return head;
