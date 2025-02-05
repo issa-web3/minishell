@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 16:29:17 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:07:35 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ void	execute(t_2_exec *data)
 	// make kids
 	i = 0;
 	n = ft_lstsize(data);
-	pipes = malloc((n - 1) * sizeof(pid_t[2])); // protection
+	pipes = malloc(n * sizeof(pid_t[2])); // protection
 
 	res = 314;
 	
 	while (i < n && res != 0)
 	{
-		if (i != n - 1)
-			pipe(pipes[i]); // protection
+		pipe(pipes[i]); // protection
 		res = fork(); // protection
 		
 		// created child
@@ -48,15 +47,22 @@ void	execute(t_2_exec *data)
 			if (i != 0)
 			{
 				close(pipes[i - 1][1]);
-				dup2(pipes[i - 1][0], STDIN_FILENO); // protection
+				if (dup2(pipes[i - 1][0], STDIN_FILENO) == -1)
+					perror("dup2");
 				close(pipes[i - 1][0]);
 			}
 			// write to pipe
 			if (i != n - 1)
 			{
 				close(pipes[i][0]);
-				dup2(pipes[i][1], STDOUT_FILENO); // protection
+				if (dup2(pipes[i][1], STDOUT_FILENO) == -1)
+					perror("dup2");
 				close(pipes[i][1]);
+			}
+			else
+			{
+				close(pipes[i][1]);
+				close(pipes[i][0]);
 			}
 		}
 		i++;
