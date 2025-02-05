@@ -22,5 +22,6 @@ int main(int ac, char **av, char **env)
 		line = readline("minishell_42>$ ");
 		data = parser(ac, av, env, line);
 		execute(data);
+		add_history(line);
 	}
 }
