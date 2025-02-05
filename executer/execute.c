@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 17:07:35 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:04:56 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	execute(t_2_exec *data)
 	
 	while (i < n && res != 0)
 	{
-		pipe(pipes[i]); // protection
+		if (i != n - 1)
+			pipe(pipes[i]); // protection
 		res = fork(); // protection
 		
 		// created child
@@ -59,16 +60,15 @@ void	execute(t_2_exec *data)
 					perror("dup2");
 				close(pipes[i][1]);
 			}
-			else
-			{
-				close(pipes[i][1]);
-				close(pipes[i][0]);
-			}
 		}
 		i++;
 	}
 	
-	
+	for (int k = 0; k < i - 1; k++)
+	{
+		close(pipes[k][0]);
+		close(pipes[k][1]);
+	}
 	
 	// distribute tasks
 	if (res != 0)
