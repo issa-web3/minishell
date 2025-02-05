@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 13:45:04 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:16:15 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,19 @@ void	execute(t_2_exec *data)
 			pipe(pipes[i]); // protection
 		res = fork(); // protection
 		
-		
 		// created child
 		if (res == 0)
 		{
 			// read from pipe
 			if (i != 0)
-				dup2(pipes[i - 1][0], STDIN_FILENO); // protection
+				(dup2(pipes[i - 1][0], STDIN_FILENO), close(pipes[i - 1][0])); // protection
 			// write to pipe
 			if (i != n - 1)
-				dup2(pipes[i][1], STDOUT_FILENO); // protection
-			close(pipes[i - 1][0]);
-			close(pipes[i][1]);
+				(dup2(pipes[i][1], STDOUT_FILENO), close(pipes[i][1])); // protection
 		}
 		i++;
 	}
+	
 	// distribute tasks
 	if (res != 0)
 	{
