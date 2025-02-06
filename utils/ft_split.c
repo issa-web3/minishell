@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:30:51 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 15:48:04 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:22:19 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ char	**ft_split(char *s, char c, char *added_word)
 	char	**split;
 	int		i;
 
-	if (!s)
-		return (NULL);
 	split = (char **)malloc((count_words(s, c) + 1
 				+ (added_word != NULL)) * sizeof(char *));
 	if (!split)
 		return (perror("malloc"), NULL);
 	i = added_word != NULL;
+	if (!s)
+		return (terminate(split, i, added_word));
 	while (*s)
 	{
 		while (*s && check_sep(*s, c))
