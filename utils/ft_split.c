@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:30:51 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 13:09:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:28:36 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,14 @@ static char	**free_ptr(char **split, int i)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static void	append_word(char **split, int i, char *added_word)
+{
+	split[i] = added_word;
+	if (added_word != NULL)
+		split[i + 1] = 0;
+}
+
+char	**ft_split(char const *s, char c, char *added_word)
 {
 	char	**split;
 	int		i;
@@ -77,7 +84,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	i = 0;
-	split = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	split = (char **)malloc((count_words(s, c) + 1 + (added_word != NULL)) * sizeof(char *));
 	if (!split)
 		return (perror("malloc"), NULL);
 	while (*s)
@@ -94,6 +101,6 @@ char	**ft_split(char const *s, char c)
 			i++;
 		}
 	}
-	split[i] = 0;
+	append_word(split, i, added_word);
 	return (split);
 }

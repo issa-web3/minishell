@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/05 16:06:23 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:31:53 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../minishell.h"
 
 void	execute(t_2_exec *data);
+char	*get_path(char *cmd);
 
 
 

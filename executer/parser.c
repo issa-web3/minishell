@@ -13,14 +13,14 @@ t_2_exec	*parser(int ac, char **av, char **env, char *line)
 	// char		*cmds[3] = {"/bin/ls", "/bin/cat -e", NULL};
 	int			i;
 
-	cmds = ft_split(line, '|');
+	cmds = ft_split(line, '|', NULL);
 	if (cmds == NULL)
 		perror("split1");
 	i = 0;
 	head = NULL;
 	while (cmds[i])
 	{
-		data.cmd = ft_split(cmds[i++], ' ');
+		data.cmd = ft_split(cmds[i++], ' ', NULL);
 		if (data.cmd == NULL)
 			perror("split2");
 		ft_lstadd_back(&head, ft_lstnew(data));
