@@ -12,8 +12,10 @@
 
 #ifndef PARSER_H
 # define PARSER_H
-
 // inc
 # include "../minishell.h"
+
+//quotes
+int	check_unclosed_quotes(char *line);
 
 #endif

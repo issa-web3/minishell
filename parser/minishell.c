@@ -12,6 +12,21 @@
 
 #include "../minishell.h"
 
+int	parse_line(char *line)
+{
+	char	*tmp;
+	t_token	*token;
+	char	**split;
+
+	(1) && (tmp = NULL, token = NULL, split = NULL);
+	if (!check_unclosed_quotes(line))
+	{
+		printf("minishell: syntax error related to unclosed quotes\n");
+		return (-1);
+	}
+	return (0);
+}
+
 void	read_from_input(void)
 {
 	char	*line;
@@ -24,15 +39,17 @@ void	read_from_input(void)
 		if (!line[0])
 		{
 			free(line);
-			continue;
+			continue ;
 		}
 		if (line[0])
 			add_history(line);
-		parse_line(line);
+		if (parse_line(line) != -1)
+			printf("exec done\n");
 	}
 }
 
-// int main(int ac, char **av, char **envp)
-// {
-
-// }
+int	main(int ac, char **av, char **envp)
+{
+	read_from_input();
+	return (0);
+}
