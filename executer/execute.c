@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 14:31:41 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:21:22 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void	exec_by_idx(t_2_exec *data, int i)
 {
+	char	*cmd;
+
 	while (--i >= 0)
 		data = data->next;
+	cmd = data->cmd[0];
 	data->cmd[0] = get_path(data->cmd[0]);
 	execve(data->cmd[0], data->cmd, NULL);
-	perror("execv");
+	if (dup2(STDERR_FILENO, STDOUT_FILENO) == -1)
+		perror("dup2");
+	printf("%s: command not found\n", cmd);
 }
 
 void	execute(t_2_exec *data)

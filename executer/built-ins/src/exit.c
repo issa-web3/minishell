@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/06 17:32:43 by ioulkhir         ###   ########.fr       */
+/*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
+/*   Updated: 2025/02/06 17:30:37 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../../minishell.h"
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av)
 {
-	char		*line;
-	t_2_exec	*data;
-
-	while (1)
-	{
-		line = readline("rich-3.14$ ");
-		data = parser(ac, av, env, line);
-		execute(data);
-		add_history(line);
-	}
+	printf("it should exit\n");
 }

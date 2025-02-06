@@ -4,3 +4,4 @@ cc *.c utils/*.c parser/*.c -lreadline && ./a.out
 cc executer/built-ins/src/echo.c utils/*.c -o executer/built-ins/obj/echo
 ./executer/built-ins/obj/echo
 
+cc executer/built-ins/src/exit.c utils/*.c -o executer/built-ins/obj/exit
