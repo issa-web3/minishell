@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:14:58 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 13:09:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:46:11 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_2_exec *lst)
 {
-	int		count;
+	int			count;
 	t_2_exec	*current;
 
 	if (!lst)
