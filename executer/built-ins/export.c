@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 11:13:01 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 00:08:59 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_export(char **cmd, char **env)
+void	ft_export(char **cmd, char **my_env)
 {
 	(void)cmd;
 	(void)env;

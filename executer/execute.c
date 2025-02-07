@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 00:06:18 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 00:08:59 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
-void	exec_by_idx(t_2_exec *data, char **env, int i)
+void	exec_by_idx(t_2_exec *data, char **my_env, int i)
 {
 	char	*cmd;
 
@@ -27,7 +27,7 @@ void	exec_by_idx(t_2_exec *data, char **env, int i)
 	printf("%s: command not found\n", cmd);
 }
 
-void	execute(t_2_exec *data, char **env)
+void	execute(t_2_exec *data, char **my_env)
 {
 	pid_t	(*pipes)[2];
 	pid_t	res;
