@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 13:57:29 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:06:26 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_cd(char **cmd, char **env)
 
 	if (cmd[1] == NULL)
 	{
-		if (chdir("/") == -1)
+		if (chdir(getenv("HOME")) == -1)
 			perror("cd");
 	}
 	else

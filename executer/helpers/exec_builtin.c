@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:57:33 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 11:07:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:12:21 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-void	exec_builtin(char **cmd, char **env)
+void	exec_builtin(char **cmd, char **env, char exit_flag)
 {
 	t_builtin	built_in[7];
 	int			i;
@@ -36,4 +36,6 @@ void	exec_builtin(char **cmd, char **env)
 		i++;
 	if (i != 7)
 		(built_in[i].func)(cmd, env);
+	if (exit_flag && i != 7)
+		exit(EXIT_SUCCESS);
 }
