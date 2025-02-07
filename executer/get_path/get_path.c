@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 15:31:33 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:23:07 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	**get_paths(void)
 
 	i = 0;
 	getcwd(cwd, sizeof(cwd));
-	paths = ft_split(getenv("PATH"), ':', ft_strjoin(ft_strdup(cwd), "/executer/built-ins/obj"));
+	paths = ft_split(getenv("PATH"), ':', NULL);
 	return (paths);
 }
 
