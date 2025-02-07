@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 10:32:18 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:13:36 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,3 @@ void	ft_echo(char **cmd, char **env)
 	(end) && (write(1, "\n", 1));
 	exit(EXIT_SUCCESS);
 }
-
-
-// ◦ echo with option -n
-// ◦ cd with only a relative or absolute path
-// ◦ pwd with no options
-// ◦ export with no options
-// ◦ unset with no options
-// ◦ env with no options or arguments
-// ◦ exit with no options

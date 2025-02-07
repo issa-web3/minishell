@@ -6,19 +6,19 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 10:35:07 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:16:53 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
-void	exec_by_idx(t_2_exec *data, int i)
+void	exec_by_idx(t_2_exec *data, char **env, int i)
 {
 	char	*cmd;
 
 	while (--i >= 0)
 		data = data->next;
-	exec_builtin(data->cmd, NULL);
+	exec_builtin(data->cmd, env);
 	printf("not buitl-in !! \n");
 	// not built-in
 	cmd = data->cmd[0];
@@ -29,7 +29,7 @@ void	exec_by_idx(t_2_exec *data, int i)
 	printf("%s: command not found\n", cmd);
 }
 
-void	execute(t_2_exec *data)
+void	execute(t_2_exec *data, char **env)
 {
 	pid_t	(*pipes)[2];
 	pid_t	res;
@@ -96,7 +96,7 @@ void	execute(t_2_exec *data)
 	else
 	{
 		// children
-		exec_by_idx(data, i - 1);
+		exec_by_idx(data, env, i - 1);
 		close(pipes[i][0]);
 		close(pipes[i][1]);
 		exit(EXIT_FAILURE);

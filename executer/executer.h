@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/07 10:31:27 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:17:01 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 # include "../minishell.h"
 
-void	execute(t_2_exec *data);
+void	execute(t_2_exec *data, char **env);
 void	exec_builtin(char **cmd, char **env);
+void	exec_by_idx(t_2_exec *data, char **env, int i);
 char	*get_path(char *cmd);
 
 // built-ins

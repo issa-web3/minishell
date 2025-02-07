@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:57:33 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 10:37:21 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:07:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ void	exec_builtin(char **cmd, char **env)
 	built_in[6].name = "env";
 	built_in[6].func = ft_env;
 	i = 0;
-	while (i < 7)
-	{
-		if (ft_strcmp(built_in[i++].name, cmd[0]) == 0)
-			break ;
-	}
+	while (i < 7 && ft_strcmp(built_in[i].name, cmd[0]) != 0)
+		i++;
 	if (i != 7)
 		(built_in[i].func)(cmd, env);
 }
