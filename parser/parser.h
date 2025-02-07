@@ -17,5 +17,6 @@
 
 //quotes
 int	check_unclosed_quotes(char *line);
-
+int	is_whitespace(char c);
+int	strlen_pars(char *s);
 #endif
