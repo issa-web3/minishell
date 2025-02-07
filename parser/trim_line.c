@@ -32,5 +32,28 @@ int	trimed_len(char *line)
 
 char	*trim_line(char *line)
 {
-	
+	int		i;
+	int		j;
+	int		len;
+	char	*trimed;
+
+	len = trim_line(line);
+	if (len == 0)
+		return (NULL);
+	i = 0;
+	j = 0;
+	trimed = NULL;
+	trimed = malloc(len + 1);
+	if (!trimed)
+		return (NULL);
+	while (line[i] && is_whitespace(line[i]))
+		i++;
+	while (line[i] && j < len)
+	{
+		trimed[i] = line[i];
+		i++;
+		j++;
+	}
+	trimed[j] = '\0';
+	return (trimed);
 }
