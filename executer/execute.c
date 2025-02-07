@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 17:21:22 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:16:36 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	exec_by_idx(t_2_exec *data, int i)
 
 	while (--i >= 0)
 		data = data->next;
+	//exec_builtin(data->cmd, NULL);
+	// not built-in
 	cmd = data->cmd[0];
 	data->cmd[0] = get_path(data->cmd[0]);
 	execve(data->cmd[0], data->cmd, NULL);

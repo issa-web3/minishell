@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 17:52:10 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:25:37 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../minishell.h"
+#include "../../minishell.h"
 
-int	main(int ac, char **av, char **env)
+void	ft_exit(char **cmd, char **env)
 {
-	int		i;
-
-	i = 0;
-	while (env[i])
-		printf("%s\n", env[i++]);
+	(void)cmd;
+	(void)env;
+	printf("it should exit\n");
 }

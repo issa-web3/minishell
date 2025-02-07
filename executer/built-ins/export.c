@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 17:41:57 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:51:15 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../minishell.h"
+#include "../../minishell.h"
 
-int	main(void)
+void	ft_export(char **cmd, char **env)
 {
-	char	cwd[1024];
-
-	getcwd(cwd, sizeof(cwd));
-	printf("%s\n", cwd);
+	(void)cmd;
+	(void)env;
+	printf("it should exit\n");
 }
