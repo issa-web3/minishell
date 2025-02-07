@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 09:52:59 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:32:18 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_echo(char **cmd, char **env)
 	int	end;
 
 	if (cmd[1] == NULL)
-		return (write(1, "\n", 1), 0);
+		(write(1, "\n", 1), exit(EXIT_SUCCESS));
 	i = 0;
 	end = ft_strcmp(cmd[1], "-n");
 	!end && i++;
@@ -28,6 +28,7 @@ void	ft_echo(char **cmd, char **env)
 		cmd[i + 1] != NULL && write(1, " ", 1);
 	}
 	(end) && (write(1, "\n", 1));
+	exit(EXIT_SUCCESS);
 }
 
 
