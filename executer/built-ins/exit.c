@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 13:33:57 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/07 23:05:56 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ void	ft_exit(char **cmd, char **env)
 {
 	(void)cmd;
 	(void)env;
+	write(1, "exit\n", 5);
 	exit(EXIT_SUCCESS);
 }
