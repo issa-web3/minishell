@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   close_prev_pipes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 09:55:55 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 15:35:16 by ioulkhir         ###   ########.fr       */
+/*   Created: 2025/02/08 15:47:58 by ioulkhir          #+#    #+#             */
+/*   Updated: 2025/02/08 15:49:51 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "../executer.h"
 
-t_2_exec	*ft_lstnew(t_2_exec data)
+void	close_prev_pipes(pid_t (*pipes)[2], int nth_process)
 {
-	t_2_exec	*new_node;
+	int	i;
 
-	new_node = (t_2_exec *)malloc(sizeof(t_2_exec));
-	if (!new_node)
-		return (new_node);
-	new_node->cmd = data.cmd;
-	new_node->infile = NULL;
-	new_node->outfile = NULL;
-	new_node->next = NULL;
-	return (new_node);
+	i = 0;
+	while (i < nth_process - 1)
+	{
+		close(pipes[i][0]);
+		close(pipes[i][1]);
+		i++;
+	}
 }
