@@ -6,28 +6,28 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 00:08:59 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 10:37:11 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
-void	exec_by_idx(t_2_exec *data, char **my_env, int i)
+void	exec_by_idx(t_2_exec *data, t_env *my_env, int i)
 {
 	char	*cmd;
 
 	while (--i >= 0)
 		data = data->next;
-	exec_builtin(data->cmd, env, 1);
+	exec_builtin(data->cmd, my_env, 1);
 	// not built-in
 	cmd = data->cmd[0];
-	data->cmd[0] = get_path(data->cmd[0]);
+	data->cmd[0] = get_path(data->cmd[0], my_env);
 	execve(data->cmd[0], data->cmd, NULL);
 	// stderror please
 	printf("%s: command not found\n", cmd);
 }
 
-void	execute(t_2_exec *data, char **my_env)
+void	execute(t_2_exec *data, t_env *my_env)
 {
 	pid_t	(*pipes)[2];
 	pid_t	res;
@@ -42,8 +42,14 @@ void	execute(t_2_exec *data, char **my_env)
 
 	res = 314;
 	
-	if (n == 1 && (!ft_strcmp(data->cmd[0], "cd") || !ft_strcmp(data->cmd[0], "exit")))
-		(exec_builtin(data->cmd, env, 0), n--);
+	if (n == 1 && (
+				!ft_strcmp(data->cmd[0], "cd")
+				|| !ft_strcmp(data->cmd[0], "exit")
+				|| !ft_strcmp(data->cmd[0], "export")
+				|| !ft_strcmp(data->cmd[0], "env")
+			)
+		)
+		(exec_builtin(data->cmd, my_env, 0), n--);
 
 	while (i < n && res != 0)
 	{
@@ -97,7 +103,7 @@ void	execute(t_2_exec *data, char **my_env)
 	else
 	{
 		// children
-		exec_by_idx(data, env, i - 1);
+		exec_by_idx(data, my_env, i - 1);
 		close(pipes[i][0]);
 		close(pipes[i][1]);
 		exit(EXIT_FAILURE);

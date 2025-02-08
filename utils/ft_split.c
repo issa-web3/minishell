@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:30:51 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 16:22:19 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 00:29:09 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*ft_create_word(const char *str, char c)
 	return (word);
 }
 
-static char	**free_ptr(char **split, int i)
+char	**free_ptr(char **split, int i)
 {
 	while (--i >= 0)
 		free(split[i]);

@@ -4,7 +4,7 @@
 
 #include "../minishell.h"
 
-t_2_exec	*parser(int ac, char **av, char **my_env, char *line)
+t_2_exec	*parser(int ac, char **av, t_env *my_env, char *line)
 {
 	t_2_exec	*head;
 	t_2_exec	data;

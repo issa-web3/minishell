@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/07 11:23:07 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 10:11:51 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_split(char **split, int i)
 	free(split);
 }
 
-static char	**get_paths(void)
+static char	**get_paths(t_env *my_env)
 {
 	char	**paths;
 	int		i;
@@ -32,11 +32,11 @@ static char	**get_paths(void)
 
 	i = 0;
 	getcwd(cwd, sizeof(cwd));
-	paths = ft_split(getenv("PATH"), ':', NULL);
+	paths = ft_split(ft_getenv("PATH", my_env)->value, ':', NULL);
 	return (paths);
 }
 
-char	*get_path(char *cmd)
+char	*get_path(char *cmd, t_env *my_env)
 {
 	char	**paths;
 	char	*path;
@@ -49,7 +49,7 @@ char	*get_path(char *cmd)
 		return (cmd);
 	if (!ft_strncmp(cmd, "./", 2) || cmd[0] == '/')
 		return (NULL);
-	paths = get_paths();
+	paths = get_paths(my_env);
 	if (paths == NULL)
 		return (free(cmd), NULL);
 	i = 0;

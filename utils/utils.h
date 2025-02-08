@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 15:48:13 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 11:09:19 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "../structs.h"
+# include "../executer/exec_structs.h"
 
 // part 1
 int			ft_atoi(const char *str);
@@ -50,6 +51,7 @@ char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strtrim(char *s1, char *set);
 int			check_sep(char set, char c);
 int			count_words(const char *str, char c);
+char		**free_ptr(char **split, int i);
 char		**ft_split(char *s, char c, char *added_word);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char *s, char (*f)(unsigned int, char));
@@ -58,12 +60,19 @@ void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
-// bonus
 
+// linked list
 t_2_exec	*ft_lstnew(t_2_exec data);
 void		ft_lstadd_front(t_2_exec **lst, t_2_exec *new_node);
 int			ft_lstsize(t_2_exec *lst);
 t_2_exec	*ft_lstlast(t_2_exec *lst);
 void		ft_lstadd_back(t_2_exec **lst, t_2_exec *new_node);
+
+// env
+t_env	*copy_env(char **env);
+t_env	*ft_getenv(char *name, t_env *my_env);
+t_env	*new_env_var(char **data);
+t_env	*append_env(t_env **head, t_env *tail, t_env *new_env);
+t_env	*get_last_env(t_env *my_env);
 
 #endif
