@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 11:09:19 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 11:22:37 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ t_env	*ft_getenv(char *name, t_env *my_env);
 t_env	*new_env_var(char **data);
 t_env	*append_env(t_env **head, t_env *tail, t_env *new_env);
 t_env	*get_last_env(t_env *my_env);
+void	del_env_var(t_env *env_var, t_env *my_env);
 
 #endif

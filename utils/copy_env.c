@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 11:09:14 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 11:25:12 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@ t_env	*new_env_var(char **data)
 	my_env->value = data[1];
 	my_env->next = NULL;
 	return (my_env);
+}
+
+void	del_env_var(t_env *env_var, t_env *my_env)
+{
+	t_env	*prev_env;
+
+	if (env_var == NULL)
+		return ;
+	prev_env = my_env;
+	while (prev_env && env_var != prev_env->next)
+		prev_env = prev_env->next;
+	prev_env->next = env_var->next;
+	free(env_var);
 }
 
 t_env	*append_env(t_env **head, t_env *tail, t_env *new_env)

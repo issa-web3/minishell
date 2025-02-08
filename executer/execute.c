@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 10:37:11 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 11:15:26 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	execute(t_2_exec *data, t_env *my_env)
 				|| !ft_strcmp(data->cmd[0], "exit")
 				|| !ft_strcmp(data->cmd[0], "export")
 				|| !ft_strcmp(data->cmd[0], "env")
+				|| !ft_strcmp(data->cmd[0], "unset")
 			)
 		)
 		(exec_builtin(data->cmd, my_env, 0), n--);
