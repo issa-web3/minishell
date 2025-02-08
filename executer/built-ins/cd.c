@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 11:12:07 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:33:42 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static char	*get_new_pwd(char **cmd, t_env *old_pwd, t_env *my_env)
+static char	*get_new_pwd(char **cmd, t_env *old_pwd, char *pwd, t_env *my_env)
 {
 	char	*new_pwd;
 
@@ -33,7 +33,7 @@ static char	*get_new_pwd(char **cmd, t_env *old_pwd, t_env *my_env)
 		new_pwd = old_pwd->value;
 	}
 	else
-		new_pwd = ft_strjoin(ft_strjoin(old_pwd->value, "/"), cmd[1]); // protection
+		new_pwd = ft_strjoin(ft_strjoin(ft_strdup(pwd), "/"), cmd[1]); // protection
 	return (new_pwd);
 }
 
@@ -45,7 +45,7 @@ void	ft_cd(char **cmd, t_env *my_env)
 
 	getcwd(pwd, 1024);
 	old_pwd = ft_getenv("OLDPWD", my_env);
-	new_pwd = get_new_pwd(cmd, old_pwd, my_env);
+	new_pwd = get_new_pwd(cmd, old_pwd, pwd, my_env);
 	if (new_pwd == NULL)
 		return ;
 	if (chdir(new_pwd) == -1)
