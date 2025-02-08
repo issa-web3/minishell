@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 13:33:42 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:46:59 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static char	*get_new_pwd(char **cmd, t_env *old_pwd, char *pwd, t_env *my_env)
 			return (write(2, "invalid option\n", 15), NULL);
 		if (old_pwd == NULL)
 			return (write(2, "cd: OLDPWD not set\n", 19), NULL);
-		write(1, old_pwd->value, ft_strlen(old_pwd->value));
-		write(1, "\n", 1);
 		new_pwd = old_pwd->value;
 	}
 	else
@@ -51,6 +49,7 @@ void	ft_cd(char **cmd, t_env *my_env)
 	if (chdir(new_pwd) == -1)
 		perror("cd");
 	else
+	{
 		ft_export(
 			ft_split(
 				ft_strjoin(
@@ -58,4 +57,10 @@ void	ft_cd(char **cmd, t_env *my_env)
 				, pwd)
 			, ' ', NULL)
 		, my_env);
+		if (cmd[1] && cmd[1][0] == '-')
+		{
+			write(1, old_pwd->value, ft_strlen(old_pwd->value));
+			write(1, "\n", 1);
+		}
+	}
 }
