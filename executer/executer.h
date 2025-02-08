@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/08 16:07:02 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:46:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 // big function
 void			execute(t_2_exec *data, t_env *my_env);
-t_process_info	create_children_pipes(t_2_exec *data, t_env *my_env,
-					pid_t (*pipes)[2], t_process_info init_pi);
+void			create_children_pipes(t_2_exec *data, t_env *my_env,
+					pid_t (*pipes)[2], t_process_info *init_pi);
 void			exec_builtin(char **cmd, t_env *my_env, char exit_flag);
 void			close_prev_pipes(pid_t (*pipes)[2], int nth_process);
 void			distribute_tasks(t_process_info pi, pid_t (*pipes)[2],

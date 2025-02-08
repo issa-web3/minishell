@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 16:05:53 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:20:02 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	execute(t_2_exec *data, t_env *my_env)
 	pid_t			*pids;
 
 	pi.process_num = ft_lstsize(data);
+	printf("n --> %d\n", pi.process_num);
 	if (pi.process_num == 1 && (
 				!ft_strcmp(data->cmd[0], "cd")
 				|| !ft_strcmp(data->cmd[0], "exit")
@@ -28,7 +29,9 @@ void	execute(t_2_exec *data, t_env *my_env)
 			)
 		)
 		(exec_builtin(data->cmd, my_env, 0), pi.process_num--);
-	pi = create_children_pipes(data, my_env, pipes, pi);
-	close_prev_pipes(pipes, pi.process_idx);
+	create_children_pipes(data, my_env, pipes, &pi);
+	
+	
+	//close_prev_pipes(pipes, pi.process_idx);
 	distribute_tasks(pi, pipes, data, my_env);
 }
