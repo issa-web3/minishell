@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/09 11:31:10 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 13:35:56 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(int ac, char **av, char **env)
 		data = parser(ac, av, my_env, &my_garbage, line);
 		execute(data, my_env, &my_garbage);
 		clear_garbage(&my_garbage);
-		// system("leaks minishell");
 		add_history(line);
+		free(line);
 	}
 }
