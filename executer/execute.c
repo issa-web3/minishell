@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 17:20:02 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 09:52:18 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ void	execute(t_2_exec *data, t_env *my_env)
 	t_process_info	pi;
 	pid_t			*pids;
 
+	// make kids
+	pi.process_idx = 0;
 	pi.process_num = ft_lstsize(data);
-	printf("n --> %d\n", pi.process_num);
+	pipes = malloc(pi.process_num * sizeof(pid_t[2])); // protection
+	pi.fork_response = 314;
 	if (pi.process_num == 1 && (
 				!ft_strcmp(data->cmd[0], "cd")
 				|| !ft_strcmp(data->cmd[0], "exit")
 				|| !ft_strcmp(data->cmd[0], "export")
-				|| !ft_strcmp(data->cmd[0], "env")
 				|| !ft_strcmp(data->cmd[0], "unset")
 			)
 		)
 		(exec_builtin(data->cmd, my_env, 0), pi.process_num--);
 	create_children_pipes(data, my_env, pipes, &pi);
-	
-	
-	//close_prev_pipes(pipes, pi.process_idx);
+	close_prev_pipes(pipes, pi.process_idx);
 	distribute_tasks(pi, pipes, data, my_env);
 }
