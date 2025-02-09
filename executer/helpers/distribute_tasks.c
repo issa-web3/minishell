@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 17:21:17 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 09:58:31 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	exec_by_idx(t_2_exec *data, t_env *my_env, int i)
 	data->cmd[0] = get_path(data->cmd[0], my_env);
 	execve(data->cmd[0], data->cmd, NULL);
 	// stderror please
-	printf("%s: command not found\n", cmd);
+	perror(cmd);
 }
 
 void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_env *my_env)
