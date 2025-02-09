@@ -1,5 +1,17 @@
 
 
-ls | 
-cd ../../../../../ ----> double free
-ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+
+
+sometimes :
+	cd ../../../../../../../../../../
+	cd ../../../../../../../../../../
+	cd ../../../../../../../../../../
+	cd ../../../../../../../../../../
+	cd ../../../../../../../../../../
+	Segmentation fault
+
+sometimes :
+	ls | ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls
+	does nothing
+
+

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/09 11:19:33 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 14:22:27 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 
 # include "../minishell.h"
 # include "exec_structs.h"
 
 // big function
 void			execute(t_2_exec *data, t_env *my_env, t_garbage **my_garbage);
-void			create_children_pipes(t_2_exec *data, t_env *my_env,
+int				create_children_pipes(t_2_exec *data, t_env *my_env,
 					pid_t (*pipes)[2], t_process_info *init_pi);
 void			exec_builtin(char **cmd, t_env *my_env, t_garbage **my_garbage, char exit_flag);
 void			close_prev_pipes(pid_t (*pipes)[2], int nth_process);
@@ -47,5 +48,10 @@ t_2_exec		*parser(int ac, char **av, t_env *my_env, t_garbage **my_garbage, char
 void			clear_garbage(t_garbage **my_garbage);
 t_garbage		*append_garbage(t_garbage **my_garbage, void *ptr);
 void			*ft_malloc(size_t size, t_garbage **my_garbage);
+
+// protected proxies
+int				ft_pipe(int *arr);
+int				ft_dup2(int a, int b);
+pid_t			ft_fork(void);
 
 #endif
