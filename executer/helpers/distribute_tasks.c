@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 11:12:45 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 13:50:48 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage, int i)
 	data->cmd[0] = get_path(data->cmd[0], my_env, my_garbage);
 	execve(data->cmd[0], data->cmd, NULL);
 	// stderror please
-	perror(cmd);
+	write(2, cmd, ft_strlen(cmd));
+	write(2, ": command not found\n", 20);
+	clear_garbage(my_garbage);
+	exit(EXIT_FAILURE);
 }
 
 void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_env *my_env, t_garbage **my_garbage)
@@ -52,6 +55,5 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 		exec_by_idx(data, my_env, my_garbage, process_idx - 1);
 		close(pipes[process_idx][0]);
 		close(pipes[process_idx][1]);
-		exit(EXIT_FAILURE);
 	}
 }
