@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:54:59 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 13:09:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:16:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	ft_lstadd_back(t_2_exec **lst, t_2_exec *new_node)
+void	ft_lstadd_back(t_2_exec **lst, t_2_exec *new_node, t_garbage **my_garbage)
 {
 	t_2_exec	*last_node;
 

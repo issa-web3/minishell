@@ -6,19 +6,17 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:55:55 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 15:35:16 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:16:34 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-t_2_exec	*ft_lstnew(t_2_exec data)
+t_2_exec	*ft_lstnew(t_2_exec data, t_garbage **my_garbage)
 {
 	t_2_exec	*new_node;
 
-	new_node = (t_2_exec *)malloc(sizeof(t_2_exec));
-	if (!new_node)
-		return (new_node);
+	new_node = (t_2_exec *)ft_malloc(sizeof(t_2_exec), my_garbage);
 	new_node->cmd = data.cmd;
 	new_node->infile = NULL;
 	new_node->outfile = NULL;

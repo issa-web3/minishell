@@ -6,25 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 10:11:51 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:12:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-void	free_split(char **split, int i)
-{
-	int	j;
-
-	j = i;
-	if (split == NULL)
-		return ;
-	while (split[j])
-		free(split[j++]);
-	free(split);
-}
-
-static char	**get_paths(t_env *my_env)
+static char	**get_paths(t_env *my_env, t_garbage **my_garbage)
 {
 	char	**paths;
 	int		i;
@@ -32,11 +20,11 @@ static char	**get_paths(t_env *my_env)
 
 	i = 0;
 	getcwd(cwd, sizeof(cwd));
-	paths = ft_split(ft_getenv("PATH", my_env)->value, ':', NULL);
+	paths = ft_split(ft_getenv("PATH", my_env)->value, ':', my_garbage);
 	return (paths);
 }
 
-char	*get_path(char *cmd, t_env *my_env)
+char	*get_path(char *cmd, t_env *my_env, t_garbage **my_garbage)
 {
 	char	**paths;
 	char	*path;
@@ -49,17 +37,16 @@ char	*get_path(char *cmd, t_env *my_env)
 		return (cmd);
 	if (!ft_strncmp(cmd, "./", 2) || cmd[0] == '/')
 		return (NULL);
-	paths = get_paths(my_env);
+	paths = get_paths(my_env, my_garbage);
 	if (paths == NULL)
-		return (free(cmd), NULL);
+		return (NULL);
 	i = 0;
 	while (paths[i])
 	{
-		path = ft_strjoin(ft_strjoin(paths[i++], "/"), cmd);
+		path = ft_strjoin(ft_strjoin(paths[i++], "/", my_garbage), cmd, my_garbage);
 		if (access((const char *)path, X_OK) == 0)
 			break ;
-		free(path);
 		path = NULL;
 	}
-	return (free_split(paths, i), free(cmd), path);
+	return (path);
 }

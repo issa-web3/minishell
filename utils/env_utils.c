@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_env.c                                         :+:      :+:    :+:   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 11:25:12 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:10:51 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ t_env	*get_last_env(t_env *my_env)
 	return (my_env);
 }
 
-t_env	*new_env_var(char **data)
+t_env	*new_env_var(char **data, t_garbage **my_garbage)
 {
 	t_env	*my_env;
 
-	my_env = malloc(sizeof(t_env));
+	my_env = ft_malloc(sizeof(t_env), my_garbage);
 	if (my_env == NULL)
 		return (NULL);
 	my_env->name = data[0];
@@ -42,7 +42,6 @@ void	del_env_var(t_env *env_var, t_env *my_env)
 	while (prev_env && env_var != prev_env->next)
 		prev_env = prev_env->next;
 	prev_env->next = env_var->next;
-	free(env_var);
 }
 
 t_env	*append_env(t_env **head, t_env *tail, t_env *new_env)
@@ -54,7 +53,7 @@ t_env	*append_env(t_env **head, t_env *tail, t_env *new_env)
 	return (new_env);
 }
 
-t_env	*copy_env(char **env)
+t_env	*copy_env(char **env, t_garbage **my_garbage)
 {
 	t_env	*my_env;
 	t_env	*tail;
@@ -69,10 +68,10 @@ t_env	*copy_env(char **env)
 	tail = NULL;
 	while (env[i])
 	{
-		data = ft_split(env[i], '=', NULL);
+		data = ft_split(env[i], '=', my_garbage);
 		if (data == NULL)
 			return (NULL); // malloc
-		tail = append_env(&my_env, tail, new_env_var(data));
+		tail = append_env(&my_env, tail, new_env_var(data, my_garbage));
 		if (tail == NULL)
 			return (NULL); // malloc
 		i++;

@@ -6,20 +6,20 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:03 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/05 13:09:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:48:41 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1, t_garbage **my_garbage)
 {
 	char	*copy;
 	size_t	i;
 	size_t	len;
 
 	len = ft_strlen((char *)s1);
-	copy = (char *)malloc((len + 1) * sizeof(char));
+	copy = (char *)ft_malloc((len + 1) * sizeof(char), my_garbage);
 	if (copy == NULL)
 		return (NULL);
 	i = 0;

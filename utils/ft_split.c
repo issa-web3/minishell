@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:30:51 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/08 00:29:09 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:27:41 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_sep(char set, char c)
 	return (0);
 }
 
-static char	*ft_create_word(const char *str, char c)
+static char	*ft_create_word(const char *str, char c, t_garbage **my_garbage)
 {
 	int		i;
 	char	*word;
@@ -27,9 +27,7 @@ static char	*ft_create_word(const char *str, char c)
 	i = 0;
 	while (str[i] && check_sep(str[i], c) == 0)
 		i++;
-	word = (char *)malloc(i + 1);
-	if (!word)
-		return (perror("malloc"), NULL);
+	word = (char *)ft_malloc(i + 1, my_garbage);
 	i = 0;
 	while (str[i] && check_sep(str[i], c) == 0)
 	{
@@ -40,47 +38,27 @@ static char	*ft_create_word(const char *str, char c)
 	return (word);
 }
 
-char	**free_ptr(char **split, int i)
-{
-	while (--i >= 0)
-		free(split[i]);
-	free(split);
-	return (NULL);
-}
-
-static char	**terminate(char **split, int i, char *added_word)
-{
-	if (added_word != NULL)
-		split[0] = added_word;
-	split[i] = 0;
-	return (split);
-}
-
-char	**ft_split(char *s, char c, char *added_word)
+char	**ft_split(char *s, char c, t_garbage **my_garbage)
 {
 	char	**split;
 	int		i;
 
-	split = (char **)malloc((count_words(s, c) + 1
-				+ (added_word != NULL)) * sizeof(char *));
-	if (!split)
-		return (perror("malloc"), NULL);
-	i = added_word != NULL;
 	if (!s)
-		return (terminate(split, i, added_word));
+		return (NULL);
+	split = (char **)ft_malloc((count_words(s, c) + 1) * sizeof(char *), my_garbage);
+	i = 0;
 	while (*s)
 	{
 		while (*s && check_sep(*s, c))
 			s++;
 		if (*s && check_sep(*s, c) == 0)
 		{
-			split[i] = ft_create_word(s, c);
-			if (split[i] == NULL)
-				return (free_ptr(split, i));
+			split[i] = ft_create_word(s, c, my_garbage);
 			while (*s && check_sep(*s, c) == 0)
 				s++;
 			i++;
 		}
 	}
-	return (terminate(split, i, added_word));
+	split[i] = 0;
+	return (split);
 }

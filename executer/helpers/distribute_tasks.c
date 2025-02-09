@@ -6,28 +6,28 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 09:58:31 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:12:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-void	exec_by_idx(t_2_exec *data, t_env *my_env, int i)
+void	exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage, int i)
 {
 	char	*cmd;
 
 	while (--i >= 0)
 		data = data->next;
-	exec_builtin(data->cmd, my_env, 1);
+	exec_builtin(data->cmd, my_env, my_garbage, 1);
 	// not built-in
 	cmd = data->cmd[0];
-	data->cmd[0] = get_path(data->cmd[0], my_env);
+	data->cmd[0] = get_path(data->cmd[0], my_env, my_garbage);
 	execve(data->cmd[0], data->cmd, NULL);
 	// stderror please
 	perror(cmd);
 }
 
-void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_env *my_env)
+void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_env *my_env, t_garbage **my_garbage)
 {
 	int		process_idx;
 	int		process_num;
@@ -49,7 +49,7 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 	}
 	else
 	{
-		exec_by_idx(data, my_env, process_idx - 1);
+		exec_by_idx(data, my_env, my_garbage, process_idx - 1);
 		close(pipes[process_idx][0]);
 		close(pipes[process_idx][1]);
 		exit(EXIT_FAILURE);
