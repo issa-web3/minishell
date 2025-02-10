@@ -58,3 +58,48 @@ int	quoted(char *str, int index)
 	}
 	return (0);
 }
+
+static void	ft_get_len(char *input, int i, int *new_len)
+{
+	if (input[i] == '>' || input[i] == '<')
+	{
+		if ((input[i] == '>' && input[i + 1] == '>')
+			|| (input[i] == '<' && input[i + 1] == '<'))
+		{
+			if (i > 0 && !is_whitespace(input[i - 1]))
+				(*new_len)++;
+			if (input[i + 2] && !is_whitespace(input[i + 2]))
+				(*new_len)++;
+			i++;
+		}
+		else
+		{
+			if (i > 0 && !is_whitespace(input[i - 1]))
+				(*new_len)++;
+			if (input[i + 1] && !is_whitespace(input[i + 1]))
+				(*new_len)++;
+		}
+	}
+}
+
+int	calc_new_len(char *input)
+{
+	int	i;
+	int	new_len;
+
+	i = -1;
+	new_len = strlen_pars(input);
+	while (input[++i])
+	{
+		if ((input[i] == '>' || input[i] == '<') && !quoted(input, i))
+			ft_get_len(input, i, &new_len);
+		else if (input[i] == '|' && !quoted(input, i))
+		{
+			if (i > 0 && !is_whitespace(input[i - 1]))
+				new_len++;
+			if (input[i + 1] && !is_whitespace(input[i + 1]))
+				new_len++;
+		}
+	}
+	return (new_len);
+}

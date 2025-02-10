@@ -21,4 +21,6 @@ int		is_whitespace(char c);
 int		strlen_pars(char *s);
 char	*trim_line(char *line);
 int		quoted(char *str, int index);
+int		calc_new_len(char *input);
+void	add_spaces(char **input);
 #endif

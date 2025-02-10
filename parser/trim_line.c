@@ -37,7 +37,7 @@ char	*trim_line(char *line)
 	int		len;
 	char	*trimed;
 
-	len = trim_line(line);
+	len = trimed_len(line);
 	if (len == 0)
 		return (NULL);
 	i = 0;

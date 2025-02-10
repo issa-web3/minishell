@@ -24,6 +24,7 @@ int	parse_line(char *line)
 		printf("minishell: syntax error related to unclosed quotes\n");
 		return (-1);
 	}
+	add_spaces(&line);
 	1 && (tmp = line, line = trim_line(line));
 	if (!line)
 	{
