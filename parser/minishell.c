@@ -30,7 +30,6 @@ int	parse_line(char *line)
 		free(tmp);
 		return (-1);
 	}
-	
 	return (0);
 }
 

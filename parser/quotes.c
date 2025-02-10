@@ -34,3 +34,27 @@ int	check_unclosed_quotes(char *line)
 	}
 	return (1);
 }
+
+int	quoted(char *str, int index)
+{
+	int	i;
+	int	k;
+	int	quote;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\'' || str[i] == '\"')
+		{
+			quote = str[i];
+			k = i++;
+			while (str[i] && str[i] != quote)
+				i++;
+			if (index >= k && index <= i)
+				return (quote);
+		}
+		if (str[i])
+			i++;
+	}
+	return (0);
+}

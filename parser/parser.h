@@ -16,8 +16,9 @@
 # include "../minishell.h"
 
 //quotes
-int	check_unclosed_quotes(char *line);
-int	is_whitespace(char c);
-int	strlen_pars(char *s);
+int		check_unclosed_quotes(char *line);
+int		is_whitespace(char c);
+int		strlen_pars(char *s);
 char	*trim_line(char *line);
+int		quoted(char *str, int index);
 #endif
