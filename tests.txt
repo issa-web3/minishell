@@ -9,9 +9,16 @@ sometimes :
 	cd ../../../../../../../../../../
 	cd ../../../../../../../../../../
 	Segmentation fault
+	
+sometimes :
+	cd
+	cd
+	cd
+	cd
+	cd
+	Segmentation fault
+	ft_getenv
 
 sometimes :
 	ls | ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls
 	does nothing
-
-

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/09 14:22:27 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:27:36 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void			exec_builtin(char **cmd, t_env *my_env, t_garbage **my_garbage, char exit
 void			close_prev_pipes(pid_t (*pipes)[2], int nth_process);
 void			distribute_tasks(t_process_info pi, pid_t (*pipes)[2],
 					t_2_exec *data, t_env *my_env, t_garbage **my_garbage);
-void			exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage, int i);
+void			exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage);
 char			*get_path(char *cmd, t_env *my_env, t_garbage **my_garbage);
 
 // built-in

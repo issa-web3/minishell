@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 11:10:35 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:39:26 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 static char	*get_new_pwd(char **cmd, t_env *old_pwd, char *pwd, t_env *my_env, t_garbage **my_garbage)
 {
 	char	*new_pwd;
+	t_env	*home;
 
 	if (cmd[1] == NULL)
-		new_pwd = ft_getenv("HOME", my_env)->value;
+	{
+		home = ft_getenv("HOME", my_env);
+		if (home == NULL)
+			return (write(2, "cd: HOME not set\n", 17), NULL);
+		new_pwd = home->value;
+	}
 	else if (cmd[1][0] == '/')
 		new_pwd = cmd[1];
 	else if (cmd[1][0] == '~')
@@ -42,6 +48,7 @@ void	ft_cd(char **cmd, t_env *my_env, t_garbage **my_garbage)
 	char	*new_pwd;
 
 	getcwd(pwd, 1024);
+	ft_strlcpy(pwd, "/", 1);
 	old_pwd = ft_getenv("OLDPWD", my_env);
 	new_pwd = get_new_pwd(cmd, old_pwd, pwd, my_env, my_garbage);
 	if (new_pwd == NULL)

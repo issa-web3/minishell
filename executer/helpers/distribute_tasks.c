@@ -6,18 +6,16 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 13:50:48 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 11:03:35 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-void	exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage, int i)
+void	exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage)
 {
 	char	*cmd;
 
-	while (--i >= 0)
-		data = data->next;
 	exec_builtin(data->cmd, my_env, my_garbage, 1);
 	// not built-in
 	cmd = data->cmd[0];
@@ -52,7 +50,14 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 	}
 	else
 	{
-		exec_by_idx(data, my_env, my_garbage, process_idx - 1);
+		while (--process_idx > 0)
+			data = data->next;
+		printf("%s, %s\n", data->infile, data->outfile);
+		if (data->infile)
+			ft_dup2(open(data->infile, O_RDONLY), STDIN_FILENO);
+		if (data->outfile)
+			ft_dup2(open(data->outfile, O_WRONLY | O_CREAT, 0777), STDOUT_FILENO);
+		exec_by_idx(data, my_env, my_garbage);
 		close(pipes[process_idx][0]);
 		close(pipes[process_idx][1]);
 	}
