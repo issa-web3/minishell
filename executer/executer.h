@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/11 10:27:36 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:40:32 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void			*ft_malloc(size_t size, t_garbage **my_garbage);
 int				ft_pipe(int *arr);
 int				ft_dup2(int a, int b);
 pid_t			ft_fork(void);
+int				ft_open(char *filename, int mode);
 
 #endif

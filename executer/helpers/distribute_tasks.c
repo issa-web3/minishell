@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/11 13:33:18 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:41:36 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,25 @@
 
 char	redirections(char *infile, char *outfile, char append)
 {
-	int		fd_in;
-	int		fd_out;
-	char	success;
+	int		fd;
 
 	if (infile)
 	{
-		fd_in = open(infile, O_RDONLY);
-		if (fd_in == -1)
-			return (perror(infile), 0);
-		if (ft_dup2(fd_in, STDIN_FILENO) == -1)
+		fd = ft_open(infile, O_RDONLY);
+		if (fd == -1)
 			return (0);
-		close(fd_in);
+		if (ft_dup2(fd, STDIN_FILENO) == -1)
+			return (0);
+		close(fd);
 	}
 	if (outfile)
 	{
-		if (append)
-			fd_out = open(outfile, O_WRONLY | O_CREAT | O_APPEND, 0777);
-		else
-			fd_out = open(outfile, O_WRONLY | O_CREAT, 0777);
-		if (fd_in == -1)
-			return (perror(outfile), 0);
-		if (ft_dup2(fd_out, STDOUT_FILENO) == -1)
+		fd = ft_open(outfile, O_WRONLY | O_CREAT | append * O_APPEND);
+		if (fd == -1)
 			return (0);
-		close(fd_out);
+		if (ft_dup2(fd, STDOUT_FILENO) == -1)
+			return (0);
+		close(fd);
 	}
 	return (1);
 }
