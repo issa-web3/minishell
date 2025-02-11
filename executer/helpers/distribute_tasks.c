@@ -6,11 +6,38 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/11 11:03:35 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 11:49:12 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
+
+char	redirections(char *infile, char *outfile)
+{
+	int		fd_in;
+	int		fd_out;
+	char	success;
+
+	if (infile)
+	{
+		fd_in = open(infile, O_RDONLY);
+		if (fd_in == -1)
+			return (perror(infile), 0);
+		if (ft_dup2(fd_in, STDIN_FILENO) == -1)
+			return (0);
+		close(fd_in);
+	}
+	if (outfile)
+	{
+		fd_out = open(outfile, O_WRONLY | O_CREAT, 0777);
+		if (fd_in == -1)
+			return (perror(outfile), 0);
+		if (ft_dup2(fd_out, STDOUT_FILENO) == -1)
+			return (0);
+		close(fd_out);
+	}
+	return (1);
+}
 
 void	exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage)
 {
@@ -33,6 +60,7 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 	int		process_idx;
 	int		process_num;
 	int		fork_response;
+	char	success;
 
 	process_idx = pi.process_idx;
 	process_num = pi.process_num;
@@ -52,13 +80,12 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 	{
 		while (--process_idx > 0)
 			data = data->next;
-		printf("%s, %s\n", data->infile, data->outfile);
-		if (data->infile)
-			ft_dup2(open(data->infile, O_RDONLY), STDIN_FILENO);
-		if (data->outfile)
-			ft_dup2(open(data->outfile, O_WRONLY | O_CREAT, 0777), STDOUT_FILENO);
-		exec_by_idx(data, my_env, my_garbage);
+		success = redirections(data->infile, data->outfile);
+		if (success)
+			exec_by_idx(data, my_env, my_garbage);
 		close(pipes[process_idx][0]);
 		close(pipes[process_idx][1]);
+		clear_garbage(my_garbage);
+		exit(EXIT_FAILURE);
 	}
 }
