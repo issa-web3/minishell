@@ -17,10 +17,14 @@ static char	**get_paths(t_env *my_env, t_garbage **my_garbage)
 	char	**paths;
 	int		i;
 	char	cwd[1024];
+	t_env	*path_var;
 
 	i = 0;
 	getcwd(cwd, sizeof(cwd));
-	paths = ft_split(ft_getenv("PATH", my_env)->value, ':', my_garbage);
+	path_var = ft_getenv("PATH", my_env);
+	if (path_var == NULL)
+		return (NULL);
+	paths = ft_split(path_var->value, ':', my_garbage);
 	return (paths);
 }
 
