@@ -44,26 +44,23 @@ static char	*get_new_pwd(char **cmd, t_env *old_pwd, char *pwd, t_env *my_env, t
 void	ft_cd(char **cmd, t_env *my_env, t_garbage **my_garbage)
 {
 	char	pwd[1024];
+	char	*pwd_ptr;
 	t_env	*old_pwd;
 	char	*new_pwd;
+	char	*cmd_export[2];
 
 	getcwd(pwd, 1024);
-	ft_strlcpy(pwd, "/", 1);
+	pwd_ptr = ft_strjoin(pwd, "/", my_garbage);
 	old_pwd = ft_getenv("OLDPWD", my_env);
-	new_pwd = get_new_pwd(cmd, old_pwd, pwd, my_env, my_garbage);
+	new_pwd = get_new_pwd(cmd, old_pwd, pwd_ptr, my_env, my_garbage);
 	if (new_pwd == NULL)
 		return ;
 	if (chdir(new_pwd) == -1)
 		perror("cd");
 	else
 	{
-		ft_export(
-			ft_split(
-				ft_strjoin(
-					ft_strdup("export OLDPWD=", my_garbage)
-				, pwd, my_garbage)
-			, ' ', my_garbage)
-		, my_env, my_garbage);
+		cmd_export[1] = ft_strjoin("OLDPWD=", pwd_ptr, my_garbage);
+		ft_export(cmd_export, my_env, my_garbage);
 		if (cmd[1] && cmd[1][0] == '-')
 		{
 			write(1, old_pwd->value, ft_strlen(old_pwd->value));

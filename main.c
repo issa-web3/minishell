@@ -34,6 +34,6 @@ int main(int ac, char **av, char **env)
 		data = parser(ac, av, my_env, &my_garbage, line);
 		execute(data, my_env, &my_garbage);
 		add_history(line);
-		clear_garbage(&my_garbage);
+		// clear_garbage(&my_garbage);
 	}
 }
