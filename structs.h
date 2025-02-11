@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/11 13:30:36 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:17:35 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_2_exec
 	char			**cmd;
 	t_file			*files;
 	char			*infile;
-	char			*outfile;
-	char			append;
+	char			**outfiles;
+	char			*appends;
 	struct s_2_exec	*next;
 }				t_2_exec;
 
