@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/11 13:27:47 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:33:18 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-char	redirections(char *infile, char *outfile)
+char	redirections(char *infile, char *outfile, char append)
 {
 	int		fd_in;
 	int		fd_out;
@@ -29,7 +29,10 @@ char	redirections(char *infile, char *outfile)
 	}
 	if (outfile)
 	{
-		fd_out = open(outfile, O_WRONLY | O_CREAT, 0777);
+		if (append)
+			fd_out = open(outfile, O_WRONLY | O_CREAT | O_APPEND, 0777);
+		else
+			fd_out = open(outfile, O_WRONLY | O_CREAT, 0777);
 		if (fd_in == -1)
 			return (perror(outfile), 0);
 		if (ft_dup2(fd_out, STDOUT_FILENO) == -1)
@@ -78,7 +81,7 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 	{
 		while (--process_idx > 0)
 			data = data->next;
-		success = redirections(data->infile, data->outfile);
+		success = redirections(data->infile, data->outfile, data->append);
 		if (success)
 			exec_by_idx(data, my_env, my_garbage);
 		close(pipes[process_idx][0]);
