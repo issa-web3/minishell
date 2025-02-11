@@ -26,11 +26,16 @@ int	parse_line(char *line)
 	}
 	add_spaces(&line);
 	1 && (tmp = line, line = trim_line(line));
+	split = str_tokenize(line);
+	if (!split)
+		return (-1);
 	if (!line)
 	{
 		free(tmp);
 		return (-1);
 	}
+	for(int i = 0; i < ft_count_tokens(line); i++)
+		printf("%s\n", split[i]);
 	return (0);
 }
 
@@ -51,7 +56,7 @@ void	read_from_input(void)
 		if (line[0])
 			add_history(line);
 		if (parse_line(line) != -1)
-			printf("exec done\n");
+			printf("\n");
 	}
 }
 

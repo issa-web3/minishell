@@ -23,4 +23,6 @@ char	*trim_line(char *line);
 int		quoted(char *str, int index);
 int		calc_new_len(char *input);
 void	add_spaces(char **input);
+char	**str_tokenize(char *line);
+int		ft_count_tokens(char *line);
 #endif
