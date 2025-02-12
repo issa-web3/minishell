@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:57:33 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 11:07:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/12 08:28:26 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exec_builtin(char **cmd, t_env *my_env, t_garbage **my_garbage, char exit_flag)
 {
-	t_builtin	built_in[7];
+	t_builtin	built_in[8];
 	int			i;
 
 	built_in[0].name = "echo";
@@ -31,11 +31,13 @@ void	exec_builtin(char **cmd, t_env *my_env, t_garbage **my_garbage, char exit_f
 	built_in[5].func = ft_pwd;
 	built_in[6].name = "env";
 	built_in[6].func = ft_env;
+	built_in[7].name = "clear";
+	built_in[7].func = ft_clear;
 	i = 0;
-	while (i < 7 && ft_strcmp(built_in[i].name, cmd[0]) != 0)
+	while (i < 8 && ft_strcmp(built_in[i].name, cmd[0]) != 0)
 		i++;
-	if (i != 7)
+	if (i != 8)
 		(built_in[i].func)(cmd, my_env, my_garbage);
-	if (exit_flag && i != 7)
+	if (exit_flag && i != 8)
 		exit(EXIT_SUCCESS);
 }

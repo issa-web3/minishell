@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/11 13:40:32 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/12 08:28:51 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			ft_exit(char **cmd, t_env *my_env, t_garbage **my_garbage);
 void			ft_export(char **cmd, t_env *my_env, t_garbage **my_garbage);
 void			ft_pwd(char **cmd, t_env *my_env, t_garbage **my_garbage);
 void			ft_unset(char **cmd, t_env *my_env, t_garbage **my_garbage);
+void			ft_clear(char **cmd, t_env *my_env, t_garbage **my_garbage);
 
 // parsing
 t_2_exec		*parser(int ac, char **av, t_env *my_env, t_garbage **my_garbage, char *line);

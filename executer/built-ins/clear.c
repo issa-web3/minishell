@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open.c                                          :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 14:04:32 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/12 08:21:56 by ioulkhir         ###   ########.fr       */
+/*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
+/*   Updated: 2025/02/12 08:29:18 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../executer.h"
+#include "../../minishell.h"
 
-int	ft_open(char *filename, int mode)
+void	ft_clear(char **cmd, t_env *my_env, t_garbage **my_garbage)
 {
-	int	result;
-
-	result = open(filename, mode, 0644);
-	if (result != -1)
-		return (result);
-	perror(filename);
-	return (-1);
+	(void)cmd;
+	(void)my_garbage;
+	(void)my_env;
+	system("clear");
 }
