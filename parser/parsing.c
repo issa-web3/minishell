@@ -17,8 +17,9 @@ void	tokenizer1(char ** tokens, t_token **toks)
 	int		i;
 	t_token	*token;
 
-	i = 0;
-	while (tokens[i])
+	i = -1;
+	token = NULL;
+	while (tokens[++i])
 	{
 		if (!ft_strcmp(tokens[i], "|"))
 			token = new_tok_node(tokens[i], PIPE);
@@ -35,7 +36,6 @@ void	tokenizer1(char ** tokens, t_token **toks)
 		else
 			token = new_tok_node(tokens[i], WORD);
 		ft_lst_addback(toks, token);
-		i++;
 	}
 }
 

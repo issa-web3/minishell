@@ -34,8 +34,11 @@ int	parse_line(char *line)
 		free(tmp);
 		return (-1);
 	}
-	for(int i = 0; i < ft_count_tokens(line); i++)
-		printf("%s\n", split[i]);
+	if (tokenize(split, &token) == -1)
+	{
+		free(tmp);
+		return (-1);
+	}
 	return (0);
 }
 

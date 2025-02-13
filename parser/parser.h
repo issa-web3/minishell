@@ -35,4 +35,7 @@ int		calc_new_len(char *input);
 void	add_spaces(char **input);
 char	**str_tokenize(char *line);
 int		ft_count_tokens(char *line);
+int	tokenize(char **tokens, t_token **toks);
+void	ft_lst_addback(t_token **tokens, t_token *new_token);
+t_token	*new_tok_node(char *tok, int type);
 #endif
