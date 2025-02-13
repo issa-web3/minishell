@@ -6,17 +6,20 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 11:10:51 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:28:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-t_env	*get_last_env(t_env *my_env)
+t_env	*get_last_env(t_env **my_env)
 {
-	while (my_env && my_env->next)
-		my_env = my_env->next;
-	return (my_env);
+	t_env	*curr;
+
+	curr = *my_env;
+	while (curr && curr->next)
+		curr = curr->next;
+	return (curr);
 }
 
 t_env	*new_env_var(char **data, t_garbage **my_garbage)
@@ -32,13 +35,18 @@ t_env	*new_env_var(char **data, t_garbage **my_garbage)
 	return (my_env);
 }
 
-void	del_env_var(t_env *env_var, t_env *my_env)
+void	del_env_var(t_env *env_var, t_env **my_env)
 {
 	t_env	*prev_env;
 
 	if (env_var == NULL)
 		return ;
-	prev_env = my_env;
+	if (env_var == *my_env)
+	{
+		*my_env = (*my_env)->next;
+		return ;
+	}
+	prev_env = (*my_env);
 	while (prev_env && env_var != prev_env->next)
 		prev_env = prev_env->next;
 	prev_env->next = env_var->next;

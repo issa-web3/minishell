@@ -6,17 +6,19 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 11:06:04 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:31:29 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_echo(char **cmd, t_env *my_env, t_garbage **my_garbage)
+void	ft_echo(char **cmd, t_env **my_env, t_garbage **my_garbage)
 {
 	int	i;
 	int	end;
 
+	(void)my_env;
+	(void)my_garbage;
 	if (cmd[1] == NULL)
 		(write(1, "\n", 1), exit(EXIT_SUCCESS));
 	i = 0;

@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/12 08:15:21 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static char	*get_new_pwd(char **cmd, t_env *old_pwd, char *pwd, t_env *my_env, t_garbage **my_garbage)
+static char	*get_new_pwd(char **cmd, t_env *old_pwd, char *pwd, t_env **my_env, t_garbage **my_garbage)
 {
 	char	*new_pwd;
 	t_env	*home;
@@ -41,7 +41,7 @@ static char	*get_new_pwd(char **cmd, t_env *old_pwd, char *pwd, t_env *my_env, t
 	return (new_pwd);
 }
 
-void	ft_cd(char **cmd, t_env *my_env, t_garbage **my_garbage)
+void	ft_cd(char **cmd, t_env **my_env, t_garbage **my_garbage)
 {
 	char	pwd[1024];
 	char	*pwd_ptr;

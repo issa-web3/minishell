@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:51:46 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 14:34:09 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-int	create_children_pipes(t_2_exec *data, t_env *my_env, pid_t (*pipes)[2], t_process_info *pi)
+int	create_children_pipes(t_2_exec *data, t_env **my_env, pid_t (*pipes)[2], t_process_info *pi)
 {
 	int	fail;
 

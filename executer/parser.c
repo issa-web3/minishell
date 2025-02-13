@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:11:12 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 14:15:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	strs_len(char **arr)
 	return (len);
 }
 
-t_2_exec	*parser(int ac, char **av, t_env *my_env, t_garbage **my_garbage, char *line)
+t_2_exec	*parser(int ac, char **av, t_env **my_env, t_garbage **my_garbage, char *line)
 {
 	t_2_exec	*head;
 	t_2_exec	data;

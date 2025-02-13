@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 14:07:30 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	redirections(char *infile, char **outfiles, char *appends, t_garbage **my_g
 	return (1);
 }
 
-void	exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage)
+void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	char	*cmd;
 
@@ -54,7 +54,7 @@ void	exec_by_idx(t_2_exec *data, t_env *my_env, t_garbage **my_garbage)
 	exit(EXIT_FAILURE);
 }
 
-void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_env *my_env, t_garbage **my_garbage)
+void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	int		tmp;
 	int		process_idx;

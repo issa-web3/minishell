@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/12 08:27:57 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
-void	execute(t_2_exec *data, t_env *my_env, t_garbage **my_garbage)
+void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	pid_t			(*pipes)[2];
 	t_process_info	pi;

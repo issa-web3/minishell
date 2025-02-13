@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:57:33 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/12 08:28:26 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:27:49 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-void	exec_builtin(char **cmd, t_env *my_env, t_garbage **my_garbage, char exit_flag)
+void	exec_builtin(char **cmd, t_env **my_env, t_garbage **my_garbage, char exit_flag)
 {
 	t_builtin	built_in[8];
 	int			i;

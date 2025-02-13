@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 11:12:20 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-static char	**get_paths(t_env *my_env, t_garbage **my_garbage)
+static char	**get_paths(t_env **my_env, t_garbage **my_garbage)
 {
 	char	**paths;
 	int		i;
@@ -28,7 +28,7 @@ static char	**get_paths(t_env *my_env, t_garbage **my_garbage)
 	return (paths);
 }
 
-char	*get_path(char *cmd, t_env *my_env, t_garbage **my_garbage)
+char	*get_path(char *cmd, t_env **my_env, t_garbage **my_garbage)
 {
 	char	**paths;
 	char	*path;

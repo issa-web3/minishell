@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/09 11:05:18 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:27:57 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_env
 // built-ins
 typedef struct s_builtin
 {
-	void	(*func)(char **, t_env *, t_garbage **);
+	void	(*func)(char **, t_env **, t_garbage **);
 	char	*name;
 }				t_builtin;
 

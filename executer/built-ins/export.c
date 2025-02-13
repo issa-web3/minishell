@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/09 11:10:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:25:42 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_export(char **cmd, t_env *my_env, t_garbage **my_garbage)
+void	ft_export(char **cmd, t_env **my_env, t_garbage **my_garbage)
 {
 	t_env	*to_export;
 	char	**parsed;
@@ -33,7 +33,7 @@ void	ft_export(char **cmd, t_env *my_env, t_garbage **my_garbage)
 	to_export = ft_getenv(parsed[0], my_env);
 	// append or overwrite
 	if (to_export == NULL)
-		append_env(&my_env, get_last_env(my_env), new_env_var(parsed, my_garbage));
+		append_env(my_env, get_last_env(my_env), new_env_var(parsed, my_garbage));
 	else if (append)
 		to_export->value = ft_strjoin(to_export->value, parsed[1], my_garbage);
 	else
