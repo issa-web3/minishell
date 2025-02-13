@@ -15,6 +15,16 @@
 // inc
 # include "../minishell.h"
 
+# define PIPE 1
+# define REDIR_APPEND 2
+# define HERE_DOC 3
+# define REDIR_OUT 4
+# define REDIR_IN 5
+# define DELIMITER 6
+# define WORD 7
+# define CMD 8
+# define OPTION 9
+
 //quotes
 int		check_unclosed_quotes(char *line);
 int		is_whitespace(char c);
