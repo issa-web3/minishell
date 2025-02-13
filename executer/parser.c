@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:11:12 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/11 14:24:29 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:15:38 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ t_2_exec	*parser(int ac, char **av, t_env *my_env, t_garbage **my_garbage, char 
 		while (data.cmd && data.cmd[j])
 		{
 			if (ft_strcmp(data.cmd[j], "<") == 0)
-				(data.infile = data.cmd[j + 1], data.cmd[j] = NULL);
-			else if (ft_strcmp(data.cmd[j], "<<") == 0)
 				(data.infile = data.cmd[j + 1], data.cmd[j] = NULL);
 			else if (ft_strcmp(data.cmd[j], ">") == 0)
 				(data.outfiles[out] = data.cmd[j + 1], data.cmd[j] = NULL, data.appends[out++] = 0);

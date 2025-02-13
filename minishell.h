@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/05 13:11:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:14:27 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 # include "structs.h"
 # include "executer/executer.h"
 # include "parser/parser.h"
+# include "gnl/get_next_line.h"
 
 #endif
