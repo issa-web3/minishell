@@ -21,8 +21,9 @@ typedef struct s_file
 
 typedef struct s_token
 {
-	char	*token;
-	int		type;
+	char			*token;
+	int				type;
+	struct s_token	*next;
 }			t_token;
 
 typedef struct s_garbage
