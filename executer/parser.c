@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:11:12 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:06:30 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_2_exec	*parser(int ac, char **av, t_env **my_env, t_garbage **my_garbage, char
 	t_2_exec	*head;
 	t_2_exec	data;
 	char		**cmds;
+	int			in;
 	int			out;
 	int			i;
 	int			j;
@@ -36,25 +37,27 @@ t_2_exec	*parser(int ac, char **av, t_env **my_env, t_garbage **my_garbage, char
 		return (NULL);
 	cmds = ft_split(line, '|', my_garbage);
 	i = 0;
+	in = 0;
 	out = 0;
 	head = NULL;
 	while (cmds[i])
 	{
 		data.cmd = ft_split(cmds[i++], ' ', my_garbage);
 		j = 0;
-		data.infile = NULL;
 		data.outfiles = ft_malloc(strs_len(data.cmd) * sizeof(char *), my_garbage);
+		data.infiles = ft_malloc(strs_len(data.cmd) * sizeof(char *), my_garbage);
 		data.appends = ft_malloc(strs_len(data.cmd) * sizeof(char), my_garbage);
 		while (data.cmd && data.cmd[j])
 		{
 			if (ft_strcmp(data.cmd[j], "<") == 0)
-				(data.infile = data.cmd[j + 1], data.cmd[j] = NULL);
+				(data.infiles[in++] = data.cmd[j + 1], data.cmd[j] = NULL);
 			else if (ft_strcmp(data.cmd[j], ">") == 0)
 				(data.outfiles[out] = data.cmd[j + 1], data.cmd[j] = NULL, data.appends[out++] = 0);
 			else if (ft_strcmp(data.cmd[j], ">>") == 0)
 				(data.outfiles[out] = data.cmd[j + 1], data.cmd[j] = NULL, data.appends[out++] = 1);
 			j++;
 		}
+		data.infiles[in] = NULL;
 		data.outfiles[out] = NULL;
 		ft_lstadd_back(&head, ft_lstnew(data, my_garbage), my_garbage);
 	}
