@@ -14,7 +14,8 @@
 
 static void	pars_word(char *line, int *i)
 {
-	char quote;
+	char	quote;
+
 	while (line[*i] && !is_whitespace(line[*i]))
 	{
 		if (line[*i] == '\'' || line[*i] == '\"')
@@ -48,7 +49,8 @@ int	ft_count_tokens(char *line)
 			count++;
 			pars_word(line, &i);
 		}
-		i++;
+		if (line[i])
+			i++;
 	}
 	return (count);
 }
@@ -73,7 +75,10 @@ static int	token_len(char *line)
 				count += (++i, 1);
 		}
 		else
-			(count++, i++);
+		{
+			count++;
+			i++;
+		}
 	}
 	return (count);
 }
