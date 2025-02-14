@@ -42,5 +42,7 @@ void	tokenizer1(char ** tokens, t_token **toks)
 int	tokenize(char **tokens, t_token **toks)
 {
 	tokenizer1(tokens, toks);
+	if (syntax_error(*toks))
+		return (-1);
 	return (0);
 }

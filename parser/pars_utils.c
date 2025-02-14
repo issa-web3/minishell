@@ -27,3 +27,30 @@ int	strlen_pars(char *s)
 		i++;
 	return (i);
 }
+
+int	syntax_error(t_token *token)
+{
+	t_token	*tmp;
+
+	tmp = token;
+	if (tmp && tmp->type == PIPE)
+		return (ft_putstr_fd("minishell: syntax error\n", 2), 1);
+	while (tmp)
+	{
+		if (tmp->type == PIPE)
+		{
+			if (!tmp->next || tmp->next->type == PIPE)
+				return (ft_putstr_fd("minishell: syntax error\n", 2), 1);
+		}
+		else if (tmp->type == REDIR_IN || tmp->type == REDIR_OUT
+			|| tmp->type == REDIR_APPEND || tmp->type == HERE_DOC)
+		{
+			if (!tmp->next ||tmp->next->type == PIPE
+				|| tmp->next->type == REDIR_IN || tmp->next->type == REDIR_OUT
+				|| tmp->next->type == REDIR_APPEND || tmp->next->type == HERE_DOC)
+				return (ft_putstr_fd("minishell: syntax error\n", 2), 1);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
