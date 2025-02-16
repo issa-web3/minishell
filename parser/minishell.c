@@ -21,24 +21,18 @@ int	parse_line(char *line)
 	(1) && (tmp = NULL, token = NULL, split = NULL);
 	if (!check_unclosed_quotes(line))
 	{
-		printf("minishell: syntax error related to unclosed quotes\n");
+		printf("minishell: syntax error unclosed quotes\n");
 		return (-1);
 	}
 	add_spaces(&line);
 	1 && (tmp = line, line = trim_line(line));
+	if (!line)
+		return (-1);
 	split = str_tokenize(line);
 	if (!split)
 		return (-1);
-	if (!line)
-	{
-		free(tmp);
-		return (-1);
-	}
 	if (tokenize(split, &token) == -1)
-	{
-		free(tmp);
 		return (-1);
-	}
 	return (0);
 }
 

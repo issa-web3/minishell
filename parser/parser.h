@@ -20,11 +20,13 @@
 # define HERE_DOC 3
 # define REDIR_OUT 4
 # define REDIR_IN 5
-# define DELIMITER 6
+# define IN_FILE 6
 # define WORD 7
 # define CMD 8
 # define OPTION 9
-
+# define OUT_FILE 10
+# define DELIMITER 11
+# define A_OUT_FILE 12
 //quotes
 int		check_unclosed_quotes(char *line);
 int		is_whitespace(char c);
