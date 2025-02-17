@@ -26,10 +26,11 @@ typedef enum e_token_type
 }	t_token_type;
 
 //utils
-int	is_whitespace(char c);
-int	is_redir(char c);
-int	is_quote(char c);
-int	init_syntax_data(int *i, char *line);
+int		is_whitespace(char c);
+int		is_redir(char c);
+int		is_quote(char c);
+int		init_syntax_data(int *i, char *line);
 //syntax error
-int	ft_check_syntax_error(char *line);
+int		ft_check_syntax_error(char *line);
+char	*ft_strtrim(char *str, char *set);
 #endif

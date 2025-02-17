@@ -14,6 +14,11 @@
 
 t_2_exec	*parsing(char *line)
 {
+	char	*tmp;
+	
+	tmp = line;
+	line = ft_strtrim(line, " ");
+	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);
 	return (NULL);
