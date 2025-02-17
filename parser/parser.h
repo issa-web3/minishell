@@ -15,30 +15,15 @@
 // inc
 # include "../minishell.h"
 
-# define PIPE 1
-# define REDIR_APPEND 2
-# define HERE_DOC 3
-# define REDIR_OUT 4
-# define REDIR_IN 5
-# define IN_FILE 6
-# define WORD 7
-# define CMD 8
-# define OPTION 9
-# define OUT_FILE 10
-# define DELIMITER 11
-# define A_OUT_FILE 12
+typedef enum e_token_type
+{
+	WORD,
+	PIPE,
+	APPEND,
+	REDIR_INPUT,
+	REDIR_OUTPUT,
+	HERE_DOC,
+}	t_token_type;
 //quotes
-int		check_unclosed_quotes(char *line);
-int		is_whitespace(char c);
-int		strlen_pars(char *s);
-char	*trim_line(char *line);
-int		quoted(char *str, int index);
-int		calc_new_len(char *input);
-void	add_spaces(char **input);
-char	**str_tokenize(char *line);
-int		ft_count_tokens(char *line);
-int	tokenize(char **tokens, t_token **toks);
-void	ft_lst_addback(t_token **tokens, t_token *new_token);
-t_token	*new_tok_node(char *tok, int type);
-int	syntax_error(t_token *token);
+
 #endif
