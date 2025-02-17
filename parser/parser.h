@@ -25,6 +25,11 @@ typedef enum e_token_type
 	HERE_DOC,
 }	t_token_type;
 
-//quotes
-
+//utils
+int	is_whitespace(char c);
+int	is_redir(char c);
+int	is_quote(char c);
+int	init_syntax_data(int *i, char *line);
+//syntax error
+int	ft_check_syntax_error(char *line);
 #endif

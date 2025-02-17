@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-05 13:00:46 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-05 13:00:46 by khoukouj         ###   ########.1337.ma  */
+/*   Created: 2025-02-17 09:23:03 by khoukouj          #+#    #+#             */
+/*   Updated: 2025-02-17 09:23:03 by khoukouj         ###   ########.ma       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-t_2_exec	*parsing(char *line)
+int	is_whitespace(char c)
 {
-	if (ft_check_syntax_error(line) == -1)
-		return (NULL);
-	return (NULL);
+	return (c == ' ' || c == '\t');
 }
 
-int	main(int ac, char **av, char **envp)
+int	is_redir(char c)
 {
-	char		*line;
-	t_2_exec	*lst;
+	return (c == '>' || c == '<');
+}
 
-	lst = NULL;
-	while (1)
-	{
-		line = readline("minishell $");
-		if (line && line[0])
-		{
-			add_history(line);
-			lst = parsing(line);
-		}
-	}
+int	is_quote(char c)
+{
+	return (c == '\'' || c == '\"');
+}
+
+int	init_syntax_data(int *i, char *line)
+{
+	*i = 0;
+	if (!line || line[*i] == '|')
+		return (ft_putstr_fd("minishell: syntax error\n", 2), -1);
 	return (0);
 }
