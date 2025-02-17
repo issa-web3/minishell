@@ -57,6 +57,8 @@ void	read_from_input(void)
 	}
 }
 
+
+
 int	main(int ac, char **av, char **envp)
 {
 	read_from_input();
