@@ -46,7 +46,6 @@ int			ft_tolower(int c);
 int			ft_toupper(int c);
 
 // part 2
-char		*ft_strtrim(char *s1, char *set);
 int			check_sep(char set, char c);
 int			count_words(const char *str, char c);
 char		**ft_split(char *s, char c, t_garbage **my_garbage);
