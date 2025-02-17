@@ -24,6 +24,7 @@ typedef enum e_token_type
 	REDIR_OUTPUT,
 	HERE_DOC,
 }	t_token_type;
+
 //quotes
 
 #endif
