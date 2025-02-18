@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_create_tokens.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-17 09:23:03 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-17 09:23:03 by khoukouj         ###   ########.ma       */
+/*   Created: 2025-02-18 12:15:24 by khoukouj          #+#    #+#             */
+/*   Updated: 2025-02-18 12:15:24 by khoukouj         ###   ########.ma       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int	is_whitespace(char c)
+static t_token_type ft_get_token_type(char *str)
 {
-	return (c == ' ' || c == '\t');
+	if (!str)
+		return (WORD);
+	if (str[0] == '|')
+		return (PIPE);
+	if (str[0] == '>')
+	{
+		if (str[1] == '>')
+			return (APPEND);
+		return (REDIR_OUTPUT);
+	}
+	if (str[0] == '<')
+	{
+		if (str[1] == '<')
+			return (HERE_DOC);
+		return (REDIR_INPUT);
+	}
+	return (WORD);
 }
 
-int	is_redir(char c)
-{
-	return (c == '>' || c == '<');
-}
-
-int	is_quote(char c)
-{
-	return (c == '\'' || c == '\"');
-}
-
-int	init_syntax_data(int *i, char *line)
-{
-	*i = 0;
-	if (!line || line[*i] == '|')
-		return (ft_putstr_fd("minishell: syntax error\n", 2), -1);
-	return (0);
-}
-
-int	is_operator(char c)
-{
-	return (c == '|' || c == '>' || c == '<');
-}
