@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-char	*ft_substr(char const *s, int start, size_t len)
+char	*ft_substr(char *s, int start, size_t len, t_garbage **to_free)
 {
 	char	*sub_str;
 	size_t	i;
@@ -22,7 +22,7 @@ char	*ft_substr(char const *s, int start, size_t len)
 		return (NULL);
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
-	sub_str = (char *)malloc(len + 1 * sizeof(char));
+	sub_str = ft_malloc(len + 1, to_free);
 	if (!sub_str)
 		return (NULL);
 	while (i < len)
@@ -34,7 +34,7 @@ char	*ft_substr(char const *s, int start, size_t len)
 	return (sub_str);
 }
 
-char	*ft_strtrim(char *str, char *set)
+char	*ft_strtrim(char *str, char *set, t_garbage **to_free)
 {
 	size_t	start;
 	size_t	end;
@@ -48,6 +48,6 @@ char	*ft_strtrim(char *str, char *set)
 		start++;
 	while (end > start && ft_strchr(set, str[end - 1]))
 		end--;
-	res = ft_substr(str, (int)start, end - start);
+	res = ft_substr(str, (int)start, end - start, to_free);
 	return (res);
 }

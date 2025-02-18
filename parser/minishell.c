@@ -14,13 +14,16 @@
 
 t_2_exec	*parsing(char *line)
 {
-	char	*tmp;
-	
+	char		*tmp;
+	t_garbage	*garbage;
+
 	tmp = line;
-	line = ft_strtrim(line, " ");
+	garbage = NULL;
+	line = ft_strtrim(line, " ", &garbage);
 	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);
+	clear_garbage(&garbage);
 	return (NULL);
 }
 
@@ -33,6 +36,7 @@ int	main(int ac, char **av, char **envp)
 	while (1)
 	{
 		line = readline("minishell $");
+		printf("%s\n", line);
 		if (line && line[0])
 		{
 			add_history(line);
