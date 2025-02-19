@@ -46,3 +46,51 @@ static void	ft_check_token(char *str, int *i)
 		(*i)++;
 	}
 }
+
+static void	handle_operators(char *str, int *i)
+{
+	if (str[*i] == '|')
+		(*i)++;
+	else
+	{
+		while (str[*i] && is_operator(str[*i]))
+			(*i)++;
+	}
+}
+
+static char	*extract_token(char *str, int start, int i, t_garbage **garbage)
+{
+	char	*res;
+
+	res = ft_strldup(&str[start], i - start, garbage);
+	if (!res)
+		return (NULL);
+	return (ft_strtrim(res, " \t", garbage));
+}
+
+t_token	*ft_create_tokens(char *str, t_garbage **garbage)
+{
+	t_token	*lst;
+	t_token	*add_to_lst;
+	int		i;
+	int		start;
+
+	i = 0;
+	lst = NULL;
+	if (!str)
+		return (NULL);
+	while (str[i])
+	{
+		add_to_lst = ft_malloc(sizeof(t_token), garbage);
+		start = i;
+		ft_check_token(str, &i);
+		if (start == i)
+			handle_operators(str, &i);
+		while (str[i] && is_whitespace(str[i]))
+			i++;
+		add_to_lst->token = extract_token(str, start, i, garbage);
+		add_to_lst->type = ft_get_token_type(add_to_lst->token);
+		ft_append_to_lst(&lst, add_to_lst); // TODO
+	}
+	return (lst);
+}

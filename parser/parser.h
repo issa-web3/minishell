@@ -32,7 +32,8 @@ int		is_quote(char c);
 int		init_syntax_data(int *i, char *line);
 int		is_operator(char c);
 void	ft_skip_quotes(char *str, int *i);
+char	*ft_strtrim(char *str, char *set, t_garbage **to_free);
+char	*ft_strldup(char *str, size_t len, t_garbage **garbage);
 //syntax error
 int		ft_check_syntax_error(char *line);
-char	*ft_strtrim(char *str, char *set, t_garbage **to_free);
 #endif
