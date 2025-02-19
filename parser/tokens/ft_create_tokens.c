@@ -33,3 +33,16 @@ static t_token_type ft_get_token_type(char *str)
 	return (WORD);
 }
 
+static void	ft_check_token(char *str, int *i)
+{
+	while (str[*i])
+	{
+		if (is_quote(str[*i]))
+			ft_skip_quotes(str, i);
+		if (str[*i] && is_operator(str[*i])
+			|| str[*i] && is_whitespace(str[*i])
+			|| !str[*i])
+			break ;
+		(*i)++;
+	}
+}

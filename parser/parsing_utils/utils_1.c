@@ -51,3 +51,35 @@ char	*ft_strtrim(char *str, char *set, t_garbage **to_free)
 	res = ft_substr(str, (int)start, end - start, to_free);
 	return (res);
 }
+
+void	ft_skip_quotes(char *str, int *i)
+{
+	char	q;
+
+	if (str[*i] == '\'' || str[*i] == '\"')
+	{
+		q = str[*i];
+		(*i)++;
+		while (str[*i] && str[*i] != q)
+			(*i)++;
+		if (str[*i] == q)
+			(*i)++;
+	}
+}
+char	*ft_strldup(char *str, size_t len, t_garbage **garbage)
+{
+	char	*res;
+	int		i;
+
+	i = 0;
+	if (ft_strlen(str) < len)
+		return (NULL);
+	res = ft_malloc(len + 1, garbage);
+	while (i < len)
+	{
+		res[i] = str[i];
+		i++;
+	}
+	res[len] = '\0';
+	return (res);
+}
