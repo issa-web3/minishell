@@ -16,6 +16,7 @@ t_2_exec	*parsing(char *line)
 {
 	char		*tmp;
 	t_garbage	*garbage;
+	t_token		*tokens;
 
 	tmp = line;
 	garbage = NULL;
@@ -23,6 +24,12 @@ t_2_exec	*parsing(char *line)
 	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);
+	tokens = ft_create_tokens(line, &garbage);
+	while (tokens)
+	{
+		printf("token: %s\n", tokens->token);
+		tokens = tokens->next;
+	}
 	clear_garbage(&garbage);
 	return (NULL);
 }
@@ -36,7 +43,6 @@ int	main(int ac, char **av, char **envp)
 	while (1)
 	{
 		line = readline("minishell $");
-		printf("%s\n", line);
 		if (line && line[0])
 		{
 			add_history(line);

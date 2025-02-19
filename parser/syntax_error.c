@@ -34,7 +34,7 @@ static int	ft_check_pipe_syntax(char *line, int *i)
 	while (line[*i] && is_whitespace(line[*i]))
 		(*i)++;
 	if (!line[*i] || line[*i] == '|')
-		return (ft_putstr_fd("minishell: syntax error\n", 2), 1);
+		return (ft_putstr_fd("minishell: syntax error\n", 2), -1);
 	return (1);
 }
 

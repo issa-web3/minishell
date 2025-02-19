@@ -83,3 +83,22 @@ char	*ft_strldup(char *str, size_t len, t_garbage **garbage)
 	res[len] = '\0';
 	return (res);
 }
+
+void	ft_append_to_lst(t_token **lst, t_token *node)
+{
+	t_token	*last;
+
+	if (!lst || !node)
+		return ;
+	if (!*lst)
+	{
+		*lst = node;
+		(*lst)->next = NULL;
+		return ;
+	}
+	last = *lst;
+	while (last->next)
+		last = last->next;
+	last->next = node;
+	node->next = NULL;
+}
