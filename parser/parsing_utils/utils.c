@@ -24,7 +24,11 @@ int	is_redir(char c)
 
 int	is_quote(char c)
 {
-	return (c == '\'' || c == '\"');
+	if (c == '\'')
+		return (1);
+	if (c == '\"')
+		return (2);
+	return (0);
 }
 
 int	init_syntax_data(int *i, char *line)
