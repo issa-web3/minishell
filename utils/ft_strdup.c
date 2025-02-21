@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s1, t_garbage **my_garbage)
 	size_t	i;
 	size_t	len;
 
+	if (!s1)
+		return (NULL);
 	len = ft_strlen((char *)s1);
 	copy = (char *)ft_malloc((len + 1) * sizeof(char), my_garbage);
 	if (copy == NULL)
