@@ -90,7 +90,7 @@ t_token	*ft_create_tokens(char *str, t_garbage **garbage)
 			i++;
 		add_to_lst->token = extract_token(str, start, i, garbage);
 		add_to_lst->type = ft_get_token_type(add_to_lst->token);
-		ft_append_to_lst(&lst, add_to_lst); // TODO
+		ft_append_to_lst(&lst, add_to_lst);
 	}
 	return (lst);
 }

@@ -20,7 +20,7 @@ t_2_exec	*parsing(char *line)
 
 	tmp = line;
 	garbage = NULL;
-	line = ft_strtrim(line, " ", &garbage);
+	line = ft_strtrim(line, " \t", &garbage);
 	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);
