@@ -15,8 +15,9 @@
 
 typedef struct s_file
 {
-	char	*name;
-	int		type;
+	char			*name;
+	int				type;
+	struct s_file	*next;
 }			t_file;
 
 typedef struct s_token
