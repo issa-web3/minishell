@@ -16,7 +16,7 @@ t_2_exec	*parsing(char *line)
 {
 	char		*tmp;
 	t_garbage	*garbage;
-	t_token		*tokens;
+	t_2_exec	*lst;
 
 	tmp = line;
 	garbage = NULL;
@@ -24,11 +24,15 @@ t_2_exec	*parsing(char *line)
 	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);
-	tokens = ft_create_tokens(line, &garbage);
-	while (tokens)
+	lst = ft_analyse(line, &garbage);
+	int i = 0;
+	while (lst)
 	{
-		printf("token: %s\n", tokens->token);
-		tokens = tokens->next;
+		while (lst->cmd[i])
+			printf("%s\n", lst->cmd[i++]);
+		printf("passed the node\n");
+		i = 0;
+		lst = lst->next;
 	}
 	clear_garbage(&garbage);
 	return (NULL);

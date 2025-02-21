@@ -24,8 +24,14 @@ static int	create_cmd(t_token **tokens, t_2_exec **lst, t_2_exec *node, t_garbag
 {
 	if ((*tokens) && (*tokens)->type == WORD)
 	{
-		ft_handle_cmd(&node, garbage, tokens); // TODO
+		ft_handle_cmd(&node, garbage, tokens);
+		if (tokens == NULL)
+		{
+			ft_lstadd_back_t2exec(lst, node);
+			return (1);
+		}
 	}
+	return (1); // need to change this to 0 rn just for testing
 }
 
 t_2_exec	*ft_analyse(char *line, t_garbage **garbage)
@@ -46,6 +52,9 @@ t_2_exec	*ft_analyse(char *line, t_garbage **garbage)
 			if (create_cmd(&tokens, &lst, node, garbage))
 				break ;
 		}
+		ft_lstadd_back_t2exec(&lst, node);
+		if (tokens)
+			tokens = tokens->next;
 	}
 	return (lst);
 }
