@@ -26,6 +26,13 @@ t_2_exec	*parsing(char *line)
 		return (NULL);
 	lst = ft_analyse(line, &garbage);
 	int i = 0;
+	t_file *tmp1  = lst->files;
+	while (tmp1)
+	{
+		printf("file %s type %d\n", tmp1->name, tmp1->type);
+		tmp1 = tmp1->next;
+	}
+	printf("commands: \n");
 	while (lst)
 	{
 		while (lst->cmd[i])

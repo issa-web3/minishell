@@ -25,7 +25,7 @@ static int	create_cmd(t_token **tokens, t_2_exec *node, t_garbage **garbage)
 	if ((*tokens) && (*tokens)->type == WORD)
 	{
 		ft_handle_cmd(&node, garbage, tokens);
-		if ((*tokens) == NULL)
+		if (!(*tokens))
 			return (1);
 	}
 	return (0);
@@ -38,6 +38,7 @@ void	fill_file_info(t_file *file_node, t_token **tokens, t_garbage **garbage)
 	{
 		file_node->name = ft_strdup((*tokens)->next->token, garbage);
 		file_node->type = (*tokens)->type;
+		(*tokens) = (*tokens)->next->next;
 	}
 }
 
@@ -60,12 +61,6 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 			(*tokens) = (*tokens)->next;
 	}
 	(*node)->files = files;
-	t_file *tmp  = (*node)->files;
-	while (tmp)
-	{
-		printf("file %s type %d\n", tmp->name, tmp->type);
-		tmp = tmp->next;
-	}
 	return (0);
 }
 
