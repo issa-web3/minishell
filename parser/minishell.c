@@ -30,7 +30,6 @@ t_2_exec	*parsing(char *line)
 	{
 		while (lst->cmd[i])
 			printf("%s\n", lst->cmd[i++]);
-		printf("passed the node\n");
 		i = 0;
 		lst = lst->next;
 	}
