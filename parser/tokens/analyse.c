@@ -38,7 +38,7 @@ void	fill_file_info(t_file *file_node, t_token **tokens, t_garbage **garbage)
 	{
 		file_node->name = ft_strdup((*tokens)->next->token, garbage);
 		file_node->type = (*tokens)->type;
-		(*tokens) = (*tokens)->next->next;
+		(*tokens) = (*tokens)->next;
 	}
 }
 
