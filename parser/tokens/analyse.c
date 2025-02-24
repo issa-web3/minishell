@@ -18,6 +18,7 @@ void	ft_init_2exec(t_2_exec *node)
 	node->appends = NULL;
 	node->infiles = NULL;
 	node->outfiles = NULL;
+	node->files = NULL;
 }
 
 static int	create_cmd(t_token **tokens, t_2_exec *node, t_garbage **garbage)
