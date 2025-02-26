@@ -20,6 +20,7 @@ t_2_exec	*parsing(char *line)
 
 	tmp = line;
 	garbage = NULL;
+
 	line = ft_strtrim(line, " \t", &garbage);
 	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
@@ -30,7 +31,8 @@ t_2_exec	*parsing(char *line)
 	while (lst)
 	{
 		printf("commands[%d]: \n", c);
-		while (lst->cmd[i])
+		i = 0;
+		while (lst->cmd && lst->cmd[i])
 			printf("%s\n", lst->cmd[i++]);
 		t_file *tmp1  = lst->files;
 		while (tmp1)
@@ -39,10 +41,10 @@ t_2_exec	*parsing(char *line)
 			tmp1 = tmp1->next;
 		}
 		c++;
-		i = 0;
 		lst = lst->next;
 	}
 	clear_garbage(&garbage);
+
 	return (NULL);
 }
 
