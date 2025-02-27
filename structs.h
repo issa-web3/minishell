@@ -24,6 +24,7 @@ typedef struct s_token
 {
 	char			*token;
 	int				type;
+	int				expanded;
 	struct s_token	*next;
 }			t_token;
 
@@ -32,6 +33,13 @@ typedef struct s_garbage
 	void			*ptr;
 	struct s_garbage *next;
 }					t_garbage;
+
+typedef struct s_expand
+{
+	char	*value;
+	int		is_expand;
+	struct s_expand *next;
+}	t_expand;
 
 // ls -l -a < in1 > out1 << here1 | grep "a" > out | end
 typedef struct s_2_exec
