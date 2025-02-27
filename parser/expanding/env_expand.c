@@ -12,6 +12,20 @@
 
 #include "../../minishell.h"
 
+char	*ft_get_value_env(char *str, t_env *lst)
+{
+	t_env	*tmp;
+
+	tmp = lst;
+	while (tmp)
+	{
+		if (ft_strcmp(tmp->name, str) == 0)
+			return (tmp->value);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
 static char *extract_var_name(char *str, int *index, t_garbage **garbage)
 {
 	char	*var_name;
@@ -42,7 +56,7 @@ static char	*expand_variable(char *str, int *index, t_env *env, t_garbage **garb
 	if (str[*index] == '\0' || !is_valid_var(str[*index]))
 		return (ft_strdup("$", garbage));
 	var_name = extract_var_name(str, index, garbage);
-	res = ft_getenv(var_name, &env);
+	res = ft_get_value_env(var_name, env);
 	return (res);
 }
 

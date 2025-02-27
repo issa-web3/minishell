@@ -64,6 +64,7 @@ t_expand	*ft_create_expand_node(char *s, t_garbage **garbage)
 	node = ft_malloc(sizeof(t_expand), garbage);
 	node->value = s;
 	node->next = NULL;
+	return (node);
 }
 
 void	ft_lstadd_back_t_expand(t_expand **lst, t_expand *new)

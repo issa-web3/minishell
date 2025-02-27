@@ -39,8 +39,8 @@ static void	ft_check_token(char *str, int *i)
 	{
 		if (is_quote(str[*i]))
 			ft_skip_quotes(str, i);
-		if (str[*i] && is_operator(str[*i])
-			|| str[*i] && is_whitespace(str[*i])
+		if ((str[*i] && is_operator(str[*i]))
+			|| (str[*i] && is_whitespace(str[*i]))
 			|| !str[*i])
 			break ;
 		(*i)++;

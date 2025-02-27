@@ -57,7 +57,7 @@ int	main(int ac, char **av, char **envp)
 	lst = NULL;
 	while (1)
 	{
-		line = readline("minishell $");
+		line = readline("minishell >");
 		if (line && line[0])
 		{
 			add_history(line);
