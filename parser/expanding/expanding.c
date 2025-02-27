@@ -67,7 +67,34 @@ static t_expand	*create_expand_lst(char *str, t_garbage **garbage)
 	return (lst);
 }
 
-void	ft_expand_token(t_2_exec **node, t_env *envl, t_garbage **garbage)
+char	*expand_dollar_variable(char *str, t_env *env, t_garbage **garbage)
 {
-	
+	t_expand	*lst;
+	t_expand	*curr;
+	char		*res;
+
+	lst = create_expand_lst(str, garbage);
+	curr = lst;
+	res = NULL;
+	while (curr)
+	{
+		if (curr->is_expand)
+			curr->value = ft_replace_dollar(curr->value, env, garbage);
+		curr = curr->next;
+	}
+	curr = lst;
+	while (curr)
+	{
+		res = ft_strjoin(res, curr->value, garbage);
+		curr = curr->next;
+	}
+	return (res);
+}
+
+void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
+{
+	if ((*node) && (*node)->type == WORD)
+	{
+		(*node)->token = expand_dollar_variable((*node)->token, envl, garbage);
+	}
 }
