@@ -37,3 +37,37 @@ static void	create_plain_seg(char *str, char **res, int *i, t_garbage **garbage)
 	if (start != *i)
 		*res = ft_strldup(&str[start], *i - start, garbage);
 }
+
+static t_expand	*create_expand_lst(char *str, t_garbage **garbage)
+{
+	t_expand	*lst;
+	t_expand	*node;
+	char		*segment;
+	int			i;
+
+	i = 0;
+	lst = NULL;
+	while (str[i])
+	{
+		node = 	ft_create_expand_node(NULL, garbage);
+		segment = NULL;
+		node->is_expand = 1;
+		if (str[i] && is_quote(str[i]) == 1)
+		{
+			segment = get_between_quotes(str, &i, 1, garbage);
+			node->is_expand = 0;
+		}
+		else if (str[i] && is_quote(str[i]) == 2)
+			segment = get_between_quotes(str, &i, 2, garbage);
+		else
+			create_plain_seg(str, &segment, &i, garbage);
+		node->value = segment;
+		ft_lstadd_back_t_expand(&lst, node);
+	}
+	return (lst);
+}
+
+void	ft_expand_token(t_2_exec **node, t_env *envl, t_garbage **garbage)
+{
+	
+}

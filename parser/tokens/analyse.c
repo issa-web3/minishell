@@ -65,7 +65,7 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 	return (0);
 }
 
-t_2_exec	*ft_analyse(char *line, t_garbage **garbage)
+t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage)
 {
 	t_2_exec	*lst;
 	t_2_exec	*node;
@@ -73,7 +73,7 @@ t_2_exec	*ft_analyse(char *line, t_garbage **garbage)
 
 
 	lst = NULL;
-	tokens = ft_create_tokens(line, garbage);
+	tokens = ft_create_tokens(line, envl, garbage);
 	while (tokens)
 	{
 		node = ft_malloc(sizeof(t_2_exec), garbage);

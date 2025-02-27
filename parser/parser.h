@@ -37,11 +37,16 @@ char		*ft_strldup(char *str, size_t len, t_garbage **garbage);
 void		ft_append_to_lst(t_token **lst, t_token *node);
 void		ft_lstadd_back_t2exec(t_2_exec **lst, t_2_exec *new);
 void		ft_lstadd_back_t_file(t_file **lst, t_file *new);
+int			can_i_expand(char *str);
 //syntax error
 int			ft_check_syntax_error(char *line);
 // tokens
-t_token		*ft_create_tokens(char *str, t_garbage **garbage);
+t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage);
 void		ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens);
-t_2_exec	*ft_analyse(char *line, t_garbage **garbage);
+t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage);
 char		**extract(char **old_str, char *new, t_garbage **garbage);
+//expanding
+void	ft_expand_token(t_2_exec **node, t_env *envl, t_garbage **garbage);
+t_expand	*ft_create_expand_node(char *s, t_garbage **garbage);
+void		ft_lstadd_back_t_expand(t_expand **lst, t_expand *new);
 #endif

@@ -68,7 +68,7 @@ static char	*extract_token(char *str, int start, int i, t_garbage **garbage)
 	return (ft_strtrim(res, " \t", garbage));
 }
 
-t_token	*ft_create_tokens(char *str, t_garbage **garbage)
+t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 {
 	t_token	*lst;
 	t_token	*add_to_lst;
@@ -90,6 +90,9 @@ t_token	*ft_create_tokens(char *str, t_garbage **garbage)
 			i++;
 		add_to_lst->token = extract_token(str, start, i, garbage);
 		add_to_lst->type = ft_get_token_type(add_to_lst->token);
+		add_to_lst->expanded = 0;
+		 if (can_i_expand(add_to_lst->token))
+			ft_expand_token(&add_to_lst, env, garbage);
 		ft_append_to_lst(&lst, add_to_lst);
 	}
 	return (lst);

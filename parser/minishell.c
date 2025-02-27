@@ -12,12 +12,14 @@
 
 #include "../minishell.h"
 
-t_2_exec	*parsing(char *line)
+t_2_exec	*parsing(char *line, char **envp)
 {
 	char		*tmp;
 	t_garbage	*garbage;
 	t_2_exec	*lst;
+	t_env		*envl;
 
+	envl = copy_env(envp, &garbage);
 	tmp = line;
 	garbage = NULL;
 
@@ -25,7 +27,7 @@ t_2_exec	*parsing(char *line)
 	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);
-	lst = ft_analyse(line, &garbage);
+	lst = ft_analyse(line, envl, &garbage);
 	int i = 0;
 	int c = 0;
 	while (lst)
@@ -52,7 +54,6 @@ int	main(int ac, char **av, char **envp)
 {
 	char		*line;
 	t_2_exec	*lst;
-
 	lst = NULL;
 	while (1)
 	{
@@ -60,7 +61,7 @@ int	main(int ac, char **av, char **envp)
 		if (line && line[0])
 		{
 			add_history(line);
-			lst = parsing(line);
+			lst = parsing(line, envp);
 		}
 	}
 	return (0);
