@@ -99,7 +99,7 @@ void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
 	if ((*node) && (*node)->type == WORD)
 	{
 		(*node)->token = expand_dollar_variable((*node)->token, envl, garbage);
-		while (i < count_words((*node)->token, ' '))
+		while (i < my_count_words((*node)->token))
 		{
 			printf("tokens : %s\n", ft_strtok((*node)->token, garbage)[i]);
 			i++;

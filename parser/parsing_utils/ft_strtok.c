@@ -20,6 +20,35 @@ void	toggle_quote(char c, char *quote)
 		*quote = 0;
 }
 
+int	my_count_words(const char *str)
+{
+	int	count;
+	int	i;
+	char	quote;
+
+	if (str == NULL)
+		return (0);
+	1 && (i = 0, count = 0, quote = 0);
+	while (str[i])
+	{
+		while (str[i] && is_whitespace(str[i]) == 1)
+			i++;
+		if (str[i] && is_whitespace(str[i]) == 0)
+		{
+			count++;
+			while (str[i] && (is_whitespace(str[i]) == 0 || quote != '\0'))
+			{
+				if ((str[i] == '"' || str[i] == '\'') && (quote == '\0'))
+					quote = str[i];
+				else if (str[i] == quote)
+					quote = '\0';
+				i++;
+			}
+		}
+	}
+	return (count);
+}
+
 static char	*ft_create_word(char *str, t_garbage **my_garbage)
 {
 	char	*word;
@@ -56,7 +85,7 @@ char	**ft_strtok(char *s, t_garbage **my_garbage)
 
 	if (!s)
 		return (NULL);
-	1 && (split = (char **)ft_malloc((count_words(s, ' ') + 1)
+	1 && (split = (char **)ft_malloc((my_count_words(s) + 1)
 			* sizeof(char *), my_garbage), i = 0);
 	while (*s)
 	{

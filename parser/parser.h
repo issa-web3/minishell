@@ -27,7 +27,6 @@ typedef enum e_token_type
 
 //utils
 int			is_whitespace(char c);
-int			check_sep(char set, char c);
 int			is_redir(char c);
 int			is_valid_var(int c);
 int			is_quote(char c);
@@ -40,6 +39,7 @@ void		ft_append_to_lst(t_token **lst, t_token *node);
 void		ft_lstadd_back_t2exec(t_2_exec **lst, t_2_exec *new);
 void		ft_lstadd_back_t_file(t_file **lst, t_file *new);
 int			can_i_expand(char *str);
+int			my_count_words(const char *str);
 //syntax error
 int			ft_check_syntax_error(char *line);
 // tokens
