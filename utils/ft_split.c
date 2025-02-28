@@ -12,7 +12,7 @@
 
 #include "utils.h"
 
-int	check_sep(char set, char c)
+int	is_sep(char set, char c)
 {
 	if (set == c)
 		return (1);
@@ -25,11 +25,11 @@ static char	*ft_create_word(const char *str, char c, t_garbage **my_garbage)
 	char	*word;
 
 	i = 0;
-	while (str[i] && check_sep(str[i], c) == 0)
+	while (str[i] && is_sep(str[i], c) == 0)
 		i++;
 	word = (char *)ft_malloc(i + 1, my_garbage);
 	i = 0;
-	while (str[i] && check_sep(str[i], c) == 0)
+	while (str[i] && is_sep(str[i], c) == 0)
 	{
 		word[i] = str[i];
 		i++;
@@ -50,12 +50,12 @@ char	**ft_split(char *s, char c, t_garbage **my_garbage)
 	i = 0;
 	while (*s)
 	{
-		while (*s && check_sep(*s, c))
+		while (*s && is_sep(*s, c))
 			s++;
-		if (*s && check_sep(*s, c) == 0)
+		if (*s && is_sep(*s, c) == 0)
 		{
 			split[i] = ft_create_word(s, c, my_garbage);
-			while (*s && check_sep(*s, c) == 0)
+			while (*s && is_sep(*s, c) == 0)
 				s++;
 			i++;
 		}

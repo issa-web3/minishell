@@ -27,6 +27,7 @@ typedef enum e_token_type
 
 //utils
 int			is_whitespace(char c);
+int			check_sep(char set);
 int			is_redir(char c);
 int			is_valid_var(int c);
 int			is_quote(char c);
@@ -47,7 +48,7 @@ void		ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens);
 t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage);
 char		**extract(char **old_str, char *new, t_garbage **garbage);
 char	*ft_replace_dollar(char *str, t_env *env, t_garbage **garbage);
-char	**ft_strtok(char *s, char c, t_garbage **my_garbage);
+char	**ft_strtok(char *s, t_garbage **my_garbage);
 //expanding
 void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage);
 t_expand	*ft_create_expand_node(char *s, t_garbage **garbage);

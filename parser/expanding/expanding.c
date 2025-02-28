@@ -93,8 +93,15 @@ char	*expand_dollar_variable(char *str, t_env *env, t_garbage **garbage)
 
 void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
 {
+	int	i;
+
+	i = 0;
 	if ((*node) && (*node)->type == WORD)
 	{
 		(*node)->token = expand_dollar_variable((*node)->token, envl, garbage);
+		if (count_words((*node)->token, ' ') > 1)
+		{
+			
+		}
 	}
 }

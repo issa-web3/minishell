@@ -12,7 +12,7 @@
 
 #include "utils.h"
 
-int	count_words(const char *str, char c)
+int	count_words(const char *str)
 {
 	int	count;
 	int	i;
@@ -23,12 +23,12 @@ int	count_words(const char *str, char c)
 	1 && (i = 0, count = 0, quote = 0);
 	while (str[i])
 	{
-		while (str[i] && check_sep(str[i], c) == 1)
+		while (str[i] && check_sep(str[i]) == 1)
 			i++;
-		if (str[i] && check_sep(str[i], c) == 0)
+		if (str[i] && check_sep(str[i]) == 0)
 		{
 			count++;
-			while (str[i] && (check_sep(str[i], c) == 0 || quote != '\0'))
+			while (str[i] && (check_sep(str[i]) == 0 || quote != '\0'))
 			{
 				if ((str[i] == '"' || str[i] == '\'') && (quote == '\0'))
 					quote = str[i];
