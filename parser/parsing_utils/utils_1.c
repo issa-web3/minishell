@@ -100,5 +100,4 @@ void	ft_append_to_lst(t_token **lst, t_token *node)
 	while (last->next)
 		last = last->next;
 	last->next = node;
-	node->next = NULL;
 }

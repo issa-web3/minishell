@@ -68,6 +68,18 @@ static char	*extract_token(char *str, int start, int i, t_garbage **garbage)
 	return (ft_strtrim(res, " \t", garbage));
 }
 
+//remove laters
+t_token	*ft_lstlast_token(t_token *lst)
+{
+	t_token	*current;
+
+	if (!lst)
+		return (lst);
+	current = lst;
+	while (current->next)
+		current = current->next;
+	return current;
+}
 t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 {
 	t_token	*lst;
@@ -91,9 +103,16 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 		add_to_lst->token = extract_token(str, start, i, garbage);
 		add_to_lst->type = ft_get_token_type(add_to_lst->token);
 		add_to_lst->expanded = 0;
-		 if (can_i_expand(add_to_lst->token))
+		add_to_lst->next = NULL;
+		if (can_i_expand(add_to_lst->token))
 			ft_expand_token(&add_to_lst, env, garbage);
-		ft_append_to_lst(&lst, add_to_lst);
+		t_token *curr = add_to_lst;
+		if (!lst)
+			lst = curr;
+		else{
+			t_token *last = ft_lstlast_token(lst);
+			last->next = curr;
+		}
 	}
 	return (lst);
 }
