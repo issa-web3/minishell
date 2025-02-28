@@ -47,7 +47,7 @@ int			ft_toupper(int c);
 
 // part 2
 int			is_sep(char set, char c);
-int			count_words(const char *str);
+int			count_words(const char *str, char c);
 char		**ft_split(char *s, char c, t_garbage **my_garbage);
 char		*ft_strjoin(char *s1, char *s2, t_garbage **my_garbage);
 char		*ft_strmapi(char *s, char (*f)(unsigned int, char));
