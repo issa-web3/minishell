@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-static t_token_type ft_get_token_type(char *str)
+static t_token_type get_type(char *str)
 {
 	if (!str)
 		return (WORD);
@@ -33,7 +33,7 @@ static t_token_type ft_get_token_type(char *str)
 	return (WORD);
 }
 
-static void	ft_check_token(char *str, int *i)
+static int	ft_check_token(char *str, int *i)
 {
 	while (str[*i])
 	{
@@ -45,6 +45,7 @@ static void	ft_check_token(char *str, int *i)
 			break ;
 		(*i)++;
 	}
+	return (1);
 }
 
 static void	handle_operators(char *str, int *i)
@@ -68,18 +69,6 @@ static char	*extract_token(char *str, int start, int i, t_garbage **garbage)
 	return (ft_strtrim(res, " \t", garbage));
 }
 
-//remove laters
-t_token	*ft_lstlast_token(t_token *lst)
-{
-	t_token	*current;
-
-	if (!lst)
-		return (lst);
-	current = lst;
-	while (current->next)
-		current = current->next;
-	return current;
-}
 t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 {
 	t_token	*lst;
@@ -87,32 +76,23 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 	int		i;
 	int		start;
 
-	i = 0;
-	lst = NULL;
 	if (!str)
 		return (NULL);
+	1337 && (i = 0, lst = NULL);
 	while (str[i])
 	{
-		add_to_lst = ft_malloc(sizeof(t_token), garbage);
-		start = i;
-		ft_check_token(str, &i);
+		1 && (start = i, ft_check_token(str, &i));
 		if (start == i)
 			handle_operators(str, &i);
 		while (str[i] && is_whitespace(str[i]))
 			i++;
-		add_to_lst->token = extract_token(str, start, i, garbage);
-		add_to_lst->type = ft_get_token_type(add_to_lst->token);
-		add_to_lst->expanded = 0;
-		add_to_lst->next = NULL;
-		if (can_i_expand(add_to_lst->token))
-			ft_expand_token(&add_to_lst, env, garbage);
-		t_token *curr = add_to_lst;
+		add_to_lst = new_token_node(extract_token(str, start, i, garbage)
+			, get_type(extract_token(str, start, i, garbage)), 0, garbage);
+		to_expand(&add_to_lst, env, garbage);
 		if (!lst)
-			lst = curr;
-		else{
-			t_token *last = ft_lstlast_token(lst);
-			last->next = curr;
-		}
+			lst = add_to_lst;
+		else
+			ft_lstlast_token(lst)->next = add_to_lst;
 	}
 	return (lst);
 }

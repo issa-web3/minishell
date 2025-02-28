@@ -43,14 +43,17 @@ int			my_count_words(const char *str);
 //syntax error
 int			ft_check_syntax_error(char *line);
 // tokens
-t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage);
+t_token		*ft_create_tokens(char *str, t_env *env, t_garbage **garbage);
 void		ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens);
 t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage);
 char		**extract(char **old_str, char *new, t_garbage **garbage);
-char	*ft_replace_dollar(char *str, t_env *env, t_garbage **garbage);
-char	**ft_strtok(char *s, t_garbage **my_garbage);
+char		*ft_replace_dollar(char *str, t_env *env, t_garbage **garbage);
+char		**ft_strtok(char *s, t_garbage **my_garbage);
+t_token		*ft_lstlast_token(t_token *lst);
+t_token		*new_token_node(char *str, int type, int expanded, t_garbage **garbage);
+void		to_expand(t_token **node, t_env *env, t_garbage **g);
 //expanding
-void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage);
+void		ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage);
 t_expand	*ft_create_expand_node(char *s, t_garbage **garbage);
 void		ft_lstadd_back_t_expand(t_expand **lst, t_expand *new);
 #endif

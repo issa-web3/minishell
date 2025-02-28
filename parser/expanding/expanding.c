@@ -112,10 +112,7 @@ void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
 			i++;
 			while (i < n)
 			{
-				new = ft_malloc(sizeof(t_token), garbage);
-				new->token = ft_strdup(toks[i], garbage);
-				new->type = WORD;
-				new->next = NULL;
+				new = new_token_node(toks[i], WORD, 1, garbage);
 				ft_append_to_lst(node, new);
 				i++;
 			}
