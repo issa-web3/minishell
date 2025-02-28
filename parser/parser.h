@@ -27,7 +27,7 @@ typedef enum e_token_type
 
 //utils
 int			is_whitespace(char c);
-int			check_sep(char set);
+int			check_sep(char set, char c);
 int			is_redir(char c);
 int			is_valid_var(int c);
 int			is_quote(char c);

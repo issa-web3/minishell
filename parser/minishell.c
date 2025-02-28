@@ -19,9 +19,9 @@ t_2_exec	*parsing(char *line, char **envp)
 	t_2_exec	*lst;
 	t_env		*envl;
 
+	garbage = NULL;
 	envl = copy_env(envp, &garbage);
 	tmp = line;
-	garbage = NULL;
 
 	line = ft_strtrim(line, " \t", &garbage);
 	free(tmp);
