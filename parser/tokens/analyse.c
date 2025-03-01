@@ -38,7 +38,12 @@ void	fill_file_info(t_file *file_node, t_token **tokens, t_garbage **garbage)
 		|| (*tokens)->type == REDIR_OUTPUT || (*tokens)->type == APPEND))
 	{
 		file_node->name = ft_strdup((*tokens)->next->token, garbage);
-		file_node->type = (*tokens)->type;
+		if ((*tokens)->type == REDIR_INPUT)
+			file_node->type = IN_FILE;
+		else if ((*tokens)->type == REDIR_OUTPUT)
+			file_node->type = OUT_FILE;
+		else
+			file_node->type = APPEND_FILE;
 		(*tokens) = (*tokens)->next;
 	}
 }

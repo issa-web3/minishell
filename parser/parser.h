@@ -23,6 +23,9 @@ typedef enum e_token_type
 	REDIR_INPUT,
 	REDIR_OUTPUT,
 	HERE_DOC,
+	OUT_FILE,
+	IN_FILE,
+	APPEND_FILE,
 }	t_token_type;
 
 //utils
