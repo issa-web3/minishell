@@ -26,7 +26,8 @@ char	*ft_get_value_env(char *str, t_env *lst)
 	return (NULL);
 }
 
-static char *extract_var_name(char *str, int *index, t_garbage **garbage)
+static char	*extract_var_name(char *str,
+	int *index, t_garbage **garbage)
 {
 	char	*var_name;
 	int		len;
@@ -40,7 +41,8 @@ static char *extract_var_name(char *str, int *index, t_garbage **garbage)
 	return (var_name);
 }
 
-static char	*expand_variable(char *str, int *index, t_env *env, t_garbage **garbage)
+static char	*expand_variable(char *str, int *index,
+	t_env *env, t_garbage **garbage)
 {
 	char	*res;
 	char	*var_name;
@@ -60,14 +62,18 @@ static char	*expand_variable(char *str, int *index, t_env *env, t_garbage **garb
 	return (res);
 }
 
+static char	*concatenate(char *res, char *str, int len, t_garbage **g)
+{
+	return (ft_strjoin(res, ft_strldup(str, len, g), g));
+}
+
 char	*ft_replace_dollar(char *str, t_env *env, t_garbage **garbage)
 {
 	char	*res;
 	int		index;
 	int		start;
 
-	res = NULL;
-	index = 0;
+	1 && (index = 0, res = NULL);
 	while (str[index])
 	{
 		start = index;
@@ -76,15 +82,16 @@ char	*ft_replace_dollar(char *str, t_env *env, t_garbage **garbage)
 			if (str[index] == '$')
 			{
 				if (start != index)
-					res = ft_strjoin(res, ft_strldup(&str[start], index - start, garbage), garbage);
+					res = concatenate(res, &str[start], index - start, garbage);
 				break ;
 			}
 			index++;
 			if (str[index] == '\0')
-				res = ft_strjoin(res, ft_strldup(&str[start], index - start, garbage), garbage);
+				res = concatenate(res, &str[start], index - start, garbage);
 		}
 		if (str[index] && str[index] == '$')
-			res = ft_strjoin(res, expand_variable(str, &index, env, garbage), garbage);
+			res = ft_strjoin(res,
+					expand_variable(str, &index, env, garbage), garbage);
 	}
 	return (res);
 }
