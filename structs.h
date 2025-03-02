@@ -33,6 +33,18 @@ typedef struct s_garbage
 	void			*ptr;
 	struct s_garbage *next;
 }					t_garbage;
+//this struct is just for the quote removal stuff
+typedef struct s_extract_info
+{
+	int	start;
+	int	length;
+}	t_extract_info;
+// also this one same as before 
+typedef struct s_indices
+{
+	int	str_index;
+	int	result_index;
+}	t_indices;
 
 typedef struct s_expand
 {
