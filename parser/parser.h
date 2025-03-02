@@ -51,6 +51,7 @@ void		ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens);
 t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage);
 char		**extract(char **old_str, char *new, t_garbage **garbage);
 char		*ft_replace_dollar(char *str, t_env *env, t_garbage **garbage);
+t_token		*remove_quotes_from_toks(t_token *toks, t_garbage **g);
 char		**ft_strtok(char *s, t_garbage **my_garbage);
 t_token		*ft_lstlast_token(t_token *lst);
 t_token		*new_token_node(char *str, int type, int expanded, t_garbage **garbage);
