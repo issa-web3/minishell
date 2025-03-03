@@ -55,3 +55,17 @@ void	ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens)
 	}
 	(*node)->cmd = cmds;
 }
+
+void	check_export(t_token **node, int *is_export)
+{
+	char	*eq_pos;
+
+	if ((*node) && (*node)->type == WORD && (*node)->token)
+	{
+		eq_pos = ft_strchr((*node)->token, '=');
+		if (eq_pos && eq_pos != (*node)->token)
+			*is_export = 1;
+		else
+			is_export = 0;
+	}
+}
