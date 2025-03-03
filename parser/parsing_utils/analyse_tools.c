@@ -66,6 +66,6 @@ void	check_export(t_token **node, int *is_export)
 		if (eq_pos && eq_pos != (*node)->token)
 			*is_export = 1;
 		else
-			is_export = 0;
+			*is_export = 0;
 	}
 }
