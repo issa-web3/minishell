@@ -56,7 +56,7 @@ void	ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens)
 	(*node)->cmd = cmds;
 }
 
-void	check_export(t_token **node, int *is_export)
+void   check_export(t_token **node, int *is_export)
 {
 	char	*eq_pos;
 
