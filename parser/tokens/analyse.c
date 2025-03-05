@@ -52,19 +52,18 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 {
 	t_file	*files;
 	t_file	*file_node;
+	int		a_r_found;
 
 	files = NULL;
+	a_r_found = 0;
 	if (tokens == NULL || *tokens == NULL)
 		return (1);
-	if ((*tokens)->next->token == NULL)
-	{
-		(*tokens) = (*tokens)->next;
-		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2), 1); //need to add exit status
-	}
 	while ((*tokens) && ((*tokens)->type == REDIR_INPUT
 		|| (*tokens)->type == REDIR_OUTPUT
 		|| (*tokens)->type == APPEND))
 	{
+		if ((*tokens)->next->token == NULL)
+			a_r_found++;
 		file_node = ft_malloc(sizeof(t_file), garbage);
 		fill_file_info(file_node, tokens, garbage);
 		ft_lstadd_back_t_file(&files, file_node);
@@ -72,6 +71,8 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 			(*tokens) = (*tokens)->next;
 	}
 	(*node)->files = files;
+	if (a_r_found)
+		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2), 1);
 	return (0);
 }
 
