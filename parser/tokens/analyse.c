@@ -56,6 +56,11 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 	files = NULL;
 	if (tokens == NULL || *tokens == NULL)
 		return (1);
+	if ((*tokens)->next->token == NULL)
+	{
+		(*tokens) = (*tokens)->next;
+		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2), 1); //need to add exit status
+	}
 	while ((*tokens) && ((*tokens)->type == REDIR_INPUT
 		|| (*tokens)->type == REDIR_OUTPUT
 		|| (*tokens)->type == APPEND))
