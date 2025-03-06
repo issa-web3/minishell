@@ -26,3 +26,6 @@ sometimes :
 
 sometimes:
 	stops working
+
+zyamli:
+	"l"'s' '|' | -la
