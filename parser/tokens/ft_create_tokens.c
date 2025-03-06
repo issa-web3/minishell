@@ -33,15 +33,6 @@ static t_token_type get_type(char *str)
 	return (WORD);
 }
 
-void	ft_skip_quoted_section(char *str, int *i, char quote_type)
-{
-	(*i)++;
-	while (str[*i] && str[*i] != quote_type)
-		(*i)++;
-	if (str[*i])
-		(*i)++;
-}
-
 static void	ft_check_token(char *str, int *i)
 {
 	char quote_type;

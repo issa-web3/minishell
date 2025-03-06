@@ -35,7 +35,7 @@ int			is_valid_var(int c);
 int			is_quote(char c);
 int			init_syntax_data(int *i, char *line);
 int			is_operator(char c);
-void		ft_skip_quotes(char *str, int *i);
+void		ft_skip_quoted_section(char *str, int *i, char quote_type);
 char		*ft_strtrim(char *str, char *set, t_garbage **to_free);
 char		*ft_strldup(char *str, size_t len, t_garbage **garbage);
 void		ft_append_to_lst(t_token **lst, t_token *node);

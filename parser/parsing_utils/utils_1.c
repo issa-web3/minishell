@@ -52,20 +52,15 @@ char	*ft_strtrim(char *str, char *set, t_garbage **to_free)
 	return (res);
 }
 
-void	ft_skip_quotes(char *str, int *i)
+void	ft_skip_quoted_section(char *str, int *i, char quote_type)
 {
-	char	q;
-
-	if (str[*i] == '\'' || str[*i] == '\"')
-	{
-		q = str[*i];
+	(*i)++;
+	while (str[*i] && str[*i] != quote_type)
 		(*i)++;
-		while (str[*i] && str[*i] != q)
-			(*i)++;
-		if (str[*i] == q)
-			(*i)++;
-	}
+	if (str[*i])
+		(*i)++;
 }
+
 char	*ft_strldup(char *str, size_t len, t_garbage **garbage)
 {
 	char	*res;
