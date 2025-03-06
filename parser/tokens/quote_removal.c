@@ -20,7 +20,7 @@ static char	*extract_quoted(char *str, int *index, int q_type, t_garbage **g)
 	(*index)++;
 	info.start = *index;
 	info.length = 0;
-	while (str[*index] && is_quote(str[*index]) != q_type)
+	while (str[*index] && (is_quote(str[*index]) != q_type))
 	{
 		(*index)++;
 		info.length++;

@@ -33,19 +33,33 @@ static t_token_type get_type(char *str)
 	return (WORD);
 }
 
-static int	ft_check_token(char *str, int *i)
+void	ft_skip_quoted_section(char *str, int *i, char quote_type)
 {
+	(*i)++;
+	while (str[*i] && str[*i] != quote_type)
+		(*i)++;
+	if (str[*i])
+		(*i)++;
+}
+
+static void	ft_check_token(char *str, int *i)
+{
+	char quote_type;
+
 	while (str[*i])
 	{
 		if (is_quote(str[*i]))
-			ft_skip_quotes(str, i);
+		{
+			quote_type = str[*i];
+			ft_skip_quoted_section(str, i, quote_type);
+			continue;
+		}
 		if ((str[*i] && is_operator(str[*i]))
 			|| (str[*i] && is_whitespace(str[*i]))
 			|| !str[*i])
 			break ;
 		(*i)++;
 	}
-	return (1);
 }
 
 static void	handle_operators(char *str, int *i)
@@ -64,8 +78,6 @@ static char	*extract_token(char *str, int start, int i, t_garbage **garbage)
 	char	*res;
 
 	res = ft_strldup(&str[start], i - start, garbage);
-	if (!res)
-		return (NULL);
 	return (ft_strtrim(res, " \t", garbage));
 }
 
@@ -81,7 +93,8 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 	1337 && (i = 0, lst = NULL);
 	while (str[i])
 	{
-		1 && (start = i, ft_check_token(str, &i));
+		start = i;
+		ft_check_token(str, &i);
 		if (start == i)
 			handle_operators(str, &i);
 		while (str[i] && is_whitespace(str[i]))
