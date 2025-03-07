@@ -82,7 +82,6 @@ t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage)
 	t_2_exec	*node;
 	t_token		*tokens;
 
-
 	lst = NULL;
 	tokens = ft_create_tokens(line, envl, garbage);
 	tokens = remove_quotes_from_toks(tokens, garbage);
@@ -92,10 +91,10 @@ t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage)
 		ft_init_2exec(node);
 		while (tokens && tokens->type != PIPE)
 		{
-			if (create_cmd(&tokens, node, garbage))
-				break;
 			if (handle_redir(&node, &tokens, garbage))
 				break ;
+			if (create_cmd(&tokens, node, garbage))
+				break;
 		}
 		ft_lstadd_back_t2exec(&lst, node);
 		if (tokens)

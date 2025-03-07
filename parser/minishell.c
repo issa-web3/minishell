@@ -38,7 +38,7 @@ t_2_exec	*parsing(char *line, char **envp)
 		t_file *tmp1  = lst->files;
 		while (tmp1)
 		{
-			printf("file %s type %d\n", tmp1->name, tmp1->type);
+			printf("file [%s] type [%d]\n", tmp1->name, tmp1->type);
 			tmp1 = tmp1->next;
 		}
 		c++;
@@ -56,7 +56,7 @@ int	main(int ac, char **av, char **envp)
 	lst = NULL;
 	while (1)
 	{
-		line = readline("minishell >");
+		line = readline("minishell ~");
 		if (line && line[0])
 		{
 			add_history(line);
