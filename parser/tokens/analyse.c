@@ -35,7 +35,7 @@ static int	create_cmd(t_token **tokens, t_2_exec *node, t_garbage **garbage)
 void	fill_file_info(t_file *file_node, t_token **tokens, t_garbage **garbage)
 {
 	if ((*tokens)->next && ((*tokens)->type == REDIR_INPUT
-		|| (*tokens)->type == REDIR_OUTPUT || (*tokens)->type == APPEND))
+			|| (*tokens)->type == REDIR_OUTPUT || (*tokens)->type == APPEND))
 	{
 		file_node->name = ft_strdup((*tokens)->next->token, garbage);
 		if ((*tokens)->type == REDIR_INPUT)
@@ -59,8 +59,8 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 	if (tokens == NULL || *tokens == NULL)
 		return (1);
 	while ((*tokens) && ((*tokens)->type == REDIR_INPUT
-		|| (*tokens)->type == REDIR_OUTPUT
-		|| (*tokens)->type == APPEND))
+			|| (*tokens)->type == REDIR_OUTPUT
+			|| (*tokens)->type == APPEND))
 	{
 		if ((*tokens)->next->token == NULL)
 			a_r_found++;
@@ -94,7 +94,7 @@ t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage)
 			if (handle_redir(&node, &tokens, garbage))
 				break ;
 			if (create_cmd(&tokens, node, garbage))
-				break;
+				break ;
 		}
 		ft_lstadd_back_t2exec(&lst, node);
 		if (tokens)
