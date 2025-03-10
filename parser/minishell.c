@@ -54,6 +54,8 @@ int	main(int ac, char **av, char **envp)
 	char		*line;
 	t_2_exec	*lst;
 	lst = NULL;
+	signal(SIGINT, sigint_handler);
+	signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{
 		line = readline("minishell ~");
