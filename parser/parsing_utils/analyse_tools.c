@@ -69,3 +69,20 @@ void	check_export(t_token **node, int *is_export)
 			*is_export = 0;
 	}
 }
+
+int	is_only_whitespace(char *str)
+{
+    int i;
+    
+    if (!str || !*str)
+        return (1);
+        
+    i = 0;
+    while (str[i])
+    {
+        if (!is_whitespace(str[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}

@@ -31,6 +31,7 @@ typedef enum e_token_type
 //utils
 int			is_whitespace(char c);
 void		sigint_handler(int sig);
+int			is_only_whitespace(char *str);
 int			is_redir(char c);
 int			is_valid_var(int c);
 int			is_quote(char c);
@@ -56,7 +57,7 @@ char		*ft_replace_dollar(char *str, t_env *env, t_garbage **garbage);
 t_token		*remove_quotes_from_toks(t_token *toks, t_garbage **g);
 char		**ft_strtok(char *s, t_garbage **my_garbage);
 t_token		*ft_lstlast_token(t_token *lst);
-t_token		*new_token_node(char *str, int type, int expanded, t_garbage **garbage);
+t_token		*new_token_node(char *str, int type, t_garbage **garbage);
 void		to_expand(t_token **node, t_env *env, t_garbage **g);
 //expanding
 void		ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage);

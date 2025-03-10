@@ -34,7 +34,7 @@ t_2_exec	*parsing(char *line, char **envp)
 		printf("commands[%d]: \n", c);
 		i = 0;
 		while (lst->cmd && lst->cmd[i])
-			printf("%s\n", lst->cmd[i++]);
+			printf("[%s]\n", lst->cmd[i++]);
 		t_file *tmp1  = lst->files;
 		while (tmp1)
 		{
@@ -54,7 +54,7 @@ int	main(int ac, char **av, char **envp)
 	char		*line;
 	t_2_exec	*lst;
 	lst = NULL;
-	signal(SIGINT, sigint_handler);
+	// signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{

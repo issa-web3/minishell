@@ -12,7 +12,8 @@
 
 #include "../../minishell.h"
 
-static char	*get_between_quotes(char *str, int *i, int quote, t_garbage **garbage)
+static char	*get_between_quotes(char *str, int *i,
+		int quote, t_garbage **garbage)
 {
 	char	*res;
 	int		start;
@@ -49,7 +50,7 @@ static t_expand	*create_expand_lst(char *str, t_garbage **garbage)
 	lst = NULL;
 	while (str[i])
 	{
-		node = 	ft_create_expand_node(NULL, garbage);
+		node = ft_create_expand_node(NULL, garbage);
 		segment = NULL;
 		node->is_expand = 1;
 		if (str[i] && is_quote(str[i]) == 1)
@@ -94,17 +95,19 @@ char	*expand_dollar_variable(char *str, t_env *env, t_garbage **garbage)
 void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
 {
 	int		i;
-	t_token	*new;
-	char 	**toks;
+	char	**toks;
 	int		is_export;
+	int		has_quotes;
 	int		n;
 
-	i = 0;
-	check_export(node, &is_export);
+	1 && (check_export(node, &is_export), i = 0);
 	if ((*node) && (*node)->type == WORD)
 	{
+		1 && (has_quotes = ft_strchr((*node)->token, '\'')
+			|| ft_strchr((*node)->token, '\"'));
 		(*node)->token = expand_dollar_variable((*node)->token, envl, garbage);
-		(*node)->expanded = 1;
+		if (!has_quotes && is_only_whitespace((*node)->token))
+			(*node)->token = NULL;
 		n = my_count_words((*node)->token);
 		if (n > 1 && !is_export)
 		{
@@ -112,10 +115,8 @@ void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
 			(*node)->token = ft_strdup(toks[i++], garbage);
 			(*node)->type = WORD;
 			while (i < n)
-			{
-				new = new_token_node(toks[i++], WORD, 1, garbage);
-				ft_append_to_lst(node, new);
-			}
+				ft_append_to_lst(node,
+					new_token_node(toks[i++], WORD, garbage));
 		}
 	}
 }

@@ -91,7 +91,7 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 		while (str[i] && is_whitespace(str[i]))
 			i++;
 		add_to_lst = new_token_node(extract_token(str, start, i, garbage)
-			, get_type(extract_token(str, start, i, garbage)), 0, garbage);
+			, get_type(extract_token(str, start, i, garbage)), garbage);
 		to_expand(&add_to_lst, env, garbage);
 		if (!lst)
 			lst = add_to_lst;

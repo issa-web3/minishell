@@ -29,14 +29,13 @@ t_token	*ft_lstlast_token(t_token *lst)
 	return current;
 }
 
-t_token	*new_token_node(char *str, int type, int expanded, t_garbage **garbage)
+t_token	*new_token_node(char *str, int type, t_garbage **garbage)
 {
 	t_token	*node;
 
 	node = ft_malloc(sizeof(t_token), garbage);
 	node->token = ft_strdup(str, garbage);
 	node->type = type;
-	node->expanded = expanded;
 	node->next = NULL;
 	return (node);
 }
