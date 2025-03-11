@@ -24,7 +24,6 @@ typedef struct s_token
 {
 	char			*token;
 	int				type;
-	int				expanded;
 	struct s_token	*next;
 }			t_token;
 
