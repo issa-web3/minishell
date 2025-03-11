@@ -6,40 +6,50 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 16:09:17 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:27:21 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-char	redirections(char **infiles, char **outfiles, char *appends, t_garbage **my_garbage)
-{
-	int		fd;
-	int		i;
+// implement linked list instead of array
+// char	redirections(t_file *files, t_garbage **my_garbage)
+// {
+// 	int		fd;
+// 	int		i;
 
-	i = 0;
-	while (infiles[i])
+// 	i = 0;
+// 	while (infiles[i])
+// 	{
+// 		fd = ft_open(infiles[i], O_RDONLY);
+// 		if (fd == -1)
+// 			return (0);
+// 		if (ft_dup2(fd, STDIN_FILENO) == -1)
+// 			return (0);
+// 		close(fd);
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while (outfiles[i])
+// 	{
+// 		fd = ft_open(outfiles[i], O_WRONLY | O_CREAT | appends[i] * O_APPEND | !appends[i] * O_TRUNC);
+// 		if (fd == -1)
+// 			return (0);
+// 		if (ft_dup2(fd, STDOUT_FILENO) == -1)
+// 			return (0);
+// 		close(fd);
+// 		i++;
+// 	}
+// 	return (1);
+// }
+
+char	redirections(t_file *files, t_garbage **my_garbage)
+{
+	while (files != NULL)
 	{
-		fd = ft_open(infiles[i], O_RDONLY);
-		if (fd == -1)
-			return (0);
-		if (ft_dup2(fd, STDIN_FILENO) == -1)
-			return (0);
-		close(fd);
-		i++;
+		// if (files->type == )
+		files = files->next;
 	}
-	i = 0;
-	while (outfiles[i])
-	{
-		fd = ft_open(outfiles[i], O_WRONLY | O_CREAT | appends[i] * O_APPEND | !appends[i] * O_TRUNC);
-		if (fd == -1)
-			return (0);
-		if (ft_dup2(fd, STDOUT_FILENO) == -1)
-			return (0);
-		close(fd);
-		i++;
-	}
-	return (1);
 }
 
 void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
@@ -83,7 +93,7 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 		tmp = process_idx;
 		while (--process_idx > 0)
 			data = data->next;
-		success = redirections(data->infiles, data->outfiles, data->appends, my_garbage);
+		success = redirections(data->files, my_garbage);
 		if (success)
 			exec_by_idx(data, my_env, my_garbage);
 		close(pipes[tmp][0]);

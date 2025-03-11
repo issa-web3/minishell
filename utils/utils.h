@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:21:44 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int			ft_lstsize(t_2_exec *lst);
 t_2_exec	*ft_lstlast(t_2_exec *lst);
 void		ft_lstadd_back(t_2_exec **lst, t_2_exec *new_node,
 				t_garbage **my_garbage);
-t_2_exec	*ft_lstnew(t_2_exec data, t_garbage **my_garbage);
 
 // env
 t_env		*copy_env(char **env, t_garbage **my_garbage);
