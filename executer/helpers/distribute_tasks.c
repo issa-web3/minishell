@@ -6,50 +6,35 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/11 21:27:21 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:56:46 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-// implement linked list instead of array
-// char	redirections(t_file *files, t_garbage **my_garbage)
-// {
-// 	int		fd;
-// 	int		i;
-
-// 	i = 0;
-// 	while (infiles[i])
-// 	{
-// 		fd = ft_open(infiles[i], O_RDONLY);
-// 		if (fd == -1)
-// 			return (0);
-// 		if (ft_dup2(fd, STDIN_FILENO) == -1)
-// 			return (0);
-// 		close(fd);
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (outfiles[i])
-// 	{
-// 		fd = ft_open(outfiles[i], O_WRONLY | O_CREAT | appends[i] * O_APPEND | !appends[i] * O_TRUNC);
-// 		if (fd == -1)
-// 			return (0);
-// 		if (ft_dup2(fd, STDOUT_FILENO) == -1)
-// 			return (0);
-// 		close(fd);
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
 char	redirections(t_file *files, t_garbage **my_garbage)
 {
+	int	fd;
+	int	file_mode;
+
 	while (files != NULL)
 	{
-		// if (files->type == )
+		file_mode = 0;
+		file_mode += files->type == IN_FILE * O_RDONLY;
+		file_mode += files->type == IN_FILE * O_RDONLY;
+		file_mode += files->type == IN_FILE * O_RDONLY;
+		if (files->type == IN_FILE)
+			fd = ft_open(files->name, O_RDONLY);
+		else if (files->type == OUT_FILE)
+			fd = ft_open(files->name, O_WRONLY | O_CREAT | O_TRUNC);
+		else if (files->type == APPEND_FILE)
+			fd = ft_open(files->name, O_WRONLY | O_CREAT | O_APPEND);
+		if (fd == -1 || ft_dup2(fd, files->type != IN_FILE) == -1)
+			return (-1);
+		close(fd);
 		files = files->next;
 	}
+	return (0);
 }
 
 void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
@@ -72,7 +57,7 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 	int		process_idx;
 	int		process_num;
 	int		fork_response;
-	char	success;
+	char	result;
 
 	process_idx = pi.process_idx;
 	process_num = pi.process_num;
@@ -93,8 +78,8 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 		tmp = process_idx;
 		while (--process_idx > 0)
 			data = data->next;
-		success = redirections(data->files, my_garbage);
-		if (success)
+		result = redirections(data->files, my_garbage);
+		if (result == -1)
 			exec_by_idx(data, my_env, my_garbage);
 		close(pipes[tmp][0]);
 		close(pipes[tmp][1]);
