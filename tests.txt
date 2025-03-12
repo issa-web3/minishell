@@ -16,4 +16,5 @@ talha:
 
 playing
 	pwd | cat > x
-	cat x | tr '/' '\n'  | tr s ' ' | grep mini >> x
+	require: pwd > x
+		cat x | tr '/' '\n'  | tr s ' ' | grep mini >> x
