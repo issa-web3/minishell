@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analyse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-21 10:09:38 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-21 10:09:38 by khoukouj         ###   ########.ma       */
+/*   Created: 2025/02/21 10:09:38 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/12 01:28:46 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 void	ft_init_2exec(t_2_exec *node)
 {
 	node->cmd = NULL;
-	node->appends = NULL;
-	node->infiles = NULL;
-	node->outfiles = NULL;
 	node->files = NULL;
 }
 

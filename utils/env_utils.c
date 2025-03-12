@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 01:00:21 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:24:47 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	del_env_var(t_env *env_var, t_env **my_env)
 	{
 		*my_env = (*my_env)->next;
 		env_var->next = NULL;
-		clear_env(env_var);
+		clear_env(&env_var);
 		return ;
 	}
 	prev_env = (*my_env);
@@ -54,7 +54,7 @@ void	del_env_var(t_env *env_var, t_env **my_env)
 		prev_env = prev_env->next;
 	prev_env->next = env_var->next;
 	env_var->next = NULL;
-	clear_env(env_var);
+	clear_env(&env_var);
 }
 
 t_env	*append_env(t_env **head, t_env *tail, t_env *new_env)
@@ -90,6 +90,26 @@ t_env	*copy_env(char **env, t_garbage **my_garbage)
 		i++;
 	}
 	return (my_env);
+}
+
+char	**format_env(t_env **my_env, t_garbage **my_garbage)
+{
+	char	**result;
+	t_env	*curr;
+	size_t	i;
+
+	(curr = *my_env, i = 0);
+	while (curr)
+		(i++, curr = curr->next);
+	result = ft_malloc(i * (sizeof(char *) + 1), my_garbage);
+	if (result == NULL)
+		return (NULL);
+	(curr = *my_env, i = 0);
+	while (curr)
+	{
+		curr = curr->next;
+	}
+	return (result);
 }
 
 void	clear_env(t_env **my_env)

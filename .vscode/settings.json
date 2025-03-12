@@ -3,6 +3,9 @@
         "executer.h": "c",
         "functional": "c",
         "minishell.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "utils.h": "c",
+        "get_next_line.h": "c",
+        "parser.h": "c"
     }
 }

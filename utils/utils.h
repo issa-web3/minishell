@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 00:54:08 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:22:09 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char		*ft_strrchr(const char *s, int c);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
+int			is_sep(char set, char c);
 
 // part 2
-int			is_sep(char set, char c);
 int			count_words(const char *str, char c);
 char		**ft_split(char *s, char c, t_garbage **my_garbage);
 char		**ft_split_without_garbage(char *s, char c);
@@ -73,5 +73,6 @@ t_env		*append_env(t_env **head, t_env *tail, t_env *new_env);
 t_env		*get_last_env(t_env **my_env);
 void		del_env_var(t_env *env_var, t_env **my_env);
 void		clear_env(t_env **my_env);
+char		**format_env(t_env **my_env, t_garbage **my_garbage);
 
 #endif

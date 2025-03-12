@@ -6,12 +6,25 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/11 21:41:06 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:07:28 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+typedef enum e_token_type
+{
+	WORD,
+	PIPE,
+	APPEND,
+	REDIR_INPUT,
+	REDIR_OUTPUT,
+	HERE_DOC,
+	OUT_FILE,
+	IN_FILE,
+	APPEND_FILE,
+}	t_token_type;
 
 typedef struct s_file
 {
@@ -23,7 +36,7 @@ typedef struct s_file
 typedef struct s_token
 {
 	char			*token;
-	int				type;
+	t_token_type	type;
 	struct s_token	*next;
 }			t_token;
 

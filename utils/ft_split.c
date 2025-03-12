@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:30:51 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 00:50:41 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:12:22 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static int	is_sep(char set, char c)
+int	is_sep(char set, char c)
 {
 	if (set == c)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/12 00:56:24 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:30:30 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main(int ac, char **av, char **env)
 	char		cwd[1024];
 	t_env		*my_env;
 	t_garbage	*my_garbage;
+	char		**formated_env;
 
 	// make copy of env
 	my_garbage = NULL;
@@ -31,10 +32,14 @@ int main(int ac, char **av, char **env)
 					ft_strjoin(ft_strdup(ft_strrchr(cwd, '/'), &my_garbage), "] $ ", &my_garbage), &my_garbage));
 		// if (line && 0)
 		// 	append_garbage(&my_garbage, line);
-		data = parser(ac, av, &my_env, &my_garbage, line);
-		execute(data, &my_env, &my_garbage);
-		if (line && *line)
-			add_history(line);
+		formated_env = format_env(&my_env, &my_garbage);
+		if (line && formated_env)
+		{
+			data = parsing(line, formated_env);
+			execute(data, &my_env, &my_garbage);
+			if (line && *line)
+				add_history(line);
+		}
 		clear_garbage(&my_garbage);
 	}
 	clear_env(&my_env); // or if any error occured

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/05 13:12:02 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:14:54 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,8 @@
 // inc
 # include "../minishell.h"
 
-typedef enum e_token_type
-{
-	WORD,
-	PIPE,
-	APPEND,
-	REDIR_INPUT,
-	REDIR_OUTPUT,
-	HERE_DOC,
-	OUT_FILE,
-	IN_FILE,
-	APPEND_FILE,
-}	t_token_type;
+// the boss
+t_2_exec	*parsing(char *line, char **envp);
 
 //utils
 int			is_whitespace(char c);

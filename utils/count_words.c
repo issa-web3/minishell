@@ -6,12 +6,11 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:46:31 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/06 16:21:11 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:12:05 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-
 
 int	count_words(const char *str, char c)
 {

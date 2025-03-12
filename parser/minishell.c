@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-05 13:00:46 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-05 13:00:46 by khoukouj         ###   ########.1337.ma  */
+/*   Created: 2025/02/05 13:00:46 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/12 01:13:52 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,21 @@ t_2_exec	*parsing(char *line, char **envp)
 	return (NULL);
 }
 
-int	main(int ac, char **av, char **envp)
-{
-	char		*line;
-	t_2_exec	*lst;
-	lst = NULL;
-	// signal(SIGINT, sigint_handler);
-	signal(SIGQUIT, SIG_IGN);
-	while (1)
-	{
-		line = readline("minishell ~");
-		if (line && line[0])
-		{
-			add_history(line);
-			lst = parsing(line, envp);
-		}
-	}
-	return (0);
-}
+// int	main(int ac, char **av, char **envp)
+// {
+// 	char		*line;
+// 	t_2_exec	*lst;
+// 	lst = NULL;
+// 	// signal(SIGINT, sigint_handler);
+// 	signal(SIGQUIT, SIG_IGN);
+// 	while (1)
+// 	{
+// 		line = readline("minishell ~");
+// 		if (line && line[0])
+// 		{
+// 			add_history(line);
+// 			lst = parsing(line, envp);
+// 		}
+// 	}
+// 	return (0);
+// }

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:57:33 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 14:27:49 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:16:40 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	exec_builtin(char **cmd, t_env **my_env, t_garbage **my_garbage, char exit_
 	built_in[5].func = ft_pwd;
 	built_in[6].name = "env";
 	built_in[6].func = ft_env;
-	built_in[7].name = "clear";
-	built_in[7].func = ft_clear;
 	i = 0;
 	while (i < 8 && ft_strcmp(built_in[i].name, cmd[0]) != 0)
 		i++;

@@ -25,7 +25,7 @@ int	precheck_init(int fd,
 			t_data_chunk **head,
 			t_data_chunk **curr)
 {
-	if (fd < 0 || fd >= OPEN_MAX)
+	if (fd < 0 || fd >= 1024)
 		return (-1);
 	if (BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (copy_lst_and_free(head, NULL), -1);
