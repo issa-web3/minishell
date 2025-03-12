@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 08:20:28 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 08:22:07 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	exec_builtin(data->cmd, my_env, my_garbage, 1);
 	cmd = data->cmd[0];
 	data->cmd[0] = get_path(data->cmd[0], my_env, my_garbage);
-	// execve(data->cmd[0], data->cmd, format_env(my_env, my_garbage));
-	execve(data->cmd[0], data->cmd, 0);
+	execve(data->cmd[0], data->cmd, format_env(my_env, my_garbage));
 	write(2, cmd, ft_strlen(cmd));
 	write(2, ": command not found\n", 20);
 	clear_garbage(my_garbage);
