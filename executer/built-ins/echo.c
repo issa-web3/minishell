@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/14 09:26:22 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:40:04 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	has_dash_n(char *str)
 {
 	if (*str != '-')
 		return (0);
-	while (*(++str) == 'n');
+	while (*(++str) == 'n')
+		;
 	return (*str == '\0');
 }
 

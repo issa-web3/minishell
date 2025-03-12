@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 08:41:58 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:38:27 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_export(char **cmd, t_env **my_env, t_garbage **my_garbage)
 	char	append;
 
 	if (cmd[1] == NULL)
-		return ; // segma
+		return ;
 	parsed = ft_split(cmd[1], '=', my_garbage);
 	if (parsed == NULL || parsed[0] == NULL || parsed[1] == NULL)
 	{
@@ -28,7 +28,10 @@ void	ft_export(char **cmd, t_env **my_env, t_garbage **my_garbage)
 	}
 	append = 0;
 	if (parsed[0][ft_strlen(parsed[0]) - 1] == '+')
-		(parsed[0][ft_strlen(parsed[0]) - 1] = 0, append = 1);
+	{
+		parsed[0][ft_strlen(parsed[0]) - 1] = 0;
+		append = 1;
+	}
 	to_export = ft_getenv(parsed[0], my_env);
 	if (to_export == NULL)
 		append_env(my_env, get_last_env(my_env), new_env_var(parsed));

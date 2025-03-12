@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 13:56:57 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:20:09 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-char	redirections(t_file *files)
+static char	redirections(t_file *files)
 {
 	int	fd;
 	int	file_mode;
@@ -24,7 +24,8 @@ char	redirections(t_file *files)
 		file_mode = 0;
 		file_mode += (files->type == IN_FILE) * O_RDONLY;
 		file_mode += (files->type == OUT_FILE) * (O_WRONLY | O_CREAT | O_TRUNC);
-		file_mode += (files->type == APPEND_FILE) * (O_WRONLY | O_CREAT | O_APPEND);
+		file_mode += (files->type == APPEND_FILE)
+			* (O_WRONLY | O_CREAT | O_APPEND);
 		fd = ft_open(files->name, file_mode);
 		if (fd == -1 || ft_dup2(fd, files->type != IN_FILE) == -1)
 			return (-1);
@@ -49,9 +50,18 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	exit(EXIT_FAILURE);
 }
 
-void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
+static void	redirect_and_execute(t_2_exec *data, int process_idx,
+		t_env **my_env, t_garbage **my_garbage)
 {
-	int		tmp;
+	while (--process_idx > 0)
+		data = data->next;
+	if (redirections(data->files) != -1)
+		exec_by_idx(data, my_env, my_garbage);
+}
+
+void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data,
+		t_env **my_env, t_garbage **my_garbage)
+{
 	int		process_idx;
 	int		process_num;
 	int		fork_response;
@@ -71,13 +81,9 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 	}
 	else
 	{
-		tmp = process_idx;
-		while (--process_idx > 0)
-			data = data->next;
-		if (redirections(data->files) != -1)
-			exec_by_idx(data, my_env, my_garbage);
-		close(pipes[tmp][0]);
-		close(pipes[tmp][1]);
+		redirect_and_execute(data, process_idx, my_env, my_garbage);
+		close(pipes[process_idx][0]);
+		close(pipes[process_idx][1]);
 		clear_garbage(my_garbage);
 		exit(EXIT_FAILURE);
 	}

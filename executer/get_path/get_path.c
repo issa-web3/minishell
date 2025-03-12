@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:37:25 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ char	*get_path(char *cmd, t_env **my_env, t_garbage **my_garbage)
 	i = 0;
 	while (paths[i])
 	{
-		path = ft_strjoin(ft_strjoin(paths[i++], "/", my_garbage), cmd, my_garbage);
+		path = ft_strjoin(
+				ft_strjoin(paths[i++], "/", my_garbage),
+				cmd, my_garbage);
 		if (access((const char *)path, X_OK) == 0)
 			break ;
 		path = NULL;
