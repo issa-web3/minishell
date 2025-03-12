@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 01:16:29 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:35:07 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	// make kids
 	pi.process_idx = 0;
 	pi.process_num = ft_lstsize(data);
-	if (data && data->cmd[0] == 0)
+	if (!data || !data->cmd || !data->cmd[0])
 		return ;
 	pipes = ft_malloc(pi.process_num * sizeof(pid_t[2]), my_garbage); // protection
 	pi.fork_response = 314;

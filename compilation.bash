@@ -3,5 +3,5 @@
 # cc executer/built-ins/src/pwd.c utils/*.c -o executer/built-ins/obj/pwd
 # cc executer/built-ins/src/env.c utils/*.c -o executer/built-ins/obj/env
 
-cc *.c utils/*.c executer/*.c executer/get_path/*.c executer/helpers/*.c executer/built-ins/*.c garbage/*.c executer/protection/*.c -lreadline -o minishell && ./minishell
+# cc *.c utils/*.c executer/*.c executer/get_path/*.c executer/helpers/*.c executer/built-ins/*.c garbage/*.c executer/protection/*.c -lreadline -o minishell && ./minishell
 cc *.c */*.c */*/*.c -lreadline -o minishell && ./minishell

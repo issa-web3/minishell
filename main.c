@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/12 01:30:30 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:35:33 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int main(int ac, char **av, char **env)
 		if (line && formated_env)
 		{
 			data = parsing(line, formated_env);
-			execute(data, &my_env, &my_garbage);
-			if (line && *line)
-				add_history(line);
+			// execute(data, &my_env, &my_garbage);
+			// if (line && *line)
+				// add_history(line);
 		}
 		clear_garbage(&my_garbage);
 	}
