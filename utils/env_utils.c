@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 14:28:17 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:00:21 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_env	*new_env_var(char **data, t_garbage **my_garbage)
 {
 	t_env	*my_env;
 
-	my_env = ft_malloc(sizeof(t_env), my_garbage);
+	(void)my_garbage;
+	my_env = malloc(sizeof(t_env));
 	if (my_env == NULL)
 		return (NULL);
 	my_env->name = data[0];
@@ -44,12 +45,16 @@ void	del_env_var(t_env *env_var, t_env **my_env)
 	if (env_var == *my_env)
 	{
 		*my_env = (*my_env)->next;
+		env_var->next = NULL;
+		clear_env(env_var);
 		return ;
 	}
 	prev_env = (*my_env);
 	while (prev_env && env_var != prev_env->next)
 		prev_env = prev_env->next;
 	prev_env->next = env_var->next;
+	env_var->next = NULL;
+	clear_env(env_var);
 }
 
 t_env	*append_env(t_env **head, t_env *tail, t_env *new_env)
@@ -63,10 +68,10 @@ t_env	*append_env(t_env **head, t_env *tail, t_env *new_env)
 
 t_env	*copy_env(char **env, t_garbage **my_garbage)
 {
-	t_env	*my_env;
-	t_env	*tail;
-	char	**data;
-	int		i;
+	t_env		*my_env;
+	t_env		*tail;
+	char		**data;
+	int			i;
 
 	i = 0;
 	while (env[i])
@@ -76,13 +81,30 @@ t_env	*copy_env(char **env, t_garbage **my_garbage)
 	tail = NULL;
 	while (env[i])
 	{
-		data = ft_split(env[i], '=', my_garbage);
+		data = ft_split_without_garbage(env[i], '=');
 		if (data == NULL)
-			return (NULL); // malloc
+			return (clear_env(&my_env), NULL);
 		tail = append_env(&my_env, tail, new_env_var(data, my_garbage));
 		if (tail == NULL)
-			return (NULL); // malloc
+			return (clear_env(&my_env), NULL);
 		i++;
 	}
 	return (my_env);
+}
+
+void	clear_env(t_env **my_env)
+{
+	t_env	*curr;
+	t_env	*next;
+
+	curr = *my_env;
+	while (curr)
+	{
+		next = curr->next;
+		free(curr->name);
+		free(curr->value);
+		free(curr);
+		curr = next;
+	}
+	*my_env = NULL;
 }

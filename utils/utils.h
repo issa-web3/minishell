@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/11 21:21:44 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:54:08 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			ft_toupper(int c);
 int			is_sep(char set, char c);
 int			count_words(const char *str, char c);
 char		**ft_split(char *s, char c, t_garbage **my_garbage);
+char		**ft_split_without_garbage(char *s, char c);
 char		*ft_strjoin(char *s1, char *s2, t_garbage **my_garbage);
 char		*ft_strmapi(char *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -71,5 +72,6 @@ t_env		*new_env_var(char **data, t_garbage **my_garbage);
 t_env		*append_env(t_env **head, t_env *tail, t_env *new_env);
 t_env		*get_last_env(t_env **my_env);
 void		del_env_var(t_env *env_var, t_env **my_env);
+void		clear_env(t_env **my_env);
 
 #endif

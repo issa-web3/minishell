@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/13 14:28:42 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:56:24 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main(int ac, char **av, char **env)
 		execute(data, &my_env, &my_garbage);
 		if (line && *line)
 			add_history(line);
-		// clear_garbage(&my_garbage);
+		clear_garbage(&my_garbage);
 	}
+	clear_env(&my_env); // or if any error occured
 }
