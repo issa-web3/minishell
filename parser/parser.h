@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/12 01:14:54 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 08:12:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../minishell.h"
 
 // the boss
-t_2_exec	*parsing(char *line, char **envp);
+t_2_exec	*parsing(char *line, t_env **envl);
 
 //utils
 int			is_whitespace(char c);

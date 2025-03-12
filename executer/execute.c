@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 02:13:05 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 08:05:23 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,9 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 		(exec_builtin(data->cmd, my_env, my_garbage, 0), pi.process_num--);
 	fail = create_children_pipes(data, my_env, pipes, &pi);
 	close_prev_pipes(pipes, pi.process_idx);
-	if (fail && pi.fork_response == 0)
-	{
-		clear_garbage(my_garbage);
-		exit(EXIT_FAILURE);
-	}
-	else if (fail)
+	while (pi.fork_response && wait(NULL) != -1)
+		;
+	if (fail)
 		return ;
 	distribute_tasks(pi, pipes, data, my_env, my_garbage);
 }

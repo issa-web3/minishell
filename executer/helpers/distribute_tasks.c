@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 02:31:15 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 08:20:28 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	write(2, cmd, ft_strlen(cmd));
 	write(2, ": command not found\n", 20);
 	clear_garbage(my_garbage);
+	clear_env(my_env);
 	exit(EXIT_FAILURE);
 }
 

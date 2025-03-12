@@ -6,27 +6,26 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:00:46 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/12 01:44:50 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 08:16:50 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_2_exec	*parsing(char *line, char **envp)
+t_2_exec	*parsing(char *line, t_env **envl)
 {
 	char		*tmp;
 	t_garbage	*garbage;
 	t_2_exec	*lst;
-	t_env		*envl;
 
 	garbage = NULL;
-	envl = copy_env(envp, &garbage);
+	line = ft_strdup(line, &garbage);
 	tmp = line;
 	line = ft_strtrim(line, " \t", &garbage);
 	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);
-	lst = ft_analyse(line, envl, &garbage);
+	lst = ft_analyse(line, *envl, &garbage);
 	int i = 0;
 	int c = 0;
 	// while (lst)
@@ -45,7 +44,6 @@ t_2_exec	*parsing(char *line, char **envp)
 	// 	lst = lst->next;
 	// }
 	// clear_garbage(&garbage);
-
 	return (lst);
 }
 
