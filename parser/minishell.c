@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:00:46 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/12 01:13:52 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 01:44:50 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,24 @@ t_2_exec	*parsing(char *line, char **envp)
 	lst = ft_analyse(line, envl, &garbage);
 	int i = 0;
 	int c = 0;
-	while (lst)
-	{
-		printf("commands[%d]: \n", c);
-		i = 0;
-		while (lst->cmd && lst->cmd[i])
-			printf("[%s]\n", lst->cmd[i++]);
-		t_file *tmp1  = lst->files;
-		while (tmp1)
-		{
-			printf("file [%s] type [%d]\n", tmp1->name, tmp1->type);
-			tmp1 = tmp1->next;
-		}
-		c++;
-		lst = lst->next;
-	}
-	clear_garbage(&garbage);
+	// while (lst)
+	// {
+	// 	printf("commands[%d]: \n", c);
+	// 	i = 0;
+	// 	while (lst->cmd && lst->cmd[i])
+	// 		printf("[%s]\n", lst->cmd[i++]);
+	// 	t_file *tmp1  = lst->files;
+	// 	while (tmp1)
+	// 	{
+	// 		printf("file [%s] type [%d]\n", tmp1->name, tmp1->type);
+	// 		tmp1 = tmp1->next;
+	// 	}
+	// 	c++;
+	// 	lst = lst->next;
+	// }
+	// clear_garbage(&garbage);
 
-	return (NULL);
+	return (lst);
 }
 
 // int	main(int ac, char **av, char **envp)
