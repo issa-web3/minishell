@@ -29,3 +29,12 @@ sometimes:
 
 zyamli:
 	"l"'s' '|' | -la
+
+talha:
+	exit
+	export
+	cd (delete parent dir)
+	/executer
+	exit | exit
+	export zzz=k > d
+	export zzz=k < d
