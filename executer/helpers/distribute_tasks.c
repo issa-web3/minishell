@@ -19,6 +19,8 @@ char	redirections(t_file *files, t_garbage **my_garbage)
 
 	while (files)
 	{
+		if (files->name == NULL)
+			return (-1);
 		file_mode = 0;
 		file_mode += (files->type == IN_FILE) * O_RDONLY;
 		file_mode += (files->type == OUT_FILE) * (O_WRONLY | O_CREAT | O_TRUNC);

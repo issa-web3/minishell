@@ -66,9 +66,9 @@ void		ft_lstadd_back(t_2_exec **lst, t_2_exec *new_node,
 				t_garbage **my_garbage);
 
 // env
-t_env		*copy_env(char **env, t_garbage **my_garbage);
+t_env		*copy_env(char **env);
 t_env		*ft_getenv(char *name, t_env **my_env);
-t_env		*new_env_var(char **data, t_garbage **my_garbage);
+t_env		*new_env_var(char **data);
 t_env		*append_env(t_env **head, t_env *tail, t_env *new_env);
 t_env		*get_last_env(t_env **my_env);
 void		del_env_var(t_env *env_var, t_env **my_env);

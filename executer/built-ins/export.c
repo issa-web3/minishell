@@ -31,7 +31,7 @@ void	ft_export(char **cmd, t_env **my_env, t_garbage **my_garbage)
 		(parsed[0][ft_strlen(parsed[0]) - 1] = 0, append = 1);
 	to_export = ft_getenv(parsed[0], my_env);
 	if (to_export == NULL)
-		append_env(my_env, get_last_env(my_env), new_env_var(parsed, my_garbage));
+		append_env(my_env, get_last_env(my_env), new_env_var(parsed));
 	else if (append)
 		to_export->value = ft_strjoin(to_export->value, parsed[1], my_garbage);
 	else

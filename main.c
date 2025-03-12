@@ -23,7 +23,7 @@ int main(int ac, char **av, char **env)
 
 	// make copy of env
 	my_garbage = NULL;
-	my_env = copy_env(env, &my_garbage);
+	my_env = copy_env(env);
 	while (1)
 	{
 		getcwd(cwd, sizeof(cwd)); // protect ft_strrchr

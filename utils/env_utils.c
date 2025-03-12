@@ -22,14 +22,13 @@ t_env	*get_last_env(t_env **my_env)
 	return (curr);
 }
 
-t_env	*new_env_var(char **data, t_garbage **my_garbage)
+t_env	*new_env_var(char **data)
 {
 	t_env	*my_env;
 
-	(void)my_garbage;
 	my_env = malloc(sizeof(t_env));
 	if (my_env == NULL)
-		return (NULL);
+		return (perror("malloc"), NULL);
 	my_env->name = data[0];
 	my_env->value = data[1];
 	my_env->next = NULL;
@@ -66,7 +65,7 @@ t_env	*append_env(t_env **head, t_env *tail, t_env *new_env)
 	return (new_env);
 }
 
-t_env	*copy_env(char **env, t_garbage **my_garbage)
+t_env	*copy_env(char **env)
 {
 	t_env		*my_env;
 	t_env		*tail;
@@ -84,7 +83,7 @@ t_env	*copy_env(char **env, t_garbage **my_garbage)
 		data = ft_split_without_garbage(env[i], '=');
 		if (data == NULL)
 			return (clear_env(&my_env), NULL);
-		tail = append_env(&my_env, tail, new_env_var(data, my_garbage));
+		tail = append_env(&my_env, tail, new_env_var(data));
 		if (tail == NULL)
 			return (clear_env(&my_env), NULL);
 		i++;

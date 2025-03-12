@@ -21,6 +21,8 @@ static char	*ft_create_word_wg(const char *str, char c)
 	while (str[i] && is_sep(str[i], c) == 0)
 		i++;
 	word = (char *)malloc(i + 1);
+	if (word == NULL)
+		return (perror("malloc"), NULL);
 	i = 0;
 	while (str[i] && is_sep(str[i], c) == 0)
 	{
@@ -31,6 +33,13 @@ static char	*ft_create_word_wg(const char *str, char c)
 	return (word);
 }
 
+void	free_split(char **split, int i)
+{
+	while (--i >= 0)
+		free(split[i]);
+	free(split);
+}
+
 char	**ft_split_without_garbage(char *s, char c)
 {
 	char	**split;
@@ -38,8 +47,9 @@ char	**ft_split_without_garbage(char *s, char c)
 
 	if (!s)
 		return (NULL);
-	split = (char **)malloc((count_words(s, c) + 1)
-			* sizeof(char *));
+	split = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (split == NULL)
+		return (perror("malloc"), NULL);
 	i = 0;
 	while (*s)
 	{
@@ -48,6 +58,8 @@ char	**ft_split_without_garbage(char *s, char c)
 		if (*s && is_sep(*s, c) == 0)
 		{
 			split[i] = ft_create_word_wg(s, c);
+			if (split[i] == NULL)
+				return (perror("malloc"), free_split(split, i), NULL); // TODO free_split
 			while (*s && is_sep(*s, c) == 0)
 				s++;
 			i++;
