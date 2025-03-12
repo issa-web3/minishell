@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-17 15:14:18 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-17 15:14:18 by khoukouj         ###   ########.ma       */
+/*   Created: 2025/02/17 15:14:18 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/12 13:50:12 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_skip_quoted_section(char *str, int *i, char quote_type)
 char	*ft_strldup(char *str, size_t len, t_garbage **garbage)
 {
 	char	*res;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	if (ft_strlen(str) < len)

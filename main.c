@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/12 08:16:04 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:46:49 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int main(int ac, char **av, char **env)
 	char		cwd[1024];
 	t_env		*my_env;
 	t_garbage	*my_garbage;
-	char		**formated_env;
 
-	// make copy of env
+	(void)ac;
+	(void)av;
 	my_garbage = NULL;
 	my_env = copy_env(env);
 	while (1)

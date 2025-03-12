@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 01:00:13 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:47:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_garbage	*append_garbage(t_garbage **my_garbage, void *ptr)
 {
 	t_garbage	*last_garbage;
 
+	(void)ptr;
 	last_garbage = *my_garbage;
 	if (last_garbage == NULL)
 		return (*my_garbage = malloc(sizeof(t_garbage)));

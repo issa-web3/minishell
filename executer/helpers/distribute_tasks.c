@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 08:22:07 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:56:57 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-char	redirections(t_file *files, t_garbage **my_garbage)
+char	redirections(t_file *files)
 {
 	int	fd;
 	int	file_mode;
@@ -74,7 +74,7 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data, t_en
 		tmp = process_idx;
 		while (--process_idx > 0)
 			data = data->next;
-		if (redirections(data->files, my_garbage) != -1)
+		if (redirections(data->files) != -1)
 			exec_by_idx(data, my_env, my_garbage);
 		close(pipes[tmp][0]);
 		close(pipes[tmp][1]);

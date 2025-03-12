@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/13 14:24:20 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:48:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static char	*get_new_pwd(char **cmd, t_env *old_pwd, char *pwd, t_env **my_env, 
 void	ft_cd(char **cmd, t_env **my_env, t_garbage **my_garbage)
 {
 	char	pwd[1024];
-	char	*pwd_ptr;
 	t_env	*old_pwd;
 	char	*new_pwd;
 	char	*cmd_export[2];
