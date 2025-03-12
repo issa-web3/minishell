@@ -1,31 +1,6 @@
 
-
-
-
-sometimes :
-	cd ../../../../../../../../../../
-	cd ../../../../../../../../../../
-	cd ../../../../../../../../../../
-	cd ../../../../../../../../../../
-	cd ../../../../../../../../../../
-	Segmentation fault
-	
-sometimes :
-	cd
-	cd
-	cd
-	cd
-	cd
-	Segmentation fault
-	ft_getenv
-
-sometimes :
+old err :
 	ls | ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls
-	does nothing
-
-
-sometimes:
-	stops working
 
 zyamli:
 	"l"'s' '|' | -la
@@ -38,3 +13,7 @@ talha:
 	exit | exit
 	export zzz=k > d
 	export zzz=k < d
+
+playing
+	pwd | cat > x
+	cat x | tr '/' '\n'  | tr s ' ' | grep mini >> x
