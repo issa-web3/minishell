@@ -64,7 +64,7 @@ char	*remove_quotes(char *str, t_garbage **g)
 	{
 		if (str[indices.str_index] == '$')
 		{
-			if (is_quote(str[indices.str_index + 1]))
+			if (is_hquote(str[indices.str_index + 1]))
 				indices.str_index++;
 		}
 		if (str[indices.str_index] && is_hquote(str[indices.str_index]))
