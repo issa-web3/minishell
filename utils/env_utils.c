@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 02:30:39 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:34:21 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ t_env	*new_env_var(char **data)
 		return (perror("malloc"), NULL);
 	my_env->name = data[0];
 	my_env->value = data[1];
+	if (ft_strcmp(data[0], "SHLVL") == 0)
+	{
+		my_env->value = ft_itoa(ft_atoi(data[1]) + 1);
+		free(data[1]);
+	}
 	my_env->next = NULL;
 	return (my_env);
 }
@@ -65,6 +70,35 @@ t_env	*append_env(t_env **head, t_env *tail, t_env *new_env)
 	return (new_env);
 }
 
+void	add_default_env(t_env **my_env)
+{
+	t_env	*env_var;
+	t_env	*tail;
+	char	*data[2];
+	char	cwd[1024];
+
+	tail = get_last_env(my_env);
+	// pwd
+	data[0] = ft_strdup_wg("PWD");
+	env_var = ft_getenv(data[0], my_env);
+	getcwd(cwd, 1024);
+	data[1] = ft_strdup_wg(cwd);
+	if (env_var == NULL)
+		tail = append_env(my_env, tail, new_env_var(data));
+	// _
+	data[0] = ft_strdup_wg("_");
+	env_var = ft_getenv(data[0], my_env);
+	data[1] = ft_strdup_wg("/usr/bin/env");
+	if (env_var == NULL)
+		tail = append_env(my_env, tail, new_env_var(data));
+	// SHLVL
+	data[0] = ft_strdup_wg("SHLVL");
+	env_var = ft_getenv(data[0], my_env);
+	data[1] = ft_strdup_wg("0");
+	if (env_var == NULL)
+		tail = append_env(my_env, tail, new_env_var(data));
+}
+
 t_env	*copy_env(char **env)
 {
 	t_env		*my_env;
@@ -88,6 +122,7 @@ t_env	*copy_env(char **env)
 			return (clear_env(&my_env), NULL);
 		i++;
 	}
+	add_default_env(&my_env);
 	return (my_env);
 }
 
