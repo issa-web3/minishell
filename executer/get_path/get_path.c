@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 14:37:25 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/13 10:39:38 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-static char	**get_paths(t_env **my_env, t_garbage **my_garbage)
+static char	**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	char	**paths;
 	int		i;
@@ -20,28 +20,30 @@ static char	**get_paths(t_env **my_env, t_garbage **my_garbage)
 	t_env	*path_var;
 
 	i = 0;
+	paths = NULL;
 	getcwd(cwd, sizeof(cwd));
 	path_var = ft_getenv("PATH", my_env);
 	if (path_var == NULL)
-		return (NULL);
-	paths = ft_split(path_var->value, ':', my_garbage);
+		paths = ft_split(*data->default_path, ':', my_garbage);
+	else
+		paths = ft_split(path_var->value, ':', my_garbage);
 	return (paths);
 }
 
-char	*get_path(char *cmd, t_env **my_env, t_garbage **my_garbage)
+char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	char	**paths;
 	char	*path;
 	int		i;
 
-	if (cmd == NULL)
+	if (data->cmd[0] == NULL)
 		return (NULL);
 	path = NULL;
-	if (access((const char *)cmd, X_OK) == 0)
-		return (cmd);
-	if (!ft_strncmp(cmd, "./", 2) || cmd[0] == '/')
+	if (access((const char *)data->cmd[0], X_OK) == 0)
+		return (data->cmd[0]);
+	if (!ft_strncmp(data->cmd[0], "./", 2) || data->cmd[0][0] == '/')
 		return (NULL);
-	paths = get_paths(my_env, my_garbage);
+	paths = get_paths(data, my_env, my_garbage);
 	if (paths == NULL)
 		return (NULL);
 	i = 0;
@@ -49,7 +51,7 @@ char	*get_path(char *cmd, t_env **my_env, t_garbage **my_garbage)
 	{
 		path = ft_strjoin(
 				ft_strjoin(paths[i++], "/", my_garbage),
-				cmd, my_garbage);
+				data->cmd[0], my_garbage);
 		if (access((const char *)path, X_OK) == 0)
 			break ;
 		path = NULL;

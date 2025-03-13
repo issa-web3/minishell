@@ -6,12 +6,20 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/12 01:07:28 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/13 10:10:29 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+// env
+typedef struct s_env
+{
+	char			*name;
+	char			*value;
+	struct s_env	*next;
+}				t_env;
 
 typedef enum e_token_type
 {
@@ -70,6 +78,7 @@ typedef struct s_2_exec
 {
 	char			**cmd;
 	t_file			*files;
+	char			**default_path;
 	struct s_2_exec	*next;
 }				t_2_exec;
 

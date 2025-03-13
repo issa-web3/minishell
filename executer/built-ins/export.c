@@ -6,21 +6,22 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 14:38:27 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/13 10:12:23 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_export(char **cmd, t_env **my_env, t_garbage **my_garbage)
+void	ft_export(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child)
 {
 	t_env	*to_export;
 	char	**parsed;
 	char	append;
 
-	if (cmd[1] == NULL)
+	(void)is_child;
+	if (data->cmd[1] == NULL)
 		return ;
-	parsed = ft_split(cmd[1], '=', my_garbage);
+	parsed = ft_split(data->cmd[1], '=', my_garbage);
 	if (parsed == NULL || parsed[0] == NULL || parsed[1] == NULL)
 	{
 		write(2, "syntax issue\n", 13);

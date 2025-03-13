@@ -10,7 +10,6 @@ talha:
 	export
 	cd (delete parent dir)
 	/executer
-	exit | exit
 	export zzz=k > d
 	export zzz=k < d
 
@@ -19,7 +18,8 @@ playing
 	require: pwd > x
 		cat x | tr '/' '\n'  | tr s ' ' | grep mini >> x
 	env -i ----->
-		khoukouj@e1r10p2:/home/khoukouj/Desktop/minishell$ env
+		Default Path
+
 		PWD=/home/khoukouj/Desktop/minishell
 		SHLVL=1
 		_=/usr/bin/env

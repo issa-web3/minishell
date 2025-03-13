@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 14:12:32 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/13 10:08:27 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 			|| !ft_strcmp(data->cmd[0], "unset")
 		)
 	)
-		(exec_builtin(data->cmd, my_env, my_garbage, 0), pi.process_num--);
+		(exec_builtin(data, my_env, my_garbage, 0), pi.process_num--);
 	fail = create_children_pipes(pipes, &pi);
 	close_prev_pipes(pipes, pi.process_idx);
 	while (pi.fork_response && wait(NULL) != -1)

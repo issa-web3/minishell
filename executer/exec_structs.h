@@ -6,25 +6,19 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/02/13 14:27:57 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/13 10:10:19 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_STRUCTS_H
 # define EXEC_STRUCTS_H
 
-// env
-typedef struct s_env
-{
-	char			*name;
-	char			*value;
-	struct s_env	*next;
-}				t_env;
+#include "../structs.h"
 
 // built-ins
 typedef struct s_builtin
 {
-	void	(*func)(char **, t_env **, t_garbage **);
+	void	(*func)(t_2_exec *, t_env **, t_garbage **, char is_child);
 	char	*name;
 }				t_builtin;
 
