@@ -51,7 +51,7 @@ t_token		*remove_quotes_from_toks(t_token *toks, t_garbage **g);
 char		**ft_strtok(char *s, t_garbage **my_garbage);
 t_token		*ft_lstlast_token(t_token *lst);
 t_token		*new_token_node(char *str, int type, t_garbage **garbage);
-void		to_expand(t_token **node, t_env *env, t_garbage **g);
+int	to_expand(t_token **node, t_env *env, t_garbage **g);
 //expanding
 void		ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage);
 t_expand	*ft_create_expand_node(char *s, t_garbage **garbage);

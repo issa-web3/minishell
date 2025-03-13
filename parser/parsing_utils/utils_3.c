@@ -40,8 +40,9 @@ t_token	*new_token_node(char *str, int type, t_garbage **garbage)
 	return (node);
 }
 
-void	to_expand(t_token **node, t_env *env, t_garbage **g)
+int	to_expand(t_token **node, t_env *env, t_garbage **g)
 {
 	if (can_i_expand((*node)->token))
 		ft_expand_token(node, env, g);
+	return (1);
 }
