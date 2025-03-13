@@ -86,3 +86,12 @@ int	is_only_whitespace(char *str)
     }
     return (1);
 }
+
+int	is_hquote(int c)
+{
+	if (c == -1)
+		return (1);
+	if (c == -2)
+		return (2);
+	return (0);
+}

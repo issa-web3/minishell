@@ -38,7 +38,7 @@ int	my_count_words(const char *str)
 			count++;
 			while (str[i] && (is_whitespace(str[i]) == 0 || quote != '\0'))
 			{
-				if ((str[i] == '"' || str[i] == '\'') && (quote == '\0'))
+				if ((str[i] == -2 || str[i] == -1) && (quote == '\0'))
 					quote = str[i];
 				else if (str[i] == quote)
 					quote = '\0';
@@ -59,7 +59,7 @@ static char	*ft_create_word(char *str, t_garbage **my_garbage)
 	1 && (i = 0, quote_type = 0);
 	while (str[i] && (is_whitespace(str[i]) == 0 || quote_type))
 	{
-		if ((str[i] == '"' || str[i] == '\'')
+		if ((str[i] == -2 || str[i] == -1)
 			&& (quote_type == 0 || quote_type == str[i]))
 			toggle_quote(str[i], &quote_type);
 		i++;
@@ -69,7 +69,7 @@ static char	*ft_create_word(char *str, t_garbage **my_garbage)
 	while (str[i] && (is_whitespace(str[i]) == 0 || quote_type))
 	{
 		word[j++] = str[i];
-		if ((str[i] == '"' || str[i] == '\'')
+		if ((str[i] == -2 || str[i] == -1)
 			&& (quote_type == 0 || quote_type == str[i]))
 			toggle_quote(str[i], &quote_type);
 		i++;
@@ -97,7 +97,7 @@ char	**ft_strtok(char *s, t_garbage **my_garbage)
 			quote_type = 0;
 			while (*s && (is_whitespace(*s) == 0 || quote_type))
 			{
-				if (is_quote(*s) && (quote_type == 0 || quote_type == *s))
+				if (is_hquote(*s) && (quote_type == 0 || quote_type == *s))
 					toggle_quote(*s, &quote_type);
 				s++;
 			}

@@ -20,7 +20,7 @@ static char	*extract_quoted(char *str, int *index, int q_type, t_garbage **g)
 	(*index)++;
 	info.start = *index;
 	info.length = 0;
-	while (str[*index] && (is_quote(str[*index]) != q_type))
+	while (str[*index] && (is_hquote(str[*index]) != q_type))
 	{
 		(*index)++;
 		info.length++;
@@ -44,7 +44,7 @@ static void	cat_quoted(char *res, char *str, t_indices *indices, t_garbage **g)
 	int		i;
 
 	inside_quotes = extract_quoted(str, &indices->str_index \
-		, is_quote(str[indices->str_index]), g);
+		, is_hquote(str[indices->str_index]), g);
 	i = 0;
 	while (inside_quotes[i])
 		res[(indices->result_index)++] = inside_quotes[i++];
@@ -67,7 +67,7 @@ char	*remove_quotes(char *str, t_garbage **g)
 			if (is_quote(str[indices.str_index + 1]))
 				indices.str_index++;
 		}
-		if (str[indices.str_index] && is_quote(str[indices.str_index]))
+		if (str[indices.str_index] && is_hquote(str[indices.str_index]))
 			cat_quoted(res, str, &indices, g);
 		else
 			append_char(str, res, &indices);
