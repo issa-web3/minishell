@@ -92,8 +92,7 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 			i++;
 		add_to_lst = new_token_node(extract_token(str, start, i, garbage)
 			, get_type(extract_token(str, start, i, garbage)), garbage);\
-		hide_quotes(&add_to_lst);
-		to_expand(&add_to_lst, env, garbage);
+		(to_expand(&add_to_lst, env, garbage), hide_quotes(&add_to_lst));
 		if (!lst)
 			lst = add_to_lst;
 		else

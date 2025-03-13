@@ -30,5 +30,27 @@ void	hide_quotes(t_token **node)
 	}
 }
 
-// t_token	*restore_quotes(t_token *lst)
+t_token	*restore_quotes(t_token *lst)
+{
+	int		i;
+	t_token	*curr;
 
+	curr = lst;
+	while (curr)
+	{
+		if (curr->type == WORD)
+		{
+			i = 0;
+			while (curr->token && curr->token[i])
+			{
+				if (is_hquote(curr->token[i]) == 1)
+					curr->token[i] = '\'';
+				else if (is_hquote(curr->token[i]) == 2)
+					curr->token[i] = '"';
+				i++;
+			}
+		}
+		curr = curr->next;
+	}
+	return (lst);
+}

@@ -82,6 +82,7 @@ t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage)
 	lst = NULL;
 	tokens = ft_create_tokens(line, envl, garbage);
 	tokens = remove_quotes_from_toks(tokens, garbage);
+	tokens = restore_quotes(tokens);
 	while (tokens)
 	{
 		node = ft_malloc(sizeof(t_2_exec), garbage);
