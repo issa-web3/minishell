@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/13 10:31:21 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/13 10:45:46 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		getcwd(cwd, sizeof(cwd));
-		line = readline("rich-3.14 $~");
+		line = readline("rich-3.14 $~ ");
 		if (line && *line)
 		{
 			data = parsing(line, &my_env);
