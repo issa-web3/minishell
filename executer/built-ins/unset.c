@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/13 10:23:53 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:40:19 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_unset(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_ch
 	(void)is_child;
 	while (data->cmd[i])
 	{
-		if (*my_env == NULL && !strcmp(data->cmd[i], "PATH"))
+		if (!strcmp(data->cmd[i], "PATH"))
 		{
 			if (*(data->default_path))
 				free(*(data->default_path));
