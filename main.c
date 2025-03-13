@@ -51,8 +51,11 @@ int	main(int ac, char **av, char **env)
 		if (line && *line)
 		{
 			data = parsing(line, &my_env);
-			data->default_path = &default_path;
-			execute(data, &my_env, &my_garbage);
+			if (data)
+			{
+				data->default_path = &default_path;
+				execute(data, &my_env, &my_garbage);
+			}
 			add_history(line);
 		}
 		clear_garbage(&my_garbage);
