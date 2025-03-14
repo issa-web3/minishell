@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_tokens.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-18 12:15:24 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-18 12:15:24 by khoukouj         ###   ########.ma       */
+/*   Created: 2025/02/18 12:15:24 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/14 10:12:34 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 			i++;
 		add_to_lst = new_token_node(extract_token(str, start, i, garbage)
 			, get_type(extract_token(str, start, i, garbage)), garbage);\
-		1 && (hide_quotes(&add_to_lst), to_expand(&add_to_lst, env, garbage));
+		(hide_quotes(&add_to_lst), to_expand(&add_to_lst, env, garbage));
 		if (!lst)
 			lst = add_to_lst;
 		else

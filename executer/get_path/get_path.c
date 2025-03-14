@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/14 08:48:10 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/14 10:17:41 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	no_such_file_or_dir(t_2_exec *data, char *path,
 	if (
 		(path == NULL && data->cmd[0][0] == '/')
 		|| (path && ft_strcmp(data->cmd[0], path) && data->cmd[0][0] == '/')
+		|| (path && ft_strcmp(data->cmd[0], path) && !ft_strncmp(data->cmd[0], "./", 2))
 		|| (path == NULL && !ft_strncmp(data->cmd[0], "./", 2))
 	)
 	{
@@ -43,11 +44,9 @@ static void	no_such_file_or_dir(t_2_exec *data, char *path,
 static char	**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	char	**paths;
-	int		i;
 	char	cwd[1024];
 	t_env	*path_var;
 
-	i = 0;
 	paths = NULL;
 	getcwd(cwd, sizeof(cwd));
 	path_var = ft_getenv("PATH", my_env);

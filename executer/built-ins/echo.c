@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/13 10:11:52 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/14 10:14:18 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	ft_echo(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_chi
 		(write(1, "\n", 1), exit(EXIT_SUCCESS));
 	i = 0;
 	end = has_dash_n(data->cmd[1]);
-	end && i++;
+	i += end;
 	while (data->cmd[++i])
 	{
 		write(1, data->cmd[i], ft_strlen(data->cmd[i]));
-		data->cmd[i + 1] != NULL && write(1, " ", 1);
+		write(1, " ", data->cmd[i + 1] != NULL);
 	}
-	(!end) && (write(1, "\n", 1));
+	write(1, "\n", !end);
 	exit(EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analyse_tools.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-21 13:47:57 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-21 13:47:57 by khoukouj         ###   ########.ma       */
+/*   Created: 2025/02/21 13:47:57 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/14 10:12:57 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ char	**extract(char **old_str, char *new, t_garbage **garbage)
 void	ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens)
 {
 	char	**cmds;
-	int		i;
 
-	i = 0;
 	cmds = (*node)->cmd;
 	while ((*tokens) && (*tokens)->type == WORD)
 	{

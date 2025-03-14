@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtok.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-28 10:36:31 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-28 10:36:31 by khoukouj         ###   ########ma        */
+/*   Created: 2025/02/28 10:36:31 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/14 10:12:49 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	my_count_words(const char *str)
 
 	if (str == NULL)
 		return (0);
-	1 && (i = 0, count = 0, quote = 0);
+	(i = 0, count = 0, quote = 0);
 	while (str[i])
 	{
 		while (str[i] && is_whitespace(str[i]) == 1)
@@ -56,7 +56,7 @@ static char	*ft_create_word(char *str, t_garbage **my_garbage)
 	int		i;
 	int		j;
 
-	1 && (i = 0, quote_type = 0);
+	(i = 0, quote_type = 0);
 	while (str[i] && (is_whitespace(str[i]) == 0 || quote_type))
 	{
 		if ((str[i] == -2 || str[i] == -1)
@@ -65,7 +65,7 @@ static char	*ft_create_word(char *str, t_garbage **my_garbage)
 		i++;
 	}
 	word = (char *)ft_malloc(i + 1, my_garbage);
-	1 && (i = 0, j = 0, quote_type = 0);
+	(i = 0, j = 0, quote_type = 0);
 	while (str[i] && (is_whitespace(str[i]) == 0 || quote_type))
 	{
 		word[j++] = str[i];
@@ -85,7 +85,7 @@ char	**ft_strtok(char *s, t_garbage **my_garbage)
 
 	if (!s)
 		return (NULL);
-	1 && (split = (char **)ft_malloc((my_count_words(s) + 1)
+	(split = (char **)ft_malloc((my_count_words(s) + 1)
 			* sizeof(char *), my_garbage), i = 0);
 	while (*s)
 	{

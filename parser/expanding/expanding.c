@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expanding.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-25 03:27:22 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-25 03:27:22 by khoukouj         ###   ########ma        */
+/*   Created: 2025/02/25 03:27:22 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/14 10:12:34 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
 	int		has_quotes;
 	int		n;
 
-	1 && (check_export(node, &is_export), i = 0);
+	(check_export(node, &is_export), i = 0);
 	if ((*node) && (*node)->type == WORD)
 	{
-		1 && (has_quotes = ft_strchr((*node)->token, '\'')
+		(has_quotes = ft_strchr((*node)->token, '\'')
 			|| ft_strchr((*node)->token, '\"'));
 		(*node)->token = expand_dollar_variable((*node)->token, envl, garbage);
 		if (!has_quotes && is_only_whitespace((*node)->token))

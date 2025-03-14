@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_expand.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-27 13:13:26 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-02-27 13:13:26 by khoukouj         ###   ########ma        */
+/*   Created: 2025/02/27 13:13:26 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/14 10:13:06 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ static char	*expand_variable(char *str, int *index,
 {
 	char	*res;
 	char	*var_name;
-	int		start;
 
 	(*index)++;
-	start = (*index);
 	if (str[*index] == '?')
 	{
 		(*index)++;
