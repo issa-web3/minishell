@@ -50,7 +50,7 @@ int	main(int ac, char **av, char **env)
 		line = readline("rich-3.14 $~ ");
 		if (line && *line)
 		{
-			data = parsing(line, &my_env);
+			data = parsing(line, &my_env, &my_garbage);
 			if (data)
 			{
 				data->default_path = &default_path;

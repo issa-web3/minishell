@@ -16,7 +16,7 @@
 # include "../minishell.h"
 
 // the boss
-t_2_exec	*parsing(char *line, t_env **envl);
+t_2_exec	*parsing(char *line, t_env **envl, t_garbage **garbage);
 
 //utils
 int			is_whitespace(char c);

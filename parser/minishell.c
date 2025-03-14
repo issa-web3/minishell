@@ -12,19 +12,17 @@
 
 #include "../minishell.h"
 
-t_2_exec	*parsing(char *line, t_env **envl)
+t_2_exec	*parsing(char *line, t_env **envl, t_garbage **garbage)
 {
 	char		*tmp;
-	t_garbage	*garbage;
 	t_2_exec	*lst;
 
-	garbage = NULL;
-	line = ft_strdup(line, &garbage);
+	line = ft_strdup(line, garbage);
 	tmp = line;
-	line = ft_strtrim(line, " \t", &garbage);
+	line = ft_strtrim(line, " \t", garbage);
 	free(tmp);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);
-	lst = ft_analyse(line, *envl, &garbage);
+	lst = ft_analyse(line, *envl, garbage);
 	return (lst);
 }
