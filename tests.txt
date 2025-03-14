@@ -6,12 +6,13 @@ zyamli:
 	"l"'s' '|' | -la
 
 talha:
-	exit
+	exit 11222 
 	export
 	cd (delete parent dir)
 	/executer
 	export zzz=k > d
 	export zzz=k < d
+	unset zzz < d
 
 playing
 	pwd | cat > x

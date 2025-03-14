@@ -6,11 +6,39 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/13 10:39:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/14 08:48:10 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
+
+static void	command_not_found(t_2_exec *data, char *path,
+		t_garbage **my_garbage)
+{
+	if (path == NULL)
+	{
+		write(2, data->cmd[0], ft_strlen(data->cmd[0]));
+		write(2, ": command not found\n", 20);
+		clear_garbage(my_garbage);
+		exit(EXIT_FAILURE);
+	}
+}
+
+static void	no_such_file_or_dir(t_2_exec *data, char *path,
+		t_garbage **my_garbage)
+{
+	if (
+		(path == NULL && data->cmd[0][0] == '/')
+		|| (path && ft_strcmp(data->cmd[0], path) && data->cmd[0][0] == '/')
+		|| (path == NULL && !ft_strncmp(data->cmd[0], "./", 2))
+	)
+	{
+		write(2, data->cmd[0], ft_strlen(data->cmd[0]));
+		write(2, ": No such file or directory\n", 28);
+		clear_garbage(my_garbage);
+		exit(EXIT_FAILURE);
+	}
+}
 
 static char	**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
@@ -38,16 +66,13 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 
 	if (data->cmd[0] == NULL)
 		return (NULL);
-	path = NULL;
-	if (access((const char *)data->cmd[0], X_OK) == 0)
-		return (data->cmd[0]);
-	if (!ft_strncmp(data->cmd[0], "./", 2) || data->cmd[0][0] == '/')
-		return (NULL);
-	paths = get_paths(data, my_env, my_garbage);
-	if (paths == NULL)
-		return (NULL);
 	i = 0;
-	while (paths[i])
+	path = NULL;
+	paths = get_paths(data, my_env, my_garbage);
+	if (!ft_strncmp(data->cmd[0], "./", 2)
+		&& access((const char *)data->cmd[0], X_OK) == 0)
+		return (data->cmd[0]);
+	while (paths && paths[i])
 	{
 		path = ft_strjoin(
 				ft_strjoin(paths[i++], "/", my_garbage),
@@ -56,5 +81,7 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 			break ;
 		path = NULL;
 	}
+	no_such_file_or_dir(data, path, my_garbage);
+	command_not_found(data, path, my_garbage);
 	return (path);
 }
