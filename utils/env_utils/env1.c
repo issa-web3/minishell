@@ -36,7 +36,7 @@ t_env	*new_env_var(char **data)
 	// 	my_env->value = ft_itoa(ft_atoi(data[1]) + 1);
 	// 	free(data[1]);
 	// }
-	printf("yes\n");
+	// printf("yes\n");
 	my_env->next = NULL;
 	return (my_env);
 }

@@ -79,6 +79,7 @@ typedef struct s_2_exec
 	char			**cmd;
 	t_file			*files;
 	char			**default_path;
+	char			exit_status;
 	struct s_2_exec	*next;
 }				t_2_exec;
 
