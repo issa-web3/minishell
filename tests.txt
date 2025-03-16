@@ -6,13 +6,14 @@ zyamli:
 	"l"'s' '|' | -la
 
 talha:
-	exit 11222 
 	export
-	cd (delete parent dir)
-	/executer
+	export a=a b=b c=c x=x
 	export zzz=k > d
 	export zzz=k < d
+	
 	unset zzz < d
+	exit 11222 
+	cd (delete parent dir)
 
 playing
 	echo -n -n
