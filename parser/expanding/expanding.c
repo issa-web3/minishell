@@ -96,20 +96,16 @@ void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
 {
 	int		i;
 	char	**toks;
-	int		is_export;
-	int		has_quotes;
 	int		n;
 
-	(check_export(node, &is_export), i = 0);
+	i = 0;
 	if ((*node) && (*node)->type == WORD)
 	{
-		(has_quotes = ft_strchr((*node)->token, '\'')
-			|| ft_strchr((*node)->token, '\"'));
 		(*node)->token = expand_dollar_variable((*node)->token, envl, garbage);
-		if (!has_quotes && is_only_whitespace((*node)->token))
+		if (is_only_whitespace((*node)->token))
 			(*node)->token = NULL;
 		n = my_count_words((*node)->token);
-		if (n > 1 && !is_export)
+		if (n > 1)
 		{
 			toks = ft_strtok((*node)->token, garbage);
 			(*node)->token = ft_strdup(toks[i++], garbage);
