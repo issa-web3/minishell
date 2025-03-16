@@ -31,11 +31,12 @@ t_env	*new_env_var(char **data)
 		return (perror("malloc"), NULL);
 	my_env->name = data[0];
 	my_env->value = data[1];
-	if (ft_strcmp(data[0], "SHLVL") == 0)
-	{
-		my_env->value = ft_itoa(ft_atoi(data[1]) + 1);
-		free(data[1]);
-	}
+	// if (ft_strcmp(data[0], "SHLVL") == 0)
+	// {
+	// 	my_env->value = ft_itoa(ft_atoi(data[1]) + 1);
+	// 	free(data[1]);
+	// }
+	printf("yes\n");
 	my_env->next = NULL;
 	return (my_env);
 }

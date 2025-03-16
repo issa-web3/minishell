@@ -14,11 +14,9 @@
 
 t_2_exec	*parsing(char *line, t_env **envl, t_garbage **garbage)
 {
-	char		*tmp;
 	t_2_exec	*lst;
 
 	line = ft_strdup(line, garbage);
-	tmp = line;
 	line = ft_strtrim(line, " \t", garbage);
 	if (ft_check_syntax_error(line) == -1)
 		return (NULL);

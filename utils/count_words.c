@@ -20,7 +20,7 @@ int	count_words(const char *str, char c)
 
 	if (str == NULL)
 		return (0);
-	1 && (i = 0, count = 0, quote = 0);
+	(i = 0, count = 0, quote = 0);
 	while (str[i])
 	{
 		while (str[i] && is_sep(str[i], c) == 1)
