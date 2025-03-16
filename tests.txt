@@ -15,5 +15,5 @@ talha:
 	exit 11222 
 	cd (delete parent dir)
 
-playing
-	echo -n -n
+parsing
+	pwd | > x
