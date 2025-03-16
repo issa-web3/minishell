@@ -6,13 +6,14 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/13 11:40:19 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/16 12:05:32 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_unset(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child)
+void	ft_unset(t_2_exec *data, t_env **my_env,
+		t_garbage **my_garbage, char is_child)
 {
 	t_env	*to_rm;
 	int		i;

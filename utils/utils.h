@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/13 11:18:19 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/16 11:54:54 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memset(void *b, int c, size_t len);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strdup(const char *s1, t_garbage **my_garbage);
-char	    *ft_strdup_wg(const char *s1);
+char		*ft_strdup_wg(const char *s1);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlen(const char *s);
@@ -52,7 +52,7 @@ int			count_words(const char *str, char c);
 char		**ft_split(char *s, char c, t_garbage **my_garbage);
 char		**ft_split_without_garbage(char *s, char c);
 char		*ft_strjoin(char *s1, char *s2, t_garbage **my_garbage);
-char	    *ft_itoa(int n);
+char		*ft_itoa(int n);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);

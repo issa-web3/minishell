@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:30:51 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 01:12:50 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/16 11:55:18 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	**ft_split_without_garbage(char *s, char c)
 		{
 			split[i] = ft_create_word_wg(s, c);
 			if (split[i] == NULL)
-				return (perror("malloc"), free_split(split, i), NULL); // TODO free_split
+				return (perror("malloc"), free_split(split, i), NULL);
 			while (*s && is_sep(*s, c) == 0)
 				s++;
 			i++;

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/14 10:17:41 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/16 12:04:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,17 @@ static void	command_not_found(t_2_exec *data, char *path,
 static void	no_such_file_or_dir(t_2_exec *data, char *path,
 		t_garbage **my_garbage)
 {
+	char	*cmd;
+
+	cmd = data->cmd[0];
 	if (
-		(path == NULL && data->cmd[0][0] == '/')
-		|| (path && ft_strcmp(data->cmd[0], path) && data->cmd[0][0] == '/')
-		|| (path && ft_strcmp(data->cmd[0], path) && !ft_strncmp(data->cmd[0], "./", 2))
-		|| (path == NULL && !ft_strncmp(data->cmd[0], "./", 2))
+		(path == NULL && cmd[0] == '/')
+		|| (path && ft_strcmp(cmd, path) && cmd[0] == '/')
+		|| (path && ft_strcmp(cmd, path) && !ft_strncmp(cmd, "./", 2))
+		|| (path == NULL && !ft_strncmp(cmd, "./", 2))
 	)
 	{
-		write(2, data->cmd[0], ft_strlen(data->cmd[0]));
+		write(2, cmd, ft_strlen(cmd));
 		write(2, ": No such file or directory\n", 28);
 		clear_garbage(my_garbage);
 		exit(EXIT_FAILURE);
