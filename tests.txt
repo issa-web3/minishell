@@ -16,4 +16,4 @@ talha:
 	cd (delete parent dir)
 
 parsing
-	pwd | > x
+	pwd | > x // nigga its not an error 
