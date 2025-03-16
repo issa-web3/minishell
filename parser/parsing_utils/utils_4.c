@@ -30,12 +30,12 @@ void	hide_quotes(t_token **node)
 	}
 }
 
-t_token	*restore_quotes(t_token *lst)
+void	restore_quotes(t_token **lst)
 {
 	int		i;
 	t_token	*curr;
 
-	curr = lst;
+	curr = *lst;
 	while (curr)
 	{
 		if (curr->type == WORD)
@@ -52,5 +52,4 @@ t_token	*restore_quotes(t_token *lst)
 		}
 		curr = curr->next;
 	}
-	return (lst);
 }

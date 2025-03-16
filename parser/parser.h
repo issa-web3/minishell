@@ -28,7 +28,7 @@ int			is_quote(char c);
 int			is_hquote(char c);
 int			init_syntax_data(int *i, char *line);
 void		hide_quotes(t_token **node);
-t_token	*restore_quotes(t_token *lst);
+void		restore_quotes(t_token **lst);
 int			is_operator(char c);
 void		ft_skip_quoted_section(char *str, int *i, char quote_type);
 char		*ft_strtrim(char *str, char *set, t_garbage **to_free);
