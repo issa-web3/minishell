@@ -78,6 +78,7 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 	t_token	*add_to_lst;
 	int		i;
 	int		start;
+	int		prev_type = -1;
 
 	if (!str)
 		return (NULL);
@@ -91,8 +92,11 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 		while (str[i] && is_whitespace(str[i]))
 			i++;
 		add_to_lst = new_token_node(extract_token(str, start, i, garbage)
-			, get_type(extract_token(str, start, i, garbage)), garbage);\
-		(hide_quotes(&add_to_lst), to_expand(&add_to_lst, env, garbage));
+			, get_type(extract_token(str, start, i, garbage)), garbage);
+		hide_quotes(&add_to_lst);
+		if (prev_type != HERE_DOC)
+			to_expand(&add_to_lst, env, garbage);
+		prev_type = add_to_lst->type;
 		if (!lst)
 			lst = add_to_lst;
 		else
