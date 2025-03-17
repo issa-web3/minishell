@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/12 13:45:04 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:27:01 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,9 @@
 # include "structs.h"
 # include "executer/executer.h"
 # include "parser/parser.h"
+
+// exit status
+# define SYNTAX_ERR 2
+# define COMMEND_NOT_FOUND 2
 
 #endif
