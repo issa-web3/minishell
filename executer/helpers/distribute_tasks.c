@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/16 11:11:39 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:22:16 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ char	redirections(t_file *files, char redirect)
 		file_mode += (files->type == APPEND_FILE)
 			* (O_WRONLY | O_CREAT | O_APPEND);
 		fd = ft_open(files->name, file_mode);
-		if (redirect)
-		{
-			if (fd == -1 || ft_dup2(fd, files->type != IN_FILE) == -1)
-				return (-2);
-		}
+		if (fd == -1 || (redirect && ft_dup2(fd, files->type != IN_FILE) == -1))
+			return (-2);
 		close(fd);
 		files = files->next;
 	}
