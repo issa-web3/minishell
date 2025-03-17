@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/17 17:22:16 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:28:26 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	execve(data->cmd[0], data->cmd, format_env(my_env, my_garbage));
 	perror("execve");
 	clear_garbage(my_garbage);
-	clear_env(my_env);
 	exit(EXIT_FAILURE);
 }
 
