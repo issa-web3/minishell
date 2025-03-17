@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/16 12:01:51 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:35:50 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ t_env	*new_env_var(char **data)
 		return (perror("malloc"), NULL);
 	my_env->name = data[0];
 	my_env->value = data[1];
-	// if (ft_strcmp(data[0], "SHLVL") == 0)
-	// {
-	// 	my_env->value = ft_itoa(ft_atoi(data[1]) + 1);
-	// 	free(data[1]);
-	// }
-	// printf("yes\n");
 	my_env->next = NULL;
 	return (my_env);
 }
