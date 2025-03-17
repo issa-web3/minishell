@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/16 12:05:55 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:11:43 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,11 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 		return ;
 	if (chdir(new_pwd) == -1)
 		perror("cd");
+	data->cmd = ft_split(
+		ft_strjoin(
+			ft_strjoin("export OLDPWD=", pwd, my_garbage),
+			ft_strjoin(" PWD=", new_pwd, my_garbage)
+		, my_garbage)
+		, ' ', my_garbage);
+	ft_export(data, my_env, my_garbage, is_child);
 }

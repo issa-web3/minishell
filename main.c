@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/13 11:19:28 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:29:39 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(int ac, char **av, char **env)
 			if (data)
 			{
 				data->default_path = &default_path;
+				// append_garbage(&my_garbage, line);
 				execute(data, &my_env, &my_garbage);
 			}
 			add_history(line);

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/16 11:54:54 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:18:03 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int			count_words(const char *str, char c);
 char		**ft_split(char *s, char c, t_garbage **my_garbage);
 char		**ft_split_without_garbage(char *s, char c);
 char		*ft_strjoin(char *s1, char *s2, t_garbage **my_garbage);
+char	    *ft_strjoin_without_garbage(char *s1, char *s2);
 char		*ft_itoa(int n);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		ft_putchar_fd(char c, int fd);
