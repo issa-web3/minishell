@@ -30,6 +30,6 @@
 
 // exit status
 # define SYNTAX_ERR 2
-# define COMMEND_NOT_FOUND 2
+# define COMMEND_NOT_FOUND 127
 
 #endif
