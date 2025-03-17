@@ -51,7 +51,7 @@ static char	*expand_variable(char *str, int *index,
 	if (str[*index] == '?')
 	{
 		(*index)++;
-		return (ft_strdup("exit status here\n", garbage));
+		return (ft_itoa(get_exit_status(), garbage));
 	}
 	if (str[*index] == '\0' || !is_valid_var(str[*index]))
 		return (ft_strdup("$", garbage));

@@ -19,7 +19,10 @@ t_2_exec	*parsing(char *line, t_env **envl, t_garbage **garbage)
 	line = ft_strdup(line, garbage);
 	line = ft_strtrim(line, " \t", garbage);
 	if (ft_check_syntax_error(line) == -1)
+	{
+		set_exit_status(2);
 		return (NULL);
+	}
 	lst = ft_analyse(line, *envl, garbage);
 	return (lst);
 }

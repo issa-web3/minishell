@@ -53,7 +53,7 @@ char		**ft_split(char *s, char c, t_garbage **my_garbage);
 char		**ft_split_without_garbage(char *s, char c);
 char		*ft_strjoin(char *s1, char *s2, t_garbage **my_garbage);
 char	    *ft_strjoin_without_garbage(char *s1, char *s2);
-char		*ft_itoa(int n);
+char		*ft_itoa(int n, t_garbage **g);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);

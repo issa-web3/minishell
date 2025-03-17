@@ -30,7 +30,7 @@ static int	calc_len(int n)
 	return (result);
 }
 
-static char	*continue_func(int n)
+static char	*continue_func(int n, t_garbage **g)
 {
 	char	*result;
 	char	sign;
@@ -38,7 +38,7 @@ static char	*continue_func(int n)
 
 	len = calc_len(n);
 	sign = 'P';
-	result = (char *)malloc(sizeof(char) * (len + 1));
+	result = (char *)ft_malloc(sizeof(char) * (len + 1), g);
 	if (result == NULL)
 		return (NULL);
 	result[len] = '\0';
@@ -57,11 +57,11 @@ static char	*continue_func(int n)
 	return (result);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int n, t_garbage **g)
 {
 	if (n == 0)
-		return (ft_strdup_wg("0"));
+		return (ft_strdup("0", g));
 	if (n == -2147483648)
-		return (ft_strdup_wg("-2147483648"));
-	return (continue_func(n));
+		return (ft_strdup("-2147483648", g));
+	return (continue_func(n, g));
 }
