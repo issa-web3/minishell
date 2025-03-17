@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/17 14:18:03 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:03:46 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,9 @@ t_env		*get_last_env(t_env **my_env);
 void		del_env_var(t_env *env_var, t_env **my_env);
 void		clear_env(t_env **my_env);
 char		**format_env(t_env **my_env, t_garbage **my_garbage);
+
+// exit status
+int			get_exit_status(void);
+void		set_exit_status(int new);
 
 #endif
