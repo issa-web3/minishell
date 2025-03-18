@@ -18,4 +18,11 @@ talha:
 parsing
 	pwd | > x // nigga its not an error 
 
+
+general:
+	/bin/ls
+	redirection without cmd (>a)
+	leaks ( fds, memory ) ----> clear_all
+	
+
 need to fix the path /usr/bin/ls doesnt work

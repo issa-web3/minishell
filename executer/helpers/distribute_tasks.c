@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/17 17:28:26 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/18 22:12:10 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void	redirect_and_execute(t_2_exec *data, int process_idx,
 		data = data->next;
 	if (redirections(data->files, 1) != -2)
 		exec_by_idx(data, my_env, my_garbage);
+	
 }
 
 void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data,
@@ -80,6 +81,7 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data,
 		close(pipes[process_idx][0]);
 		close(pipes[process_idx][1]);
 		clear_garbage(my_garbage);
+		clear_env(my_env);
 		exit(EXIT_FAILURE);
 	}
 }
