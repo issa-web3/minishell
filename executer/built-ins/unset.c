@@ -23,7 +23,7 @@ void	ft_unset(t_2_exec *data, t_env **my_env,
 	(void)is_child;
 	while (data->cmd[i])
 	{
-		if (!strcmp(data->cmd[i], "PATH"))
+		if (!ft_strcmp(data->cmd[i], "PATH"))
 		{
 			if (*(data->default_path))
 				free(*(data->default_path));
