@@ -21,8 +21,8 @@ parsing
 
 general:
 	/bin/ls
+	/usr/bin/ls
 	redirection without cmd (>a)
 	leaks ( fds, memory ) ----> clear_all
 	
 
-need to fix the path /usr/bin/ls doesnt work
