@@ -17,3 +17,5 @@ talha:
 
 parsing
 	pwd | > x // nigga its not an error 
+
+need to fix the path /usr/bin/ls doesnt work
