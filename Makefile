@@ -9,6 +9,7 @@ COMPILE = cc -Wall -Wextra -Werror
 # Directories
 EXEC=/executer
 PARS=/parser
+OBJ_DIR=obj
 
 # INC
 INC = 
@@ -17,21 +18,25 @@ INC =
 SRC = main.c
 
 # OBJ
-OBJ = $(SRC:.c=.o)
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 # Rules
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(COMPILE) $(OBJ) -o $@
+#	@$(COMPILE) $(OBJ) -o $@
 	@echo [CREATING $@ ... ]
 
-%.o: %.c $(INC)
+$(OBJ_DIR): 
+	@mkdir $(OBJ_DIR)
+	@echo [CREATING $(OBJ_DIR) ... ]
+
+$(OBJ_DIR)/%.o: %.c $(INC) | $(OBJ_DIR)
 	@$(COMPILE) $< -c $@
 	@echo [COMPILING $< ... ]
 
 clean:
-	@rm -fr $(OBJ)
+	@rm -fr $(OBJ_DIR)
 	@echo [CLEANING ... ]
 
 fclean: clean
