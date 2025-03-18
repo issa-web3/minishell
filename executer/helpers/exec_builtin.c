@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:57:33 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/17 17:22:40 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:27:42 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	exec_builtin(t_2_exec *data, t_env **my_env,
 	while (i < 7 && ft_strcmp(built_in[i].name, data->cmd[0]) != 0)
 		i++;
 	i++;
-	!is_child && (i *= ((redirections(data->files, 0) + 1)));
+	if (!is_child)
+		i = i * ((redirections(data->files, 0) + 1));
 	if (i-- > 0)
 	{
 		if (i != 7)

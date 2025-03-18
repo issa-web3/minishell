@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/16 12:06:04 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:43:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_env(t_2_exec *data, t_env **my_env,
 	(void)data;
 	(void)my_garbage;
 	(void)is_child;
-	while (curr)
+	while (curr && (curr->value || 1))
 	{
 		printf("%s=%s\n", curr->name, curr->value);
 		curr = curr->next;
