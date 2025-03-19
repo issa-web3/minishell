@@ -14,4 +14,8 @@
 
 int	ft_handle_heredoc(t_token **tokens, t_2_exec *node, t_garbage **g)
 {
+	(void)tokens;
+	(void)node;
+	(void)g;
+	return 1;
 }
