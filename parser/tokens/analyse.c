@@ -69,7 +69,8 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 	}
 	(*node)->files = files;
 	if (a_r_found)
-		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2), 1);
+		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2)
+			, set_exit_status(1), 1);
 	return (0);
 }
 

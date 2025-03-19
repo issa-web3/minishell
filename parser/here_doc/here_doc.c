@@ -14,8 +14,16 @@
 
 int	ft_handle_heredoc(t_token **tokens, t_2_exec *node, t_garbage **g)
 {
-	(void)tokens;
-	(void)node;
-	(void)g;
-	return 1;
+	char	*del;
+	int		is_expand;
+
+	while ((*tokens) && (*tokens)->type == HERE_DOC)
+	{
+		if ((*tokens)->next)
+			del = (*tokens)->next->token;
+		else
+			del = NULL;
+		is_expand = is_expand_heredoc(del);
+		
+	}
 }

@@ -26,6 +26,7 @@ int			is_redir(char c);
 int			is_valid_var(int c);
 int			is_quote(char c);
 int			is_hquote(char c);
+int			is_expand_heredoc(char *del);
 int			init_syntax_data(int *i, char *line);
 void		hide_quotes(t_token **node);
 void		restore_quotes(t_token **lst);
