@@ -24,5 +24,6 @@ general:
 	/usr/bin/ls
 	redirection without cmd (>a)
 	leaks ( fds, memory ) ----> clear_all
-	
+	./
+	/
 
