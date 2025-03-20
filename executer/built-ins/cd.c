@@ -44,7 +44,7 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 	if (new_pwd == NULL)
 		return ;
 	if (chdir(new_pwd) == -1)
-		perror(ft_strjoin("cd: ", data->cmd[1], my_garbage));
+		perror(ft_strjoin("cd: ", new_pwd, my_garbage));
 	data->cmd = ft_split(
 		ft_strjoin(
 			ft_strjoin("export OLDPWD=", pwd, my_garbage),

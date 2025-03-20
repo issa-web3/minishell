@@ -72,11 +72,9 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	i = 0;
 	path = NULL;
 	paths = get_paths(data, my_env, my_garbage);
-	// if (!ft_strncmp(data->cmd[0], "./", 2)
-	// 	&& access((const char *)data->cmd[0], X_OK) == 0)
-	// 	return (data->cmd[0]);
-	if (access((const char *)data->cmd[0], X_OK) == 0)
-		return (path = data->cmd[0]);
+	if ((!ft_strncmp(data->cmd[0], "./", 2) || data->cmd[0][0] == '/')
+		&& access((const char *)data->cmd[0], X_OK) == 0)
+		path = data->cmd[0];
 	while (!path && paths && paths[i])
 	{
 		path = ft_strjoin(

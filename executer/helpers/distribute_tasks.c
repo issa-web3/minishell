@@ -40,8 +40,11 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	exec_builtin(data, my_env, my_garbage, 1);
 	data->cmd[0] = get_path(data, my_env, my_garbage);
 	execve(data->cmd[0], data->cmd, format_env(my_env, my_garbage));
-	perror("execve");
+	set_exit_status(COMMAND_NOT_FOUND);
+	write(2, data->cmd[0], ft_strlen(data->cmd[0]));
+	write(2, ": Is a directory\n", 17);
 	clear_garbage(my_garbage);
+	clear_env(my_env);
 	exit(EXIT_FAILURE);
 }
 
