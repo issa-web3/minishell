@@ -20,11 +20,9 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 
 	pi.process_idx = 0;
 	pi.process_num = ft_lstsize(data);
-	if (!data || !data->cmd || !data->cmd[0])
-		return ;
 	pipes = ft_malloc(pi.process_num * sizeof(pid_t[2]), my_garbage);
 	pi.fork_response = 314;
-	if (pi.process_num == 1 && (
+	if (pi.process_num == 1 && data->cmd && (
 			!ft_strcmp(data->cmd[0], "cd")
 			|| !ft_strcmp(data->cmd[0], "exit")
 			|| (!ft_strcmp(data->cmd[0], "export") && data->cmd[1])
