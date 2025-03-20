@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/17 17:23:14 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/20 23:47:20 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,14 @@
 # include "parser/parser.h"
 
 // exit status
-# define SYNTAX_ERR 2
-# define COMMAND_NOT_FOUND 127
-# define NO_SUCH_FILE_OR_DIR 1
+#define SUCCESS 0
+#define GENERIC_ERR 1
+#define NO_SUCH_FILE_OR_DIR 1
+#define COMMAND_NOT_FOUND 127
+#define SYNTAX_ERR 2
+#define INVALID_EXIT_STATUS 126
+#define IS_DIRECTORY 21
+#define BACKGROUND_PROCESS 130
+#define TERMINATED_BY_SIGNAL 128
 
 #endif
