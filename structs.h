@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/13 10:10:29 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:18:36 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,14 @@ typedef struct s_expand
 	struct s_expand *next;
 }	t_expand;
 
+
 // ls -l -a < in1 > out1 << here1 | grep "a" > out | end
 typedef struct s_2_exec
 {
 	char			**cmd;
 	t_file			*files;
+	t_process_info	pi;
+	pid_t			(*pipes)[2];
 	char			**default_path;
 	char			exit_status;
 	struct s_2_exec	*next;

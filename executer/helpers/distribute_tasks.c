@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/21 01:49:56 by test             ###   ########.fr       */
+/*   Updated: 2025/03/21 16:11:09 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data,
 	else
 	{
 		redirect_and_execute(data, process_idx, my_env, my_garbage);
+		clear_all(data, my_env, my_garbage);
 		close(pipes[process_idx][0]);
 		close(pipes[process_idx][1]);
 		clear_garbage(my_garbage);
