@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/17 14:11:43 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/21 00:45:53 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 	if (new_pwd == NULL)
 		return ;
 	if (chdir(new_pwd) == -1)
+	{
+		set_exit_status(NO_SUCH_FILE_OR_DIR);
 		perror(ft_strjoin("cd: ", new_pwd, my_garbage));
+		return ;
+	}
 	data->cmd = ft_split(
 		ft_strjoin(
 			ft_strjoin("export OLDPWD=", pwd, my_garbage),

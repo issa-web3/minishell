@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/17 17:36:01 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/21 00:35:30 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ void	ft_pwd(t_2_exec *data, t_env **my_env,
 
 	(void)data;
 	(void)is_child;
+	(void)my_env;
+	(void)my_garbage;
 	getcwd(cwd, sizeof(cwd));
 	write(1, cwd, ft_strlen(cwd));
 	write(1, "\n", 1);
-	clear_garbage(my_garbage);
-	clear_env(my_env);
-	exit(EXIT_SUCCESS);
 }

@@ -3,30 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/18 22:57:37 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/21 00:35:57 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-static void	command_not_found(t_2_exec *data, char *path,
-		t_garbage **my_garbage)
+static void	command_not_found(t_2_exec *data, char *path)
 {
 	if (path == NULL)
 	{
 		set_exit_status(COMMAND_NOT_FOUND);
 		write(2, data->cmd[0], ft_strlen(data->cmd[0]));
 		write(2, ": command not found\n", 20);
-		clear_garbage(my_garbage);
-		exit(EXIT_FAILURE);
 	}
 }
 
-static void	no_such_file_or_dir(t_2_exec *data, char *path,
-		t_garbage **my_garbage)
+static void	no_such_file_or_dir(t_2_exec *data, char *path)
 {
 	char	*cmd;
 
@@ -38,10 +34,9 @@ static void	no_such_file_or_dir(t_2_exec *data, char *path,
 		|| (path == NULL && !ft_strncmp(cmd, "./", 2))
 	)
 	{
+		set_exit_status(COMMAND_NOT_FOUND);
 		write(2, cmd, ft_strlen(cmd));
 		write(2, ": No such file or directory\n", 28);
-		clear_garbage(my_garbage);
-		exit(EXIT_FAILURE);
 	}
 }
 
@@ -84,7 +79,7 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 			break ;
 		path = NULL;
 	}
-	no_such_file_or_dir(data, path, my_garbage);
-	command_not_found(data, path, my_garbage);
+	no_such_file_or_dir(data, path);
+	command_not_found(data, path);
 	return (path);
 }
