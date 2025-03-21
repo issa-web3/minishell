@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/21 16:18:36 by test             ###   ########.fr       */
+/*   Updated: 2025/03/21 16:51:44 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_token
 
 typedef struct s_garbage
 {
+	t_2_exec		*data;
+	my_env			**my_env;
 	void			*ptr;
 	struct s_garbage *next;
 }					t_garbage;

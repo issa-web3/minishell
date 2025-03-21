@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/17 14:29:39 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:05:41 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,15 @@ int	main(int ac, char **av, char **env)
 		line = ft_readline();
 		if (line && *line)
 		{
+			my_garbage = malloc(sizeof(t_garbage));
+			if (my_garbage == NULL)
+				break ;
+			my_garbage->my_env = &my_env;
+			my_garbage->data = NULL;
 			data = parsing(line, &my_env, &my_garbage);
 			if (data)
 			{
+				my_garbage->data = data;
 				data->default_path = &default_path;
 				// append_garbage(&my_garbage, line);
 				execute(data, &my_env, &my_garbage);

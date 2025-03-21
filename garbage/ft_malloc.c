@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 08:10:27 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:59:26 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	*ft_malloc(size_t size, t_garbage **my_garbage)
 	if (allocated == NULL)
 	{
 		perror("malloc");
-		clear_garbage(my_garbage);
+		clear_all(my_garbage);
 		exit(EXIT_FAILURE);
 	}
 	new_garbage = append_garbage(my_garbage, allocated);
 	if (new_garbage == NULL)
 	{
 		perror("malloc");
-		clear_garbage(my_garbage);
+		clear_all(my_garbage);
 		exit(EXIT_FAILURE);
 	}
 	new_garbage->ptr = allocated;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/16 12:02:39 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:01:55 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ char	**format_env(t_env **my_env, t_garbage **my_garbage)
 	if (i == 0)
 		return (NULL);
 	result = ft_malloc(i * (sizeof(char *) + 1), my_garbage);
-	if (result == NULL)
-		return (NULL);
 	1 && (curr = *my_env, i = 0);
 	while (curr)
 	{

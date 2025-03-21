@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/21 00:26:59 by test             ###   ########.fr       */
+/*   Updated: 2025/03/21 16:53:05 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ int				ft_pipe(int *arr);
 int				ft_dup2(int a, int b);
 pid_t			ft_fork(void);
 int				ft_open(char *filename, int mode);
+
+// leaks
+void			clear_all(t_garbage **my_garbage);
 
 #endif
