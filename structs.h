@@ -6,12 +6,14 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/21 16:51:44 by test             ###   ########.fr       */
+/*   Updated: 2025/03/21 17:11:54 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+#include "executer/exec_structs.h"
 
 // env
 typedef struct s_env
@@ -48,10 +50,22 @@ typedef struct s_token
 	struct s_token	*next;
 }			t_token;
 
+// ls -l -a < in1 > out1 << here1 | grep "a" > out | end
+typedef struct s_2_exec
+{
+	char			**cmd;
+	t_file			*files;
+	t_process_info	pi;
+	pid_t			(*pipes)[2];
+	char			**default_path;
+	char			exit_status;
+	struct s_2_exec	*next;
+}				t_2_exec;
+
 typedef struct s_garbage
 {
 	t_2_exec		*data;
-	my_env			**my_env;
+	t_env			**my_env;
 	void			*ptr;
 	struct s_garbage *next;
 }					t_garbage;
@@ -75,17 +89,11 @@ typedef struct s_expand
 	struct s_expand *next;
 }	t_expand;
 
-
-// ls -l -a < in1 > out1 << here1 | grep "a" > out | end
-typedef struct s_2_exec
+// built-ins
+typedef struct s_builtin
 {
-	char			**cmd;
-	t_file			*files;
-	t_process_info	pi;
-	pid_t			(*pipes)[2];
-	char			**default_path;
-	char			exit_status;
-	struct s_2_exec	*next;
-}				t_2_exec;
+	void	(*func)(t_2_exec *, t_env **, t_garbage **, char is_child);
+	char	*name;
+}				t_builtin;
 
 #endif

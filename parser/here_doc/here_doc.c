@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khoukouj <khoukouj@student.42.fr>          #+#  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-03-18 15:04:01 by khoukouj          #+#    #+#             */
-/*   Updated: 2025-03-18 15:04:01 by khoukouj         ###   ########ma        */
+/*   Created: 2025/03/18 15:04:01 by khoukouj          #+#    #+#             */
+/*   Updated: 2025/03/21 17:13:10 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec *node, t_garbage **g)
 		else
 			del = NULL;
 		is_expand = is_expand_heredoc(del);
-		
+		(void)is_expand;
+		(void)node;
+		(void)g;
 	}
+	return (314);
 }

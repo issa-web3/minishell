@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 13:47:17 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:23:34 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	clear_garbage(t_garbage **my_garbage)
 	t_garbage	*next;
 
 	curr = *my_garbage;
+	if (curr)
+		curr = curr->next;
 	while (curr)
 	{
 		next = curr->next;
@@ -25,6 +27,7 @@ void	clear_garbage(t_garbage **my_garbage)
 		free(curr);
 		curr = next;
 	}
+	free(*my_garbage);
 	*my_garbage = NULL;
 }
 

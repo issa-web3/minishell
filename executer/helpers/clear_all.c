@@ -6,11 +6,11 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:22:27 by test              #+#    #+#             */
-/*   Updated: 2025/03/21 16:51:52 by test             ###   ########.fr       */
+/*   Updated: 2025/03/21 17:26:54 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 void	clear_all(t_garbage **my_garbage)
 {

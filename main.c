@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/21 17:05:41 by test             ###   ########.fr       */
+/*   Updated: 2025/03/21 17:26:38 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	main(int ac, char **av, char **env)
 				break ;
 			my_garbage->my_env = &my_env;
 			my_garbage->data = NULL;
+			my_garbage->ptr = NULL;
+			my_garbage->next = NULL;
 			data = parsing(line, &my_env, &my_garbage);
 			if (data)
 			{
