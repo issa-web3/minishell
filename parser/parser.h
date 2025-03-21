@@ -30,6 +30,7 @@ int			is_expand_heredoc(char *del);
 int			init_syntax_data(int *i, char *line);
 void		hide_quotes(t_token **node);
 void		restore_quotes(t_token **lst);
+char        *remove_quotes(char *str, t_garbage **g);
 int			is_operator(char c);
 void		ft_skip_quoted_section(char *str, int *i, char quote_type);
 char		*ft_strtrim(char *str, char *set, t_garbage **to_free);

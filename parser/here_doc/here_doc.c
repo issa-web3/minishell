@@ -12,7 +12,24 @@
 
 #include "../../minishell.h"
 
-int	ft_handle_heredoc(t_token **tokens, t_2_exec *node, t_garbage **g)
+static void	prepare_del(char **del)
+{
+	char	*tmp;
+	int		i;
+
+	tmp = *del;
+	i = 0;
+	while (tmp[i])
+	{
+		if (tmp[i] == -1)
+			tmp[i] = '\'';
+		else if (tmp[i] == -2)
+			tmp[i] = '"';
+		i++;
+	}
+}
+
+int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g)
 {
 	char	*del;
 	int		is_expand;
@@ -20,13 +37,14 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec *node, t_garbage **g)
 	while ((*tokens) && (*tokens)->type == HERE_DOC)
 	{
 		if ((*tokens)->next)
-			del = (*tokens)->next->token;
+		{
+			hide_quotes(&((*tokens)->next));
+			del = remove_quotes((*tokens)->next->token, g);
+			prepare_del(&del);
+		}
 		else
 			del = NULL;
 		is_expand = is_expand_heredoc(del);
-		(void)is_expand;
-		(void)node;
-		(void)g;
 	}
 	return (314);
 }
