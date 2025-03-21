@@ -15,10 +15,6 @@ talha:
 	exit 11222 
 	cd (delete parent dir)
 
-parsing
-	pwd | > x // nigga its not an error 
-
-
 general:
 	/bin/ls
 	/usr/bin/ls
