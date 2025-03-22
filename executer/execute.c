@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/21 16:57:15 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 17:08:37 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 			|| !ft_strcmp(data->cmd[0], "exit")
 			|| (!ft_strcmp(data->cmd[0], "export") && data->cmd[1])
 			|| (!ft_strcmp(data->cmd[0], "unset"))
-			|| !ft_strcmp(data->cmd[0], "env")
-			|| !ft_strcmp(data->cmd[0], "pwd")
-			|| !ft_strcmp(data->cmd[0], "echo")
+			// || !ft_strcmp(data->cmd[0], "env")
+			// || !ft_strcmp(data->cmd[0], "pwd")
+			// || !ft_strcmp(data->cmd[0], "echo")
 		)
 	)
 		(exec_builtin(data, my_env, my_garbage, 0), pi.process_num--);

@@ -18,5 +18,8 @@ general:
 	./
 	/
 	executer/
-	export PATH+=:$PWD && file_here
+
+	export PATH+=:$PWD
+	./file_here
+	file_here
 
