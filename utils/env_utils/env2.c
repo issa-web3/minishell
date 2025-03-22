@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/21 17:01:55 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 18:03:56 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ char	**format_env(t_env **my_env, t_garbage **my_garbage)
 	1 && (curr = *my_env, i = 0);
 	while (curr)
 	{
-		result[i] = ft_strjoin(curr->name,
-				ft_strjoin("=", curr->value,
-					my_garbage), my_garbage);
+		if (curr->value)
+			result[i] = ft_strjoin(curr->name, "=", my_garbage);
+		else
+			result[i] = ft_strjoin(curr->name, NULL, my_garbage);
+		result[i] = ft_strjoin(result[i], curr->value, my_garbage);
 		curr = curr->next;
 		i++;
 	}

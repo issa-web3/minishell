@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/21 16:53:05 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 17:56:16 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ void			ft_exit(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_c
 void			ft_export(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
 void			ft_pwd(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
 void			ft_unset(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
+
+// built-in utils
+int				is_valid(const char *str);
+void			print_sorted_env(char **env_vars);
+char			**sort_export(t_env **my_env, t_garbage **my_garbage);
 
 // garbage utils
 void			clear_garbage(t_garbage **my_garbage);

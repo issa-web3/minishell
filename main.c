@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/21 17:26:38 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 17:27:23 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **env)
 			{
 				my_garbage->data = data;
 				data->default_path = &default_path;
-				// append_garbage(&my_garbage, line);
+				set_exit_status(SUCCESS);
 				execute(data, &my_env, &my_garbage);
 			}
 			add_history(line);

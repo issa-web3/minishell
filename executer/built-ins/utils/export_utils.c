@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/20 23:24:56 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 17:59:23 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void swap(char **a, char **b)
     *a = *b;
     *b = temp;
 }
-
 
 void bubble_sort(char **arr, int n)
 {
@@ -36,34 +35,36 @@ void bubble_sort(char **arr, int n)
     }
 }
 
-char **sort_export(t_env *head, t_data *data, t_alloc **head_ch)
+char **sort_export(t_env **my_env, t_garbage **my_garbage)
 {
-    char    **env_vars;
-    t_env   *current;
-    int count;
-    int i;
+    char	**env_vars;
 
-    (void) data;
-    count = 0;
-    current = head;
-    while (current)
-    {
-        if (current->env_var) 
-            count++;
-        current = current->next;
-    }
-    env_vars = ft_malloc2((count + 1) * sizeof(char *), head_ch);
-    current = head;
-    i = 0;
-    while (current)
-    {
-        if (current->env_var) 
-            env_vars[i++] = ftt_strdup2(current->env_var, head_ch);
-        current = current->next;
-    }
-    env_vars[i] = NULL;
-    bubble_sort(env_vars, count);
+    env_vars = format_env(my_env, my_garbage);
+    bubble_sort(env_vars, env_len(*my_env));
     return (env_vars);
+}
+
+void	print_sorted_env(char **env_vars)
+{
+	int		i;
+	char	*key;
+	char	*value;
+
+	i = 0;
+	while (env_vars[i])
+	{
+		key = env_vars[i];
+		value = ft_strchr(key, '=');
+		if (value)
+		{
+			*(value++) = '\0';
+			if (key[0] != '_' && key[1] != '=')
+				printf("declare -x %s=\"%s\"\n", key, value);
+		}
+		else
+			printf("declare -x %s\n", key);
+		i++;
+	}
 }
 
 int is_valid(const char *str)

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/18 14:46:57 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:56:16 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static void	no_args(t_2_exec *data, t_env **my_env,
-	t_garbage **my_garbage, char is_child)
+static void	no_args(t_env **my_env, t_garbage **my_garbage)
 {
-	if (data->cmd[1])
-		return ;
-	ft_env(data, my_env, my_garbage, is_child);
+	char	**env_vars;
+
+	env_vars = sort_export(my_env, my_garbage);
+	print_sorted_env(env_vars);
 }
 
 void	ft_export(t_2_exec *data, t_env **my_env,
@@ -34,16 +34,27 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 	(void)is_child;
 	(void)my_garbage;
 	i = 1;
-	no_args(data, my_env, my_garbage, is_child);
+	if (data->cmd[i] == NULL)
+		no_args(my_env, my_garbage);
 	while (data->cmd[i])
 	{
+		if (!is_valid(data->cmd[i]))
+		{
+			write(2, "export: '", 9);
+			write(2, data->cmd[i], ft_strlen(data->cmd[i]));
+			write(2, "': not a valid identifier\n", 27);
+			set_exit_status(GENERIC_ERR);
+		}
 		sep = ft_strchr(data->cmd[i], '=');
 		if (sep)
 			*(sep++) = 0;
 		parsed[0] = ft_strdup_wg(data->cmd[i]);
 		parsed[1] = ft_strdup_wg(sep);
 		if (parsed[0] == NULL || (parsed[1] == NULL && sep))
-			return ;
+		{
+			clear_all(my_garbage);
+			exit(EXIT_FAILURE);
+		}
 		rm_plus = &parsed[0][ft_strlen(parsed[0]) - 1];
 		append = *rm_plus == '+';
 		*rm_plus -= *rm_plus * append;

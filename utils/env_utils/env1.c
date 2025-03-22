@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/17 13:35:50 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:44:45 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ t_env	*get_last_env(t_env **my_env)
 	while (curr && curr->next)
 		curr = curr->next;
 	return (curr);
+}
+
+int		env_len(t_env *curr)
+{
+	int	len;
+
+	len = 0;
+	while (curr)
+		(curr = curr->next, len++);	
+	return (len);
 }
 
 t_env	*new_env_var(char **data)

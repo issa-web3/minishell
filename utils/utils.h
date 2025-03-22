@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/21 17:02:08 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 17:46:25 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_env		*get_last_env(t_env **my_env);
 void		del_env_var(t_env *env_var, t_env **my_env);
 void		clear_env(t_env **my_env);
 char		**format_env(t_env **my_env, t_garbage **my_garbage);
+int			env_len(t_env *curr);
 
 // exit status
 int			get_exit_status(void);
