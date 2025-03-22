@@ -7,11 +7,7 @@ zyamli:
 
 talha:
 	export
-	export a=a b=b c=c x=x
-	export zzz=k > d
-	export zzz=k < d
-	
-	unset zzz < d
+	export valid=valid
 	exit 11222 
 	cd (delete parent dir)
 
