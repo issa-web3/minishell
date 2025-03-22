@@ -14,9 +14,9 @@ talha:
 general:
 	/bin/ls
 	/usr/bin/ls
-	redirection without cmd (>a)
 	leaks ( fds, memory ) ----> clear_all
 	./
 	/
 	executer/
+	export PATH+=:$PWD && file_here
 
