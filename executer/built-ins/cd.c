@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/21 00:45:53 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 18:26:23 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 			return (write(2, "cd: HOME not set\n", 17), NULL);
 		new_pwd = home->value;
 	}
+	else if (data->cmd[2])
+		return (write(2, "cd: too many arguments\n", 23), NULL);
 	else if (data->cmd[1][0] == '/')
 		new_pwd = data->cmd[1];
 	else
@@ -49,11 +51,10 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 		perror(ft_strjoin("cd: ", new_pwd, my_garbage));
 		return ;
 	}
-	data->cmd = ft_split(
-		ft_strjoin(
+	data->cmd[0] = ft_strjoin(
 			ft_strjoin("export OLDPWD=", pwd, my_garbage),
 			ft_strjoin(" PWD=", new_pwd, my_garbage)
-		, my_garbage)
-		, ' ', my_garbage);
+		, my_garbage);
+	data->cmd = ft_split(data->cmd[0], ' ', my_garbage);
 	ft_export(data, my_env, my_garbage, is_child);
 }
