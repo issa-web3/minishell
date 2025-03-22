@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/22 17:27:41 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 21:04:47 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	redirect_and_execute(t_2_exec *data, int process_idx,
 		exec_by_idx(data, my_env, my_garbage);
 }
 
-void	distribute_tasks(t_process_info pi, pid_t (*pipes)[2], t_2_exec *data,
+void	distribute_tasks(t_process_info pi, t_pipe *pipes, t_2_exec *data,
 		t_env **my_env, t_garbage **my_garbage)
 {
 	int		process_idx;

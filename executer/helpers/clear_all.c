@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:22:27 by test              #+#    #+#             */
-/*   Updated: 2025/03/21 17:26:54 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 21:05:12 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	clear_all(t_garbage **my_garbage)
 {
-	pid_t			(*pipes)[2];
+	t_pipe			*pipes;
 	int				process_idx;
 	t_2_exec		*data;
 	t_env			**my_env;

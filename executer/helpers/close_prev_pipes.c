@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   close_prev_pipes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:47:58 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 07:42:21 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/22 21:04:47 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-void	close_prev_pipes(pid_t (*pipes)[2], int nth_process)
+void	close_prev_pipes(t_pipe *pipes, int nth_process)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/21 17:11:33 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 21:03:18 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define EXEC_STRUCTS_H
 
 #include "../structs.h"
+
+typedef pid_t t_pipe[2];
 
 typedef struct s_process_info
 {

@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/22 17:08:37 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 21:04:13 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	t_process_info	pi;
 	int				fail;
-	pid_t			(*pipes)[2];
+	t_pipe			*pipes;
+
 
 	pi.process_idx = 0;
 	pi.process_num = ft_lstsize(data);

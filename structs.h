@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/21 17:11:54 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 21:03:47 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_2_exec
 	char			**cmd;
 	t_file			*files;
 	t_process_info	pi;
-	pid_t			(*pipes)[2];
+	t_pipe			*pipes;
 	char			**default_path;
 	char			exit_status;
 	struct s_2_exec	*next;

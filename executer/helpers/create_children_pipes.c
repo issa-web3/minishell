@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_children_pipes.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:51:46 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/12 14:34:29 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/03/22 21:04:47 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-static int	redirect_input(pid_t (*pipes)[2], int idx)
+static int	redirect_input(t_pipe *pipes, int idx)
 {
 	int	fail;
 
@@ -22,7 +22,7 @@ static int	redirect_input(pid_t (*pipes)[2], int idx)
 	return (fail);
 }
 
-static int	redirect_output(pid_t (*pipes)[2], int idx)
+static int	redirect_output(t_pipe *pipes, int idx)
 {
 	int	fail;
 
@@ -32,7 +32,7 @@ static int	redirect_output(pid_t (*pipes)[2], int idx)
 	return (fail);
 }
 
-int	create_children_pipes(pid_t (*pipes)[2], t_process_info *pi)
+int	create_children_pipes(t_pipe *pipes, t_process_info *pi)
 {
 	int	fail;
 
