@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/22 17:59:23 by test             ###   ########.fr       */
+/*   Updated: 2025/03/22 18:11:05 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 
 void swap(char **a, char **b)
 {
-    char *temp = *a;
+    char *temp;
+
+	temp = *a;
     *a = *b;
     *b = temp;
 }
 
 void bubble_sort(char **arr, int n)
 {
-    int i = 0;
+    int	i;
+    int	j;
+
+    i = 0;
     while (i < n - 1)
     {
-        int j = 0;
+        j = 0;
         while (j < n - i - 1)
         {
-            if (strcmp(arr[j], arr[j + 1]) > 0) 
+            if (ft_strcmp(arr[j], arr[j + 1]) > 0) 
                 swap(&arr[j], &arr[j + 1]);
             j++;
         }
@@ -47,22 +52,22 @@ char **sort_export(t_env **my_env, t_garbage **my_garbage)
 void	print_sorted_env(char **env_vars)
 {
 	int		i;
-	char	*key;
+	char	*name;
 	char	*value;
 
 	i = 0;
 	while (env_vars[i])
 	{
-		key = env_vars[i];
-		value = ft_strchr(key, '=');
+		name = env_vars[i];
+		value = ft_strchr(name, '=');
 		if (value)
 		{
 			*(value++) = '\0';
-			if (key[0] != '_' && key[1] != '=')
-				printf("declare -x %s=\"%s\"\n", key, value);
+			if (ft_strncmp(name, "_=", 2))
+				printf("declare -x %s=\"%s\"\n", name, value);
 		}
 		else
-			printf("declare -x %s\n", key);
+			printf("declare -x %s\n", name);
 		i++;
 	}
 }

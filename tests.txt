@@ -23,3 +23,7 @@ general:
 	./file_here
 	file_here
 
+	export > x
+	export > y
+	diff x y > z
+
