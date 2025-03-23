@@ -6,8 +6,6 @@ zyamli:
 	"l"'s' '|' | -la
 
 talha:
-	export
-	export valid=valid
 	exit 11222 
 	cd (delete parent dir)
 
@@ -22,8 +20,4 @@ general:
 	export PATH+=:$PWD
 	./file_here
 	file_here
-
-	export > x
-	export > y
-	diff x y > z
 
