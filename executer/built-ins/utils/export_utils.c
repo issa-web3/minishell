@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/23 01:36:03 by test             ###   ########.fr       */
+/*   Updated: 2025/03/23 08:43:18 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,12 @@ int is_valid(const char *str)
 
     if (!str || !*str)
         return 0;
-    if (!(isalpha(str[0]) || str[0] == '_'))
+    if (!(ft_isalpha(str[0]) || str[0] == '_'))
         return 0;
-    while (str[i] && str[i] != '=')
-    {
-        if (isalnum(str[i]) || str[i] == '_')
-        {
-            i++;
-            continue;
-        }
-        if (str[i] == '+' && str[i+1] == '=')
-        {
-            i++;
-            break;
-        }
-        return (0);
-    }  
-    return (1);
+    while (ft_isalnum(str[i]) || str[i] == '_')
+        i++;
+    return (
+        (str[i] == '+' && str[i + 1] == '=')
+        || str[i] == '='
+    );
 }
