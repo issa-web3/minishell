@@ -15,5 +15,7 @@ general:
 
 notes :
 	bash files are supported by only Bash
+		supporting bash files means gnl(file) + parse + execute
+
 	leaks are caused in parser part
 
