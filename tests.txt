@@ -10,14 +10,11 @@ talha:
 	cd (delete parent dir)
 
 general:
-	/bin/ls
-	/usr/bin/ls
+	ls 45454
 	leaks ( fds, memory ) ----> clear_all
-	./
-	/
 	executer/
 
 	export PATH+=:$PWD
-	./file_here
-	file_here
+	./file_here.bash
+	file_here.bash
 
