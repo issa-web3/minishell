@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/23 02:12:31 by test             ###   ########.fr       */
+/*   Updated: 2025/03/23 08:46:22 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 			write(2, data->cmd[i], ft_strlen(data->cmd[i]));
 			write(2, "': not a valid identifier\n", 27);
 			set_exit_status(GENERIC_ERR);
+			i++;
+			continue ;
 		}
 		sep = ft_strchr(data->cmd[i], '=');
 		if (sep)
