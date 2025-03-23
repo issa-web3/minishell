@@ -10,7 +10,6 @@ talha:
 	cd (delete parent dir)
 
 general:
-	ls 45454
 	leaks ( fds, memory ) ----> clear_all
 	executer/
 
