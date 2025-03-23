@@ -13,5 +13,7 @@ general:
 	leaks ( fds, memory ) ----> clear_all
 	executer/
 
+notes :
 	bash files are supported by only Bash
+	leaks are caused in parser part
 
