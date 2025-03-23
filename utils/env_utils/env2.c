@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/22 18:03:56 by test             ###   ########.fr       */
+/*   Updated: 2025/03/23 02:06:37 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_env	*copy_env(char **env)
 {
 	t_env		*my_env;
 	t_env		*tail;
-	char		**data;
+	char		*data[2];
 	int			i;
 
 	i = 0;
@@ -27,7 +27,11 @@ t_env	*copy_env(char **env)
 	tail = NULL;
 	while (env[i])
 	{
-		data = ft_split_without_garbage(env[i], '=');
+		data[0] = ft_strdup_wg(env[i]);
+		data[1] = ft_strchr(data[0], '=');
+		if (data[1])
+			*(data[1]++) = '\0';
+		data[1] = ft_strdup_wg(data[1]);
 		if (data == NULL)
 			return (clear_env(&my_env), NULL);
 		tail = append_env(&my_env, tail, new_env_var(data));

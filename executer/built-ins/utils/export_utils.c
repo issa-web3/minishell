@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/22 18:11:05 by test             ###   ########.fr       */
+/*   Updated: 2025/03/23 01:36:03 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	print_sorted_env(char **env_vars)
 		if (value)
 		{
 			*(value++) = '\0';
-			if (ft_strncmp(name, "_=", 2))
+			if (ft_strcmp(name, "_"))
 				printf("declare -x %s=\"%s\"\n", name, value);
 		}
 		else
