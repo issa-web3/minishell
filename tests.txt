@@ -13,7 +13,5 @@ general:
 	leaks ( fds, memory ) ----> clear_all
 	executer/
 
-	export PATH+=:$PWD
-	./file_here.bash
-	file_here.bash
+	bash files are supported by only Bash
 
