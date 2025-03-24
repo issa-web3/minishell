@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/24 02:07:16 by test             ###   ########.fr       */
+/*   Updated: 2025/03/24 02:14:00 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int ac, char **av, char **env)
 		{
 			my_garbage = malloc(sizeof(t_garbage));
 			if (my_garbage == NULL)
-				break ;
+				(clear_env(my_env), perror("malloc"), exit(EXIT_FAILURE));
 			my_garbage->my_env = &my_env;
 			my_garbage->data = NULL;
 			my_garbage->ptr = NULL;
