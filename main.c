@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/22 17:27:23 by test             ###   ########.fr       */
+/*   Updated: 2025/03/24 02:07:16 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	main(int ac, char **av, char **env)
 			}
 			add_history(line);
 		}
+		free(line);
 		clear_garbage(&my_garbage);
 	}
 	clear_env(&my_env);
