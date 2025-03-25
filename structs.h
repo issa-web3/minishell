@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/22 21:03:47 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:00:54 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_expand
 // built-ins
 typedef struct s_builtin
 {
-	void	(*func)(t_2_exec *, t_env **, t_garbage **, char is_child);
+	void	(*func)(t_2_exec *, t_env **, t_garbage **);
 	char	*name;
 }				t_builtin;
 
