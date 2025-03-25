@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/22 21:04:47 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:02:54 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
 void			execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 int				create_children_pipes(t_pipe *pipes,
 					t_process_info *init_pi);
-int				exec_builtin(t_2_exec *data, t_env **my_env, t_garbage **my_garbage,
-					char is_child);
+int				exec_builtin(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 void			close_prev_pipes(t_pipe *pipes, int nth_process);
 void			distribute_tasks(t_process_info pi, t_pipe *pipes,
 					t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
@@ -36,13 +35,13 @@ char			*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 char			redirections(t_file **files, char redirect);
 
 // built-in
-void			ft_cd(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
-void			ft_echo(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
-void			ft_env(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
-void			ft_exit(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
-void			ft_export(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
-void			ft_pwd(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
-void			ft_unset(t_2_exec *data, t_env **my_env, t_garbage **my_garbage, char is_child);
+void			ft_cd(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
+void			ft_echo(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
+void			ft_env(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
+void			ft_exit(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
+void			ft_export(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
+void			ft_pwd(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
+void			ft_unset(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 
 // built-in utils
 int				is_valid(const char *str);

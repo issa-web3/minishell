@@ -1,0 +1,20 @@
+
+old err :
+	ls | ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls| ls
+
+zyamli:
+	"l"'s' '|' | -la
+
+talha:
+	exit 11222 
+	cd (delete parent dir)
+
+general:
+	leaks ( fds, memory ) ----> clear_all
+	executer/
+
+notes :
+	bash files are supported by only Bash
+		supporting bash files means gnl(file) + parse + execute
+
+

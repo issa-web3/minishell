@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/23 01:38:24 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:02:08 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 }
 
 void	ft_cd(t_2_exec *data, t_env **my_env,
-		t_garbage **my_garbage, char is_child)
+		t_garbage **my_garbage)
 {
 	char	pwd[1024];
 	char	*new_pwd;
 
-	(void)is_child;
 	getcwd(pwd, 1024);
 	new_pwd = get_new_pwd(data, pwd, my_env, my_garbage);
 	if (new_pwd == NULL)
@@ -56,5 +55,5 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 			ft_strjoin(" PWD=", new_pwd, my_garbage)
 		, my_garbage);
 	data->cmd = ft_split(data->cmd[0], ' ', my_garbage);
-	ft_export(data, my_env, my_garbage, is_child);
+	ft_export(data, my_env, my_garbage);
 }

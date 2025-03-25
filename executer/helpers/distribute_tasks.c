@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/23 08:19:33 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:03:20 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	char	*cmd;
 
-	if (exec_builtin(data, my_env, my_garbage, 1) == -1)
+	if (exec_builtin(data, my_env, my_garbage) == -1)
 	{
 		set_exit_status(SUCCESS);
 		cmd = get_path(data, my_env, my_garbage);

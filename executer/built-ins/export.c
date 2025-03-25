@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/23 08:46:22 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:01:28 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	no_args(t_env **my_env, t_garbage **my_garbage)
 }
 
 void	ft_export(t_2_exec *data, t_env **my_env,
-		t_garbage **my_garbage, char is_child)
+		t_garbage **my_garbage)
 {
 	t_env	*to_export;
 	char	*parsed[2];
@@ -31,7 +31,6 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 	char	append;
 	int		i;
 
-	(void)is_child;
 	(void)my_garbage;
 	i = 1;
 	if (data->cmd[i] == NULL)

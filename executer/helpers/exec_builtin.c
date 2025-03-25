@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:57:33 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/21 00:44:46 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:02:13 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 // }
 
 int	exec_builtin(t_2_exec *data, t_env **my_env,
-		t_garbage **my_garbage, char is_child)
+		t_garbage **my_garbage)
 {
 	t_builtin	built_in[7];
 	int			i;
@@ -58,7 +58,7 @@ int	exec_builtin(t_2_exec *data, t_env **my_env,
 	{
 		set_exit_status(SUCCESS);
 		if (redirections(&data->files, 0) != -1)
-			(built_in[i].func)(data, my_env, my_garbage, is_child);
+			(built_in[i].func)(data, my_env, my_garbage);
 		return (0);
 	}
 	return (-1);
