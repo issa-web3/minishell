@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 00:03:20 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:37:58 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 		{
 			set_exit_status(INVALID_EXIT_STATUS);
 			write(2, data->cmd[0], ft_strlen(data->cmd[0]));
-			write(2, ": Not supported.\n", 17);
+			write(2, ": Not supported by minishell.\n", 30);
 			// write(2, ": Is a directory\n", 17);
 		}
 	}
