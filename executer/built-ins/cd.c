@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 03:03:13 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 03:38:13 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 		write(2, "cd: error retrieving current directory", 38);
 		write(2, ": getcwd: cannot access parent directo", 38);
 		write(2, "ries: No such file or directory/n", 32);
-		env_tmp = ft_getenv("PWD", my_env);
-		if (env_tmp)
-			pwd = env_tmp->value;
-		else
+		// env_tmp = ft_getenv("PWD", my_env);
+		// if (env_tmp)
+		// 	pwd = env_tmp->value;
+		// else
 			
-		data->cmd[0] = ft_strjoin(
-			ft_strjoin("export OLDPWD=", pwd, my_garbage),
-			ft_strjoin(" PWD=", new_pwd, my_garbage)
-		, my_garbage);
-		data->cmd = ft_split(data->cmd[0], ' ', my_garbage);
-		ft_export(data, my_env, my_garbage);
-		new_pwd = ft_strjoin(env_tmp->value, "/..", gc);
+		// data->cmd[0] = ft_strjoin(
+		// 	ft_strjoin("export OLDPWD=", pwd, my_garbage),
+		// 	ft_strjoin(" PWD=", new_pwd, my_garbage)
+		// , my_garbage);
+		// data->cmd = ft_split(data->cmd[0], ' ', my_garbage);
+		// ft_export(data, my_env, my_garbage);
+		// new_pwd = ft_strjoin(env_tmp->value, "/..", gc);
 	}
 	if (data->cmd[1] == NULL)
 	{

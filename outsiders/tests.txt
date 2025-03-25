@@ -21,3 +21,4 @@ notes :
 
 IMPORTANT NOTE:
 	initilize the main data struct t_2_EXEC
+	init all
