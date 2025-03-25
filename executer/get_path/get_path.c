@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/21 00:35:57 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 02:40:39 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ static void	no_such_file_or_dir(t_2_exec *data, char *path)
 static char	**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	char	**paths;
-	char	cwd[1024];
 	t_env	*path_var;
 
 	paths = NULL;
-	getcwd(cwd, sizeof(cwd));
 	path_var = ft_getenv("PATH", my_env);
 	if (path_var == NULL)
 		paths = ft_split(*data->default_path, ':', my_garbage);

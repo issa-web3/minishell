@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 00:02:08 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 03:03:13 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,32 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 		t_garbage **gc)
 {
 	char	*new_pwd;
-	t_env	*home;
+	t_env	*env_tmp;
 
+	if (pwd == NULL && !ft_strcmp(data->cmd[1], ".."))
+	{
+		write(2, "cd: error retrieving current directory", 38);
+		write(2, ": getcwd: cannot access parent directo", 38);
+		write(2, "ries: No such file or directory/n", 32);
+		env_tmp = ft_getenv("PWD", my_env);
+		if (env_tmp)
+			pwd = env_tmp->value;
+		else
+			
+		data->cmd[0] = ft_strjoin(
+			ft_strjoin("export OLDPWD=", pwd, my_garbage),
+			ft_strjoin(" PWD=", new_pwd, my_garbage)
+		, my_garbage);
+		data->cmd = ft_split(data->cmd[0], ' ', my_garbage);
+		ft_export(data, my_env, my_garbage);
+		new_pwd = ft_strjoin(env_tmp->value, "/..", gc);
+	}
 	if (data->cmd[1] == NULL)
 	{
-		home = ft_getenv("HOME", my_env);
-		if (home == NULL)
+		env_tmp = ft_getenv("HOME", my_env);
+		if (env_tmp == NULL)
 			return (write(2, "cd: HOME not set\n", 17), NULL);
-		new_pwd = home->value;
+		new_pwd = env_tmp->value;
 	}
 	else if (data->cmd[2])
 		return (write(2, "cd: too many arguments\n", 23), NULL);
@@ -38,10 +56,11 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 		t_garbage **my_garbage)
 {
 	char	pwd[1024];
+	char	*pwd_ptr;
 	char	*new_pwd;
 
-	getcwd(pwd, 1024);
-	new_pwd = get_new_pwd(data, pwd, my_env, my_garbage);
+	pwd_ptr = getcwd(pwd, 1024);
+	new_pwd = get_new_pwd(data, pwd_ptr, my_env, my_garbage);
 	if (new_pwd == NULL)
 		return ;
 	if (chdir(new_pwd) == -1)
