@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/25 03:53:58 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 20:34:02 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	init_garbage(t_garbage **my_garbage, t_env **my_env)
 {
 	(*my_garbage) = malloc(sizeof(t_garbage));
 	if ((*my_garbage) == NULL)
-		(clear_env(&my_env), perror("malloc"), exit(EXIT_FAILURE));
-	(*my_garbage)->my_env = &my_env;
+		(clear_env(my_env), perror("malloc"), exit(EXIT_FAILURE));
+	(*my_garbage)->my_env = my_env;
 	(*my_garbage)->data = NULL;
 	(*my_garbage)->ptr = NULL;
 	(*my_garbage)->next = NULL;
@@ -82,11 +82,11 @@ int	main(int ac, char **av, char **env)
 			{
 				my_garbage->data = data;
 				data->default_path = &default_path;
+				add_history(line);
+				free(line);
 				execute(data, &my_env, &my_garbage);
 			}
-			add_history(line);
 		}
-		free(line);
 		clear_garbage(&my_garbage);
 	}
 	clear_env(&my_env);
