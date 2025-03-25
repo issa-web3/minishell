@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 00:27:03 by test             ###   ########.fr       */
+/*   Updated: 2025/03/25 03:54:13 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	int				fail;
 	t_pipe			*pipes;
 
+	set_exit_status(SUCCESS);
 	pi.process_idx = 0;
 	pi.process_num = ft_lstsize(data);
 	pipes = ft_malloc(pi.process_num * sizeof(pid_t[2]), my_garbage);
