@@ -22,3 +22,14 @@ notes :
 IMPORTANT NOTE:
 	initilize the main data struct t_2_EXEC
 	init all
+
+
+exit:
+	problem1:
+		exit | exit 45
+		echo $?
+
+	problem2:
+		./minishell
+		exit 45
+		echo $?

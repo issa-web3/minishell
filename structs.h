@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/25 03:06:22 by test             ###   ########.fr       */
+/*   Updated: 2025/03/26 03:54:51 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,11 @@ typedef struct s_builtin
 	void	(*func)(t_2_exec *, t_env **, t_garbage **);
 	char	*name;
 }				t_builtin;
+
+typedef struct s_exit_arg
+{
+	long	val;
+	char	err;
+}				t_exit_arg;
 
 #endif
