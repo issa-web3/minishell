@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/26 02:50:13 by test             ###   ########.fr       */
+/*   Updated: 2025/03/26 02:59:33 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static char	*get_default_path(char *str, t_env **my_env)
 static void	init(t_garbage **my_garbage, t_env **my_env,
 		char **env, char **default_path)
 {
+	signal(SIGINT, sigint_handler);
+	signal(SIGQUIT, SIG_IGN);
 	*my_garbage = NULL;
 	*my_env = copy_env(env);
 	*default_path = get_default_path(
@@ -47,13 +49,13 @@ char	*ft_readline(void)
 	return (line);
 }
 
-void	init_garbage(t_garbage **my_garbage, t_env **my_env)
+void	init_garbage(t_garbage **my_garbage, t_env **my_env, t_2_exec *data)
 {
 	(*my_garbage) = malloc(sizeof(t_garbage));
 	if ((*my_garbage) == NULL)
 		(clear_env(my_env), perror("malloc"), exit(EXIT_FAILURE));
 	(*my_garbage)->my_env = my_env;
-	(*my_garbage)->data = NULL;
+	(*my_garbage)->data = data;
 	(*my_garbage)->ptr = NULL;
 	(*my_garbage)->next = NULL;
 }
@@ -69,23 +71,18 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	init(&my_garbage, &my_env, env, &default_path);
-	signal(SIGINT, sigint_handler);
-	signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{
 		line = ft_readline();
-		if (line && *line)
+		init_garbage(&my_garbage, &my_env, NULL);
+		data = parsing(line, &my_env, &my_garbage);
+		if (data)
 		{
-			init_garbage(&my_garbage, &my_env);
-			data = parsing(line, &my_env, &my_garbage);
-			if (data)
-			{
-				my_garbage->data = data;
-				data->default_path = &default_path;
-				add_history(line);
-				free(line);
-				execute(data, &my_env, &my_garbage);
-			}
+			data->default_path = &default_path;
+			init_garbage(&my_garbage, &my_env, data);
+			add_history(line);
+			free(line);
+			execute(data, &my_env, &my_garbage);
 		}
 		clear_garbage(&my_garbage);
 	}
