@@ -33,3 +33,6 @@ exit:
 		./minishell
 		exit 45
 		echo $?
+
+	validation problem
+		only exit 45 45 doesnt exit
