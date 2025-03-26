@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/25 20:34:02 by test             ###   ########.fr       */
+/*   Updated: 2025/03/26 02:50:13 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char	*ft_readline(void)
 	line = readline("rich-3.14 $~ ");
 	if (!line)
 	{
-		set_exit_status(0);
-		exit(0);
+		set_exit_status(SUCCESS);
+		exit(SUCCESS);
 	}
 	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 00:01:28 by test             ###   ########.fr       */
+/*   Updated: 2025/03/26 02:52:41 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 		if (parsed[0] == NULL || (parsed[1] == NULL && sep))
 		{
 			clear_all(my_garbage);
+			set_exit_status(EXIT_FAILURE);
 			exit(EXIT_FAILURE);
 		}
 		rm_plus = &parsed[0][ft_strlen(parsed[0]) - 1];
