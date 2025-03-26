@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/26 04:58:08 by test             ###   ########.fr       */
+/*   Updated: 2025/03/26 20:33:11 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_exit_arg	ft_atol(char *str)
 	{
 		if (result.val > (LONG_MAX - (str[i] - '0')) / 10)
 		{
-			result.val = 2;
 			result.err = 1;
 			sign = 1;
 			break ;
@@ -38,6 +37,7 @@ t_exit_arg	ft_atol(char *str)
 		result.val = result.val * 10 + (str[i] - '0');
 		i++;
 	}
+	result.err = str[i] != '\0';
 	result.val *= sign;
 	return (result);
 }
@@ -50,17 +50,18 @@ int	change_exit_status(char **args)
 	ac = -1;
 	while (args[++ac])
 		;
-	if (ac == 1)
+	if (ac == 0)
+		return (set_exit_status(0), 0);
+	tmp = ft_atol(args[0]);
+	if (tmp.err)
 	{
-		tmp = ft_atol(args[0]);
-		if (tmp.err)
-		{
-			write(2, "exit: ", 6);
-			write(2, args[0], ft_strlen(args[0]));
-			write(2, ": numeric argument required\n", 28);
-		}
-		return (set_exit_status(tmp.val % 256), 0);
+		write(2, "exit: ", 6);
+		write(2, args[0], ft_strlen(args[0]));
+		write(2, ": numeric argument required\n", 28);
+		return (set_exit_status(2), 0);
 	}
+	if (ac == 1)
+		return (set_exit_status(tmp.val % 256), 0);
 	if (ac > 1)
 		return (write(2, "exit: too many arguments\n", 25), set_exit_status(1), -1);
 	return (set_exit_status(0), 0);
