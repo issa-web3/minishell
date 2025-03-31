@@ -36,3 +36,10 @@ exit:
 
 	validation problem
 		only exit 45 45 doesnt exit
+
+
+playing with bash:
+	$?
+	$?
+
+	exit status changes in the child process only
