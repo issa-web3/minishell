@@ -32,8 +32,8 @@ t_env	*copy_env(char **env)
 		if (data[1])
 			*(data[1]++) = '\0';
 		data[1] = ft_strdup_wg(data[1]);
-		if (data == NULL)
-			return (clear_env(&my_env), NULL);
+		// if (data[1] == NULL)
+		// 	return (clear_env(&my_env), NULL); // TODO
 		tail = append_env(&my_env, tail, new_env_var(data));
 		if (tail == NULL)
 			return (clear_env(&my_env), NULL);
