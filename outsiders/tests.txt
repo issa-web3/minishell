@@ -6,7 +6,6 @@ zyamli:
 	"l"'s' '|' | -la
 
 talha:
-	exit 11222 
 	cd (delete parent dir)
 
 general:

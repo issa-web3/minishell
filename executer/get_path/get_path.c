@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 14:10:06 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:14:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ static void	no_such_file_or_dir(t_2_exec *data, char *path)
 	)
 	{
 		set_exit_status(COMMAND_NOT_FOUND);
-		write(2, cmd, ft_strlen(cmd));
-		write(2, ": No such file or directory\n", 28);
+		perror(cmd);
+		// write(2, cmd, ft_strlen(cmd));
+		// write(2, ": No such file or directory\n", 28);
 	}
 }
 
@@ -90,7 +91,7 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	{
 		if (access((const char *)cmd, X_OK) == 0)
 			return (cmd);
-		no_such_file_or_dir(data, NULL);
+		perror(cmd);
 		return (NULL);
 	}
 	while (!path && paths && paths[i])
