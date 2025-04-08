@@ -45,6 +45,7 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g)
 		else
 			del = NULL;
 		is_expand = is_expand_heredoc(del);
+		(void)node;
 		
 	}
 	return (314);
