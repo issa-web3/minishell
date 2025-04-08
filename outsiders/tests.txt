@@ -9,40 +9,22 @@ talha:
 	cd (delete parent dir)
 
 general:
-	./cmd   ----> check only HERE
-	/path/cmd --> check only /path/
-	cmd		  --> check PATH then HERE
-	dir/	 ---> Is a dir
-
-	plan:
-		1- check dir
-		2- ./ --->  check HERE						[no_such_f]
-		3- / --->   check /path/					[no_such_f]
-		4- cmd ---> check PATH then check HERE		[cmd_not_found]
-
 	leaks ( fds, memory ) ----> clear_all
-
 
 notes :
 	bash files are supported by only Bash
 		supporting bash files means gnl(file) + parse + execute
-
-
 
 IMPORTANT NOTE:
 	initilize the main data struct t_2_EXEC
 	init all
 
 
-playing with bash:
-	./test_file chmoded 000
-	Permission Denied
-
 Plans:
 	test(exit, export)
 	test(exit_status)
 	test(command_errors)
-
+	kadiri(cd)
 
 Understanding:
 	if (stat(cmd, &file_stat) == 0 && S_ISDIR(file_stat.st_mode) && ft_strchr(cmd, '/'))
