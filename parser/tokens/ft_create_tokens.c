@@ -102,5 +102,6 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 		else
 			ft_lstlast_token(lst)->next = add_to_lst;
 	}
+	to_expand(NULL, env, garbage);
 	return (lst);
 }
