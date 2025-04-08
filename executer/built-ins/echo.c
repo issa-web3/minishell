@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 00:01:28 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 15:45:09 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	has_dash_n(char **strs)
 	while (strs[i])
 	{
 		str = strs[i];
-		if (*str != '-')
+		if (*str != '-' || strs[i][1] != 'n')
 			break ;
 		while (*(++str) == 'n')
 			;
