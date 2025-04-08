@@ -28,3 +28,16 @@ Plans:
 
 Understanding:
 	if (stat(cmd, &file_stat) == 0 && S_ISDIR(file_stat.st_mode) && ft_strchr(cmd, '/'))
+
+
+not tested:
+	export 
+	exit
+	echo
+	unset
+	pwd
+	env
+
+
+leave cd as the last B
+
