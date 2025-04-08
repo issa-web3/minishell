@@ -26,7 +26,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	data->pipes = pipes;
 	p_info.fork_response = 314;
 	data->p_info = p_info;
-	if (p_info.process_num == 1 && data->cmd && (
+	if (p_info.process_num == 1 && data->cmd && data->cmd[0] && (
 			!ft_strcmp(data->cmd[0], "cd")
 			|| !ft_strcmp(data->cmd[0], "exit")
 			|| (!ft_strcmp(data->cmd[0], "export") && data->cmd[1])

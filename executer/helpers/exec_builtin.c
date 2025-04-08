@@ -51,6 +51,8 @@ int	exec_builtin(t_2_exec *data, t_env **my_env,
 	built_in[6].name = "env";
 	built_in[6].func = ft_env;
 	// init_struct(&built_in, my_garbage);
+	if (data->cmd[0] == NULL)
+		return (0);
 	i = 0;
 	while (i < 7 && ft_strcmp(built_in[i].name, data->cmd[0]) != 0)
 		i++;

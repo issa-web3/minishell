@@ -41,8 +41,7 @@ int	create_children_pipes(t_pipe *pipes, t_process_info *p_info)
 	status = 0;
 	while (p_info->process_idx < p_info->process_num && p_info->fork_response != 0 && !fail)
 	{
-		if (p_info->process_idx != p_info->process_num - 1)
-			fail = ft_pipe(pipes[p_info->process_idx]) == -1;
+		fail = ft_pipe(pipes[p_info->process_idx]) == -1;
 		p_info->fork_response = ft_fork();
 		fail |= p_info->fork_response == -1;
 		if (p_info->fork_response == 0 && !fail)

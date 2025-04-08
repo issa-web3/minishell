@@ -25,7 +25,7 @@ void	clear_all(t_garbage **my_garbage)
 		my_env = (*my_garbage)->my_env;
 		if (data)
 		{
-			process_idx = data->p_info.process_idx;
+			process_idx = data->p_info.process_idx - 1;
 			pipes = data->pipes;
 			close(pipes[process_idx][0]);
 			close(pipes[process_idx][1]);
