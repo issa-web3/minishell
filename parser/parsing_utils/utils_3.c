@@ -52,7 +52,6 @@ int	to_expand(t_token **node, t_env *env, t_garbage **g)
 	restore_hidden_q(&tmp);
 	if (!ft_strcmp(tmp, "export"))
 		flag = 1;
-	printf("flag is %d\n", flag);
 	if (can_i_expand((*node)->token))
 		ft_expand_token(node, env, g, flag);
 	if (flag == 1 && !ft_strcmp(tmp, "|"))
