@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 10:23:14 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:07:54 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,22 @@ static char	**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	return (paths);
 }
 
-// plan:
-	// 2- ./ --->  check HERE
-	// 3- / --->   check /path/
-	// 4- cmd ---> check PATH then check HERE
-	// 1- check dir
+static char	*check_dir(t_2_exec *data)
+{
+	char	*cmd;
+
+	cmd = data->cmd[0];
+	if (!ft_strcmp(cmd, ".."))
+		return (command_not_found(data, NULL), NULL);
+	if (cmd)// TODO
+	{
+		set_exit_status(INVALID_EXIT_STATUS);
+		write(2, cmd, ft_strlen(cmd));
+		write(2, ": Is a directory\n", 17);
+		return (NULL);
+	}
+	return (cmd);
+}
 
 char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
@@ -67,7 +78,7 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	char	*path;
 	int		i;
 
-	cmd = data->cmd[0];
+	cmd = check_dir(data);
 	if (cmd == NULL)
 		return (NULL);
 	i = 0;
@@ -91,6 +102,5 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	}
 	no_such_file_or_dir(data, path);
 	command_not_found(data, path);
-	// is_a_dir(data, path);
 	return (path);
 }
