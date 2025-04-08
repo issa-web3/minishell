@@ -55,7 +55,8 @@ t_token		*ft_lstlast_token(t_token *lst);
 t_token		*new_token_node(char *str, int type, t_garbage **garbage);
 int	to_expand(t_token **node, t_env *env, t_garbage **g);
 //expanding
-void		ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage);
+void		ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage, int flag);
+void	restore_hidden_q(char **del);
 t_expand	*ft_create_expand_node(char *s, t_garbage **garbage);
 void		ft_lstadd_back_t_expand(t_expand **lst, t_expand *new);
 #endif

@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-static void	restore_hidden_q(char **del)
+void	restore_hidden_q(char **del)
 {
 	char	*tmp;
 	int		i;

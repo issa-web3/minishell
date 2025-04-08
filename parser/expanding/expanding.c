@@ -92,7 +92,7 @@ char	*expand_dollar_variable(char *str, t_env *env, t_garbage **garbage)
 	return (res);
 }
 
-void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
+void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage, int flag)
 {
 	int		i;
 	char	**toks;
@@ -105,7 +105,7 @@ void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage)
 		if (is_only_whitespace((*node)->token))
 			(*node)->token = NULL;
 		n = my_count_words((*node)->token);
-		if (n > 1)
+		if (n > 1 && flag == 0)
 		{
 			toks = ft_strtok((*node)->token, garbage);
 			(*node)->token = ft_strdup(toks[i++], garbage);

@@ -42,7 +42,20 @@ t_token	*new_token_node(char *str, int type, t_garbage **garbage)
 
 int	to_expand(t_token **node, t_env *env, t_garbage **g)
 {
+	static int	flag = 0;
+
+	char	*tmp;
+	tmp = ft_strdup((*node)->token, g);
+	tmp = remove_quotes(tmp, g);
+	restore_hidden_q(&tmp);
+	if (!strcmp(tmp, "export"))
+		flag = 1;
+	printf("flag is %d\n", flag);
+
 	if (can_i_expand((*node)->token))
-		ft_expand_token(node, env, g);
+		ft_expand_token(node, env, g, flag);
+	if (flag == 1 && strcmp(tmp, "export") != 0)
+        flag = 0;
 	return (1);
+
 }
