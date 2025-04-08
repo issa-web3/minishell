@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 13:58:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:10:06 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static char	*check_dir(t_2_exec *data)
 	struct stat	file_stat;
 
 	cmd = data->cmd[0];
-	if (!ft_strcmp(cmd, ".."))
+	if (!ft_strcmp(cmd, "..") || cmd[0] == '\0')
 		return (command_not_found(data, NULL), NULL);
 	if (stat(cmd, &file_stat) == 0
 		&& S_ISDIR(file_stat.st_mode) && ft_strchr(cmd, '/'))
