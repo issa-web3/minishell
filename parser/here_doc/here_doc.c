@@ -6,7 +6,7 @@
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:04:01 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/22 17:03:00 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 15:37:35 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g)
 		else
 			del = NULL;
 		is_expand = is_expand_heredoc(del);
+		(void)is_expand;
 		(void)node;
-		
 	}
 	return (314);
 }
