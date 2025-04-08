@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-static void	prepare_del(char **del)
+static void	restore_hidden_q(char **del)
 {
 	char	*tmp;
 	int		i;
@@ -34,19 +34,18 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g)
 	char	*del;
 	int		is_expand;
 
-	while ((*tokens) && (*tokens)->type == HERE_DOC)
+	if ((*tokens) && (*tokens)->type == HERE_DOC)
 	{
 		if ((*tokens)->next)
 		{
 			hide_quotes(&((*tokens)->next));
 			del = remove_quotes((*tokens)->next->token, g);
-			prepare_del(&del);
+			restore_hidden_q(&del);
 		}
 		else
 			del = NULL;
 		is_expand = is_expand_heredoc(del);
-		(void)is_expand;
-		(void)node;
+		
 	}
 	return (314);
 }
