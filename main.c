@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/26 03:23:05 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 18:10:05 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*get_default_path(char *str, t_env **my_env)
 
 	default_path = malloc(ft_strlen(str));
 	if (default_path == NULL)
-		(clear_env(my_env), perror("malloc"), exit(EXIT_FAILURE));
+		(clear_env(my_env), perror("malloc"), set_and_exit(EXIT_FAILURE));
 	ft_strlcpy(default_path, str, ft_strlen(str));
 	return (default_path);
 }
@@ -42,10 +42,7 @@ char	*ft_readline(void)
 
 	line = readline("rich-3.14 $~ ");
 	if (!line)
-	{
-		set_exit_status(SUCCESS);
-		exit(SUCCESS);
-	}
+		set_and_exit(SUCCESS);
 	return (line);
 }
 
@@ -53,7 +50,7 @@ void	init_garbage(t_garbage **my_garbage, t_env **my_env, t_2_exec *data)
 {
 	(*my_garbage) = malloc(sizeof(t_garbage));
 	if ((*my_garbage) == NULL)
-		(clear_env(my_env), perror("malloc"), exit(EXIT_FAILURE));
+		(clear_env(my_env), perror("malloc"), set_and_exit(EXIT_FAILURE));
 	(*my_garbage)->my_env = my_env;
 	(*my_garbage)->data = data;
 	(*my_garbage)->ptr = NULL;

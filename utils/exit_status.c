@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:44:15 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 13:43:48 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:10:54 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,10 @@ int	get_exit_status(void)
 void	set_exit_status(int new)
 {
 	manage_exit_status(new);
+}
+
+void	set_and_exit(int new)
+{
+	set_exit_status(new);
+	exit(new);
 }

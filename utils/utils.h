@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/22 17:46:25 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 18:09:30 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ int			env_len(t_env *curr);
 // exit status
 int			get_exit_status(void);
 void		set_exit_status(int new);
+void	    set_and_exit(int new);
 
 #endif
