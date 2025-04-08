@@ -10,8 +10,19 @@ talha:
 	cd (delete parent dir)
 
 general:
+	./cmd   ----> check only HERE
+	/path/cmd --> check only /path/
+	cmd		  --> check PATH then HERE
+	dir/	 ---> Is a dir
+
+	plan:
+		1- check dir
+		2- ./ --->  check HERE						[no_such_f]
+		3- / --->   check /path/					[no_such_f]
+		4- cmd ---> check PATH then check HERE		[cmd_not_found]
+
 	leaks ( fds, memory ) ----> clear_all
-	executer/
+
 
 notes :
 	bash files are supported by only Bash

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 02:40:39 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 10:23:14 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,30 +54,43 @@ static char	**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	return (paths);
 }
 
+// plan:
+	// 2- ./ --->  check HERE
+	// 3- / --->   check /path/
+	// 4- cmd ---> check PATH then check HERE
+	// 1- check dir
+
 char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	char	**paths;
+	char	*cmd;
 	char	*path;
 	int		i;
 
-	if (data->cmd[0] == NULL)
+	cmd = data->cmd[0];
+	if (cmd == NULL)
 		return (NULL);
 	i = 0;
 	path = NULL;
 	paths = get_paths(data, my_env, my_garbage);
-	if ((!ft_strncmp(data->cmd[0], "./", 2) || data->cmd[0][0] == '/')
-		&& access((const char *)data->cmd[0], X_OK) == 0)
-		path = data->cmd[0];
+	if (!ft_strncmp(cmd, "./", 2) || !ft_strncmp(cmd, "/", 1))
+	{
+		if (access((const char *)cmd, X_OK) == 0)
+			return (cmd);
+		no_such_file_or_dir(data, NULL);
+		return (NULL);
+	}
 	while (!path && paths && paths[i])
 	{
 		path = ft_strjoin(
 				ft_strjoin(paths[i++], "/", my_garbage),
-				data->cmd[0], my_garbage);
+				cmd, my_garbage);
 		if (access((const char *)path, X_OK) == 0)
 			break ;
 		path = NULL;
 	}
 	no_such_file_or_dir(data, path);
 	command_not_found(data, path);
+	// is_a_dir(data, path);
 	return (path);
 }
