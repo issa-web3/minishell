@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analyse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 10:09:38 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/25 03:37:04 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_init_2exec(t_2_exec *node)
 {
 	node->pwd = NULL;
-	node->pi.fork_response = 0;
-	node->pi.process_idx = 0;
-	node->pi.process_num = 0;
+	node->p_info.fork_response = 0;
+	node->p_info.process_idx = 0;
+	node->p_info.process_num = 0;
 	node->default_path = NULL;
 	node->next = NULL;
 	node->pipes = NULL;

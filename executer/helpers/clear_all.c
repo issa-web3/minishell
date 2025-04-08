@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_all.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:22:27 by test              #+#    #+#             */
-/*   Updated: 2025/03/23 01:56:05 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	clear_all(t_garbage **my_garbage)
 		my_env = (*my_garbage)->my_env;
 		if (data)
 		{
-			process_idx = data->pi.process_idx;
+			process_idx = data->p_info.process_idx;
 			pipes = data->pipes;
 			close(pipes[process_idx][0]);
 			close(pipes[process_idx][1]);

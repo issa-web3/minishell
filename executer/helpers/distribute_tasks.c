@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 10:07:57 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ static void	redirect_and_execute(t_2_exec *data, int process_idx,
 		exec_by_idx(data, my_env, my_garbage);
 }
 
-void	distribute_tasks(t_process_info pi, t_pipe *pipes, t_2_exec *data,
+void	distribute_tasks(t_process_info p_info, t_pipe *pipes, t_2_exec *data,
 		t_env **my_env, t_garbage **my_garbage)
 {
 	int		process_idx;
 	int		process_num;
 	int		fork_response;
 
-	process_idx = pi.process_idx;
-	process_num = pi.process_num;
-	fork_response = pi.fork_response;
+	process_idx = p_info.process_idx;
+	process_num = p_info.process_num;
+	fork_response = p_info.fork_response;
 	if (fork_response != 0)
 	{
 		process_idx = 0;

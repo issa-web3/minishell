@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/26 20:33:11 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_exit(t_2_exec *data, t_env **my_env,
 	int	result;
 
 	(void)my_env;
-	if (data->pi.fork_response == 314)
+	if (data->p_info.fork_response == 314)
 		write(1, "exit\n", 5);
 	result = change_exit_status(data->cmd + 1);
 	if (result != -1)

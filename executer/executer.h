@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/25 00:02:54 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int				create_children_pipes(t_pipe *pipes,
 					t_process_info *init_pi);
 int				exec_builtin(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 void			close_prev_pipes(t_pipe *pipes, int nth_process);
-void			distribute_tasks(t_process_info pi, t_pipe *pipes,
+void			distribute_tasks(t_process_info p_info, t_pipe *pipes,
 					t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 void			exec_by_idx(t_2_exec *data, t_env **my_env,
 					t_garbage **my_garbage);
