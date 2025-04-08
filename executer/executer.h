@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:54:57 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
-
+ #include <sys/stat.h>
+ 
 # include "../minishell.h"
 # include "exec_structs.h"
 

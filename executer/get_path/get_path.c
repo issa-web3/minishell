@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 13:17:19 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:58:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,20 @@ static char	**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 
 static char	*check_dir(t_2_exec *data)
 {
-	char	*cmd;
+	char		*cmd;
+	struct stat	file_stat;
 
 	cmd = data->cmd[0];
 	if (!ft_strcmp(cmd, ".."))
 		return (command_not_found(data, NULL), NULL);
-	// if (cmd)// TODO
-	// {
-	// 	set_exit_status(INVALID_EXIT_STATUS);
-	// 	write(2, cmd, ft_strlen(cmd));
-	// 	write(2, ": Is a directory\n", 17);
-	// 	return (NULL);
-	// }
+	if (stat(cmd, &file_stat) == 0
+		&& S_ISDIR(file_stat.st_mode) && ft_strchr(cmd, '/'))
+	{
+		set_exit_status(INVALID_EXIT_STATUS);
+		write(2, cmd, ft_strlen(cmd));
+		write(2, ": Is a directory\n", 17);
+		return (NULL);
+	}
 	return (cmd);
 }
 
