@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:51:46 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:26:24 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ static int	redirect_output(t_pipe *pipes, int idx)
 int	create_children_pipes(t_pipe *pipes, t_process_info *p_info)
 {
 	int	fail;
+	int	status;
 
 	fail = 0;
+	status = 0;
 	while (p_info->process_idx < p_info->process_num && p_info->fork_response != 0 && !fail)
 	{
 		if (p_info->process_idx != p_info->process_num - 1)
@@ -50,6 +52,9 @@ int	create_children_pipes(t_pipe *pipes, t_process_info *p_info)
 			if (p_info->process_idx != p_info->process_num - 1)
 				redirect_output(pipes, p_info->process_idx);
 		}
+		else if (!fail)
+			waitpid(p_info->fork_response, &status, 0);
+		set_exit_status(status);
 		p_info->process_idx++;
 	}
 	return (fail);

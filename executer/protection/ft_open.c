@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 14:04:32 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/02/12 08:21:56 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:27:48 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_open(char *filename, int mode)
 
 	result = open(filename, mode, 0644);
 	if (result != -1)
-		return (result);
+		return (set_exit_status(NO_SUCH_FILE_OR_DIR), result);
 	perror(filename);
 	return (-1);
 }
