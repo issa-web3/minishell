@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 11:07:54 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:17:19 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ static char	*check_dir(t_2_exec *data)
 	cmd = data->cmd[0];
 	if (!ft_strcmp(cmd, ".."))
 		return (command_not_found(data, NULL), NULL);
-	if (cmd)// TODO
-	{
-		set_exit_status(INVALID_EXIT_STATUS);
-		write(2, cmd, ft_strlen(cmd));
-		write(2, ": Is a directory\n", 17);
-		return (NULL);
-	}
+	// if (cmd)// TODO
+	// {
+	// 	set_exit_status(INVALID_EXIT_STATUS);
+	// 	write(2, cmd, ft_strlen(cmd));
+	// 	write(2, ": Is a directory\n", 17);
+	// 	return (NULL);
+	// }
 	return (cmd);
 }
 
