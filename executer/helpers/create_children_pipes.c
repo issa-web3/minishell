@@ -52,9 +52,6 @@ int	create_children_pipes(t_pipe *pipes, t_process_info *p_info)
 			if (p_info->process_idx != p_info->process_num - 1)
 				redirect_output(pipes, p_info->process_idx);
 		}
-		else if (!fail)
-			waitpid(p_info->fork_response, &status, 0);
-		set_exit_status(status / 256); // TODO
 		p_info->process_idx++;
 	}
 	return (fail);
