@@ -43,3 +43,13 @@ playing with bash:
 	$?
 
 	exit status changes in the child process only
+
+
+
+Plans:
+	test(exit, export)
+	test(exit_status)
+	test(command_errors)
+
+
+
