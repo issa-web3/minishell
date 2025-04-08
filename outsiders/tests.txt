@@ -39,5 +39,3 @@ not tested:
 	env
 
 
-leave cd as the last B
-

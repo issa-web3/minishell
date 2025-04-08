@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 14:14:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:53:04 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,13 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	paths = get_paths(data, my_env, my_garbage);
 	if (!ft_strncmp(cmd, "./", 2) || !ft_strncmp(cmd, "/", 1))
 	{
+		if (access((const char *)cmd, F_OK) == -1)
+			set_exit_status(COMMAND_NOT_FOUND);
+		else if (access((const char *)cmd, X_OK) == -1)
+			set_exit_status(INVALID_EXIT_STATUS);
+		perror(cmd);
 		if (access((const char *)cmd, X_OK) == 0)
 			return (cmd);
-		perror(cmd);
 		return (NULL);
 	}
 	while (!path && paths && paths[i])

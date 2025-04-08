@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 14:10:35 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:05:03 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	while (p_info.fork_response && wait(NULL) != -1)
 		;
 	if (fail)
-		return ;
+		return (clear_all(my_garbage), exit(EXIT_FAILURE));
 	set_exit_status(status / 256);
 	data->p_info = p_info;
-	distribute_tasks(p_info, pipes, data, my_env, my_garbage);
+	distribute_tasks(pipes, data, my_env, my_garbage);
 }

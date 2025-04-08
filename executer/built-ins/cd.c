@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 03:38:13 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 17:44:53 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 	char	*new_pwd;
 	t_env	*env_tmp;
 
+	set_exit_status(EXIT_FAILURE);
 	if (pwd == NULL && !ft_strcmp(data->cmd[1], ".."))
 	{
 		write(2, "cd: error retrieving current directory", 38);
@@ -49,6 +50,7 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 		new_pwd = data->cmd[1];
 	else
 		new_pwd = ft_strjoin(ft_strjoin(pwd, "/", gc), data->cmd[1], gc);
+	set_exit_status(SUCCESS);
 	return (new_pwd);
 }
 

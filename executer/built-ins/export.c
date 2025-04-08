@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/26 02:52:41 by test             ###   ########.fr       */
+/*   Updated: 2025/04/08 18:00:21 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 		*rm_plus -= *rm_plus * append;
 		
 		to_export = ft_getenv(parsed[0], my_env);
+		if (to_export == NULL && parsed[1] == NULL && !ft_strcmp(parsed[0], "PATH"))
+			parsed[1] = ft_strdup_wg(*data->default_path);
 		if (to_export == NULL)
 			append_env(my_env, get_last_env(my_env), new_env_var(parsed));
 		else
