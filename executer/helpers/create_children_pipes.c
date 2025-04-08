@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:51:46 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 13:26:24 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:46:01 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	create_children_pipes(t_pipe *pipes, t_process_info *p_info)
 		}
 		else if (!fail)
 			waitpid(p_info->fork_response, &status, 0);
-		set_exit_status(status);
+		set_exit_status(status / 256);
 		p_info->process_idx++;
 	}
 	return (fail);
