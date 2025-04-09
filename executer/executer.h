@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/08 18:05:08 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:17:42 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,12 @@ int				ft_open(char *filename, int mode);
 
 // leaks
 void			clear_all(t_garbage **my_garbage);
+
+// path utils
+void			is_command_not_found(t_2_exec *data, char *path);
+char			*check_dir(t_2_exec *data);
+char			*check_here_and_path(char *cmd);
+char			*check_the_path_env(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
+char			**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 
 #endif

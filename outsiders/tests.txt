@@ -10,3 +10,11 @@ Understanding:
 
 
 AMINE.cd(delete)
+
+fork fail ---> what exit status
+
+
+problems with 
+	minishell | minishell
+
+
