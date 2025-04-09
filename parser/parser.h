@@ -58,5 +58,5 @@ void		ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage, int flag
 void	restore_hidden_q(char **del);
 t_expand	*ft_create_expand_node(char *s, t_garbage **garbage);
 void		ft_lstadd_back_t_expand(t_expand **lst, t_expand *new);
-int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g);
+int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage **g);
 #endif

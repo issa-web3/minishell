@@ -29,15 +29,23 @@ void	restore_hidden_q(char **del)
 	}
 }
 
-int	exec_heredoc(t_2_exec **node, t_token **tokens, char *del, t_garbage **g)
+// static int	create_heredoc_buffer(char **res, char *line, int is_expand, t_garbage **g) // remember to create a struct contains line and is expand flag
+// {
+// 	if (is_expand)
+// 	{
+// 		line = ft_strjoin(ft_replace_dollar())
+// 	}
+// }
+
+int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g)
 {
 	// char	*file_name;
 	char	*line;
 	char	*res;
 	// int		save_stdin;
-	// int		is_expand;
+	int		is_expand;
 
-	// is_expand = is_expand_heredoc(del);
+	is_expand = is_expand_heredoc(del);
 	res = NULL;
 	while (1)
 	{
@@ -49,15 +57,11 @@ int	exec_heredoc(t_2_exec **node, t_token **tokens, char *del, t_garbage **g)
 		line = ft_strjoin(line, "\n", g);
 		res = ft_strjoin(res, line, g);
 	}
-	if ((*tokens)->next)
-		(*tokens) = (*tokens)->next->next;
-	else
-		(*tokens) = (*tokens)->next;
 	(void)node;
 	return (1);
 }
 
-int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g)
+int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage **g)
 {
 	char	*del;
 
@@ -73,7 +77,12 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g)
 		}
 		else
 			del = NULL;
-		exec_heredoc(node, tokens, del, g);
+		exec_heredoc(node, del, g);
+		if ((*tokens)->next)
+			(*tokens) = (*tokens)->next->next;
+		else
+			(*tokens) = (*tokens)->next;
 	}
+	(void)env;
 	return (0);
 }
