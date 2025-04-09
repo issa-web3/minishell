@@ -29,10 +29,11 @@ void	restore_hidden_q(char **del)
 	}
 }
 
-static int	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_env *env) // remember to create a struct contains line and is expand flag
+static void	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_env *env) // remember to create a struct contains line and is expand flag
 {
 	char	*line;
 
+	line = NULL;
 	if (info->is_expand)
 	{
 		line = ft_strjoin(ft_replace_dollar(info->line, env, g), "\n", g);
