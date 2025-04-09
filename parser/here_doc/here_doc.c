@@ -29,11 +29,40 @@ void	restore_hidden_q(char **del)
 	}
 }
 
+int	exec_heredoc(t_2_exec **node, t_token **tokens, char *del, t_garbage **g)
+{
+	// char	*file_name;
+	char	*line;
+	char	*res;
+	// int		save_stdin;
+	// int		is_expand;
+
+	// is_expand = is_expand_heredoc(del);
+	res = NULL;
+	while (1)
+	{
+		line = readline(">");
+		if (!line)
+			break ;
+		if (!ft_strcmp(line, del))
+			break ;
+		line = ft_strjoin(line, "\n", g);
+		res = ft_strjoin(res, line, g);
+	}
+	if ((*tokens)->next)
+		(*tokens) = (*tokens)->next->next;
+	else
+		(*tokens) = (*tokens)->next;
+	(void)node;
+	return (1);
+}
+
 int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g)
 {
 	char	*del;
-	int		is_expand;
 
+	if (!tokens || !(*tokens))
+		return (1);
 	if ((*tokens) && (*tokens)->type == HERE_DOC)
 	{
 		if ((*tokens)->next)
@@ -44,9 +73,7 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_garbage **g)
 		}
 		else
 			del = NULL;
-		is_expand = is_expand_heredoc(del);
-		(void)is_expand;
-		(void)node;
+		exec_heredoc(node, tokens, del, g);
 	}
-	return (314);
+	return (0);
 }
