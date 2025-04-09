@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:38:24 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 18:05:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:44:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 
 	if (exec_builtin(data, my_env, my_garbage) == -1)
 	{
-		set_exit_status(SUCCESS);
+		set_exit_status(EXIT_SUCCESS);
 		cmd = get_path(data, my_env, my_garbage);
 		if (cmd)
 			execve(cmd, data->cmd, format_env(my_env, my_garbage));

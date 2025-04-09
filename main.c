@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/08 18:10:05 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:44:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_readline(void)
 
 	line = readline("rich-3.14 $~ ");
 	if (!line)
-		set_and_exit(SUCCESS);
+		set_and_exit(EXIT_SUCCESS);
 	return (line);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 10:09:38 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:47:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 	(*node)->files = files;
 	if (a_r_found)
 		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2)
-			, set_exit_status(1), 1);
+			, set_exit_status(GENERIC_ERR), 1);
 	return (0);
 }
 

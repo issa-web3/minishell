@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 17:44:53 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:44:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 		new_pwd = data->cmd[1];
 	else
 		new_pwd = ft_strjoin(ft_strjoin(pwd, "/", gc), data->cmd[1], gc);
-	set_exit_status(SUCCESS);
+	set_exit_status(EXIT_SUCCESS);
 	return (new_pwd);
 }
 

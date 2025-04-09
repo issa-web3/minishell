@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 17:53:04 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:05:30 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,6 @@ static void	command_not_found(t_2_exec *data, char *path)
 		set_exit_status(COMMAND_NOT_FOUND);
 		write(2, data->cmd[0], ft_strlen(data->cmd[0]));
 		write(2, ": command not found\n", 20);
-	}
-}
-
-static void	no_such_file_or_dir(t_2_exec *data, char *path)
-{
-	char	*cmd;
-
-	cmd = data->cmd[0];
-	if (
-		(path == NULL && cmd[0] == '/')
-		|| (path && ft_strcmp(cmd, path) && cmd[0] == '/')
-		|| (path && ft_strcmp(cmd, path) && !ft_strncmp(cmd, "./", 2))
-		|| (path == NULL && !ft_strncmp(cmd, "./", 2))
-	)
-	{
-		set_exit_status(COMMAND_NOT_FOUND);
-		perror(cmd);
-		// write(2, cmd, ft_strlen(cmd));
-		// write(2, ": No such file or directory\n", 28);
 	}
 }
 
@@ -90,13 +71,10 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	if (!ft_strncmp(cmd, "./", 2) || !ft_strncmp(cmd, "/", 1))
 	{
 		if (access((const char *)cmd, F_OK) == -1)
-			set_exit_status(COMMAND_NOT_FOUND);
+			return (set_exit_status(COMMAND_NOT_FOUND), perror(cmd), NULL);
 		else if (access((const char *)cmd, X_OK) == -1)
-			set_exit_status(INVALID_EXIT_STATUS);
-		perror(cmd);
-		if (access((const char *)cmd, X_OK) == 0)
-			return (cmd);
-		return (NULL);
+			return (set_exit_status(INVALID_EXIT_STATUS), perror(cmd), NULL);
+		return (cmd);
 	}
 	while (!path && paths && paths[i])
 	{
@@ -107,7 +85,6 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 			break ;
 		path = NULL;
 	}
-	no_such_file_or_dir(data, path);
 	command_not_found(data, path);
 	return (path);
 }

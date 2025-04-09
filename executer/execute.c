@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 18:10:12 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:44:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	int				status;
 	t_pipe			*pipes;
 
-	set_exit_status(SUCCESS);
+	set_exit_status(EXIT_SUCCESS);
 	p_info.process_idx = 0;
 	p_info.process_num = ft_lstsize(data);
 	pipes = ft_malloc(p_info.process_num * sizeof(pid_t[2]), my_garbage);
