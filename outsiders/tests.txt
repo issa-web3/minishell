@@ -5,26 +5,8 @@ old err :
 zyamli:
 	"l"'s' '|' | -la
 
-talha:
-	cd (delete parent dir)
-
-general:
-	leaks ( fds, memory ) ----> clear_all
-
-notes :
-	bash files are supported by only Bash
-		supporting bash files means gnl(file) + parse + execute
-
-IMPORTANT NOTE:
-	initilize the main data struct t_2_EXEC
-	init all
-
-
-Plans:
-	amine(cd)
-
 Understanding:
 	if (stat(cmd, &file_stat) == 0 && S_ISDIR(file_stat.st_mode) && ft_strchr(cmd, '/'))
 
 
-
+AMINE.cd(delete)
