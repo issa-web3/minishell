@@ -6,19 +6,33 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/09 13:40:45 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:06:06 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
-static void	update_pwd(t_2_exec *data, t_garbage **my_garbage)
+void	update_pwd(t_2_exec *data, t_garbage **my_garbage, char *new)
 {
 	static char	pwd[1024];
+	static char	*pwd_copy;
+	static char	flag;
 
-	data->pwd = ft_strdup(pwd, my_garbage);
-	if (getcwd(pwd, 1024))
-		data->pwd = ft_strdup(pwd, my_garbage);
+	if (new)
+	{
+		pwd_copy = new;
+		flag = 1;
+	}
+	if (flag)
+		flag = 0;
+	if (!new && !flag)
+	{
+		pwd_copy = ft_strdup(pwd, my_garbage);
+		if (getcwd(pwd, 1024))
+			pwd_copy = ft_strdup(pwd, my_garbage);
+	}
+	data->pwd = pwd_copy;
+	ft_strlcpy(pwd, data->pwd, ft_strlen(data->pwd) + 1);
 }
 
 void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
@@ -28,7 +42,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	int				status;
 	t_pipe			*pipes;
 
-	update_pwd(data, my_garbage);
+	update_pwd(data, my_garbage, NULL);
 	set_exit_status(EXIT_SUCCESS);
 	p_info.process_idx = 0;
 	p_info.process_num = ft_lstsize(data);
