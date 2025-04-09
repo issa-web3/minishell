@@ -6,11 +6,20 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/09 10:44:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:40:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
+
+static void	update_pwd(t_2_exec *data, t_garbage **my_garbage)
+{
+	static char	pwd[1024];
+
+	data->pwd = ft_strdup(pwd, my_garbage);
+	if (getcwd(pwd, 1024))
+		data->pwd = ft_strdup(pwd, my_garbage);
+}
 
 void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
@@ -19,6 +28,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	int				status;
 	t_pipe			*pipes;
 
+	update_pwd(data, my_garbage);
 	set_exit_status(EXIT_SUCCESS);
 	p_info.process_idx = 0;
 	p_info.process_num = ft_lstsize(data);

@@ -15,6 +15,6 @@ fork fail ---> what exit status
 
 
 problems with 
-	minishell | minishell
+	cd segfaults
 
 
