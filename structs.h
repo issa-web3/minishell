@@ -50,6 +50,12 @@ typedef struct s_token
 	struct s_token	*next;
 }			t_token;
 
+typedef struct s_heredoc
+{
+	char	*line;
+	int		is_expand;
+}	t_heredoc;
+
 // ls -l -a < in1 > out1 << here1 | grep "a" > out | end
 typedef struct s_2_exec
 {

@@ -40,22 +40,22 @@ void	restore_hidden_q(char **del)
 int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g)
 {
 	// char	*file_name;
-	char	*line;
 	char	*res;
 	// int		save_stdin;
-	// int		is_expand;
+	t_heredoc	info;
 
-	// is_expand = is_expand_heredoc(del);
+
+	info.is_expand = is_expand_heredoc(del);
 	res = NULL;
 	while (1)
 	{
-		line = readline(">");
-		if (!line)
+		info.line = readline(">");
+		if (!info.line)
 			break ;
-		if (!ft_strcmp(line, del))
+		if (!ft_strcmp(info.line, del))
 			break ;
-		line = ft_strjoin(line, "\n", g);
-		res = ft_strjoin(res, line, g);
+		info.line = ft_strjoin(info.line, "\n", g);
+		res = ft_strjoin(res, info.line, g);
 	}
 	(void)node;
 	return (1);
