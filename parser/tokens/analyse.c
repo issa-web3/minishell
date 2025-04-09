@@ -97,7 +97,7 @@ t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage)
 		ft_init_2exec(node);
 		while (tokens && tokens->type != PIPE)
 		{
-			if (ft_handle_heredoc(&tokens, &node,envl, garbage))
+			if (ft_handle_heredoc(&tokens, &node, envl, garbage))
 				break ;
 			if (handle_redir(&node, &tokens, garbage))
 				break ;
