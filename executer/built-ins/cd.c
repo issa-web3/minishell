@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/09 10:44:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:56:24 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,18 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 	t_env	*env_tmp;
 
 	set_exit_status(EXIT_FAILURE);
-	if (pwd == NULL && !ft_strcmp(data->cmd[1], ".."))
-	{
-		write(2, "cd: error retrieving current directory", 38);
-		write(2, ": getcwd: cannot access parent directo", 38);
-		write(2, "ries: No such file or directory/n", 32);
-		// env_tmp = ft_getenv("PWD", my_env);
-		// if (env_tmp)
-		// 	pwd = env_tmp->value;
-		// else
-			
-		// data->cmd[0] = ft_strjoin(
-		// 	ft_strjoin("export OLDPWD=", pwd, my_garbage),
-		// 	ft_strjoin(" PWD=", new_pwd, my_garbage)
-		// , my_garbage);
-		// data->cmd = ft_split(data->cmd[0], ' ', my_garbage);
-		// ft_export(data, my_env, my_garbage);
-		// new_pwd = ft_strjoin(env_tmp->value, "/..", gc);
-	}
 	if (data->cmd[1] == NULL)
 	{
 		env_tmp = ft_getenv("HOME", my_env);
 		if (env_tmp == NULL)
 			return (write(2, "cd: HOME not set\n", 17), NULL);
 		new_pwd = env_tmp->value;
+	}
+	else if (pwd == NULL && !ft_strcmp(data->cmd[1], ".."))
+	{
+		write(2, "cd: error retrieving current directory", 38);
+		write(2, ": getcwd: cannot access parent directo", 38);
+		write(2, "ries: No such file or directory/n", 32);
 	}
 	else if (data->cmd[2])
 		return (write(2, "cd: too many arguments\n", 23), NULL);
