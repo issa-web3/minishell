@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:04:01 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/08 15:37:35 by test             ###   ########.fr       */
+/*   Updated: 2025/04/09 13:41:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g)
 	char	*line;
 	char	*res;
 	// int		save_stdin;
-	int		is_expand;
+	// int		is_expand;
 
-	is_expand = is_expand_heredoc(del);
+	// is_expand = is_expand_heredoc(del);
 	res = NULL;
 	while (1)
 	{
