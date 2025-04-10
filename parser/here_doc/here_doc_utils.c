@@ -45,7 +45,7 @@ t_file	*new_file_node(char *name, t_garbage **g, char *buff)
 
 char	*generate_file_name(t_garbage	**g)
 {
-	static int	num;
+	static int	num = 22;
 	char		*name;
 	char		*res;
 	char		*tmp_path;
