@@ -67,7 +67,6 @@ int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
 		create_heredoc_buffer(&res, &info, g, env);
 	}
 	file_name = generate_file_name(g);
-	printf("%s\n", file_name);
 	heredoc_node = new_file_node(file_name, g, res);
 	if (!(*node)->files)
 		(*node)->files = heredoc_node;
