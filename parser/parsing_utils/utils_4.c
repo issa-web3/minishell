@@ -53,3 +53,15 @@ void	restore_quotes(t_token **lst)
 		curr = curr->next;
 	}
 }
+
+t_file	*ft_lstlast_file(t_file *lst)
+{
+	t_file	*current;
+
+	if (!lst)
+		return (lst);
+	current = lst;
+	while (current->next)
+		current = current->next;
+	return (current);
+}
