@@ -30,7 +30,12 @@ int	is_expand_heredoc(char *del)
 t_file	*new_file_node(char *name, t_garbage **g, char *buff)
 {
 	t_file	*node;
+	int		fd;
 
+	fd = open(name, O_RDWR | O_CREAT, 0777);
+	if (fd == -1)
+		return (NULL);
+	write (fd, buff, ft_strlen(buff));
 	node = ft_malloc(sizeof(t_file), g);
 	node->name = name;
 	node->type = IN_FILE;

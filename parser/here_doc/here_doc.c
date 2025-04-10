@@ -53,6 +53,7 @@ int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
 	t_heredoc	info;
 	char		*res;
 	t_file		*heredoc_node;
+	char		*file_name;
 
 	res = NULL;
 	info.is_expand = is_expand_heredoc(del);
@@ -65,6 +66,8 @@ int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
 			break ;
 		create_heredoc_buffer(&res, &info, g, env);
 	}
+	file_name = generate_file_name(g);
+	heredoc_node = new_file_node(file_name, g, res);
 	if (!(*node)->files)
 		(*node)->files = heredoc_node;
 	else
