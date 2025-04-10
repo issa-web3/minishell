@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/09 11:19:52 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/10 08:51:37 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	if (!ft_strncmp(cmd, "./", 2) || !ft_strncmp(cmd, "/", 1))
 		return (check_here_and_path(cmd));
 	path = check_the_path_env(data, my_env, my_garbage);
+	if (!path && get_paths(data, my_env, my_garbage) == NULL)
+		return (check_here_and_path(cmd));
 	is_command_not_found(data, path);
 	return (path);
 }

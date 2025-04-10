@@ -17,16 +17,8 @@ fork fail ---> what exit status
 
 
 
-../minishell/ls
-export _pi5.ed
-
-rich-3.14 $~ ls
-ls: command not found
-rich-3.14 $~ cd /bin/
-rich-3.14 $~ ls
-ls: command not found
-rich-3.14 $~ 
-
 
 exit(last_status)
+
+save the exit status or whatever talha said
 
