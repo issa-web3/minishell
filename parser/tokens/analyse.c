@@ -36,7 +36,7 @@ static int	create_cmd(t_token **tokens, t_2_exec *node, t_garbage **garbage)
 	return (0);
 }
 
-void	fill_file_info(t_file *file_node, t_token **tokens, t_garbage **garbage)
+static void	fill_file_info(t_file *file_node, t_token **tokens, t_garbage **garbage)
 {
 	if ((*tokens)->next && ((*tokens)->type == REDIR_INPUT
 			|| (*tokens)->type == REDIR_OUTPUT || (*tokens)->type == APPEND))
