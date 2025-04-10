@@ -89,5 +89,5 @@ t_token	*remove_quotes_from_toks(t_token *toks, t_garbage **g)
 			curr->token = remove_quotes(curr->token, g);
 		curr = curr->next;
 	}
-	return(toks);
+	return (toks);
 }

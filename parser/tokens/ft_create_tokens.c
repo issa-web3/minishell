@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-static t_token_type get_type(char *str)
+static t_token_type	get_type(char *str)
 {
 	if (!str)
 		return (WORD);
@@ -35,7 +35,7 @@ static t_token_type get_type(char *str)
 
 static void	ft_check_token(char *str, int *i)
 {
-	char quote_type;
+	char	quote_type;
 
 	while (str[*i])
 	{
@@ -43,7 +43,7 @@ static void	ft_check_token(char *str, int *i)
 		{
 			quote_type = str[*i];
 			ft_skip_quoted_section(str, i, quote_type);
-			continue;
+			continue ;
 		}
 		if ((str[*i] && is_operator(str[*i]))
 			|| (str[*i] && is_whitespace(str[*i]))
@@ -91,8 +91,8 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 			handle_operators(str, &i);
 		while (str[i] && is_whitespace(str[i]))
 			i++;
-		add_to_lst = new_token_node(extract_token(str, start, i, garbage)
-			, get_type(extract_token(str, start, i, garbage)), garbage);
+		add_to_lst = new_token_node(extract_token(str, start, i, garbage),
+				get_type(extract_token(str, start, i, garbage)), garbage);
 		hide_quotes(&add_to_lst);
 		if (prev_type != HERE_DOC)
 			to_expand(&add_to_lst, env, garbage);

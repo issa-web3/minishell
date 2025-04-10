@@ -56,19 +56,18 @@ void	ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens)
 
 int	is_only_whitespace(char *str)
 {
-    int i;
-    
-    if (!str || !*str)
-        return (1);
-        
-    i = 0;
-    while (str[i])
-    {
-        if (!is_whitespace(str[i]))
-            return (0);
-        i++;
-    }
-    return (1);
+	int	i;
+
+	if (!str || !*str)
+		return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (!is_whitespace(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	is_hquote(char c)

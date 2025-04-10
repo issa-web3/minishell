@@ -92,7 +92,8 @@ char	*expand_dollar_variable(char *str, t_env *env, t_garbage **garbage)
 	return (res);
 }
 
-void	ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage, int flag)
+void	ft_expand_token(t_token **node, t_env *envl
+	, t_garbage **garbage, int flag)
 {
 	int		i;
 	char	**toks;
