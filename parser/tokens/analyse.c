@@ -74,7 +74,10 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 		if ((*tokens) && (*tokens)->type != PIPE)
 			(*tokens) = (*tokens)->next;
 	}
-	(*node)->files = files;
+	if (!(*node)->files)
+		(*node)->files = files;
+	else
+		ft_lstlast_file((*node)->files)->next = files;
 	if (a_r_found)
 		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2)
 			, set_exit_status(GENERIC_ERR), 1);

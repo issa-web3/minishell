@@ -65,3 +65,5 @@ t_file	*ft_lstlast_file(t_file *lst)
 		current = current->next;
 	return (current);
 }
+
+

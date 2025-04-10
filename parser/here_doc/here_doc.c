@@ -48,10 +48,11 @@ static void	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_
 
 int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
 {
-	// char	*file_name;
-	// int		save_stdin;
+	char		*file_name;
+	// int			save_stdin;
 	t_heredoc	info;
 	char		*res;
+	t_file		*heredoc_node;
 
 	res = NULL;
 	info.is_expand = is_expand_heredoc(del);
@@ -64,7 +65,17 @@ int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
 			break ;
 		create_heredoc_buffer(&res, &info, g, env);
 	}
-	(void)node;
+	file_name = "/tmp/53453";
+	int fd = open("/tmp/53453", O_CREAT | O_RDWR | O_TRUNC, 0777);
+	write(fd, res, ft_strlen(res));
+	heredoc_node = ft_malloc(sizeof(t_file), g);
+	heredoc_node->name = file_name;
+	heredoc_node->type = IN_FILE;
+	heredoc_node->next = NULL;
+	if (!(*node)->files)
+		(*node)->files = heredoc_node;
+	else
+		ft_lstlast_file((*node)->files)->next = heredoc_node;
 	return (1);
 }
 
@@ -90,6 +101,5 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage *
 		else
 			(*tokens) = (*tokens)->next;
 	}
-	(void)env;
 	return (0);
 }
