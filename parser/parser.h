@@ -61,4 +61,6 @@ t_expand	*ft_create_expand_node(char *s, t_garbage **garbage);
 void		ft_lstadd_back_t_expand(t_expand **lst, t_expand *new);
 //heredoc
 int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage **g);
+char	*generate_file_name(t_garbage	**g);
+t_file	*new_file_node(char *name, t_garbage **g, char *buff);
 #endif

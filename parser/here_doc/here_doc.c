@@ -46,9 +46,9 @@ static void	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_
 	}
 }
 
+
 int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
 {
-	char		*file_name;
 	// int			save_stdin;
 	t_heredoc	info;
 	char		*res;
@@ -65,13 +65,6 @@ int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
 			break ;
 		create_heredoc_buffer(&res, &info, g, env);
 	}
-	file_name = "/tmp/53453";
-	int fd = open("/tmp/53453", O_CREAT | O_RDWR | O_TRUNC, 0777);
-	write(fd, res, ft_strlen(res));
-	heredoc_node = ft_malloc(sizeof(t_file), g);
-	heredoc_node->name = file_name;
-	heredoc_node->type = IN_FILE;
-	heredoc_node->next = NULL;
 	if (!(*node)->files)
 		(*node)->files = heredoc_node;
 	else
