@@ -19,6 +19,7 @@
 t_2_exec	*parsing(char *line, t_env **envl, t_garbage **garbage);
 
 //utils
+t_file	*ft_lstlast_file(t_file *lst);
 int			is_whitespace(char c);
 void		sigint_handler(int sig);
 int			is_only_whitespace(char *str);
@@ -58,5 +59,6 @@ void		ft_expand_token(t_token **node, t_env *envl, t_garbage **garbage, int flag
 void	restore_hidden_q(char **del);
 t_expand	*ft_create_expand_node(char *s, t_garbage **garbage);
 void		ft_lstadd_back_t_expand(t_expand **lst, t_expand *new);
+//heredoc
 int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage **g);
 #endif
