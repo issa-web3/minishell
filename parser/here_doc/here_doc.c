@@ -41,30 +41,27 @@ static void	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_
 	}
 	else
 	{
-		line = ft_strjoin(line, "\n", g);
+		line = ft_strjoin(info->line, "\n", g);
 		*res = ft_strjoin(*res, line, g);
 	}
 }
 
-
-int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
+int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 {
 	// int			save_stdin;
-	t_heredoc	info;
 	char		*res;
 	t_file		*heredoc_node;
 	char		*file_name;
 
 	res = NULL;
-	info.is_expand = is_expand_heredoc(del);
 	while (1)
 	{
-		info.line = readline(">");
-		if (!info.line)
+		info->line = readline(">");
+		if (!info->line)
 			break ;
-		if (!ft_strcmp(info.line, del))
+		if (!ft_strcmp(info->line, info->del))
 			break ;
-		create_heredoc_buffer(&res, &info, g, env);
+		create_heredoc_buffer(&res, info, g, env);
 	}
 	file_name = generate_file_name(g);
 	heredoc_node = new_file_node(file_name, g, res);
@@ -77,21 +74,22 @@ int	exec_heredoc(t_2_exec **node, char *del, t_garbage **g, t_env *env)
 
 int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage **g)
 {
-	char	*del;
+	t_heredoc info;
 
 	if (!tokens || !(*tokens))
 		return (1);
 	if ((*tokens) && (*tokens)->type == HERE_DOC)
 	{
+		info.is_expand = is_expand_heredoc((*tokens)->next->token);
 		if ((*tokens)->next)
 		{
 			hide_quotes(&((*tokens)->next));
-			del = remove_quotes((*tokens)->next->token, g);
-			restore_hidden_q(&del);
+			info.del = remove_quotes((*tokens)->next->token, g);
+			restore_hidden_q(&info.del);
 		}
 		else
-			del = NULL;
-		exec_heredoc(node, del, g, env);
+			info.del = NULL;
+		exec_heredoc(node, &info, g, env);
 		if ((*tokens)->next)
 			(*tokens) = (*tokens)->next->next;
 		else

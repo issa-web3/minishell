@@ -53,6 +53,7 @@ typedef struct s_token
 typedef struct s_heredoc
 {
 	char	*line;
+	char	*del;
 	int		is_expand;
 }	t_heredoc;
 
