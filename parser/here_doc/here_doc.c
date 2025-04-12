@@ -48,23 +48,33 @@ static void	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_
 
 int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 {
-	// int			save_stdin;
+	int			save_stdin;
 	char		*res;
 	t_file		*heredoc_node;
 	char		*file_name;
 
 	res = NULL;
+	save_stdin = dup(0);
+	g_signals = 3;
 	while (1)
 	{
 		info->line = readline(">");
-		if (!info->line)
+		if (!info->line || g_signals == 4)
 			break ;
 		if (!ft_strcmp(info->line, info->del))
 			break ;
 		create_heredoc_buffer(&res, info, g, env);
 	}
+	if (g_signals == 4)
+	{
+		dup2(save_stdin, 0);
+    	close(save_stdin);
+		return (-1);
+	}
 	file_name = generate_file_name(g);
 	heredoc_node = new_file_node(file_name, g, res);
+	dup2(save_stdin, 0);
+    close(save_stdin);
 	if (!(*node)->files)
 		(*node)->files = heredoc_node;
 	else
@@ -89,7 +99,8 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage *
 		}
 		else
 			info.del = NULL;
-		exec_heredoc(node, &info, g, env);
+		if (exec_heredoc(node, &info, g, env) == -1)
+			return (-1);
 		if ((*tokens)->next)
 			(*tokens) = (*tokens)->next->next;
 		else

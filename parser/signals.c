@@ -14,7 +14,7 @@
 
 void	sigint_handler(int sig)
 {
-	if (sig && !g_signals)
+	if (g_signals == 1)
 	{
 		(void)sig;
 		write(1, "\n", 1);
@@ -22,13 +22,12 @@ void	sigint_handler(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-	else
+	else if (g_signals == 3)
+	{
+		g_signals = 4;
+		close(0);
+		write(1, "^C", 3);
+	}
+	else if (g_signals == 2)
 		write(1, "\n", 1);
-}
-
-void	ft_sigint_heredoc(int signo)
-{
-	(void)signo;
-	g_signals = SIGINT;
-	close(0);
 }
