@@ -29,6 +29,8 @@
 # include "executer/executer.h"
 # include "parser/parser.h"
 
+// global var
+extern int	g_signals;
 // exit statuses
 #define GENERIC_ERR 1
 #define ERR 2

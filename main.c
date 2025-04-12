@@ -12,6 +12,8 @@
 
 #include "minishell.h"
 
+int	g_signals = 0;
+
 static char	*get_default_path(char *str, t_env **my_env)
 {
 	char	*default_path;
@@ -79,7 +81,9 @@ int	main(int ac, char **av, char **env)
 			init_garbage(&my_garbage, &my_env, data);
 			add_history(line);
 			free(line);
+			g_signals = SIGINT;
 			execute(data, &my_env, &my_garbage);
+			g_signals = 0;
 		}
 		clear_garbage(&my_garbage);
 	}

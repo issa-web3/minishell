@@ -14,9 +14,21 @@
 
 void	sigint_handler(int sig)
 {
-	(void)sig;
-	write(1, "\n", 1);
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
+	if (sig && !g_signals)
+	{
+		(void)sig;
+		write(1, "\n", 1);
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+	}
+	else
+		write(1, "\n", 1);
+}
+
+void	ft_sigint_heredoc(int signo)
+{
+	(void)signo;
+	g_signals = SIGINT;
+	close(0);
 }
