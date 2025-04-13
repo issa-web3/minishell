@@ -29,6 +29,12 @@ void	restore_hidden_q(char **del)
 	}
 }
 
+static void	restore_fds(int save_stdin)
+{
+	ft_dup2(save_stdin, 0);
+	close(save_stdin);
+}
+
 static void	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_env *env) // remember to create a struct contains line and is expand flag
 {
 	char	*line;
@@ -53,9 +59,7 @@ int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 	t_file		*heredoc_node;
 	char		*file_name;
 
-	res = NULL;
-	save_stdin = dup(0);
-	g_signals = 3;
+	1 && (res = NULL, save_stdin = dup(0), g_signals = 3);
 	while (1)
 	{
 		info->line = readline(">");
@@ -66,15 +70,10 @@ int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 		create_heredoc_buffer(&res, info, g, env);
 	}
 	if (g_signals == 4)
-	{
-		dup2(save_stdin, 0);
-    	close(save_stdin);
-		return (-1);
-	}
+		return (restore_fds(save_stdin), set_exit_status(130), -1);
 	file_name = generate_file_name(g);
 	heredoc_node = new_file_node(file_name, g, res);
-	dup2(save_stdin, 0);
-    close(save_stdin);
+	restore_fds(save_stdin);
 	if (!(*node)->files)
 		(*node)->files = heredoc_node;
 	else
