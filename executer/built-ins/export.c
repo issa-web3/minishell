@@ -62,7 +62,7 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 		
 		to_export = ft_getenv(parsed[0], my_env);
 		if (to_export == NULL && parsed[1] == NULL && !ft_strcmp(parsed[0], "PATH"))
-			parsed[1] = ft_strdup_wg(*data->default_path);
+			(free(parsed[0]), parsed[1] = ft_strdup_wg(*data->default_path));
 		if (to_export == NULL)
 			append_env(my_env, get_last_env(my_env), new_env_var(parsed));
 		else
@@ -71,10 +71,12 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 			if (append)
 			{
 				to_export->value = ft_strjoin_without_garbage(to_export->value, parsed[1]);
+				free(parsed[0]);
 				free(parsed[1]);
 			}
 			else
 			{
+				free(parsed[0]);
 				if (parsed[1])
 					to_export->value = parsed[1];
 			}

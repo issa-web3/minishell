@@ -46,7 +46,7 @@ char	*ft_readline(void)
 	g_signals = 1;
 	line = readline("rich-3.14 $~ ");
 	if (!line)
-		set_and_exit(EXIT_SUCCESS);
+		exit(get_exit_status());
 	g_signals = 0;
 	return (line);
 }
@@ -81,7 +81,7 @@ int	main(int ac, char **av, char **env)
 		if (data)
 		{
 			data->default_path = &default_path;
-			init_garbage(&my_garbage, &my_env, data);
+			my_garbage->data = data;
 			add_history(line);
 			free(line);
 			g_signals = SIGINT;

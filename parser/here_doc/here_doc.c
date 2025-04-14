@@ -68,7 +68,10 @@ int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 		if (!ft_strcmp(info->line, info->del))
 			break ;
 		create_heredoc_buffer(&res, info, g, env);
+		free(info->line);
+		info->line = NULL;
 	}
+	free(info->line);
 	if (g_signals == 4)
 		return (restore_fds(save_stdin), set_exit_status(130), -1);
 	file_name = generate_file_name(g);
