@@ -89,9 +89,9 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage *
 		return (1);
 	if ((*tokens) && (*tokens)->type == HERE_DOC)
 	{
-		info.is_expand = is_expand_heredoc((*tokens)->next->token);
 		if ((*tokens)->next)
 		{
+			info.is_expand = is_expand_heredoc((*tokens)->next->token);
 			hide_quotes(&((*tokens)->next));
 			info.del = remove_quotes((*tokens)->next->token, g);
 			restore_hidden_q(&info.del);
