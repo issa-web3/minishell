@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/09 14:54:50 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:22:57 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 // big function
 void			execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
-int				create_children_pipes(t_pipe *pipes,
+int				fork_and_pipe(t_pipe *pipes,
 					t_process_info *init_pi);
 int				exec_builtin(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 void			close_prev_pipes(t_pipe *pipes, int nth_process);
