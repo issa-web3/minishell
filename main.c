@@ -39,14 +39,14 @@ static void	init(t_garbage **my_garbage, t_env **my_env,
 			);
 }
 
-char	*ft_readline(void)
+char	*ft_readline(t_env **my_env)
 {
 	char	*line;
 
 	g_signals = 1;
 	line = readline("rich-3.14 $~ ");
 	if (!line)
-		exit(get_exit_status());
+		(printf("exit\n"), clear_env(my_env), exit(get_exit_status()));
 	g_signals = 0;
 	return (line);
 }
@@ -75,19 +75,19 @@ int	main(int ac, char **av, char **env)
 	init(&my_garbage, &my_env, env, &default_path);
 	while (1)
 	{
-		line = ft_readline();
+		line = ft_readline(&my_env);
 		init_garbage(&my_garbage, &my_env, NULL);
 		data = parsing(line, &my_env, &my_garbage);
 		if (data)
 		{
 			data->default_path = &default_path;
 			my_garbage->data = data;
-			add_history(line);
-			free(line);
 			g_signals = SIGINT;
+			add_history(line);
 			execute(data, &my_env, &my_garbage);
 			g_signals = 0;
 		}
+		free(line);
 		clear_garbage(&my_garbage);
 	}
 	clear_env(&my_env);

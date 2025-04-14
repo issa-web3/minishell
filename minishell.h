@@ -39,5 +39,6 @@ extern int	g_signals;
 #define SYNTAX_ERR 2
 #define INVALID_EXIT_STATUS 126
 #define TERMINATED_BY_SIGNAL 128
+#define TERMINATED_BY_CNTL_C 130
 
 #endif

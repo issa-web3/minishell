@@ -21,6 +21,7 @@ void	sigint_handler(int sig)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
+		set_exit_status(TERMINATED_BY_CNTL_C);
 	}
 	else if (g_signals == 3)
 	{
