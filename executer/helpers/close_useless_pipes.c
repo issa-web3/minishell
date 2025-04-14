@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_prev_pipes.c                                 :+:      :+:    :+:   */
+/*   close_useless_pipes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../executer.h"
 
-void	close_prev_pipes(t_pipe *pipes, int nth_process)
+void	close_useless_pipes(t_pipe *pipes, int nth_process)
 {
 	int	i;
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   distribute_tasks.c                                 :+:      :+:    :+:   */
+/*   execute_task_by_idx.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -60,7 +60,7 @@ static void	redirect_and_execute(t_2_exec *data, int process_idx,
 		exec_by_idx(data, my_env, my_garbage);
 }
 
-void	distribute_tasks(t_pipe *pipes, t_2_exec *data,
+void	execute_task_by_idx(t_pipe *pipes, t_2_exec *data,
 		t_env **my_env, t_garbage **my_garbage)
 {
 	t_process_info	p_info;

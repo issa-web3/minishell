@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/14 13:25:13 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:20:12 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,21 @@ void	update_pwd(t_2_exec *data, t_garbage **my_garbage, char *new)
 	ft_strlcpy(pwd, data->pwd, ft_strlen(data->pwd) + 1);
 }
 
+int	is_a_parent_task(t_2_exec *data, t_process_info p_info)
+{
+	return (p_info.process_num == 1 && data->cmd && data->cmd[0] && (
+				!ft_strcmp(data->cmd[0], "cd")
+				|| !ft_strcmp(data->cmd[0], "exit")
+				|| (!ft_strcmp(data->cmd[0], "export") && data->cmd[1])
+				|| (!ft_strcmp(data->cmd[0], "unset"))
+			)
+		);
+}
+
 void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 {
 	t_process_info	p_info;
 	int				fail;
-	int				status;
 	t_pipe			*pipes;
 
 	update_pwd(data, my_garbage, NULL);
@@ -49,27 +59,16 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	data->pipes = pipes;
 	p_info.fork_response = 314;
 	data->p_info = p_info;
-	if (p_info.process_num == 1 && data->cmd && data->cmd[0] && (
-			!ft_strcmp(data->cmd[0], "cd")
-			|| !ft_strcmp(data->cmd[0], "exit")
-			|| (!ft_strcmp(data->cmd[0], "export") && data->cmd[1])
-			|| (!ft_strcmp(data->cmd[0], "unset"))
-			// || !ft_strcmp(data->cmd[0], "env")
-			// || !ft_strcmp(data->cmd[0], "pwd")
-			// || !ft_strcmp(data->cmd[0], "echo")
-		)
-	)
+	if (is_a_parent_task(data, p_info))
 		(exec_builtin(data, my_env, my_garbage), p_info.process_num--);
 	fail = fork_and_pipe(pipes, &p_info);
-	close_prev_pipes(pipes, p_info.process_idx);
-	status = 0;
+	close_useless_pipes(pipes, p_info.process_idx);
 	if (p_info.fork_response)
-		waitpid(p_info.fork_response, &status, 0);
+		wait_last_pid(p_info.fork_response);
 	while (p_info.fork_response && wait(NULL) != -1)
 		;
 	if (fail)
 		return (clear_all(my_garbage), set_and_exit(EXIT_FAILURE));
-	set_exit_status(status / 256);
 	data->p_info = p_info;
-	distribute_tasks(pipes, data, my_env, my_garbage);
+	execute_task_by_idx(pipes, data, my_env, my_garbage);
 }
