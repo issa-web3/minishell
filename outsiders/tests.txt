@@ -30,17 +30,34 @@ exit(last_status)
 save the exit status or whatever talha said
 
 
-  minishell git:(main) ✗ env -i ./minishell 
-rich-3.14 $~ export
-rich-3.14 $~ env
-rich-3.14 $~ export PATH
-rich-3.14 $~ export
-declare -x ��="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bi"
-rich-3.14 $~ export iji
-rich-3.14 $~ export    
-declare -x iji
-declare -x ��="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bi"
-rich-3.14 $~ exit
-double free or corruption (fasttop)
-[1]    284861 IOT instruction (core dumped)  env -i ./minishell
+
+
+rich-3.14 $~ git add  executer/ utils/
+rich-3.14 $~ git commit -m "ahhhh"
+[main 5f4ec93] ahhhh
+ Committer: Issa Oulkhir <ioulkhir@e2r2p3.1337.ma>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+rich-3.14 $~ 
+exit
+
+=================================================================
+==622975==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 32 byte(s) in 1 object(s) allocated from:
+    #0 0x7fcb62d94887 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7fcb62cc5bac in xmalloc (/lib/x86_64-linux-gnu/libreadline.so.8+0x39bac)
+
+SUMMARY: AddressSanitizer: 32 byte(s) leaked in 1 allocation(s).
+e2r2p3% ./minishell
+
+
+
 
