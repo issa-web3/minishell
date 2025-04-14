@@ -17,6 +17,13 @@ fork fail ---> what exit status
 
 
 
+rich-3.14 $~ cat
+^C
+rich-3.14 $~ echo $?
+0
+
+
+
 
 exit(last_status)
 
