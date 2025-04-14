@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/14 16:19:59 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:15:15 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	no_args(t_env **my_env, t_garbage **my_garbage)
 
 t_export_data	export_parse_data(char *arg, t_garbage **my_garbage)
 {
-	char			*parsed[2];
+	char			**parsed;
 	char			*rm_plus;
 	char			*sep;
 	char			append;
@@ -44,6 +44,9 @@ t_export_data	export_parse_data(char *arg, t_garbage **my_garbage)
 	sep = ft_strchr(arg, '=');
 	if (sep)
 		*(sep++) = 0;
+	parsed = malloc(2 * sizeof(char *));
+	if (parsed == NULL)
+		(clear_all(my_garbage), perror("malloc"), set_and_exit(EXIT_FAILURE));
 	parsed[0] = ft_strdup_wg(arg);
 	parsed[1] = ft_strdup_wg(sep);
 	if (parsed[0] == NULL || (parsed[1] == NULL && sep))
@@ -113,6 +116,7 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 			append_env(my_env, get_last_env(my_env), new_env_var(parsed));
 		else
 			modify_env_var(to_export, export_data.append, parsed);
+		free(parsed);
 		i++;
 	}
 }

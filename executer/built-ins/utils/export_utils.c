@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/25 00:41:23 by test             ###   ########.fr       */
+/*   Updated: 2025/04/14 17:17:09 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	print_sorted_env(char **env_vars)
 	char	*value;
 
 	i = 0;
-	while (env_vars[i])
+	while (env_vars && env_vars[i])
 	{
 		name = env_vars[i];
 		value = ft_strchr(name, '=');
