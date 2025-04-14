@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_structs.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/03/22 21:03:18 by test             ###   ########.fr       */
+/*   Updated: 2025/04/14 15:55:14 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,12 @@ typedef struct s_process_info
 	int		process_num;
 	int		fork_response;
 }				t_process_info;
+
+typedef struct s_export_data
+{
+	char	**parsed;
+	char	is_valid;
+	char	append;
+}				t_export_data;
 
 #endif
