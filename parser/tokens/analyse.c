@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 10:09:38 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/09 10:47:17 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:23:37 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_init_2exec(t_2_exec *node)
 	node->p_info.process_num = 0;
 	node->default_path = NULL;
 	node->next = NULL;
-	node->pipes = NULL;
 	node->cmd = NULL;
 	node->files = NULL;
 }

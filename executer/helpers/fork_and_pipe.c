@@ -32,7 +32,7 @@ static int	redirect_output(t_pipe *pipes, int idx)
 	return (fail);
 }
 
-int	fork_and_pipe(t_pipe *pipes, t_process_info *p_info)
+void	fork_and_pipe(t_pipe *pipes, t_process_info *p_info, t_garbage **my_garbage)
 {
 	int	fail;
 
@@ -52,5 +52,6 @@ int	fork_and_pipe(t_pipe *pipes, t_process_info *p_info)
 		}
 		p_info->process_idx++;
 	}
-	return (fail);
+	if (fail)
+		(clear_all(my_garbage), set_and_exit(EXIT_FAILURE));
 }

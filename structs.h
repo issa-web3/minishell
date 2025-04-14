@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/08 11:10:38 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:23:26 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_2_exec
 	char			**cmd;
 	t_file			*files;
 	t_process_info	p_info;
-	t_pipe			*pipes;
 	char			**default_path;
 	char			*pwd;
 	struct s_2_exec	*next;

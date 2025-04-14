@@ -6,15 +6,17 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:09:18 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/14 14:10:33 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:35:07 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../executer.h"
 
-void    wait_last_pid(pid_t *last_pid)
+void    wait_last_pid(pid_t last_pid)
 {
     (void)last_pid;
+    if (last_pid == 0)
+        return ;
     // TODO
     // int        status;
     // pid_t    pid;
