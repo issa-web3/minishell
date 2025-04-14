@@ -72,6 +72,8 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
+	if (!isatty(0) || !isatty(1) || !isatty(2))
+		return (1);
 	init(&my_garbage, &my_env, env, &default_path);
 	while (1)
 	{
