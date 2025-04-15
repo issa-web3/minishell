@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 09:42:32 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 09:51:13 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 		write(2, "cd: error retrieving current directory: ", 40);
 		write(2, "getcwd: cannot access parent directories", 40);
 		write(2, ": No such file or directory\n", 28);
+		free(old_pwd);
 		return ;
 	}
 	else if (chdir(new_pwd) == -1)
