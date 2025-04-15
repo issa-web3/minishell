@@ -29,6 +29,4 @@ void	sigint_handler(int sig)
 		close(0);
 		write(1, "^C", 3);
 	}
-	else if (g_signals == SIGINT)
-		write(1, "\n", 1);
 }

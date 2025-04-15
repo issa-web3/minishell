@@ -27,7 +27,7 @@ void    wait_children(pid_t last_pid)
             if (WIFEXITED(status))
                 set_exit_status(WEXITSTATUS(status));
             else if (WIFSIGNALED(status))
-                set_exit_status(128 + WTERMSIG(status));
+                (printf("\n"), set_exit_status(128 + WTERMSIG(status)));
         }
         pid = waitpid(-1, &status, 0);
     }

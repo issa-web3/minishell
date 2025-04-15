@@ -28,7 +28,6 @@ static char	*get_default_path(char *str, t_env **my_env)
 static void	init(t_garbage **my_garbage, t_env **my_env,
 		char **env, char **default_path)
 {
-	rl_catch_signals = 0;
 	signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, SIG_IGN);
 	*my_garbage = NULL;
