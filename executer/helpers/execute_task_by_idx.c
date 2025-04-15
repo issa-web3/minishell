@@ -54,8 +54,16 @@ void	exec_by_idx(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 static void	redirect_and_execute(t_2_exec *data, int process_idx,
 		t_env **my_env, t_garbage **my_garbage)
 {
+	t_2_exec	*prev;
+
 	while (--process_idx > 0)
+	{
+		prev = data;
 		data = data->next;
+		data->default_path = prev->default_path;
+		data->pwd = prev->pwd;
+		data->p_info = prev->p_info;
+	}
 	if (redirections(&data->files, 1) != -1)
 		exec_by_idx(data, my_env, my_garbage);
 }
