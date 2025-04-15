@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 07:25:08 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:36:35 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	close_useless_pipes(pipes, p_info.process_idx);
 	if (p_info.process_num == 0)
 		return ;
-	wait_last_pid(p_info.fork_response);
-	while (p_info.fork_response && wait(NULL) != -1)
-		;
+	wait_children(p_info.fork_response);
 	data->p_info = p_info;
 	execute_task_by_idx(pipes, data, my_env, my_garbage);
 }

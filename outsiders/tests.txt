@@ -9,55 +9,5 @@ Understanding:
 	if (stat(cmd, &file_stat) == 0 && S_ISDIR(file_stat.st_mode) && ft_strchr(cmd, '/'))
 
 
-AMINE.cd(delete)
-
-fork fail ---> what exit status
-
-
-
-
-
-rich-3.14 $~ cat
-^C
-rich-3.14 $~ echo $?
-0
-
-
-
-
-exit(last_status)
-
-save the exit status or whatever talha said
-
-
-
-
-rich-3.14 $~ git add  executer/ utils/
-rich-3.14 $~ git commit -m "ahhhh"
-[main 5f4ec93] ahhhh
- Committer: Issa Oulkhir <ioulkhir@e2r2p3.1337.ma>
-Your name and email address were configured automatically based
-on your username and hostname. Please check that they are accurate.
-You can suppress this message by setting them explicitly. Run the
-following command and follow the instructions in your editor to edit
-your configuration file:
-
-    git config --global --edit
-
-After doing this, you may fix the identity used for this commit with:
-rich-3.14 $~ 
-exit
-
-=================================================================
-==622975==ERROR: LeakSanitizer: detected memory leaks
-
-Direct leak of 32 byte(s) in 1 object(s) allocated from:
-    #0 0x7fcb62d94887 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
-    #1 0x7fcb62cc5bac in xmalloc (/lib/x86_64-linux-gnu/libreadline.so.8+0x39bac)
-
-SUMMARY: AddressSanitizer: 32 byte(s) leaked in 1 allocation(s).
-e2r2p3% ./minishell
-
-
 
 

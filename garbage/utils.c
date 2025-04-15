@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/21 17:23:34 by test             ###   ########.fr       */
+/*   Updated: 2025/04/15 07:19:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	clear_garbage(t_garbage **my_garbage)
 
 	curr = *my_garbage;
 	if (curr)
+	{
+		free(curr->data->pwd);
 		curr = curr->next;
+	}
 	while (curr)
 	{
 		next = curr->next;

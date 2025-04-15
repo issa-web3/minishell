@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 07:28:16 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:36:35 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ int			env_len(t_env *curr);
 int			get_exit_status(void);
 void		set_exit_status(int new);
 void		set_and_exit(int new);
-void		wait_last_pid(pid_t last_pid);
+void		wait_children(pid_t last_pid);
 
 #endif
