@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 07:19:45 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:40:39 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	clear_garbage(t_garbage **my_garbage)
 	curr = *my_garbage;
 	if (curr)
 	{
-		free(curr->data->pwd);
+		if (curr->data)
+			free(curr->data->pwd);
 		curr = curr->next;
 	}
 	while (curr)
