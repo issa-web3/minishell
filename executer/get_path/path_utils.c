@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 07:49:08 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 08:35:54 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,7 @@ char	*check_dir(t_2_exec *data, t_garbage **my_garbage)
 	cmd = data->cmd[0];
 	if (!ft_strcmp(cmd, "..") || !ft_strcmp(cmd, ".") || cmd[0] == '\0')
 		return (is_command_not_found(data, NULL), NULL);
-	if (stat(cmd, &file_stat) == -1)
-	{
-		perror("stat");
-		clear_all(my_garbage);
-		exit(EXIT_FAILURE);
-	}
-	if (S_ISDIR(file_stat.st_mode) && ft_strchr(cmd, '/'))
+	if (stat(cmd, &file_stat) == 0 && S_ISDIR(file_stat.st_mode) && ft_strchr(cmd, '/'))
 	{
 		set_exit_status(INVALID_EXIT_STATUS);
 		write(2, cmd, ft_strlen(cmd));
