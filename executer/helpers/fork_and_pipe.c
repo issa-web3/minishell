@@ -45,6 +45,7 @@ void	fork_and_pipe(t_pipe *pipes, t_process_info *p_info, t_garbage **my_garbage
 		fail |= p_info->fork_response == -1;
 		if (p_info->fork_response == 0 && !fail)
 		{
+			signal(SIGQUIT, SIG_DFL);
 			if (p_info->process_idx != 0)
 				redirect_input(pipes, p_info->process_idx - 1);
 			if (p_info->process_idx != p_info->process_num - 1)
