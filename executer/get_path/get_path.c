@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/12 07:54:52 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:48:39 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*get_path(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	char	*cmd;
 	char	*path;
 
-	cmd = check_dir(data);
+	cmd = check_dir(data, my_garbage);
 	if (cmd == NULL)
 		return (NULL);
 	if (!ft_strncmp(cmd, "./", 2) || !ft_strncmp(cmd, "/", 1) || !ft_strncmp(cmd, "../", 3))
