@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/15 08:35:09 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 09:42:29 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ char			*check_the_path_env(t_2_exec *data, t_env **my_env, t_garbage **my_garbag
 char			**get_paths(t_2_exec *data, t_env **my_env, t_garbage **my_garbage);
 
 // pwd
-void			update_pwd(t_2_exec *data, t_garbage **my_garbage, char *new);
+void			update_pwd(t_2_exec *data, t_garbage **my_garbage);
 
 #endif

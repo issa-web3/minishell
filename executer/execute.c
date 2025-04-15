@@ -6,23 +6,16 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 07:36:35 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 09:42:41 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
-void	update_pwd(t_2_exec *data, t_garbage **my_garbage, char *new)
+void	update_pwd(t_2_exec *data, t_garbage **my_garbage)
 {
 	static char	pwd[1024];
 
-	if (new)
-	{
-		free(data->pwd);
-		data->pwd = new;
-		ft_strlcpy(pwd, data->pwd, ft_strlen(data->pwd) + 1);
-		return ;
-	}
 	free(data->pwd);
 	data->pwd = ft_strdup_wg(pwd, my_garbage);
 	if (getcwd(pwd, 1024))
@@ -46,7 +39,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	t_process_info	p_info;
 	t_pipe			*pipes;
 
-	update_pwd(data, my_garbage, NULL);
+	update_pwd(data, my_garbage);
 	set_exit_status(EXIT_SUCCESS);
 	p_info.process_idx = 0;
 	p_info.fork_response = 314;
