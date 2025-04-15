@@ -27,6 +27,6 @@ void	sigint_handler(int sig)
 	{
 		g_signals = 4;
 		close(0);
-		write(1, "^C", 3);
+		write(1, "\n", 1);
 	}
 }

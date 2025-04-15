@@ -52,7 +52,7 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 		write(2, "cd: error retrieving current directory: ", 40);
 		write(2, "getcwd: cannot access parent directories", 40);
 		write(2, ": No such file or directory\n", 28);
-		update_pwd(data, my_garbage, ft_strdup_wg(new_pwd, my_garbage));
+		// update_pwd(data, my_garbage, ft_strdup_wg(new_pwd, my_garbage));
 	}
 	else if (chdir(new_pwd) == -1)
 	{

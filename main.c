@@ -18,10 +18,10 @@ static char	*get_default_path(char *str, t_env **my_env)
 {
 	char	*default_path;
 
-	default_path = malloc(ft_strlen(str));
+	default_path = malloc(ft_strlen(str) + 1);
 	if (default_path == NULL)
 		(clear_env(my_env), perror("malloc"), set_and_exit(EXIT_FAILURE));
-	ft_strlcpy(default_path, str, ft_strlen(str));
+	ft_strlcpy(default_path, str, ft_strlen(str) + 1);
 	return (default_path);
 }
 
