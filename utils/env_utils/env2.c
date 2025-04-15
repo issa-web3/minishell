@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/14 17:16:23 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:27:55 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils.h"
 
-t_env	*copy_env(char **env)
+t_env	*copy_env(char **env, t_garbage **my_garbage)
 {
 	t_env		*my_env;
 	t_env		*tail;
@@ -27,11 +27,11 @@ t_env	*copy_env(char **env)
 	tail = NULL;
 	while (env[i])
 	{
-		data[0] = ft_strdup_wg(env[i]);
+		data[0] = ft_strdup_wg(env[i], my_garbage);
 		data[1] = ft_strchr(data[0], '=');
 		if (data[1])
 			*(data[1]++) = '\0';
-		data[1] = ft_strdup_wg(data[1]);
+		data[1] = ft_strdup_wg(data[1], my_garbage);
 		if (data[1] == NULL && ft_strchr(data[0], '='))
 		 	return (clear_env(&my_env), NULL);
 		tail = append_env(&my_env, tail, new_env_var(data));

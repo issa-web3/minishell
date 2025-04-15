@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/09 10:44:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:28:21 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init(t_garbage **my_garbage, t_env **my_env,
 	signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, SIG_IGN);
 	*my_garbage = NULL;
-	*my_env = copy_env(env);
+	*my_env = copy_env(env, my_garbage);
 	*default_path = get_default_path(
 			"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
 			my_env

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/14 16:33:40 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 07:25:08 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,18 @@
 void	update_pwd(t_2_exec *data, t_garbage **my_garbage, char *new)
 {
 	static char	pwd[1024];
-	static char	*pwd_copy;
-	static char	flag;
 
 	if (new)
 	{
-		pwd_copy = new;
-		data->pwd = pwd_copy;
+		free(data->pwd);
+		data->pwd = new;
 		ft_strlcpy(pwd, data->pwd, ft_strlen(data->pwd) + 1);
-		flag = 1;
+		return ;
 	}
-	if (flag)
-		flag = 0;
-	pwd_copy = ft_strdup(pwd, my_garbage);
-	if (!new && !flag && getcwd(pwd, 1024))
-		pwd_copy = ft_strdup(pwd, my_garbage);
-	data->pwd = pwd_copy;
+	free(data->pwd);
+	data->pwd = ft_strdup_wg(pwd, my_garbage);
+	if (getcwd(pwd, 1024))
+		(free(data->pwd), data->pwd = ft_strdup_wg(pwd, my_garbage));
 	ft_strlcpy(pwd, data->pwd, ft_strlen(data->pwd) + 1);
 }
 
@@ -58,7 +54,7 @@ void	execute(t_2_exec *data, t_env **my_env, t_garbage **my_garbage)
 	pipes = ft_malloc((p_info.process_num - 1) * sizeof(t_pipe), my_garbage);
 	data->p_info = p_info;
 	if (is_a_parent_task(data, p_info))
-		(exec_builtin(data, my_env, my_garbage), p_info.process_num--);
+		(exec_builtin(data, my_env, my_garbage), p_info.process_num = 0);
 	fork_and_pipe(pipes, &p_info, my_garbage);
 	close_useless_pipes(pipes, p_info.process_idx);
 	if (p_info.process_num == 0)
