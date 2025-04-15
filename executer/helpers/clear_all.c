@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 16:22:27 by test              #+#    #+#             */
-/*   Updated: 2025/04/14 15:31:35 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:03:06 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	clear_all(t_garbage **my_garbage)
 	if ((*my_garbage))
 	{
 		my_env = (*my_garbage)->my_env;
-		i = 0;
+		i = 3;
 		while (i < 1024)
 			close(i++);
 		clear_env(my_env);
