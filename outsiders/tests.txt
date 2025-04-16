@@ -8,3 +8,37 @@ WIFEXITED
 WEXITSTATUS
 WIFSIGNALED
 WTERMSIG
+
+
+
+
+
+
+----------------
+
+
+rich-3.14 $~ export a="           ."
+rich-3.14 $~ $a
+           .: command not found
+rich-3.14 $~ export a="           ls"
+rich-3.14 $~ $a
+           ls: command not found
+rich-3.14 $~
+
+
+
+
+----------------
+
+rich-3.14 $~ echo $1anas
+
+rich-3.14 $~ 
+
+bash
+ioulkhir@e2r6p3:~/Desktop/minishell$ echo $1anas
+anas
+ioulkhir@e2r6p3:~/Desktop/minishell$ 
+----------------
+
+
+
