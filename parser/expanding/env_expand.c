@@ -57,7 +57,7 @@ static char	*expand_variable(char *str, int *index,
 		return (ft_strdup("$", garbage));
 	var_name = extract_var_name(str, index, garbage);
 	res = ft_get_value_env(var_name, env);
-	return (res);
+	return (ft_strtrim(res, " \t", garbage));
 }
 
 static char	*concatenate(char *res, char *str, int len, t_garbage **g)
