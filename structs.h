@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/14 16:23:26 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:49:02 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct s_2_exec
 
 typedef struct s_garbage
 {
-	t_2_exec		*data;
 	t_env			**my_env;
 	void			*ptr;
 	struct s_garbage *next;

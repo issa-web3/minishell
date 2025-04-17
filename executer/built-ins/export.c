@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/17 16:37:40 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:50:04 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,9 @@ void	modify_env_var(t_env *to_export, char append_mode,
 {
 	t_garbage	*new_garbage;
 
-	new_garbage = append_garbage(my_garbage);
+	new_garbage = append_garbage(my_garbage, to_export->value);
 	if (new_garbage == NULL)
-		(perror("malloc"), set_and_exit(EXIT_FAILURE));
-	new_garbage->ptr = to_export->value;
-	new_garbage->next = NULL;
+		(perror("malloc"), clear_all(my_garbage), set_and_exit(EXIT_FAILURE));
 	if (append_mode)
 		to_export->value = ft_strjoin(to_export->value, parsed[1], my_garbage);
 	else

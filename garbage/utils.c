@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/17 17:24:58 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:52:14 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,26 @@ void	clear_garbage(t_garbage **my_garbage)
 	*my_garbage = NULL;
 }
 
-t_garbage	*append_garbage(t_garbage **my_garbage)
+t_garbage	*init_node(t_garbage *new_g_n, void *ptr)
+{
+	if (new_g_n)
+	{
+		new_g_n->next = NULL;
+		new_g_n->ptr = ptr;
+	}
+	return (new_g_n);
+}
+
+t_garbage	*append_garbage(t_garbage **my_garbage, void *ptr)
 {
 	t_garbage	*last_garbage;
 
 	last_garbage = *my_garbage;
 	if (last_garbage == NULL)
-		return (*my_garbage = malloc(sizeof(t_garbage)));
+		return (init_node(*my_garbage = malloc(sizeof(t_garbage)), ptr));
 	while (last_garbage && last_garbage->next)
 		last_garbage = last_garbage->next;
-	return (last_garbage->next = malloc(sizeof(t_garbage)));
+	return (init_node(last_garbage->next = malloc(sizeof(t_garbage)), ptr));
 }
 
 void	remove_ptr_from_garbage(t_garbage **my_garbage, void *ptr)

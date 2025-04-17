@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/17 15:34:53 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:46:04 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char			**sort_export(t_env **my_env, t_garbage **my_garbage);
 
 // garbage utils
 void			clear_garbage(t_garbage **my_garbage);
-t_garbage		*append_garbage(t_garbage **my_garbage);
+t_garbage		*append_garbage(t_garbage **my_garbage, void *ptr);
 void			*ft_malloc(size_t size, t_garbage **my_garbage);
 void			remove_ptr_from_garbage(t_garbage **my_garbage, void *ptr);
 
