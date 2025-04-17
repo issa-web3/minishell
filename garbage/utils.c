@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/17 16:35:35 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:24:58 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	clear_garbage(t_garbage **my_garbage)
 		free(curr);
 		curr = next;
 	}
+	for (size_t i = 3; i < 1024; i++)
+		close(i);
 	*my_garbage = NULL;
 }
 
