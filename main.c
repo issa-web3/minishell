@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/16 13:33:33 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:27:37 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,22 @@ int	main(int ac, char **av, char **env)
 	while (1)
 	{
 		line = ft_readline(&my_env);
-		init_garbage(&my_garbage, &my_env, NULL);
 		data = parsing(line, &my_env, &my_garbage);
 		if (data)
 		{
+			my_garbage->my_env = &my_env;
 			data->default_path = &default_path;
-			my_garbage->data = data;
 			add_history(line);
 			execute(data, &my_env, &my_garbage);
 		}
 		free(line);
 		clear_garbage(&my_garbage);
+		if (default_path)
+			default_path = ft_strdup(
+				"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+				&my_garbage
+				);
 	}
+	free(default_path);
 	clear_env(&my_env);
 }
