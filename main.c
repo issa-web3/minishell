@@ -36,10 +36,8 @@ int	main(int ac, char **av, char **env)
 		{
 			data->default_path = &default_path;
 			my_garbage->data = data;
-			g_signals = SIGINT;
 			add_history(line);
 			execute(data, &my_env, &my_garbage);
-			g_signals = 0;
 		}
 		free(line);
 		clear_garbage(&my_garbage);
