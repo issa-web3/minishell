@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
-# define STRUCTS_H
+#define STRUCTS_H
 
 #include "executer/exec_structs.h"
 
@@ -107,5 +107,12 @@ typedef struct s_exit_arg
 	long	val;
 	char	err;
 }				t_exit_arg;
+
+typedef struct s_token_vars
+{
+	int	i;
+	int	start;
+	int	prev_type;
+}	t_tok_vars;
 
 #endif

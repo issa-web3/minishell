@@ -27,6 +27,7 @@ int	is_expand_heredoc(char *del)
 	}
 	return (1);
 }
+
 t_file	*new_file_node(char *name, t_garbage **g, char *buff)
 {
 	t_file	*node;

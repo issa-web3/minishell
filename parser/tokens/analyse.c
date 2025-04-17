@@ -57,8 +57,7 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 	t_file	*file_node;
 	int		a_r_found;
 
-	files = NULL;
-	a_r_found = 0;
+	1 && (files = NULL, a_r_found = 0);
 	if (tokens == NULL || *tokens == NULL)
 		return (1);
 	while ((*tokens) && ((*tokens)->type == REDIR_INPUT

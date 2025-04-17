@@ -55,6 +55,6 @@ int	to_expand(t_token **node, t_env *env, t_garbage **g)
 	if (can_i_expand((*node)->token))
 		ft_expand_token(node, env, g, flag);
 	if (flag == 1 && !ft_strcmp(tmp, "|"))
-        flag = 0;
+		flag = 0;
 	return (1);
 }

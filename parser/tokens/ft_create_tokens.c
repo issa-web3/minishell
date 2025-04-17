@@ -78,11 +78,11 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 	t_token	*add_to_lst;
 	int		i;
 	int		start;
-	int		prev_type = -1;
+	int		prev_type;
 
 	if (!str)
 		return (NULL);
-	1337 && (i = 0, lst = NULL);
+	1 && (i = 0, lst = NULL, prev_type = -1);
 	while (str[i])
 	{
 		start = i;
@@ -102,6 +102,5 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 		else
 			ft_lstlast_token(lst)->next = add_to_lst;
 	}
-	to_expand(NULL, env, garbage);
-	return (lst);
+	return (to_expand(NULL, env, garbage), lst);
 }
