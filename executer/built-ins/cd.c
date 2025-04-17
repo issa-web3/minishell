@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 10:59:26 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:26:20 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,26 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 	char	*old_pwd;
 
 	new_pwd = get_new_pwd(data, data->pwd, my_env, my_garbage);
-	old_pwd = ft_strdup_wg(data->pwd, my_garbage);
+	old_pwd = ft_strdup(data->pwd, my_garbage);
 	if (new_pwd == NULL)
 		return ;
-	if (chdir(new_pwd) == -1 && getcwd(pwd, 1024) == NULL)
+	if (chdir(new_pwd) == -1 && getcwd(pwd, 1024) == NULL && ft_strcmp(data->cmd[1], "/"))
 	{
 		write(2, "cd: error retrieving current directory: ", 40);
 		write(2, "getcwd: cannot access parent directories", 40);
 		write(2, ": No such file or directory\n", 28);
-		free(old_pwd);
+		write(2, "redirected to /\n", 16);
+		data->cmd = ft_split("cd /", ' ', my_garbage);
+		ft_cd(data, my_env, my_garbage);
 		return ;
 	}
 	else if (chdir(new_pwd) == -1)
 	{
 		set_exit_status(NO_SUCH_FILE_OR_DIR);
 		perror(ft_strjoin("cd: ", data->cmd[1], my_garbage));
-		free(old_pwd);
 		return ;
 	}
 	data->cmd[0] = ft_strjoin("export OLDPWD=", old_pwd, my_garbage);
-	free(old_pwd);
 	update_pwd(data, my_garbage);
 	data->cmd[0] = ft_strjoin(
 		data->cmd[0],

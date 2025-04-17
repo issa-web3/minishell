@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 07:27:55 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:27:29 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,18 @@ t_env	*copy_env(char **env, t_garbage **my_garbage)
 	tail = NULL;
 	while (env[i])
 	{
-		data[0] = ft_strdup_wg(env[i], my_garbage);
+		data[0] = ft_strdup(env[i], my_garbage);
 		data[1] = ft_strchr(data[0], '=');
 		if (data[1])
 			*(data[1]++) = '\0';
-		data[1] = ft_strdup_wg(data[1], my_garbage);
+		data[1] = ft_strdup(data[1], my_garbage);
 		if (data[1] == NULL && ft_strchr(data[0], '='))
-		 	return (clear_env(&my_env), NULL);
+		 	return (clear_all(my_garbage), NULL);
 		tail = append_env(&my_env, tail, new_env_var(data));
 		if (tail == NULL)
-			return (clear_env(&my_env), NULL);
+			return (clear_all(my_garbage), NULL);
+		remove_ptr_from_garbage(my_garbage, data[0]);
+		remove_ptr_from_garbage(my_garbage, data[1]);
 		i++;
 	}
 	return (my_env);

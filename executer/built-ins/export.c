@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 07:27:35 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:37:40 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ t_export_data	export_parse_data(char *arg, t_garbage **my_garbage)
 	sep = ft_strchr(arg, '=');
 	if (sep)
 		*(sep++) = 0;
-	parsed = malloc(2 * sizeof(char *));
-	if (parsed == NULL)
-		(clear_all(my_garbage), perror("malloc"), set_and_exit(EXIT_FAILURE));
-	parsed[0] = ft_strdup_wg(arg, my_garbage);
-	parsed[1] = ft_strdup_wg(sep, my_garbage);
+	parsed = ft_malloc(2 * sizeof(char *), my_garbage);
+	parsed[0] = ft_strdup(arg, my_garbage);
+	parsed[1] = ft_strdup(sep, my_garbage);
 	if (parsed[0] == NULL || (parsed[1] == NULL && sep))
 	{
 		clear_all(my_garbage);
@@ -67,30 +65,28 @@ char	*path_special_case(char **data, t_env *to_export,
 		char *default_path, t_garbage **my_garbage)
 {
 	if (to_export == NULL && data[1] == NULL && !ft_strcmp(data[0], "PATH"))
-		return (ft_strdup_wg(default_path, my_garbage));
+		return (ft_strdup(default_path, my_garbage));
 	return (data[1]);
 }
 
 void	modify_env_var(t_env *to_export, char append_mode,
 		char **parsed, t_garbage **my_garbage)
 {
-	char	*old_val;
+	t_garbage	*new_garbage;
 
-	old_val = to_export->value;
+	new_garbage = append_garbage(my_garbage);
+	if (new_garbage == NULL)
+		(perror("malloc"), set_and_exit(EXIT_FAILURE));
+	new_garbage->ptr = to_export->value;
+	new_garbage->next = NULL;
 	if (append_mode)
-	{
-		to_export->value = ft_strjoin_without_garbage(to_export->value, parsed[1], my_garbage);
-		free(parsed[0]);
-		free(parsed[1]);
-	}
+		to_export->value = ft_strjoin(to_export->value, parsed[1], my_garbage);
 	else
 	{
-		free(parsed[0]);
 		if (parsed[1])
 			to_export->value = parsed[1];
 	}
-	if (old_val != to_export->value)
-		free(old_val);
+	remove_ptr_from_garbage(my_garbage, to_export->value);
 }
 
 void	ft_export(t_2_exec *data, t_env **my_env,
@@ -115,10 +111,14 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 		parsed = export_data.parsed;
 		parsed[1] = path_special_case(parsed, to_export, *data->default_path, my_garbage);
 		if (to_export == NULL)
-			append_env(my_env, get_last_env(my_env), new_env_var(parsed));
+		{
+			if (append_env(my_env, get_last_env(my_env), new_env_var(parsed)) == NULL)
+				(clear_all(my_garbage), set_and_exit(EXIT_FAILURE));
+			remove_ptr_from_garbage(my_garbage, parsed[0]);
+			remove_ptr_from_garbage(my_garbage, parsed[1]);
+		}
 		else
 			modify_env_var(to_export, export_data.append, parsed, my_garbage);
-		free(parsed);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 09:42:41 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:28:24 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ void	update_pwd(t_2_exec *data, t_garbage **my_garbage)
 {
 	static char	pwd[1024];
 
-	free(data->pwd);
-	data->pwd = ft_strdup_wg(pwd, my_garbage);
+	data->pwd = ft_strdup(pwd, my_garbage);
 	if (getcwd(pwd, 1024))
-		(free(data->pwd), data->pwd = ft_strdup_wg(pwd, my_garbage));
+		data->pwd = ft_strdup(pwd, my_garbage);
 	ft_strlcpy(pwd, data->pwd, ft_strlen(data->pwd) + 1);
 }
 

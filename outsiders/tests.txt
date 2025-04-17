@@ -13,32 +13,16 @@ WTERMSIG
 
 
 
+rich-3.14 $~ fgjfgj
+fgjfgj: command not found
 
-----------------
+=================================================================
+==1864019==ERROR: LeakSanitizer: detected memory leaks
 
+Direct leak of 32 byte(s) in 1 object(s) allocated from:
+    #0 0x7f536e7f6887 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7f536e727bac in xmalloc (/lib/x86_64-linux-gnu/libreadline.so.8+0x39bac)
 
-rich-3.14 $~ export a="           ."
-rich-3.14 $~ $a
-           .: command not found
-rich-3.14 $~ export a="           ls"
-rich-3.14 $~ $a
-           ls: command not found
-rich-3.14 $~
-
-
-
-
-----------------
-
-rich-3.14 $~ echo $1anas
-
+SUMMARY: AddressSanitizer: 32 byte(s) leaked in 1 allocation(s).
 rich-3.14 $~ 
-
-bash
-ioulkhir@e2r6p3:~/Desktop/minishell$ echo $1anas
-anas
-ioulkhir@e2r6p3:~/Desktop/minishell$ 
-----------------
-
-
 

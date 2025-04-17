@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/08 18:10:32 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:49:08 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_malloc(size_t size, t_garbage **my_garbage)
 		clear_all(my_garbage);
 		set_and_exit(EXIT_FAILURE);
 	}
-	new_garbage = append_garbage(my_garbage, allocated);
+	new_garbage = append_garbage(my_garbage);
 	if (new_garbage == NULL)
 	{
 		perror("malloc");
