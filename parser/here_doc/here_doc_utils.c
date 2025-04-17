@@ -57,3 +57,11 @@ char	*generate_file_name(t_garbage	**g)
 	res = ft_strjoin(tmp_path, name, g);
 	return (res);
 }
+
+void	create_heredoc_node(t_file	**node, t_garbage **g, char *buff)
+{
+	char	*file_name;
+
+	file_name = generate_file_name(g);
+	*node = new_file_node(file_name, g, buff);
+}

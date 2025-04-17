@@ -35,7 +35,8 @@ static void	restore_fds(int save_stdin)
 	close(save_stdin);
 }
 
-static void	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_env *env) // remember to create a struct contains line and is expand flag
+static void	create_heredoc_buffer(char **res, t_heredoc *info,
+		t_garbage **g, t_env *env)
 {
 	char	*line;
 
@@ -50,6 +51,8 @@ static void	create_heredoc_buffer(char **res, t_heredoc *info, t_garbage **g, t_
 		line = ft_strjoin(info->line, "\n", g);
 		*res = ft_strjoin(*res, line, g);
 	}
+	free(info->line);
+	info->line = NULL;
 }
 
 int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
@@ -57,7 +60,6 @@ int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 	int			save_stdin;
 	char		*res;
 	t_file		*heredoc_node;
-	char		*file_name;
 
 	1 && (res = NULL, save_stdin = dup(0), g_signals = 3);
 	while (1)
@@ -68,14 +70,11 @@ int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 		if (!ft_strcmp(info->line, info->del))
 			break ;
 		create_heredoc_buffer(&res, info, g, env);
-		free(info->line);
-		info->line = NULL;
 	}
 	free(info->line);
 	if (g_signals == 4)
 		return (restore_fds(save_stdin), set_exit_status(130), -1);
-	file_name = generate_file_name(g);
-	heredoc_node = new_file_node(file_name, g, res);
+	create_heredoc_node(&heredoc_node, g, res);
 	restore_fds(save_stdin);
 	if (!(*node)->files)
 		(*node)->files = heredoc_node;
@@ -84,9 +83,10 @@ int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 	return (1);
 }
 
-int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage **g)
+int	ft_handle_heredoc(t_token **tokens, t_2_exec **node,
+		t_env *env, t_garbage **g)
 {
-	t_heredoc info;
+	t_heredoc	info;
 
 	if (!tokens || !(*tokens))
 		return (1);

@@ -17,9 +17,8 @@
 
 // the boss
 t_2_exec	*parsing(char *line, t_env **envl, t_garbage **garbage);
-
 //utils
-t_file	*ft_lstlast_file(t_file *lst);
+t_file	    *ft_lstlast_file(t_file *lst);
 int			is_whitespace(char c);
 void		sigint_handler(int sig);
 int			is_only_whitespace(char *str);
@@ -64,4 +63,5 @@ int	ft_handle_heredoc(t_token **tokens, t_2_exec **node, t_env *env, t_garbage *
 char	*generate_file_name(t_garbage	**g);
 t_file	*new_file_node(char *name, t_garbage **g, char *buff);
 void	ft_sigint_heredoc(int signo);
+void	create_heredoc_node(t_file	**node, t_garbage **g, char *buff);
 #endif
