@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 08:27:50 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 08:35:36 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_env	*copy_env(char **env, t_garbage **my_garbage)
 		remove_ptr_from_garbage(my_garbage, data[1]);
 		i++;
 	}
+	if (ft_getenv("OLDPWD", &my_env))
+		return (my_env);
 	data[0] = ft_strdup("OLDPWD", my_garbage);
 	data[1] = NULL;
 	tail = append_env(&my_env, tail, new_env_var(data));
