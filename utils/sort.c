@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_all.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 10:56:05 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 17:14:46 by ioulkhir         ###   ########.fr       */
+/*   Created: 2025/04/18 17:36:07 by ioulkhir          #+#    #+#             */
+/*   Updated: 2025/04/18 17:36:19 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "utils.h"
 
-void	clear_all(t_garbage **my_garbage)
+void	swap(char **a, char **b)
 {
-	t_env			**my_env;
-	int				i;
+	char	*temp;
 
-	if ((*my_garbage))
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	bubble_sort(char **arr, int n)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < n - 1)
 	{
-		my_env = (*my_garbage)->my_env;
-		i = 3;
-		while (i < 1024)
-			close(i++);
-		clear_env(my_env);
+		j = 0;
+		while (j < n - i - 1)
+		{
+			if (ft_strcmp(arr[j], arr[j + 1]) > 0)
+				swap(&arr[j], &arr[j + 1]);
+			j++;
+		}
+		i++;
 	}
-	clear_garbage(my_garbage);
 }

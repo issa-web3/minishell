@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:19 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/18 08:00:32 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 17:43:47 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,14 @@ int	main(int ac, char **av, char **env)
 	t_2_exec	*data;
 	t_env		*my_env;
 	t_garbage	*my_garbage;
-	char		*default_path;
+	char		*d_path;
 
 	(void)ac;
 	(void)av;
-	if (!isatty(0) || !isatty(1) || !isatty(2))
-		return (1);
-	init(&my_garbage, &my_env, env);
-	default_path = NULL;
+	init(&my_garbage, &d_path, &my_env, env);
 	while (1)
 	{
-		init_garbage(&my_garbage, &my_env, &default_path);
+		init_garbage(&my_garbage, &my_env, &d_path);
 		my_garbage->my_env = &my_env;
 		line = ft_readline(&my_garbage);
 		if (*line)
@@ -38,10 +35,9 @@ int	main(int ac, char **av, char **env)
 		data = parsing(line, &my_env, &my_garbage);
 		if (data)
 		{
-			data->default_path = &default_path;
+			data->d_path = &d_path;
 			execute(data, &my_env, &my_garbage);
 		}
-		free(line);
 		clear_garbage(&my_garbage);
 	}
 	clear_env(&my_env);

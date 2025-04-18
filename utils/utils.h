@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:04:41 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/17 16:15:33 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 17:37:44 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,8 @@ int			get_exit_status(void);
 void		set_exit_status(int new);
 void		set_and_exit(int new);
 void		wait_children(pid_t last_pid);
+
+// sorting
+void		bubble_sort(char **arr, int n);
 
 #endif

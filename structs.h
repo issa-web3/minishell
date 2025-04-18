@@ -6,14 +6,14 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/17 17:49:02 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 17:49:34 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
-#define STRUCTS_H
+# define STRUCTS_H
 
-#include "executer/exec_structs.h"
+# include "executer/exec_structs.h"
 
 // env
 typedef struct s_env
@@ -63,16 +63,16 @@ typedef struct s_2_exec
 	char			**cmd;
 	t_file			*files;
 	t_process_info	p_info;
-	char			**default_path;
+	char			**d_path;
 	char			*pwd;
 	struct s_2_exec	*next;
 }				t_2_exec;
 
 typedef struct s_garbage
 {
-	t_env			**my_env;
-	void			*ptr;
-	struct s_garbage *next;
+	t_env				**my_env;
+	void				*ptr;
+	struct s_garbage	*next;
 }					t_garbage;
 //this struct is just for the quote removal stuff
 typedef struct s_extract_info
@@ -89,9 +89,9 @@ typedef struct s_indices
 
 typedef struct s_expand
 {
-	char	*value;
-	int		is_expand;
-	struct s_expand *next;
+	char			*value;
+	int				is_expand;
+	struct s_expand	*next;
 }	t_expand;
 
 // built-ins

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 10:09:38 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/14 16:23:37 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:46:50 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init_2exec(t_2_exec *node)
 	node->p_info.fork_response = 0;
 	node->p_info.process_idx = 0;
 	node->p_info.process_num = 0;
-	node->default_path = NULL;
+	node->d_path = NULL;
 	node->next = NULL;
 	node->cmd = NULL;
 	node->files = NULL;

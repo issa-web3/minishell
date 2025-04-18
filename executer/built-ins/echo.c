@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:55:48 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 10:55:50 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:53:02 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_echo(t_2_exec *data, t_env **my_env,
 	if (data->cmd[1] == NULL)
 	{
 		write(1, "\n", 1);
-		return;
+		return ;
 	}
 	end = has_dash_n(data->cmd);
 	i = end;

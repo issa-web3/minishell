@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:55:48 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 14:55:50 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:46:50 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	redirect_and_execute(t_2_exec *data, int process_idx,
 	{
 		prev = data;
 		data = data->next;
-		data->default_path = prev->default_path;
+		data->d_path = prev->d_path;
 		data->pwd = prev->pwd;
 		data->p_info = prev->p_info;
 	}

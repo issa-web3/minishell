@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 14:48:28 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 17:03:58 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ t_exit_arg	ft_atol(char *str)
 			sign = 1;
 			break ;
 		}
-		result.val = result.val * 10 + (str[i] - '0');
-		i++;
+		result.val = result.val * 10 + (str[i++] - '0');
 	}
 	result.err = str[i] != '\0';
 	result.val *= sign;
@@ -63,7 +62,8 @@ int	change_exit_status(char **args)
 	if (ac == 1)
 		return (set_exit_status(tmp.val % 256), 0);
 	if (ac > 1)
-		return (write(2, "exit: too many arguments\n", 25), set_exit_status(EXIT_FAILURE), -1);
+		return (write(2, "exit: too many arguments\n", 25),
+			set_exit_status(EXIT_FAILURE), -1);
 	return (0);
 }
 
