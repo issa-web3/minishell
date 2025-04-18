@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:23:38 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/17 17:52:14 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:53:44 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	clear_garbage(t_garbage **my_garbage)
 {
 	t_garbage	*curr;
 	t_garbage	*next;
+	size_t		i;
 
 	curr = *my_garbage;
 	while (curr)
@@ -25,8 +26,9 @@ void	clear_garbage(t_garbage **my_garbage)
 		free(curr);
 		curr = next;
 	}
-	for (size_t i = 3; i < 1024; i++)
-		close(i);
+	i = 3;
+	while (i < 1024)
+		close(i++);
 	*my_garbage = NULL;
 }
 

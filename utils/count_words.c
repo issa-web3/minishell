@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:46:31 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/03/16 12:03:00 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:52:33 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	count_words(const char *str, char c)
 	int		i;
 	char	quote;
 
-	if (str == NULL)
-		return (0);
-	(i = 0, count = 0, quote = 0);
-	while (str[i])
+	i = 0;
+	count = 0;
+	quote = 0;
+	while (str && str[i])
 	{
 		while (str[i] && is_sep(str[i], c) == 1)
 			i++;

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:56:20 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 10:56:21 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:54:33 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ static int	redirect_output(t_pipe *pipes, int idx)
 	return (fail);
 }
 
-void	fork_and_pipe(t_pipe *pipes, t_process_info *p_info, t_garbage **my_garbage)
+void	fork_and_pipe(t_pipe *pipes, t_process_info *p_info,
+		t_garbage **my_garbage)
 {
 	int	fail;
 
 	fail = 0;
-	while (p_info->process_idx < p_info->process_num && p_info->fork_response != 0 && !fail)
+	while (p_info->process_idx < p_info->process_num
+		&& p_info->fork_response != 0 && !fail)
 	{
 		if (p_info->process_idx != p_info->process_num - 1)
 			fail = ft_pipe(pipes[p_info->process_idx]) == -1;
