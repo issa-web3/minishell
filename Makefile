@@ -33,7 +33,7 @@ OBJ_DIRS = $(OBJ_DIR)/$(PROT) $(OBJ_DIR)/$(HLP) $(OBJ_DIR)/$(PTH) $(OBJ_DIR)/$(B
 		   $(OBJ_DIR)/garbage $(OBJ_DIR)/utils $(OBJ_DIR)/utils/env_utils
 
 # INC
-INC =
+INC = minishell.h structs.h $(PARS)/parser.h $(EXEC)/executer.h $(EXEC)/exec_structs.h utils/utils.h
 
 # General utils
 UTILS_FILES = \
