@@ -78,3 +78,9 @@ int	is_hquote(char c)
 		return (2);
 	return (0);
 }
+
+void	ft_skip_spaces(char	*s, int *i)
+{
+	while (s[*i] && is_whitespace(s[*i]))
+		(*i)++;
+}

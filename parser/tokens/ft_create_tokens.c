@@ -33,7 +33,7 @@ static t_token_type	get_type(char *str)
 	return (WORD);
 }
 
-static void	ft_check_token(char *str, int *i)
+static int	ft_check_token(char *str, int *i)
 {
 	char	quote_type;
 
@@ -51,6 +51,7 @@ static void	ft_check_token(char *str, int *i)
 			break ;
 		(*i)++;
 	}
+	return (1);
 }
 
 static void	handle_operators(char *str, int *i)
@@ -80,17 +81,13 @@ t_token	*ft_create_tokens(char *str, t_env *env, t_garbage **garbage)
 	int		start;
 	int		prev_type;
 
-	if (!str)
-		return (NULL);
 	1 && (i = 0, lst = NULL, prev_type = -1);
 	while (str[i])
 	{
-		start = i;
-		ft_check_token(str, &i);
+		1 && (start = i, ft_check_token(str, &i));
 		if (start == i)
 			handle_operators(str, &i);
-		while (str[i] && is_whitespace(str[i]))
-			i++;
+		ft_skip_spaces(str, &i);
 		add_to_lst = new_token_node(extract_token(str, start, i, garbage),
 				get_type(extract_token(str, start, i, garbage)), garbage);
 		hide_quotes(&add_to_lst);

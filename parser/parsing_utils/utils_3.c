@@ -58,3 +58,11 @@ int	to_expand(t_token **node, t_env *env, t_garbage **g)
 		flag = 0;
 	return (1);
 }
+
+int	ft_ambiguous_redirect(int a_r_found)
+{
+	if (a_r_found)
+		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2)
+			, set_exit_status(GENERIC_ERR), 1);
+	return (0);
+}

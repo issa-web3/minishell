@@ -19,6 +19,7 @@
 t_2_exec	*parsing(char *line, t_env **envl, t_garbage **garbage);
 //utils
 t_file	    *ft_lstlast_file(t_file *lst);
+void        ft_skip_spaces(char	*s, int *i);
 int			is_whitespace(char c);
 void		sigint_handler(int sig);
 int			is_only_whitespace(char *str);
@@ -42,6 +43,7 @@ int			can_i_expand(char *str);
 int			my_count_words(const char *str);
 //syntax error
 int			ft_check_syntax_error(char *line);
+int         ft_ambiguous_redirect(int a_r_found);
 // tokens
 t_token		*ft_create_tokens(char *str, t_env *env, t_garbage **garbage);
 void		ft_handle_cmd(t_2_exec **node, t_garbage **garbage, t_token **tokens);

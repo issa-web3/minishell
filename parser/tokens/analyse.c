@@ -35,7 +35,8 @@ static int	create_cmd(t_token **tokens, t_2_exec *node, t_garbage **garbage)
 	return (0);
 }
 
-static void	fill_file_info(t_file *file_node, t_token **tokens, t_garbage **garbage)
+static void	fill_file_info(t_file *file_node,
+		t_token **tokens, t_garbage **garbage)
 {
 	if ((*tokens)->next && ((*tokens)->type == REDIR_INPUT
 			|| (*tokens)->type == REDIR_OUTPUT || (*tokens)->type == APPEND))
@@ -61,8 +62,7 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 	if (tokens == NULL || *tokens == NULL)
 		return (1);
 	while ((*tokens) && ((*tokens)->type == REDIR_INPUT
-			|| (*tokens)->type == REDIR_OUTPUT
-			|| (*tokens)->type == APPEND))
+			|| (*tokens)->type == REDIR_OUTPUT || (*tokens)->type == APPEND))
 	{
 		if ((*tokens)->next->token == NULL)
 			a_r_found++;
@@ -76,9 +76,8 @@ int	handle_redir(t_2_exec **node, t_token **tokens, t_garbage **garbage)
 		(*node)->files = files;
 	else
 		ft_lstlast_file((*node)->files)->next = files;
-	if (a_r_found)
-		return (ft_putstr_fd("minishell: ambiguous redirect\n", 2)
-			, set_exit_status(GENERIC_ERR), 1);
+	if (ft_ambiguous_redirect(a_r_found))
+		return (1);
 	return (0);
 }
 
@@ -88,8 +87,7 @@ t_2_exec	*ft_analyse(char *line, t_env *envl, t_garbage **garbage)
 	t_2_exec	*node;
 	t_token		*tokens;
 
-	lst = NULL;
-	tokens = ft_create_tokens(line, envl, garbage);
+	1 && (lst = NULL, tokens = ft_create_tokens(line, envl, garbage));
 	tokens = remove_quotes_from_toks(tokens, garbage);
 	restore_quotes(&tokens);
 	while (tokens)
