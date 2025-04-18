@@ -1,10 +1,10 @@
-# Executables
+# Executable
 NAME = minishell
 
 # Compilation
 CC = cc
 COMPL_FLAGS = -Wall -Wextra -Werror
-LINK_FLAGS = -lreadline -I/home/kali/.brew/opt/readline/include -L/home/kali/.brew/opt/readline/lib
+LINK_FLAGS = -lreadline
 # -g3 -fsanitize=address
 
 COMPILE = $(CC) $(COMPL_FLAGS)

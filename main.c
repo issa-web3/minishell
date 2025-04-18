@@ -27,6 +27,7 @@ int	main(int ac, char **av, char **env)
 	if (!isatty(0) || !isatty(1) || !isatty(2))
 		return (1);
 	init(&my_garbage, &my_env, env);
+	default_path = NULL;
 	while (1)
 	{
 		init_garbage(&my_garbage, &my_env, &default_path);
