@@ -68,22 +68,22 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(LINK) $(OBJ) -o $@
-	@echo "[CREATING $@ ... ]"
+	@echo "[CREATING $@...]"
 
 $(OBJ_DIRS):
 	@mkdir -p $(OBJ_DIRS)
-	@echo "[CREATING object directories ... ]"
+	@echo "[CREATING object directories...]"
 
 $(OBJ_DIR)/%.o: %.c $(INC) | $(OBJ_DIRS)
 	@$(COMPILE) -c $< -o $@
-	@echo "[COMPILING $< ... ]"
+	@echo "[COMPILING $<...]"
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "[CLEANING ... ]"
+	@echo "[CLEANING object files...]"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "[CLEANING ... ]"
+	@echo "[CLEANING the executable...]"
 
 re: fclean all
