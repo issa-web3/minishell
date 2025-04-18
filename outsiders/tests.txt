@@ -7,24 +7,6 @@ old err :
 WIFEXITED
 WEXITSTATUS
 WIFSIGNALED
-WTERMSIG
-
-
-
-
-
-rich-3.14 $~ fgjfgj
-fgjfgj: command not found
-
-=================================================================
-==1864019==ERROR: LeakSanitizer: detected memory leaks
-
-Direct leak of 32 byte(s) in 1 object(s) allocated from:
-    #0 0x7f536e7f6887 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
-    #1 0x7f536e727bac in xmalloc (/lib/x86_64-linux-gnu/libreadline.so.8+0x39bac)
-
-SUMMARY: AddressSanitizer: 32 byte(s) leaked in 1 allocation(s).
-rich-3.14 $~ 
 
 
 
@@ -40,3 +22,13 @@ rich-3.14 $~ << $$""
 rich-3.14 $~ << $$""
 
 
+
+
+
+
+idiot bash
+
+ioulkhir@e2r6p5:/$ export | grep PWD
+ioulkhir@e2r6p5:/$ echo $PWD
+/
+ioulkhir@e2r6p5:/$ 

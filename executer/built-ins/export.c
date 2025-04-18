@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/17 17:50:04 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 08:09:19 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_export_data	export_parse_data(char *arg, t_garbage **my_garbage)
 	char			*rm_plus;
 	char			*sep;
 	char			append;
-	int				i;
 	t_export_data	data;
 
 	data.is_valid = 1;
@@ -37,7 +36,7 @@ t_export_data	export_parse_data(char *arg, t_garbage **my_garbage)
 		write(2, "': not a valid identifier\n", 27);
 		set_exit_status(GENERIC_ERR);
 		data.parsed = NULL;
-		data.append = append;
+		data.append = 0;
 		data.is_valid = 0;
 		return (data);
 	}
@@ -92,7 +91,6 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 {
 	t_env			*to_export;
 	t_export_data	export_data;
-	char			*old_val;
 	char			**parsed;
 	int				i;
 
@@ -108,14 +106,14 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 		to_export = ft_getenv(export_data.parsed[0], my_env);
 		parsed = export_data.parsed;
 		parsed[1] = path_special_case(parsed, to_export, *data->default_path, my_garbage);
-		if (to_export == NULL)
+		if (to_export == NULL && ft_strcmp(data->cmd[0], "modify"))
 		{
 			if (append_env(my_env, get_last_env(my_env), new_env_var(parsed)) == NULL)
 				(clear_all(my_garbage), set_and_exit(EXIT_FAILURE));
 			remove_ptr_from_garbage(my_garbage, parsed[0]);
 			remove_ptr_from_garbage(my_garbage, parsed[1]);
 		}
-		else
+		else if (to_export != NULL)
 			modify_env_var(to_export, export_data.append, parsed, my_garbage);
 		i++;
 	}

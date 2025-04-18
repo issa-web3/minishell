@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:56:05 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 10:56:06 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 07:54:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	clear_all(t_garbage **my_garbage)
 {
-	t_pipe			*pipes;
 	t_env			**my_env;
 	int				i;
 

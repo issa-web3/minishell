@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:59:53 by khoukouj          #+#    #+#             */
-/*   Updated: 2025/04/17 17:04:21 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 07:57:22 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ extern int	g_signals;
 // main utils
 char	*get_default_path(char *str, t_env **my_env);
 void	init(t_garbage **my_garbage, t_env **my_env,
-			char **env, char **default_path);
-char	*ft_readline(t_env **my_env);
-void	init_garbage(t_garbage **my_garbage, t_env **my_env);
+			char **env);
+char	*ft_readline(t_garbage **my_env);
+void	init_garbage(t_garbage **my_garbage, t_env **my_env
+		, char **default_path);
 
 #endif

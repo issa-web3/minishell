@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 08:35:54 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 07:54:29 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	is_command_not_found(t_2_exec *data, char *path)
 	}
 }
 
-char	*check_dir(t_2_exec *data, t_garbage **my_garbage)
+char	*check_dir(t_2_exec *data)
 {
 	char		*cmd;
 	struct stat	file_stat;
