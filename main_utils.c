@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:33:36 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/17 16:27:07 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 07:48:22 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	init_garbage(t_garbage **my_garbage, t_env **my_env)
 	if ((*my_garbage) == NULL)
 		(clear_env(my_env), perror("malloc"), set_and_exit(EXIT_FAILURE));
 	(*my_garbage)->next = NULL;
-	(*my_garbage)->ptr = malloc(4);
+	(*my_garbage)->ptr = malloc(1337 / 42);
 }
