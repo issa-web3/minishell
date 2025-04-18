@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/09 10:43:41 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:48:28 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	change_exit_status(char **args)
 	while (args[++ac])
 		;
 	if (ac == 0)
-		return (set_exit_status(EXIT_SUCCESS), 0);
+		return (0);
 	tmp = ft_atol(args[0]);
 	if (tmp.err)
 	{
@@ -64,7 +64,7 @@ int	change_exit_status(char **args)
 		return (set_exit_status(tmp.val % 256), 0);
 	if (ac > 1)
 		return (write(2, "exit: too many arguments\n", 25), set_exit_status(EXIT_FAILURE), -1);
-	return (set_exit_status(EXIT_SUCCESS), 0);
+	return (0);
 }
 
 void	ft_exit(t_2_exec *data, t_env **my_env,

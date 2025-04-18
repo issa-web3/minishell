@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/17 15:36:01 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:34:34 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ t_env	*get_last_env(t_env **my_env)
 	return (curr);
 }
 
-int		env_len(t_env *curr)
+int	env_len(t_env *curr)
 {
 	int	len;
 
 	len = 0;
 	while (curr)
-		(curr = curr->next, len++);	
+	{
+		curr = curr->next;
+		len++;
+	}
 	return (len);
 }
 
