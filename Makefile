@@ -69,7 +69,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(LINK) $(OBJ) -o $@
-	@echo "[CREATING $@...]"
+	@echo "[CREATING the legendary executable $@...]"
 
 $(OBJ_DIRS):
 	@mkdir -p $(OBJ_DIRS)
