@@ -73,7 +73,9 @@ char	*remove_quotes(char *str, t_garbage **g)
 			append_char(str, res, &indices);
 	}
 	res[indices.result_index] = '\0';
-	return (res);
+	if (is_only_whitespace(res))
+		return (res);
+	return (ft_strtrim(res, " \n\t", g));
 }
 
 t_token	*remove_quotes_from_toks(t_token *toks, t_garbage **g)
