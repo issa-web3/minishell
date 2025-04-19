@@ -20,7 +20,7 @@ void	ft_env(t_2_exec *data, t_env **my_env,
 	curr = *my_env;
 	(void)data;
 	(void)my_garbage;
-	while (curr && curr->value)
+	while (data->cmd[1] == NULL && curr && curr->value)
 	{
 		printf("%s=%s\n", curr->name, curr->value);
 		curr = curr->next;

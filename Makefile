@@ -48,7 +48,7 @@ GENERAL_UTILS = $(addprefix utils/, $(UTILS_FILES))
 # SRC
 SRC = main.c main_utils.c \
 		$(EXEC)/execute.c \
-		$(PROT)/ft_dup2.c $(PROT)/ft_fork.c $(PROT)/ft_open.c $(PROT)/ft_pipe.c \
+		$(PROT)/ft_dup2.c $(PROT)/ft_dup.c $(PROT)/ft_fork.c $(PROT)/ft_open.c $(PROT)/ft_pipe.c \
 		$(HLP)/clear_all.c $(HLP)/close_useless_pipes.c $(HLP)/exec_builtin.c $(HLP)/execute_task_by_idx.c $(HLP)/fork_and_pipe.c $(HLP)/wait_children.c \
 		$(PTH)/get_path.c $(PTH)/path_utils.c \
 		$(BLT_IN)/cd.c $(BLT_IN)/echo.c $(BLT_IN)/export.c $(BLT_IN)/exit.c $(BLT_IN)/env.c $(BLT_IN)/unset.c $(BLT_IN)/pwd.c \
