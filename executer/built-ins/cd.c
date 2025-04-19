@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:50:34 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 16:59:06 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/19 16:03:56 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 void	handle_failure(t_2_exec *data, t_env **my_env,
 		t_garbage **my_garbage)
 {
-	char	pwd[1024];
+	char	*pwd;
 
-	if (getcwd(pwd, 1024) == NULL && ft_strcmp(data->cmd[1], "/"))
+	pwd = getcwd(NULL, 0);
+	if (pwd == NULL && ft_strcmp(data->cmd[1], "/"))
 	{
 		write(2, "cd: error retrieving current directory: ", 40);
 		write(2, "getcwd: cannot access parent directories", 40);
@@ -50,6 +51,7 @@ void	handle_failure(t_2_exec *data, t_env **my_env,
 		ft_cd(data, my_env, my_garbage);
 		return ;
 	}
+	free(pwd);
 	set_exit_status(NO_SUCH_FILE_OR_DIR);
 	perror(ft_strjoin("cd: ", data->cmd[1], my_garbage));
 }

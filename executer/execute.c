@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: test <test@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:01:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 16:54:18 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/19 16:05:36 by test             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	update_pwd(t_2_exec *data, t_garbage **my_garbage)
 {
-	static char	pwd[1024];
+	static char	pwd[1000000];
 
 	data->pwd = ft_strdup(pwd, my_garbage);
-	if (getcwd(pwd, 1024))
+	if (getcwd(pwd, 1000000))
 		data->pwd = ft_strdup(pwd, my_garbage);
 	ft_strlcpy(pwd, data->pwd, ft_strlen(data->pwd) + 1);
 }
