@@ -36,7 +36,7 @@ t_exit_arg	ft_atol(char *str)
 		}
 		result.val = result.val * 10 + (str[i++] - '0');
 	}
-	result.err = str[i] != '\0' || !ft_isdigit(str[i - 1]);
+	result.err = (str[i] != '\0' || !ft_isdigit(str[i - 1]));
 	result.val *= sign;
 	return (result);
 }
