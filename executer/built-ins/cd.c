@@ -46,7 +46,6 @@ void	handle_failure(t_2_exec *data, t_env **my_env,
 		write(2, "cd: error retrieving current directory: ", 40);
 		write(2, "getcwd: cannot access parent directories", 40);
 		write(2, ": No such file or directory\n", 28);
-		write(2, "redirected to /\n", 16);
 		data->cmd = ft_split("cd /", ' ', my_garbage);
 		ft_cd(data, my_env, my_garbage);
 		return ;
