@@ -26,7 +26,7 @@ t_exit_arg	ft_atol(char *str)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 		sign = (str[i++] == '+') * 2 - 1;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(str[i]))
 	{
 		if (result.val > (LONG_MAX - (str[i] - '0')) / 10)
 		{
@@ -36,7 +36,7 @@ t_exit_arg	ft_atol(char *str)
 		}
 		result.val = result.val * 10 + (str[i++] - '0');
 	}
-	result.err = str[i] != '\0';
+	result.err = str[i] != '\0' || !ft_isdigit(str[i - 1]);
 	result.val *= sign;
 	return (result);
 }

@@ -46,8 +46,8 @@ int	exec_builtin(t_2_exec *data, t_env **my_env,
 	{
 		if (redirections(&data->files, 0) != -1)
 			(built_in[i].func)(data, my_env, my_garbage);
+		set_exit_status(EXIT_SUCCESS);
 		return (0);
 	}
-	set_exit_status(EXIT_SUCCESS);
 	return (-1);
 }
