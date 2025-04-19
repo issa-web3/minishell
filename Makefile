@@ -4,7 +4,8 @@ NAME = minishell
 # Compilation
 CC = cc
 COMPL_FLAGS = -Wall -Wextra -Werror
-LINK_FLAGS = -lreadline -g3 -fsanitize=address
+LINK_FLAGS = -lreadline
+# -g3 -fsanitize=address
 
 COMPILE = $(CC) $(COMPL_FLAGS)
 LINK = $(CC) $(LINK_FLAGS)
