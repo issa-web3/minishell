@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:57:33 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 15:01:24 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/19 10:51:00 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int	exec_builtin(t_2_exec *data, t_env **my_env,
 			(built_in[i].func)(data, my_env, my_garbage);
 		return (0);
 	}
+	set_exit_status(EXIT_SUCCESS);
 	return (-1);
 }

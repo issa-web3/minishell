@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:33:36 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 17:44:49 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/19 10:55:43 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init(t_garbage **my_garbage, char **d_path,
 {
 	if (!isatty(0) || !isatty(1) || !isatty(2))
 		return (exit(EXIT_FAILURE));
-	*d_path = NULL;
+	*d_path = "some king of string";
 	signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, SIG_IGN);
 	*my_garbage = NULL;
