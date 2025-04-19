@@ -61,7 +61,7 @@ int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 	char		*res;
 	t_file		*heredoc_node;
 
-	1 && (res = NULL, save_stdin = dup(0), g_signals = 3);
+	1 && (res = NULL, save_stdin = ft_dup(0), g_signals = 3);
 	while (1)
 	{
 		info->line = readline(">");

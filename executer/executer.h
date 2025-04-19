@@ -58,6 +58,7 @@ void		remove_ptr_from_garbage(t_garbage **my_garbage, void *ptr);
 
 // protected proxies
 int			ft_pipe(int *arr);
+int			ft_dup(int a);
 int			ft_dup2(int a, int b);
 pid_t		ft_fork(void);
 int			ft_open(char *filename, int mode);
