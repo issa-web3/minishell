@@ -18,7 +18,6 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 	char	*new_pwd;
 	t_env	*env_tmp;
 
-	set_exit_status(EXIT_FAILURE);
 	if (data->cmd[1] == NULL)
 	{
 		env_tmp = ft_getenv("HOME", my_env);
@@ -32,7 +31,6 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 		new_pwd = data->cmd[1];
 	else
 		new_pwd = ft_strjoin(ft_strjoin(pwd, "/", gc), data->cmd[1], gc);
-	set_exit_status(EXIT_SUCCESS);
 	return (new_pwd);
 }
 
@@ -79,4 +77,5 @@ void	ft_cd(t_2_exec *data, t_env **my_env,
 			my_garbage);
 	data->cmd = ft_split(data->cmd[0], ' ', my_garbage);
 	ft_export(data, my_env, my_garbage);
+	set_exit_status(EXIT_SUCCESS);
 }

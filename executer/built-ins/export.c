@@ -103,4 +103,5 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 			modify_env_var(to_export, export_data.append, parsed, my_g);
 		i++;
 	}
+	set_exit_status(EXIT_SUCCESS);
 }

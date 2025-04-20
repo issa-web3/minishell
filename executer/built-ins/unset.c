@@ -28,4 +28,5 @@ void	ft_unset(t_2_exec *data, t_env **my_env,
 		del_env_var(to_rm, my_env);
 		i++;
 	}
+	set_exit_status(EXIT_SUCCESS);
 }

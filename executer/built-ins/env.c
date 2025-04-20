@@ -25,4 +25,5 @@ void	ft_env(t_2_exec *data, t_env **my_env,
 		printf("%s=%s\n", curr->name, curr->value);
 		curr = curr->next;
 	}
+	set_exit_status(EXIT_SUCCESS);
 }

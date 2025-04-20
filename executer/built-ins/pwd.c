@@ -18,4 +18,5 @@ void	ft_pwd(t_2_exec *data, t_env **my_env,
 	(void)my_env;
 	(void)my_garbage;
 	printf("%s\n", data->pwd);
+	set_exit_status(EXIT_SUCCESS);
 }

@@ -103,8 +103,9 @@ typedef struct s_builtin
 
 typedef struct s_exit_arg
 {
-	long	val;
-	char	err;
+	unsigned long long		p_val;
+	long					val;
+	char					err;
 }				t_exit_arg;
 
 typedef struct s_token_vars

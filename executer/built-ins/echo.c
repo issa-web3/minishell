@@ -53,4 +53,5 @@ void	ft_echo(t_2_exec *data, t_env **my_env,
 		write(1, " ", data->cmd[i + 1] != NULL);
 	}
 	write(1, "\n", !end);
+	set_exit_status(EXIT_SUCCESS);
 }

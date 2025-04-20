@@ -18,6 +18,7 @@ t_exit_arg	ft_atol(char *str)
 	int			sign;
 	int			i;
 
+	result.p_val = 0;
 	result.val = 0;
 	result.err = 0;
 	sign = 1;
@@ -28,16 +29,22 @@ t_exit_arg	ft_atol(char *str)
 		sign = (str[i++] == '+') * 2 - 1;
 	while (ft_isdigit(str[i]))
 	{
-		if (result.val > (LONG_MAX - (str[i] - '0')) / 10)
+		result.val = result.val * 10 + (str[i++] - '0');
+		if (result.val > LONG_MAX && sign == 1)
 		{
 			result.err = 1;
 			sign = 1;
 			break ;
 		}
-		result.val = result.val * 10 + (str[i++] - '0');
+		if (result.val - LONG_MAX - 1 > 0 && sign == -1)
+		{
+			result.err = 1;
+			sign = 1;
+			break ;
+		}
 	}
 	result.err = (str[i] != '\0' || !ft_isdigit(str[i - 1]));
-	result.val *= sign;
+	result.val = result.val * sign;
 	return (result);
 }
 
@@ -50,7 +57,7 @@ int	change_exit_status(char **args)
 	while (args[++ac])
 		;
 	if (ac == 0)
-		return (0);
+		return (set_exit_status(EXIT_SUCCESS), 0);
 	tmp = ft_atol(args[0]);
 	if (tmp.err)
 	{
@@ -64,7 +71,7 @@ int	change_exit_status(char **args)
 	if (ac > 1)
 		return (write(2, "exit: too many arguments\n", 25),
 			set_exit_status(EXIT_FAILURE), -1);
-	return (0);
+	return (set_exit_status(EXIT_SUCCESS), 0);
 }
 
 void	ft_exit(t_2_exec *data, t_env **my_env,
