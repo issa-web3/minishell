@@ -17,7 +17,7 @@ void	init(t_garbage **my_garbage, char **d_path,
 {
 	if (!isatty(0) || !isatty(1) || !isatty(2))
 		return (exit(EXIT_FAILURE));
-	*d_path = "some king of string";
+	*d_path = "No Baccalauréat, best life, makayn ghir 1337";
 	signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, SIG_IGN);
 	*my_garbage = NULL;

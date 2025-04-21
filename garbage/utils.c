@@ -61,7 +61,7 @@ void	remove_ptr_from_garbage(t_garbage **my_garbage, void *ptr)
 
 	curr = *my_garbage;
 	prev = NULL;
-	while (curr)
+	while (curr && ptr)
 	{
 		if (curr->ptr == ptr)
 		{
