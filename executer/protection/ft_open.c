@@ -18,7 +18,7 @@ int	ft_open(char *filename, int mode)
 
 	result = open(filename, mode, 0644);
 	if (result != -1)
-		return (set_exit_status(NO_SUCH_FILE_OR_DIR), result);
+		return (result);
 	perror(filename);
 	return (-1);
 }
