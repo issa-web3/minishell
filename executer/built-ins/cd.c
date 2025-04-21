@@ -22,11 +22,13 @@ static char	*get_new_pwd(t_2_exec *data, char *pwd, t_env **my_env,
 	{
 		env_tmp = ft_getenv("HOME", my_env);
 		if (env_tmp == NULL)
-			return (write(2, "cd: HOME not set\n", 17), NULL);
+			return (write(2, "cd: HOME not set\n", 17),
+				set_exit_status(GENERIC_ERR), NULL);
 		new_pwd = env_tmp->value;
 	}
 	else if (data->cmd[2])
-		return (write(2, "cd: too many arguments\n", 23), NULL);
+		return (write(2, "cd: too many arguments\n", 23),
+			set_exit_status(GENERIC_ERR), NULL);
 	else if (data->cmd[1][0] == '/')
 		new_pwd = data->cmd[1];
 	else

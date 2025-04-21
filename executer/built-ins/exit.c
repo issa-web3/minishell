@@ -12,13 +12,34 @@
 
 #include "../../minishell.h"
 
+char	check_overflow(int sign, t_exit_arg result, char c)
+{
+	if (sign == -1 && (result.val * sign < (LONG_MIN / 10)
+			|| (result.val * sign == LONG_MIN / 10
+				&& (c - '0') > (LONG_MIN % 10))))
+		return (1);
+	if (sign == 1 && (result.val > (LONG_MAX / 10)
+			|| (result.val == LONG_MAX / 10
+				&& (c - '0') > (LONG_MAX % 10))))
+		return (1);
+	return (0);
+}
+
+char	is_long_min(int sign, t_exit_arg result, char c, char next)
+{
+	return (sign == -1
+		&& result.val * sign == (LONG_MIN / 10)
+		&& (c - '0') == 8 && !next
+	);
+}
+
 t_exit_arg	ft_atol(char *str)
 {
 	t_exit_arg	result;
 	int			sign;
 	int			i;
+	char		is_lm;
 
-	result.p_val = 0;
 	result.val = 0;
 	result.err = 0;
 	sign = 1;
@@ -29,19 +50,12 @@ t_exit_arg	ft_atol(char *str)
 		sign = (str[i++] == '+') * 2 - 1;
 	while (ft_isdigit(str[i]))
 	{
+		is_lm = is_long_min(sign, result, str[i], str[i + 1]);
+		if (!is_lm && check_overflow(sign, result, str[i]))
+			return (result.err = 1, result);
 		result.val = result.val * 10 + (str[i++] - '0');
-		if (result.val > LONG_MAX && sign == 1)
-		{
-			result.err = 1;
-			sign = 1;
+		if (is_lm)
 			break ;
-		}
-		if (result.val - LONG_MAX - 1 > 0 && sign == -1)
-		{
-			result.err = 1;
-			sign = 1;
-			break ;
-		}
 	}
 	result.err = (str[i] != '\0' || !ft_isdigit(str[i - 1]));
 	result.val = result.val * sign;
@@ -57,7 +71,7 @@ int	change_exit_status(char **args)
 	while (args[++ac])
 		;
 	if (ac == 0)
-		return (set_exit_status(EXIT_SUCCESS), 0);
+		return (0);
 	tmp = ft_atol(args[0]);
 	if (tmp.err)
 	{
@@ -71,7 +85,7 @@ int	change_exit_status(char **args)
 	if (ac > 1)
 		return (write(2, "exit: too many arguments\n", 25),
 			set_exit_status(EXIT_FAILURE), -1);
-	return (set_exit_status(EXIT_SUCCESS), 0);
+	return (0);
 }
 
 void	ft_exit(t_2_exec *data, t_env **my_env,
