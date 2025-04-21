@@ -92,6 +92,7 @@ void	ft_export(t_2_exec *data, t_env **my_env,
 			continue ;
 		to_export = ft_getenv(export_data.parsed[0], my_env);
 		parsed = export_data.parsed;
+		parsed[1] = path_special_case(parsed, to_export, *data->d_path, my_g);
 		if (to_export == NULL && ft_strcmp(data->cmd[0], "modify"))
 		{
 			if (!append_env(my_env, get_last_env(my_env), new_env_var(parsed)))
