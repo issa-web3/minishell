@@ -6,27 +6,11 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:25:11 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 14:42:34 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/22 07:10:16 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils.h"
-
-static void	add_vip_vars(t_env **my_env, t_env *tail0, char *env,
-		t_garbage **my_garbage)
-{
-	t_env	*tail;
-	char	*data[2];
-
-	if (ft_getenv(env, my_env))
-		return ;
-	data[0] = ft_strdup(env, my_garbage);
-	data[1] = NULL;
-	tail = append_env(my_env, tail0, new_env_var(data));
-	if (tail == NULL)
-		(clear_all(my_garbage), set_and_exit(EXIT_FAILURE));
-	remove_ptr_from_garbage(my_garbage, data[0]);
-}
 
 t_env	*copy_env(char **env, t_garbage **my_garbage)
 {
@@ -52,7 +36,6 @@ t_env	*copy_env(char **env, t_garbage **my_garbage)
 		remove_ptr_from_garbage(my_garbage, data[1]);
 		i++;
 	}
-	add_vip_vars(&my_env, tail, "OLDPWD", my_garbage);
 	return (my_env);
 }
 

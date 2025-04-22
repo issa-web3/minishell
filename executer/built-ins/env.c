@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:55:55 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/15 10:55:56 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/22 07:07:18 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,9 @@ void	ft_env(t_2_exec *data, t_env **my_env,
 		curr = curr->next;
 	}
 	set_exit_status(EXIT_SUCCESS);
+	if (data->cmd[1])
+	{
+		write(2, "exit: too many arguments\n", 25);
+		set_exit_status(EXIT_FAILURE);
+	}
 }
