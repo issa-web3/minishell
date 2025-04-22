@@ -28,7 +28,7 @@ void	ft_env(t_2_exec *data, t_env **my_env,
 	set_exit_status(EXIT_SUCCESS);
 	if (data->cmd[1])
 	{
-		write(2, "exit: too many arguments\n", 25);
+		write(2, "env: too many arguments\n", 24);
 		set_exit_status(EXIT_FAILURE);
 	}
 }

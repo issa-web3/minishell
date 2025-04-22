@@ -33,7 +33,7 @@ t_file	*new_file_node(char *name, t_garbage **g, char *buff)
 	t_file	*node;
 	int		fd;
 
-	fd = open(name, O_RDWR | O_CREAT, 0777);
+	fd = ft_open(name, O_RDWR | O_CREAT);
 	if (fd == -1)
 		return (NULL);
 	write (fd, buff, ft_strlen(buff));
@@ -46,14 +46,16 @@ t_file	*new_file_node(char *name, t_garbage **g, char *buff)
 
 char	*generate_file_name(t_garbage	**g)
 {
-	static int	num = 22;
+	static long	num = 22;
 	char		*name;
 	char		*res;
 	char		*tmp_path;
 
 	res = NULL;
 	tmp_path = ft_strdup("/tmp/heredoc_", g);
-	num = (num * 121) % 232332;
+	if (num == 22)
+		num = (long)tmp_path;
+	num = (num * 121) % 232332 + (long)g;
 	name = ft_itoa(num, g);
 	res = ft_strjoin(tmp_path, name, g);
 	return (res);

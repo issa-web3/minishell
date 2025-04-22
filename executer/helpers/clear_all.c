@@ -15,14 +15,10 @@
 void	clear_all(t_garbage **my_garbage)
 {
 	t_env			**my_env;
-	int				i;
 
 	if ((*my_garbage))
 	{
 		my_env = (*my_garbage)->my_env;
-		i = 3;
-		while (i < 1024)
-			close(i++);
 		clear_env(my_env);
 	}
 	clear_garbage(my_garbage);

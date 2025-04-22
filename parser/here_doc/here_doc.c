@@ -72,10 +72,10 @@ int	exec_heredoc(t_2_exec **node, t_heredoc *info, t_garbage **g, t_env *env)
 		create_heredoc_buffer(&res, info, g, env);
 	}
 	free(info->line);
-	if (g_signals == 4)
-		return (restore_fds(save_stdin), set_exit_status(130), -1);
-	create_heredoc_node(&heredoc_node, g, res);
 	restore_fds(save_stdin);
+	if (g_signals == 4)
+		return (set_exit_status(TERMINATED_BY_CNTL_C), -1);
+	create_heredoc_node(&heredoc_node, g, res);
 	if (!(*node)->files)
 		(*node)->files = heredoc_node;
 	else

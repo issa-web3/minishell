@@ -75,7 +75,7 @@ $(OBJ_DIRS):
 	@mkdir -p $(OBJ_DIRS)
 	@echo "[CREATING object directories...]"
 
-$(OBJ_DIR)/%.o: %.c $(INC) $(OBJ_DIRS)
+$(OBJ_DIR)/%.o: %.c $(INC) | $(OBJ_DIRS)
 	@$(COMPILE) -c $< -o $@
 	@echo "[COMPILING $<...]"
 
