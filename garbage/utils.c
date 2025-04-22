@@ -37,6 +37,7 @@ t_garbage	*init_node(t_garbage *new_g_n, void *ptr)
 	if (new_g_n)
 	{
 		new_g_n->next = NULL;
+		new_g_n->my_env = NULL;
 		new_g_n->ptr = ptr;
 	}
 	return (new_g_n);

@@ -42,6 +42,7 @@ void	init_garbage(t_garbage **my_garbage, t_env **my_env
 	if ((*my_garbage) == NULL)
 		(clear_env(my_env), perror("malloc"), set_and_exit(EXIT_FAILURE));
 	(*my_garbage)->next = NULL;
+	(*my_garbage)->my_env = NULL;
 	(*my_garbage)->ptr = malloc(1337 / 42);
 	if (*d_path)
 		*d_path = ft_strdup(

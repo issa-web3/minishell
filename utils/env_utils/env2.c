@@ -71,6 +71,8 @@ void	clear_env(t_env **my_env)
 	t_env	*curr;
 	t_env	*next;
 
+	if (!my_env)
+		return ;
 	curr = *my_env;
 	while (curr)
 	{
