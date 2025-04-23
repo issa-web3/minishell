@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/04/18 16:41:51 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:06:39 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*check_dir(t_2_exec *data)
 	return (cmd);
 }
 
-char	*check_here_and_path(char *cmd)
+char	*check_access_directly(char *cmd)
 {
 	if (access((const char *)cmd, F_OK) == -1)
 		return (set_exit_status(COMMAND_NOT_FOUND), perror(cmd), NULL);
